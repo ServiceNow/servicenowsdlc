@@ -1,6 +1,6 @@
 ---
 title: "{Exercise title}"
-slide: "{slide number / name this links from, e.g. 11 — Build}"
+slide: "[{slide number — name, e.g. 11 — Build}](https://apatti-now.github.io/servicenowsdlc/#{N})"
 ---
 
 # {Exercise title}

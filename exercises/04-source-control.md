@@ -1,11 +1,9 @@
 ---
 title: "Source control: ship it with Git"
-slide: "19 — Source control exercise"
+slide: "[19 — Source control exercise](https://apatti-now.github.io/servicenowsdlc/#19)"
 ---
 
 # Source control: ship it with Git
-
-[← Back to slide 19 in the deck](https://apatti-now.github.io/servicenowsdlc/#19)
 
 ## Objective
 

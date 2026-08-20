@@ -1,11 +1,9 @@
 ---
 title: "Automated testing with Test Agent"
-slide: "15 — Automated testing"
+slide: "[15 — Automated testing](https://apatti-now.github.io/servicenowsdlc/#15)"
 ---
 
 # Automated testing with Test Agent
-
-[← Back to slide 15 in the deck](https://apatti-now.github.io/servicenowsdlc/#15)
 
 ## Objective
 
