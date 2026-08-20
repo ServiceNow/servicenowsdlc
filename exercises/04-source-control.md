@@ -5,6 +5,8 @@ slide: "19 — Source control exercise"
 
 # Source control: ship it with Git
 
+[← Back to slide 19 in the deck](https://apatti-now.github.io/servicenowsdlc/#19)
+
 ## Objective
 
 Walk the full Git-based collaboration flow — push, PR, review, merge, publish, pull — and see firsthand why update sets can't replace it.

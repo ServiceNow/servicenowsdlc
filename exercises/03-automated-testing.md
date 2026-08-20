@@ -5,6 +5,8 @@ slide: "15 — Automated testing"
 
 # Automated testing with Test Agent
 
+[← Back to slide 15 in the deck](https://apatti-now.github.io/servicenowsdlc/#15)
+
 ## Objective
 
 Practice the principle that tests live in app scope, authored in the dev loop — not bolted on afterward — by generating, running, and triaging ATF tests with Test Agent.

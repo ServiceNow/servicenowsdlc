@@ -5,6 +5,8 @@ slide: "9 — Activity"
 
 # Build-ready requirements: rewrite the vague story
 
+[← Back to slide 9 in the deck](https://apatti-now.github.io/servicenowsdlc/#9)
+
 ## Objective
 
 Practice turning a vague user story into a build-ready one — with entities, roles/access, and Given-When-Then acceptance criteria — before writing any code.
