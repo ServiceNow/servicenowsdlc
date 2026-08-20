@@ -13,7 +13,7 @@ Practice the principle that tests live in app scope, authored in the dev loop â€
 
 ## Estimated Time
 
-30 minutes (1:15â€“1:45)
+15 minutes
 
 ## Prerequisites
 
