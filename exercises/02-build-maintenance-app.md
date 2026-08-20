@@ -20,7 +20,7 @@ Use Build Agent (and ATF) to go from a natural-language prompt to a working main
 
 ## Exercise Steps
 
-1. Open Build Agent in Studio (or your IDE if working off-instance).
+1. Open Build Agent in Studio, we are covering off-instance later.
 2. Prompt Build Agent with your build-ready requirements — name the entities, roles/access, and the Given-When-Then scenario directly in the prompt.
 3. Review what Build Agent creates. If you're curious what's happening under the hood, ask it to show you the Fluent (`.now.ts`) code it generated — this is optional and aimed at architects.
 4. Install the app to your sandbox:
