@@ -19,6 +19,9 @@ Use Build Agent (and ATF) to go from a natural-language prompt to a working main
 
 - Sandbox allocated and feature branch created (Setup, 10:15–10:30)
 - Build-ready requirements from the previous activity (entities, roles/access, Given-When-Then)
+- "Sync ATF tests with app" turned on in Build Agent settings (General tab) — this is what generates ATF tests as you build and keeps them synced as the app changes
+
+![Build Agent settings with "Sync ATF tests with app" toggled on](images/ba-settings-atf.png)
 
 ## Exercise Steps
 
