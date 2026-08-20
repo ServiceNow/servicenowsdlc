@@ -1,9 +1,11 @@
 ---
 title: "{Exercise title}"
-slide: "[{slide number — name, e.g. 11 — Build}](https://apatti-now.github.io/servicenowsdlc/#{N})"
+slide: "{slide number — name, e.g. 11 — Build}"
 ---
 
 # {Exercise title}
+
+[← Back to slide {N} in the deck](https://apatti-now.github.io/servicenowsdlc/#{N})
 
 ## Objective
 

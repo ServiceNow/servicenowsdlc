@@ -1,9 +1,11 @@
 ---
 title: "Build the maintenance app"
-slide: "[11 — Build](https://apatti-now.github.io/servicenowsdlc/#11)"
+slide: "11 — Build"
 ---
 
 # Build the maintenance app
+
+[← Back to slide 11 in the deck](https://apatti-now.github.io/servicenowsdlc/#11)
 
 ## Objective
 
