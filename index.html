@@ -767,10 +767,27 @@
     </div>
   </div>
 
+  <!-- BUILD AGENT + ATF -->
+  <div class="slide" data-index="9.5">
+    <div class="slide-label">Build Agent + ATF</div>
+    <h2>Tests live <span class="hl-green">in the dev loop</span>, not bolted on</h2>
+    <div class="quote" style="margin-bottom:24px;">Tests live in app scope, authored while you build — not added after the fact.</div>
+    <div class="cols cols-2" style="max-width:960px;">
+      <ul class="clean">
+        <li><span class="icon">1️⃣</span><span>Use Test Agent (in Build Agent) to generate ATF tests from natural language.</span></li>
+        <li><span class="icon">2️⃣</span><span>Run them, let Test Agent triage a failure, and fix it.</span></li>
+      </ul>
+      <div class="card accent-orange">
+        <h3>Honest constraint</h3>
+        <p>Test Agent execution and triage run from the Studio surface. Cloud Runner enables browserless execution, but doesn't yet carry that same triage loop.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- SLIDE 11: CODE — BUILD WITH BUILD AGENT + ATF -->
   <div class="slide" data-index="10">
-    <div class="slide-label">Build (exercise)</div>
-    <h2>Build the <span class="hl-green">maintenance app</span></h2>
+    <div class="slide-label">Build + test (exercise)</div>
+    <h2>Build + test the <span class="hl-green">maintenance app</span></h2>
     <div class="cols cols-2" style="max-width:980px; align-items:start;">
       <ul class="clean">
         <li><span class="icon">👀</span><span>First, see the finished app — what you're building toward.</span></li>
@@ -787,24 +804,6 @@
       </div>
     </div>
     <p style="margin-top:20px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint);">📄 <a href="https://github.com/apatti-now/servicenowsdlc/blob/main/exercises/02-build-maintenance-app.md" style="color:var(--c-blue);">Exercise steps →</a></p>
-  </div>
-
-  <!-- AUTOMATED TESTING -->
-  <div class="slide" data-index="10.5">
-    <div class="slide-label">Automated testing (exercise)</div>
-    <h2>Tests live <span class="hl-green">in the dev loop</span>, not bolted on</h2>
-    <div class="quote" style="margin-bottom:24px;">Tests live in app scope, authored while you build — not added after the fact.</div>
-    <div class="cols cols-2" style="max-width:960px;">
-      <ul class="clean">
-        <li><span class="icon">1️⃣</span><span>Use Test Agent (in Build Agent) to generate ATF tests from natural language.</span></li>
-        <li><span class="icon">2️⃣</span><span>Run them, let Test Agent triage a failure, and fix it.</span></li>
-      </ul>
-      <div class="card accent-orange">
-        <h3>Honest constraint</h3>
-        <p>Test Agent execution and triage run from the Studio surface. Cloud Runner enables browserless execution, but doesn't yet carry that same triage loop.</p>
-      </div>
-    </div>
-    <p style="margin-top:20px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint);">📄 <a href="https://github.com/apatti-now/servicenowsdlc/blob/main/exercises/03-automated-testing.md" style="color:var(--c-blue);">Exercise steps →</a></p>
   </div>
 
   <!-- SLIDE 12: Q&A -->

@@ -1,9 +1,9 @@
 ---
-title: "Build the maintenance app"
+title: "Build + test the maintenance app"
 slide: "11 — Build"
 ---
 
-# Build the maintenance app
+# Build + test the maintenance app
 
 [← Back to slide 11 in the deck](https://apatti-now.github.io/servicenowsdlc/#11)
 
@@ -17,7 +17,7 @@ Use Build Agent (and ATF) to go from a natural-language prompt to a working main
 
 ## Prerequisites
 
-- Sandbox allocated and feature branch created (Setup, 10:15–10:30)
+- Sandbox allocated and feature branch created
 - Build-ready requirements from the previous activity (entities, roles/access, Given-When-Then)
 - "Sync ATF tests with app" turned on in Build Agent settings (General tab) — this is what generates ATF tests as you build and keeps them synced as the app changes
 
@@ -28,12 +28,13 @@ Use Build Agent (and ATF) to go from a natural-language prompt to a working main
 1. Open Build Agent in Studio, we are covering off-instance later.
 2. Prompt Build Agent with your build-ready requirements — name the entities, roles/access, and the Given-When-Then scenario directly in the prompt.
 3. Review what Build Agent creates. If you're curious what's happening under the hood, ask it to show you the Fluent (`.now.ts`) code it generated — this is optional and aimed at architects.
-4. Install the app to your sandbox:
+4. When asked if you want ATF tests written for your change, select "Yes, proceed" — your changes will get test coverage added.
+5. Install the app to your sandbox:
    ```
    now-sdk install --sandbox
    ```
-5. Manually walk through the golden path in your sandbox and confirm it matches your Given-When-Then scenario.
-6. Ask Build Agent to generate an ATF test for that golden-path scenario, then run it.
+6. Manually walk through the golden path in your sandbox and confirm it matches your Given-When-Then scenario.
+7. Ask Build Agent to generate an ATF test for an edge case, then run it.
 
 ## Success Criteria
 
@@ -50,5 +51,5 @@ Use Build Agent (and ATF) to go from a natural-language prompt to a working main
 ## Bonus Challenge
 
 - Add Technician assignment/routing logic
-- Add a second ATF test covering an edge case or rejection path
+- Add more ATF tests to cover edge cases or rejection paths
 - Add role-based access restrictions and verify them as a non-privileged user
