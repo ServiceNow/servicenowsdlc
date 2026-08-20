@@ -13,7 +13,7 @@ Use Build Agent (and ATF) to go from a natural-language prompt to a working main
 
 ## Estimated Time
 
-60 minutes (10:30–11:30)
+60 minutes
 
 ## Prerequisites
 

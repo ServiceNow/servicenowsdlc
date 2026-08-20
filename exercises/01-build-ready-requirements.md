@@ -13,7 +13,7 @@ Practice turning a vague user story into a build-ready one — with entities, ro
 
 ## Estimated Time
 
-5 minutes (10:10–10:15)
+5 minutes
 
 ## Prerequisites
 

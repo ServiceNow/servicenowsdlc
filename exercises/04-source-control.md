@@ -13,7 +13,7 @@ Walk the full Git-based collaboration flow — push, PR, review, merge, publish,
 
 ## Estimated Time
 
-30 minutes (2:30–3:00)
+30 minutes
 
 ## Prerequisites
 
