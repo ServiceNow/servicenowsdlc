@@ -597,7 +597,7 @@
 
   <!-- SLIDE 1: TITLE -->
   <div class="slide active" data-index="0">
-    <div class="kicker">AI-Led SDLC Enablement for Customers</div>
+    <div class="kicker">AI-Led SDLC Enablement</div>
     <h1>SDLC on ServiceNow</h1>
     <p class="lead" style="margin-top:20px;">
       End-to-end SDLC guide for building, testing, and releasing ServiceNow apps using the ServiceNow SDK, Git, ReleaseOps, and CI/CD pipelines.
@@ -872,7 +872,7 @@
 
   <!-- SLIDE 18: SOURCE CONTROL -->
   <div class="slide" data-index="17">
-    <div class="slide-label">Source control · 2:30–3:00 (exercise)</div>
+    <div class="slide-label">Source control · 2:30–3:00</div>
     <h2>Git does what update sets <span class="hl-red">cannot</span></h2>
     <div class="tbl-wrap" style="margin-bottom:22px;">
       <table>
@@ -883,18 +883,32 @@
         <tr><td>Role</td><td>Source control</td><td>Transport artifact only</td></tr>
       </table>
     </div>
-    <p class="lead">Push branch → open PR → review → merge → publish pre-release to the App Repo → pull on the instance (SNS). <a href="https://code.devsnc.com/pages/dev/bootcamp-content/modules/dev-environment/exercises/exercise-04.html" style="color:var(--c-blue);">Exercise 04 →</a></p>
   </div>
 
-  <!-- SLIDE 19: BREAK -->
+  <!-- SLIDE 19: SOURCE CONTROL EXERCISE -->
   <div class="slide" data-index="18">
+    <div class="slide-label">Source control · 2:30–3:00 (exercise)</div>
+    <h2>Exercise: <span class="hl-green">ship it with Git</span></h2>
+    <ul class="clean" style="max-width:760px;">
+      <li><span class="icon">1️⃣</span><span><strong>Off instance (GitHub):</strong> push branch → open PR → review → merge → publish pre-release to the App Repo.</span></li>
+      <li><span class="icon">2️⃣</span><span><strong>On instance:</strong> open the instance and pull the changes in SNS / the IDE using git.</span></li>
+    </ul>
+    <div class="card accent-green" style="margin-top:24px; max-width:760px;">
+      <h3>📌 Prescriptive point</h3>
+      <p>Git does branching, review, and line-by-line conflict resolution. Update sets cannot.</p>
+    </div>
+    <p style="margin-top:20px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint);"><a href="https://code.devsnc.com/pages/dev/bootcamp-content/modules/dev-environment/exercises/exercise-04.html" style="color:var(--c-blue);">Exercise 04 →</a></p>
+  </div>
+
+  <!-- SLIDE 20: BREAK -->
+  <div class="slide" data-index="19">
     <div class="kicker">Break</div>
     <h1>☕</h1>
     <p class="lead" style="margin-top:20px;">3:00 – 3:15 · Back for ReleaseOps</p>
   </div>
 
-  <!-- SLIDE 20: RELEASEOPS -->
-  <div class="slide" data-index="19">
+  <!-- SLIDE 21: RELEASEOPS -->
+  <div class="slide" data-index="20">
     <div class="slide-label">ReleaseOps · 3:15–3:45 (exercise)</div>
     <h2>The quality-control <span class="hl-blue">model</span></h2>
     <div class="flow" style="margin-bottom:24px;">
@@ -914,15 +928,15 @@
     </div>
   </div>
 
-  <!-- SLIDE 21: Q&A -->
-  <div class="slide" data-index="20">
+  <!-- SLIDE 22: Q&A -->
+  <div class="slide" data-index="21">
     <div class="kicker">Q&amp;A</div>
     <h1>Questions?</h1>
     <p class="lead" style="margin-top:20px;">3:45 – 4:00</p>
   </div>
 
-  <!-- SLIDE 22: PUSH TO PRODUCTION -->
-  <div class="slide" data-index="21">
+  <!-- SLIDE 23: PUSH TO PRODUCTION -->
+  <div class="slide" data-index="22">
     <div class="slide-label">Push to production · 4:00–4:05 (demo only)</div>
     <h2>Promote, deploy, and <span class="hl-orange">roll back</span> if needed</h2>
     <ul class="clean" style="max-width:700px;">
@@ -932,8 +946,8 @@
     </ul>
   </div>
 
-  <!-- SLIDE 23: CHOOSE YOUR OWN ADVENTURE -->
-  <div class="slide" data-index="22">
+  <!-- SLIDE 24: CHOOSE YOUR OWN ADVENTURE -->
+  <div class="slide" data-index="23">
     <div class="slide-label">Choose your own adventure · 4:05–4:40</div>
     <h2>Where do <span class="hl-purple">you</span> want to go deeper?</h2>
     <div class="cols cols-3" style="max-width:920px;">
@@ -944,8 +958,8 @@
     <p style="margin-top:20px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint);">TODO: finalize this list per audience before the session.</p>
   </div>
 
-  <!-- SLIDE 24: WRAP -->
-  <div class="slide" data-index="23">
+  <!-- SLIDE 25: WRAP -->
+  <div class="slide" data-index="24">
     <div class="slide-label">Wrap · 4:40–5:00</div>
     <h2>One picture, <span class="hl-green">your app</span> traced across it</h2>
     <div class="flow" style="margin-bottom:24px;">
@@ -969,7 +983,7 @@
   <button id="prev" title="Previous (←)">←</button>
   <div class="dots" id="dots"></div>
   <button id="next" title="Next (→)">→</button>
-  <span class="slide-num" id="slideNum">01 / 24</span>
+  <span class="slide-num" id="slideNum">01 / 25</span>
 </div>
 
 <script>
