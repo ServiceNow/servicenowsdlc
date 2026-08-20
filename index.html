@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SDLC on ServiceNow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  /* Theme: midnight — palette injected below; see assets/themes.mjs */
+  :root {
+    --bg: #032D42;
+    --surface: rgba(255,255,255,0.055);
+    --surface-2: rgba(0,0,0,0.30);
+    --ink: #FFFFFF;
+    --ink-muted: rgba(255,255,255,0.6);
+    --ink-faint: rgba(255,255,255,0.4);
+    --border: rgba(255,255,255,0.10);
+    --border2: rgba(255,255,255,0.16);
+    --c-blue: #7FD1FF;
+    --c-blue-dim: rgba(127,209,255,0.12);
+    --c-green: #63DF4E;
+    --c-green-dim: rgba(99,223,78,0.12);
+    --c-amber: #F0B97C;
+    --c-amber-dim: rgba(240,185,124,0.12);
+    --c-red: #ED6A5E;
+    --c-red-dim: rgba(237,106,94,0.12);
+    --accent: #63DF4E;
+    --nav-bg: rgba(3,30,44,0.85);
+    --nav-fg: rgba(255,255,255,0.55);
+    --nav-fg-hover: #63DF4E;
+    --nav-shadow: 0 2px 16px rgba(0,0,0,0.35);
+    --th-bg: #63DF4E;
+    --th-fg: #032D42;
+    --code-fg: #63DF4E;
+    --code-bg: rgba(0,0,0,0.25);
+    --code-border: rgba(255,255,255,0.12);
+    --pre-border-left: rgba(99,223,78,0.40);
+    --glow-1: rgba(99,223,78,0.07);
+    --glow-2: rgba(99,223,78,0.055);
+    --glow-3: rgba(99,223,78,0.04);
+    --watermark: rgba(255,255,255,0.025);
+    --row-stripe: rgba(255,255,255,0.03);
+    --sel-bg: #63DF4E;
+    --sel-fg: #032D42;
+    --sans: "Plus Jakarta Sans", "ServiceNow Sans", system-ui, sans-serif;
+    --mono: "DM Mono", "Cascadia Code", monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  ::selection { background: var(--sel-bg); color: var(--sel-fg); }
+
+  html, body { height: 100%; overflow: hidden; }
+
+  body {
+    font-family: var(--sans);
+    font-weight: 300;
+    background: var(--bg);
+    color: var(--ink);
+    height: 100vh;
+  }
+
+  /* ─── Parallax background ────────────────────────── */
+
+  #parallax-bg {
+    position: fixed;
+    inset: -25%;
+    width: 150%;
+    height: 150%;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse 55% 45% at 15% 20%, var(--glow-1) 0%, transparent 100%),
+      radial-gradient(ellipse 45% 35% at 82% 75%, var(--glow-2) 0%, transparent 100%),
+      radial-gradient(ellipse 40% 55% at 60% 10%, var(--glow-3) 0%, transparent 100%);
+    transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+
+  /* ─── Deck & Slides ─────────────────────────────── */
+
+  .deck { width: 100%; height: 100vh; position: relative; z-index: 1; }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 56px 80px 84px;
+    opacity: 0;
+    transform: translateX(52px);
+    transition: opacity 0.38s cubic-bezier(0.4,0,0.2,1),
+                transform 0.38s cubic-bezier(0.4,0,0.2,1);
+    pointer-events: none;
+    overflow: hidden;
+    will-change: opacity, transform;
+  }
+
+  .slide.active  { opacity: 1; transform: translateX(0); pointer-events: all; }
+  .slide.exit    { opacity: 0; transform: translateX(-52px); }
+  .slide.hidden-slide { display: none; }
+
+  .slide-wm {
+    position: absolute;
+    right: -0.05em;
+    bottom: -0.14em;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 34vw;
+    line-height: 0.82;
+    color: var(--watermark);
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.04em;
+    z-index: 0;
+  }
+
+  .slide > *:not(.slide-wm):not(.slide-label) { position: relative; z-index: 1; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .slide.active > *:not(.slide-wm)                 { animation: fadeUp 0.45s cubic-bezier(0.4,0,0.2,1) backwards; }
+  .slide.active > *:nth-child(2):not(.slide-wm)    { animation-delay: 0.06s; }
+  .slide.active > *:nth-child(3):not(.slide-wm)    { animation-delay: 0.12s; }
+  .slide.active > *:nth-child(4):not(.slide-wm)    { animation-delay: 0.18s; }
+  .slide.active > *:nth-child(5):not(.slide-wm)    { animation-delay: 0.24s; }
+
+  /* ─── Navigation ─────────────────────────────────── */
+
+  .nav {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    z-index: 100;
+    background: var(--nav-bg);
+    border: 1px solid var(--border2);
+    border-radius: 100px;
+    padding: 10px 22px;
+    box-shadow: var(--nav-shadow);
+    backdrop-filter: blur(16px);
+  }
+
+  .nav button {
+    background: none;
+    border: none;
+    color: var(--nav-fg);
+    cursor: pointer;
+    font-size: 15px;
+    font-family: var(--mono);
+    padding: 2px 5px;
+    transition: color 0.15s;
+    line-height: 1;
+  }
+  .nav button:hover { color: var(--nav-fg-hover); }
+
+  .dots { display: flex; gap: 5px; align-items: center; }
+  .dot {
+    width: 14px; height: 2px;
+    background: var(--nav-fg);
+    opacity: 0.5;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s, opacity 0.2s;
+  }
+  .dot.active { background: var(--nav-fg-hover); opacity: 1; transform: scaleX(1.5); }
+
+  .slide-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--nav-fg);
+    min-width: 44px;
+    text-align: center;
+    letter-spacing: 0.06em;
+  }
+
+  /* ─── Typography ─────────────────────────────────── */
+
+  .kicker {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: var(--ink);
+  }
+
+  h2 {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(26px, 3.4vw, 42px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+    color: var(--ink);
+  }
+
+  h3 {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.10em;
+    margin-bottom: 6px;
+    color: var(--c-blue);
+    text-transform: uppercase;
+  }
+
+  h4 {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+
+  p { font-size: 15px; line-height: 1.7; color: var(--ink-muted); font-weight: 300; }
+
+  .lead {
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--ink-muted);
+    max-width: 660px;
+    text-align: center;
+    font-weight: 300;
+  }
+
+  strong { color: var(--ink); font-weight: 600; }
+
+  .hl-blue   { color: var(--c-blue); }
+  .hl-green  { color: var(--c-green); }
+  .hl-orange { color: var(--c-amber); }
+  .hl-red    { color: var(--c-red); }
+  .hl-purple { color: var(--c-blue); }
+
+  /* ─── Slide label ─────────────────────────────────── */
+
+  .slide-label {
+    position: absolute;
+    top: 24px; left: 40px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ─── Layout helpers ──────────────────────────────── */
+
+  .cols { display: grid; gap: 18px; width: 100%; max-width: 1000px; }
+  .cols-2 { grid-template-columns: 1fr 1fr; }
+  .cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+  /* ─── Cards ───────────────────────────────────────── */
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 22px;
+    position: relative;
+  }
+
+  .card.accent-blue::before,
+  .card.accent-purple::before { background: var(--c-blue); }
+  .card.accent-green::before  { background: var(--c-green); }
+  .card.accent-orange::before { background: var(--c-amber); }
+  .card.accent-red::before    { background: var(--c-red); }
+
+  .card.accent-blue::before,
+  .card.accent-purple::before,
+  .card.accent-green::before,
+  .card.accent-orange::before,
+  .card.accent-red::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 6px 0 0 6px;
+  }
+
+  .card p { font-size: 13.5px; margin-top: 6px; line-height: 1.65; }
+
+  /* ─── Stats ───────────────────────────────────────── */
+
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px 16px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 48px;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--c-blue);
+  }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-faint);
+    margin-top: 8px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ─── Code ────────────────────────────────────────── */
+
+  code {
+    font-family: var(--mono);
+    font-size: 12px;
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 3px;
+    padding: 1px 6px;
+    color: var(--code-fg);
+  }
+
+  pre {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--pre-border-left);
+    border-radius: 4px;
+    padding: 16px 18px;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.8;
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  pre .c { color: var(--ink-faint); font-style: italic; }
+  pre .k { color: var(--c-blue); font-weight: 500; }
+  pre .s { color: var(--c-green); }
+  pre .v { color: var(--c-amber); }
+  pre .t { color: var(--ink-muted); }
+  pre .h { color: var(--ink); font-weight: 600; }
+
+  /* ─── Terminal (real shell commands) ─────────────── */
+
+  .terminal {
+    background: #0F1B24;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(3,45,66,0.14);
+  }
+
+  .terminal-bar {
+    display: flex;
+    gap: 7px;
+    align-items: center;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .terminal-dot { width: 9px; height: 9px; border-radius: 50%; }
+  .terminal-dot.r { background: #ED6A5E; }
+  .terminal-dot.y { background: #F4BF4F; }
+  .terminal-dot.g { background: #61C454; }
+
+  .terminal-body {
+    padding: 16px 20px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.9;
+  }
+
+  .terminal-body .ln { display: block; color: #D7E3EA; }
+  .terminal-body .prompt { color: #61C454; margin-right: 9px; user-select: none; }
+  .terminal-body .c { color: #7C93A3; font-style: italic; }
+  .terminal-body .k { color: #7FD1FF; }
+  .terminal-body .s { color: #8DE39E; }
+  .terminal-body .v { color: #F2B66D; }
+  .terminal-body .t { color: #D7E3EA; }
+
+  .terminal.compact .terminal-bar  { padding: 7px 14px; }
+  .terminal.compact .terminal-body { padding: 10px 20px; }
+
+  /* ─── Step label (precedes a terminal or pre block) ── */
+
+  .step-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+    margin-top: 22px;
+  }
+  .step-label.first { margin-top: 0; }
+  .step-label.tight { margin-top: 14px; }
+
+  /* ─── Lists ───────────────────────────────────────── */
+
+  ul.clean { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+  ul.clean li {
+    display: flex; align-items: flex-start; gap: 11px;
+    font-size: 14.5px; line-height: 1.55; color: var(--ink);
+    font-weight: 300;
+  }
+
+  ul.clean li .icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ─── Tags ────────────────────────────────────────── */
+
+  .tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid var(--border);
+    color: var(--ink-faint);
+    background: var(--surface);
+    border-radius: 2px;
+  }
+
+  .tag-blue, .tag-purple { color: var(--c-blue);  border-color: var(--c-blue-dim);  background: var(--c-blue-dim); }
+  .tag-green             { color: var(--c-green); border-color: var(--c-green-dim); background: var(--c-green-dim); }
+  .tag-orange            { color: var(--c-amber); border-color: var(--c-amber-dim); background: var(--c-amber-dim); }
+  .tag-red               { color: var(--c-red);   border-color: var(--c-red-dim);   background: var(--c-red-dim); }
+
+  /* ─── Flow diagram ────────────────────────────────── */
+
+  .flow { display: flex; align-items: center; gap: 0; width: 100%; max-width: 960px; }
+
+  .flow-box {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px 12px;
+    text-align: center;
+  }
+
+  .flow-box .icon { font-size: 22px; margin-bottom: 7px; display: block; }
+  .flow-box h4  { font-size: 12px; font-family: var(--sans); font-weight: 600; color: var(--ink); }
+  .flow-box p   { font-size: 11px; color: var(--ink-muted); margin-top: 4px; line-height: 1.5; }
+
+  .flow-arrow { font-family: var(--mono); font-size: 13px; color: var(--ink-faint); padding: 0 5px; flex-shrink: 0; }
+
+  /* ─── Quote ───────────────────────────────────────── */
+
+  .quote {
+    border-left: 2px solid var(--accent);
+    padding: 14px 20px;
+    background: var(--c-green-dim);
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-muted);
+    max-width: 760px;
+    font-weight: 300;
+  }
+
+  /* ─── Agent chips ─────────────────────────────────── */
+
+  .agent-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: center; }
+
+  .agent-chip {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+    padding: 7px 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-muted);
+    letter-spacing: 0.02em;
+  }
+
+  .agent-dot { width: 6px; height: 6px; border-radius: 50%; }
+
+  /* ─── Tables ──────────────────────────────────────── */
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+
+  th {
+    text-align: left;
+    padding: 9px 14px;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--th-fg);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--th-bg);
+    border-bottom: none;
+  }
+
+  td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--ink);
+    vertical-align: top;
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  tr:nth-child(even) td { background: var(--row-stripe); }
+  tr:last-child td { border-bottom: none; }
+
+  .tbl-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 960px;
+  }
+
+  /* ─── Keyboard pill ───────────────────────────────── */
+
+  .kbd {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-bottom: 2px solid var(--border2);
+    border-radius: 3px;
+    padding: 1px 7px;
+    color: var(--ink);
+  }
+
+  /* ─── Pills ───────────────────────────────────────── */
+
+  .pill-row { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 10px; }
+
+  .pill {
+    background: var(--c-blue-dim);
+    border: 1px solid var(--c-blue-dim);
+    border-radius: 2px;
+    padding: 3px 9px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--c-blue);
+    letter-spacing: 0.02em;
+  }
+
+  /* ─── Agenda numbers ──────────────────────────────── */
+
+  .agenda-num {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 36px;
+    color: var(--c-blue);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div id="parallax-bg"></div>
+
+<div class="deck" id="deck">
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       HOW TO EDIT THIS DECK
+       · Each <div class="slide"> block is one slide. Duplicate one to add.
+       · Add class="hidden-slide" to a slide to skip it without deleting it.
+       · URL deep-links: open …/#3 to jump to slide 3; the hash tracks the
+         current slide as you navigate, so you can share a link to any slide.
+       · Swap the color theme by regenerating: generate.mjs --theme <name>.
+       ══════════════════════════════════════════════════════════════════ -->
+
+  <!-- SLIDE 1: TITLE -->
+  <div class="slide active" data-index="0">
+    <div class="kicker">Brown Bag — Platform Engineering App Lifecycle</div>
+    <h1>SDLC on ServiceNow</h1>
+    <p class="lead" style="margin-top:20px;">
+      End-to-end SDLC guide for building, testing, and releasing ServiceNow apps using the ServiceNow SDK, Git, ReleaseOps, and CI/CD pipelines.
+    </p>
+    <div class="agent-row" style="margin-top:40px;">
+      <div class="agent-chip"><span class="agent-dot" style="background:var(--accent)"></span> Build with Fluent + SDK</div>
+      <div class="agent-chip"><span class="agent-dot" style="background:var(--accent)"></span> Test with ATF + Test Agent</div>
+      <div class="agent-chip"><span class="agent-dot" style="background:var(--accent)"></span> Release with ReleaseOps</div>
+    </div>
+    <p style="margin-top: 36px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.1em;">← → TO NAVIGATE &nbsp;·&nbsp; Ashwin Patti, Shelby Cohen</p>
+  </div>
+
+  <!-- SLIDE 2: AGENDA -->
+  <div class="slide" data-index="1">
+    <div class="slide-label">Agenda</div>
+    <h2>Today, start to <span class="hl-green">finish</span></h2>
+    <div class="cols cols-2" style="max-width:1000px; align-items:start;">
+      <div class="tbl-wrap">
+        <table>
+          <tr><th colspan="2">Morning</th></tr>
+          <tr><td>9:20&nbsp;–&nbsp;9:55</td><td>Foundations</td></tr>
+          <tr><td>9:55&nbsp;–&nbsp;10:10</td><td>Break</td></tr>
+          <tr><td>10:10&nbsp;–&nbsp;10:15</td><td>Build-ready requirements</td></tr>
+          <tr><td>10:15&nbsp;–&nbsp;10:30</td><td>Setup time</td></tr>
+          <tr><td>10:30&nbsp;–&nbsp;11:30</td><td>Build w/ Build Agent + ATF</td></tr>
+          <tr><td>11:30&nbsp;–&nbsp;12:00</td><td>Q&amp;A</td></tr>
+          <tr><td>12:00&nbsp;–&nbsp;1:00</td><td>Lunch</td></tr>
+        </table>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <tr><th colspan="2">Afternoon</th></tr>
+          <tr><td>1:00&nbsp;–&nbsp;1:15</td><td>Re-anchor</td></tr>
+          <tr><td>1:15&nbsp;–&nbsp;1:45</td><td>Automated testing</td></tr>
+          <tr><td>1:45&nbsp;–&nbsp;2:00</td><td>Q&amp;A</td></tr>
+          <tr><td>2:00&nbsp;–&nbsp;2:30</td><td>Off-instance development</td></tr>
+          <tr><td>2:30&nbsp;–&nbsp;3:00</td><td>Source control</td></tr>
+          <tr><td>3:00&nbsp;–&nbsp;3:15</td><td>Break</td></tr>
+          <tr><td>3:15&nbsp;–&nbsp;3:45</td><td>ReleaseOps</td></tr>
+          <tr><td>3:45&nbsp;–&nbsp;4:40</td><td>Q&amp;A, push to prod, choose-your-own</td></tr>
+          <tr><td>4:40&nbsp;–&nbsp;5:00</td><td>Wrap + Q&amp;A</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: FOUNDATIONS — WHAT IS AN APP -->
+  <div class="slide" data-index="2">
+    <div class="slide-label">Foundations · 9:20–9:55 (taught, no lab)</div>
+    <h2>What is an <span class="hl-green">"app"</span> in this model?</h2>
+    <div class="quote" style="margin-bottom:28px;">
+      "A persistent container, owned by you, for anything you build on the ServiceNow Platform. It has a name, a version, and a scope."
+    </div>
+    <div class="cols cols-3" style="max-width:960px;">
+      <div class="card accent-green">
+        <h3>In scope</h3>
+        <p>Global apps, non-global apps, and ITSM implementations built via "move and edit" — all under one model.</p>
+      </div>
+      <div class="card accent-red">
+        <h3>Out of scope</h3>
+        <p>Non-global customization without "move" ownership — that metadata has no persistent container; it stays under ServiceNow's ownership.</p>
+      </div>
+      <div class="card accent-blue">
+        <h3>Why it matters</h3>
+        <p>One development model regardless of whether you're building net-new or customizing what's already there.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: FOUNDATIONS — SDK + FLUENT -->
+  <div class="slide" data-index="3">
+    <div class="slide-label">Foundations</div>
+    <h2>SDK + Fluent = <span class="hl-blue">source-driven development</span></h2>
+    <div class="cols cols-2" style="max-width:980px; align-items:start;">
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="card accent-blue">
+          <h3>Fluent</h3>
+          <p>A TypeScript DSL — <code>.now.ts</code> files define metadata with compile-time type checking and diagnostics, instead of clicking through forms.</p>
+        </div>
+        <div class="card accent-green">
+          <h3>JS modules + React</h3>
+          <p>Business logic as typed <code>@servicenow/glide</code> imports; UI Pages built in React, Svelte, Vue, or Preact.</p>
+        </div>
+      </div>
+      <div>
+        <p class="step-label first">THE INNER LOOP</p>
+        <div class="terminal compact" style="margin-top:8px;">
+          <div class="terminal-bar"><span class="terminal-dot r"></span><span class="terminal-dot y"></span><span class="terminal-dot g"></span></div>
+          <div class="terminal-body"><span class="ln"><span class="prompt">$</span><span class="t">now-sdk</span> <span class="k">build</span></span>
+<span class="ln"><span class="c">  # instant diagnostics on your .now.ts files</span></span></div>
+        </div>
+        <p class="step-label tight">THEN INSTALL AND TEST</p>
+        <div class="terminal compact" style="margin-top:8px;">
+          <div class="terminal-bar"><span class="terminal-dot r"></span><span class="terminal-dot y"></span><span class="terminal-dot g"></span></div>
+          <div class="terminal-body"><span class="ln"><span class="prompt">$</span><span class="t">now-sdk</span> <span class="k">install</span> <span class="v">--sandbox</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: FOUNDATIONS — GIT AS SOURCE OF TRUTH -->
+  <div class="slide" data-index="4">
+    <div class="slide-label">Foundations</div>
+    <h2>Git is the <span class="hl-green">authoritative source of truth</span></h2>
+    <div class="cols cols-2" style="max-width:920px;">
+      <div class="card accent-green">
+        <h3>Git</h3>
+        <p>Branching, pull requests, line-by-line review, three-way conflict resolution, precise point-in-time rollback.</p>
+      </div>
+      <div class="card accent-red">
+        <h3>Update sets</h3>
+        <p>XML transport artifact only — not built for collaboration, branching, or human-readable diffs.</p>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:24px;">We'll go deeper on this contrast this afternoon in the Source Control module.</p>
+  </div>
+
+  <!-- SLIDE 6: FOUNDATIONS — THE PRESCRIBED STACK -->
+  <div class="slide" data-index="5">
+    <div class="slide-label">Foundations</div>
+    <h2>The prescribed <span class="hl-purple">stack</span></h2>
+    <div class="cols cols-4" style="max-width:1000px;">
+      <div class="flow-box"><span class="icon">🛠️</span><h4>SDK</h4><p>Build engine, compiles to deployable artifacts</p></div>
+      <div class="flow-box"><span class="icon">💻</span><h4>Studio</h4><p>IDE / prod code mode</p></div>
+      <div class="flow-box"><span class="icon">🌿</span><h4>Git</h4><p>Branch, PR, merge</p></div>
+      <div class="flow-box"><span class="icon">📦</span><h4>Sandbox</h4><p>Isolated dev instance</p></div>
+      <div class="flow-box"><span class="icon">🤖</span><h4>Build Agent</h4><p>AI-assisted authoring</p></div>
+      <div class="flow-box"><span class="icon">✅</span><h4>ATF</h4><p>Automated test framework</p></div>
+      <div class="flow-box"><span class="icon">🗄️</span><h4>App Repo</h4><p>Immutable artifact store</p></div>
+      <div class="flow-box"><span class="icon">🚀</span><h4>ReleaseOps</h4><p>Assess, approve, release</p></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: BREAK -->
+  <div class="slide" data-index="6">
+    <div class="kicker">Break</div>
+    <h1>☕</h1>
+    <p class="lead" style="margin-top:20px;">9:55 – 10:10 · Back for build-ready requirements</p>
+  </div>
+
+  <!-- SLIDE 8: BUILD-READY REQUIREMENTS -->
+  <div class="slide" data-index="7">
+    <div class="slide-label">Build-ready requirements · 10:10–10:15</div>
+    <h2>Vague story vs. <span class="hl-green">build-ready</span> story</h2>
+    <div class="cols cols-2" style="max-width:980px; align-items:start;">
+      <div class="card accent-red">
+        <h3>Vague</h3>
+        <p>"As a facilities user, I want to request maintenance on equipment so it gets fixed."</p>
+      </div>
+      <div class="card accent-green">
+        <h3>Build-ready</h3>
+        <p><strong>Entities:</strong> Maintenance Request, Equipment<br>
+        <strong>Roles:</strong> Requester (create/view own), Technician (view assigned, update status)<br>
+        <strong>Given–When–Then:</strong> Given a Requester submits a request for active Equipment, When they submit, Then a Maintenance Request is created in "New" state and assigned per routing rule.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: ACTIVITY — REWRITE THE STORY -->
+  <div class="slide" data-index="8">
+    <div class="slide-label">Activity</div>
+    <h2>Your turn: <span class="hl-blue">rewrite it</span></h2>
+    <ul class="clean" style="max-width:680px;">
+      <li><span class="icon">1️⃣</span><span>5 minutes — as a team, rewrite a vague story into one with entities, roles/access, and Given-When-Then.</span></li>
+      <li><span class="icon">2️⃣</span><span>We present the requirements you'll actually build against this morning.</span></li>
+      <li><span class="icon">3️⃣</span><span>Goal: finish the core requirements first — add extensions only if you finish early.</span></li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 10: SETUP TIME -->
+  <div class="slide" data-index="9">
+    <div class="slide-label">Setup · 10:15–10:30</div>
+    <h2>Get your <span class="hl-blue">sandbox</span> ready</h2>
+    <div class="cols cols-2" style="max-width:960px; align-items:start;">
+      <ul class="clean">
+        <li><span class="icon">✅</span><span>Confirm you can log in to your assigned instance</span></li>
+        <li><span class="icon">✅</span><span>Confirm your developer sandbox is allocated</span></li>
+        <li><span class="icon">✅</span><span>Create a feature branch off <code>main</code></span></li>
+      </ul>
+      <div class="terminal compact">
+        <div class="terminal-bar"><span class="terminal-dot r"></span><span class="terminal-dot y"></span><span class="terminal-dot g"></span></div>
+        <div class="terminal-body"><span class="ln"><span class="prompt">$</span><span class="t">git</span> <span class="k">checkout</span> <span class="v">-b</span> <span class="t">feature/maintenance-app</span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 11: CODE — BUILD WITH BUILD AGENT + ATF -->
+  <div class="slide" data-index="10">
+    <div class="slide-label">Build · 10:30–11:30 (exercise)</div>
+    <h2>Build the <span class="hl-green">maintenance app</span></h2>
+    <div class="cols cols-2" style="max-width:980px; align-items:start;">
+      <ul class="clean">
+        <li><span class="icon">👀</span><span>First, see the finished app — what you're building toward.</span></li>
+        <li><span class="icon">💬</span><span>Prompt Build Agent with the natural-language description from the whitepaper.</span></li>
+        <li><span class="icon">🧑‍🏫</span><span>We'll float table-to-table throughout — flag us down anytime.</span></li>
+      </ul>
+      <div>
+        <p class="step-label first">OPTIONAL · FOR ARCHITECTS</p>
+        <pre><span class="c">// the Fluent code Build Agent writes under the hood</span>
+<span class="k">export const</span> <span class="h">MaintenanceRequest</span> = <span class="k">Table</span>({
+  <span class="v">label</span>: <span class="s">'Maintenance Request'</span>,
+  <span class="v">fields</span>: { <span class="t">equipment</span>: <span class="k">Reference</span>(<span class="s">'equipment'</span>) }
+});</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 12: Q&A -->
+  <div class="slide" data-index="11">
+    <div class="kicker">Q&amp;A</div>
+    <h1>Questions?</h1>
+    <p class="lead" style="margin-top:20px;">11:30 – 12:00</p>
+  </div>
+
+  <!-- SLIDE 13: LUNCH -->
+  <div class="slide" data-index="12">
+    <div class="kicker">Lunch</div>
+    <h1>🍽️</h1>
+    <p class="lead" style="margin-top:20px;">12:00 – 1:00 · Back at 1:00 to re-anchor</p>
+  </div>
+
+  <!-- SLIDE 14: RE-ANCHOR -->
+  <div class="slide" data-index="13">
+    <div class="slide-label">Re-anchor · 1:00–1:15</div>
+    <h2>Where we <span class="hl-blue">left off</span></h2>
+    <div class="flow" style="margin-bottom:20px;">
+      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">✅</span><h4>Build</h4><p>Done this morning</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><span class="icon">🧪</span><h4>Test</h4><p>This afternoon</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><span class="icon">🗂️</span><h4>Manage</h4><p>PR, merge, publish</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><span class="icon">🚀</span><h4>Release</h4><p>ReleaseOps, deploy</p></div>
+    </div>
+    <p class="lead">Your app exists. This afternoon it gets tested, source-controlled, and released.</p>
+  </div>
+
+  <!-- SLIDE 15: AUTOMATED TESTING -->
+  <div class="slide" data-index="14">
+    <div class="slide-label">Automated testing · 1:15–1:45 (exercise)</div>
+    <h2>Tests live <span class="hl-green">in the dev loop</span>, not bolted on</h2>
+    <div class="quote" style="margin-bottom:24px;">Tests live in app scope, authored while you build — not added after the fact.</div>
+    <div class="cols cols-2" style="max-width:960px;">
+      <ul class="clean">
+        <li><span class="icon">1️⃣</span><span>Use Test Agent (in Build Agent) to generate ATF tests from natural language.</span></li>
+        <li><span class="icon">2️⃣</span><span>Run them, let Test Agent triage a failure, and fix it.</span></li>
+      </ul>
+      <div class="card accent-orange">
+        <h3>Honest constraint</h3>
+        <p>Test Agent execution and triage run from the Studio surface. Cloud Runner enables browserless execution, but doesn't yet carry that same triage loop.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 16: Q&A -->
+  <div class="slide" data-index="15">
+    <div class="kicker">Q&amp;A</div>
+    <h1>Questions?</h1>
+    <p class="lead" style="margin-top:20px;">1:45 – 2:00</p>
+  </div>
+
+  <!-- SLIDE 17: OFF-INSTANCE DEVELOPMENT -->
+  <div class="slide" data-index="16">
+    <div class="slide-label">Off-instance development · 2:00–2:30 (exercise)</div>
+    <h2>The same app, <span class="hl-blue">off the platform</span></h2>
+    <ul class="clean" style="max-width:680px;">
+      <li><span class="icon">💻</span><span>Same Fluent project, opened in VS Code or your terminal instead of Studio.</span></li>
+      <li><span class="icon">🤖</span><span>Claude Code (or Cursor/Codex) in place of Build Agent — same SDK underneath.</span></li>
+      <li><span class="icon">🔁</span><span><code>now-sdk build</code> / <code>now-sdk install</code> work identically, on- or off-platform.</span></li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 18: SOURCE CONTROL -->
+  <div class="slide" data-index="17">
+    <div class="slide-label">Source control · 2:30–3:00 (exercise)</div>
+    <h2>Git does what update sets <span class="hl-red">cannot</span></h2>
+    <div class="tbl-wrap" style="margin-bottom:22px;">
+      <table>
+        <tr><th>Capability</th><th>Git</th><th>Update sets</th></tr>
+        <tr><td>Branching &amp; isolation</td><td>Yes — sandboxes + feature branches</td><td>No — shared, last-write-wins</td></tr>
+        <tr><td>Conflict resolution</td><td>Line-by-line, three-way merge</td><td>Manual, record-by-record</td></tr>
+        <tr><td>Review</td><td>Pull requests</td><td>None</td></tr>
+        <tr><td>Role</td><td>Source control</td><td>Transport artifact only</td></tr>
+      </table>
+    </div>
+    <p class="lead">Push branch → open PR → review → merge → publish pre-release to the App Repo → pull on the instance (SNS). <a href="https://code.devsnc.com/pages/dev/bootcamp-content/modules/dev-environment/exercises/exercise-04.html" style="color:var(--c-blue);">Exercise 04 →</a></p>
+  </div>
+
+  <!-- SLIDE 19: BREAK -->
+  <div class="slide" data-index="18">
+    <div class="kicker">Break</div>
+    <h1>☕</h1>
+    <p class="lead" style="margin-top:20px;">3:00 – 3:15 · Back for ReleaseOps</p>
+  </div>
+
+  <!-- SLIDE 20: RELEASEOPS -->
+  <div class="slide" data-index="19">
+    <div class="slide-label">ReleaseOps · 3:15–3:45 (exercise)</div>
+    <h2>The quality-control <span class="hl-blue">model</span></h2>
+    <div class="flow" style="margin-bottom:24px;">
+      <div class="flow-box"><span class="icon">🔍</span><h4>Instance Scan</h4><p>Static policy check</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><span class="icon">📥</span><h4>Move to test</h4><p>Assessment begins</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><span class="icon">✅</span><h4>Run ATF</h4><p>Functional coverage</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">🚀</span><h4>Ready to Deploy</h4><p>Cleared for release</p></div>
+    </div>
+    <p class="step-label first">LAB: CREATE A DEPLOYMENT REQUEST, MARK "READY TO ASSESS," WATCH IT RUN</p>
+    <div class="pill-row">
+      <span class="pill">Retest</span>
+      <span class="pill">Need Code Change</span>
+      <span class="pill">Sign Off</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 21: Q&A -->
+  <div class="slide" data-index="20">
+    <div class="kicker">Q&amp;A</div>
+    <h1>Questions?</h1>
+    <p class="lead" style="margin-top:20px;">3:45 – 4:00</p>
+  </div>
+
+  <!-- SLIDE 22: PUSH TO PRODUCTION -->
+  <div class="slide" data-index="21">
+    <div class="slide-label">Push to production · 4:00–4:05 (demo only)</div>
+    <h2>Promote, deploy, and <span class="hl-orange">roll back</span> if needed</h2>
+    <ul class="clean" style="max-width:700px;">
+      <li><span class="icon">1️⃣</span><span>Promote the Deployment Request to a release.</span></li>
+      <li><span class="icon">2️⃣</span><span>Push to "production."</span></li>
+      <li><span class="icon">3️⃣</span><span>Roll back within the fixed window — only when installed from the Application Repository.</span></li>
+    </ul>
+    <p class="lead" style="margin-top:20px;">Appendix B: full pipeline diagram — Git-triggered movement, App Repo as immutable artifact store, approval gate. No live OAuth setup today.</p>
+  </div>
+
+  <!-- SLIDE 23: CHOOSE YOUR OWN ADVENTURE -->
+  <div class="slide" data-index="22">
+    <div class="slide-label">Choose your own adventure · 4:05–4:40</div>
+    <h2>Where do <span class="hl-purple">you</span> want to go deeper?</h2>
+    <div class="cols cols-3" style="max-width:920px;">
+      <div class="card accent-blue"><h3>Fluent deep dive</h3><p>More metadata types, transform/sync from UI builders</p></div>
+      <div class="card accent-green"><h3>Testing deep dive</h3><p>Test Agent triage, Cloud Runner, regression suites</p></div>
+      <div class="card accent-purple"><h3>CI/CD APIs</h3><p><code>now-sdk cicd</code>, Git-triggered pipelines, approval gates</p></div>
+    </div>
+    <p style="margin-top:20px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint);">TODO: finalize this list per audience before the session.</p>
+  </div>
+
+  <!-- SLIDE 24: WRAP -->
+  <div class="slide" data-index="23">
+    <div class="slide-label">Wrap · 4:40–5:00</div>
+    <h2>One picture, <span class="hl-green">your app</span> traced across it</h2>
+    <div class="flow" style="margin-bottom:24px;">
+      <div class="flow-box"><span class="icon">📝</span><h4>Plan</h4></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><span class="icon">🛠️</span><h4>Build</h4></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><span class="icon">🧪</span><h4>Test</h4></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><span class="icon">🗂️</span><h4>Manage</h4></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">🚀</span><h4>Release</h4></div>
+    </div>
+    <div class="quote">Update sets group work and transport it — nothing more. They are not source control, and they don't merge.</div>
+    <p style="margin-top: 28px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.1em;">QUESTIONS? PING Ashwin Patti, Shelby Cohen.</p>
+  </div>
+
+</div><!-- end deck -->
+
+<div class="nav">
+  <button id="prev" title="Previous (←)">←</button>
+  <div class="dots" id="dots"></div>
+  <button id="next" title="Next (→)">→</button>
+  <span class="slide-num" id="slideNum">01 / 24</span>
+</div>
+
+<script>
+  const slides     = document.querySelectorAll('.slide:not(.hidden-slide)');
+  const dotsEl     = document.getElementById('dots');
+  const slideNum   = document.getElementById('slideNum');
+  const parallaxBg = document.getElementById('parallax-bg');
+  const total      = slides.length;
+  let current = 0;
+
+  slides.forEach((slide, i) => {
+    const wm = document.createElement('span');
+    wm.className = 'slide-wm';
+    wm.textContent = String(i + 1).padStart(2, '0');
+    slide.appendChild(wm);
+
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(d);
+  });
+
+  slideNum.textContent = `01 / ${String(total).padStart(2, '0')}`;
+
+  function updateParallax(n) {
+    const x = n * -30;
+    const y = n * -18;
+    parallaxBg.style.transform = `translate(${x}px, ${y}px)`;
+  }
+
+  function goTo(n) {
+    if (n < 0 || n >= total) return;
+    slides[current].classList.remove('active');
+    slides[current].classList.add('exit');
+    setTimeout(() => slides[current].classList.remove('exit'), 380);
+    current = n;
+    slides[current].classList.add('active');
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    slideNum.textContent = String(current + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+    updateParallax(current);
+    history.replaceState(null, '', '#' + (current + 1));
+  }
+
+  document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('next').addEventListener('click', () => goTo(current + 1));
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); goTo(current + 1); }
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')                    { e.preventDefault(); goTo(current - 1); }
+    if (e.key === 'Home') goTo(0);
+    if (e.key === 'End')  goTo(total - 1);
+  });
+
+  let touchX = null;
+  document.addEventListener('touchstart', e => touchX = e.touches[0].clientX);
+  document.addEventListener('touchend', e => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) goTo(dx < 0 ? current + 1 : current - 1);
+    touchX = null;
+  });
+
+  // Deep-linking: /#3 opens slide 3; the hash tracks the current slide as you
+  // navigate, so any slide has a shareable URL.
+  function slideFromHash() {
+    const m = (location.hash || '').match(/\d+/);
+    if (!m) return null;
+    const n = parseInt(m[0], 10) - 1;   // slide numbers in the URL are 1-based
+    return (n >= 0 && n < total) ? n : null;
+  }
+
+  const startAt = slideFromHash();
+  if (startAt !== null) goTo(startAt);
+
+  window.addEventListener('hashchange', () => {
+    const n = slideFromHash();
+    if (n !== null && n !== current) goTo(n);
+  });
+</script>
+</body>
+</html>
