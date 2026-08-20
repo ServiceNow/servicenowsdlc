@@ -24,30 +24,32 @@ Single self-contained HTML file — no build step, no dependencies beyond two Go
 - Deep-link any slide with `#N` (1-based) — the hash tracks the current slide as you navigate, so any slide has a shareable URL.
 - Theme is "midnight" (dark blue/green), defined in `assets/themes.mjs` inside the `brown-bag-setup` skill (`~/.claude/skills/brown-bag-setup`, on the machine that maintains the primary repo). Regenerate via `node $SKILL_DIR/scripts/generate.mjs --theme <name>` — **this overwrites all hand-edited slide content**, so only run it before customizing, or manually copy the new `:root` variable block afterward.
 
-### Current slide map (25 slides)
+### Current slide map (25 in the DOM; 20 navigable — 5 are hidden via `hidden-slide`, kept but skipped)
 
 1. Title
-2. Agenda (AM/PM table)
+2. Agenda (single flat list, no AM/PM split, no clock times — just session order)
 3–6. Foundations — "app" definition, SDK + Fluent, Git as source of truth, prescribed stack
-7. Break
+7. Break — **hidden**
 8. Build-ready requirements (vague vs. build-ready example)
 9. Activity: rewrite the story → links to `exercises/01-build-ready-requirements.md`
 10. Setup time
-11. Build the maintenance app (exercise) → links to `exercises/02-build-maintenance-app.md`
-12. Q&A
-13. Lunch
-14. Re-anchor
-15. Automated testing (exercise) → links to `exercises/03-automated-testing.md`
-16. Q&A
-17. Off-instance development
+11. Build Agent + ATF (concept: Test Agent generates ATF tests as you build)
+12. Build + test the maintenance app (exercise) → links to `exercises/02-build-maintenance-app.md`
+13. Q&A — **hidden**
+14. Lunch
+15. Re-anchor (Build and Test both shown as done at this point; no "this morning"/"this afternoon" framing)
+16. Q&A — **hidden**
+17. Off-instance development (exercise)
 18. Source control (concept: Git vs. update sets table)
-19. Source control exercise: ship it with Git → links to `exercises/04-source-control.md`
-20. Break
+19. Source control exercise: ship it with Git → links to `exercises/03-source-control.md`
+20. Break — **hidden**
 21. ReleaseOps (quality-control model + lab)
-22. Q&A
+22. Q&A — **hidden**
 23. Push to production (demo)
-24. Choose your own adventure (placeholder — topics are a TODO, finalize per audience before running)
+24. Choose your own adventure (exercise) → links to `exercises/04-choose-your-own-adventure.md` — topic menu (Fluent/Testing/CI-CD) is still a TODO to finalize per audience
 25. Wrap
+
+Automated testing is no longer its own exercise — its ATF steps were folded into `exercises/02-build-maintenance-app.md` (retitled "Build + test the maintenance app"), and slide 11 above is what's left of its old concept content, now framed as a lead-in to the build exercise rather than its own exercise card. Slide-label times (e.g. "9:20–9:55") were removed deck-wide in favor of no exact times.
 
 ## Exercises (`exercises/`)
 
