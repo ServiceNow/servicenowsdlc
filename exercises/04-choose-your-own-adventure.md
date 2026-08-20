@@ -1,11 +1,11 @@
 ---
 title: "Choose your own adventure"
-slide: "19 — Choose your own adventure"
+slide: "20 — Choose your own adventure (exercise)"
 ---
 
 # Choose your own adventure
 
-[← Back to slide 19 in the deck](https://apatti-now.github.io/servicenowsdlc/#19)
+[← Back to slide 20 in the deck](https://apatti-now.github.io/servicenowsdlc/#20)
 
 ## Objective
 

@@ -24,7 +24,7 @@ Single self-contained HTML file — no build step, no dependencies beyond two Go
 - Deep-link any slide with `#N` (1-based) — the hash tracks the current slide as you navigate, so any slide has a shareable URL.
 - Theme is "midnight" (dark blue/green), defined in `assets/themes.mjs` inside the `brown-bag-setup` skill (`~/.claude/skills/brown-bag-setup`, on the machine that maintains the primary repo). Regenerate via `node $SKILL_DIR/scripts/generate.mjs --theme <name>` — **this overwrites all hand-edited slide content**, so only run it before customizing, or manually copy the new `:root` variable block afterward.
 
-### Current slide map (25 in the DOM; 20 navigable — 5 are hidden via `hidden-slide`, kept but skipped)
+### Current slide map (26 in the DOM; 21 navigable — 5 are hidden via `hidden-slide`, kept but skipped)
 
 1. Title
 2. Agenda (single flat list, no AM/PM split, no clock times — just session order)
@@ -46,8 +46,9 @@ Single self-contained HTML file — no build step, no dependencies beyond two Go
 21. ReleaseOps (quality-control model + lab)
 22. Q&A — **hidden**
 23. Push to production (demo)
-24. Choose your own adventure (exercise) → links to `exercises/04-choose-your-own-adventure.md` — topic menu (Fluent/Testing/CI-CD) is still a TODO to finalize per audience
-25. Wrap
+24. Choose your own adventure (menu: Fluent/Testing/CI-CD topic cards — still a TODO to finalize per audience)
+25. Choose your own adventure (exercise) → links to `exercises/04-choose-your-own-adventure.md`
+26. Wrap
 
 Automated testing is no longer its own exercise — its ATF steps were folded into `exercises/02-build-maintenance-app.md` (retitled "Build + test the maintenance app"), and slide 11 above is what's left of its old concept content, now framed as a lead-in to the build exercise rather than its own exercise card. Slide-label times (e.g. "9:20–9:55") were removed deck-wide in favor of no exact times.
 
