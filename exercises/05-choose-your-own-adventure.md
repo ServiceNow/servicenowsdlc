@@ -1,11 +1,11 @@
 ---
 title: "Choose your own adventure"
-slide: "20 — Choose your own adventure (exercise)"
+slide: "22 — Choose your own adventure (exercise)"
 ---
 
 # Choose your own adventure
 
-[← Back to slide 20 in the deck](https://apatti-now.github.io/servicenowsdlc/#20)
+[← Back to slide 22 in the deck](https://apatti-now.github.io/servicenowsdlc/#22)
 
 ## Objective
 
@@ -17,7 +17,7 @@ Go one level deeper on whichever part of the stack is most relevant to your team
 
 ## Prerequisites
 
-- Maintenance app built, tested, source-controlled, and pushed through ReleaseOps (Exercises 01–03)
+- Maintenance app built, tested, source-controlled, and pushed through ReleaseOps (Exercises 01–04)
 
 ## Exercise Steps
 

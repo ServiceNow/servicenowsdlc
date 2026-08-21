@@ -24,7 +24,7 @@ Single self-contained HTML file — no build step, no dependencies beyond two Go
 - Deep-link any slide with `#N` (1-based) — the hash tracks the current slide as you navigate, so any slide has a shareable URL.
 - Theme is "midnight" (dark blue/green), defined in `assets/themes.mjs` inside the `brown-bag-setup` skill (`~/.claude/skills/brown-bag-setup`, on the machine that maintains the primary repo). Regenerate via `node $SKILL_DIR/scripts/generate.mjs --theme <name>` — **this overwrites all hand-edited slide content**, so only run it before customizing, or manually copy the new `:root` variable block afterward.
 
-### Current slide map (26 in the DOM; 21 navigable — 5 are hidden via `hidden-slide`, kept but skipped)
+### Current slide map (28 in the DOM; 23 navigable — 5 are hidden via `hidden-slide`, kept but skipped)
 
 1. Title
 2. Agenda (single flat list, no AM/PM split, no clock times — just session order)
@@ -32,25 +32,27 @@ Single self-contained HTML file — no build step, no dependencies beyond two Go
 7. Break — **hidden**
 8. Build-ready requirements (vague vs. build-ready example)
 9. Activity: rewrite the story → links to `exercises/01-build-ready-requirements.md`
-10. Setup time
-11. Build Agent + ATF (concept: Test Agent generates ATF tests as you build)
-12. Build + test the maintenance app (exercise) → links to `exercises/02-build-maintenance-app.md`
-13. Q&A — **hidden**
-14. Lunch
-15. Re-anchor (Build and Test both shown as done at this point; no "this morning"/"this afternoon" framing)
-16. Q&A — **hidden**
-17. Off-instance development (exercise)
-18. Source control (concept: Git vs. update sets table)
-19. Source control exercise: ship it with Git → links to `exercises/03-source-control.md`
-20. Break — **hidden**
-21. ReleaseOps (quality-control model + lab)
-22. Q&A — **hidden**
-23. Push to production (demo)
-24. Choose your own adventure (menu: Fluent/Testing/CI-CD topic cards — still a TODO to finalize per audience)
-25. Choose your own adventure (exercise) → links to `exercises/04-choose-your-own-adventure.md`
-26. Wrap
+10. Why sandboxes (concept: shared instance + agentic-speed change = last-write-wins; sandbox contains the blast radius, Git reconciles it; feature branch lives inside the sandbox)
+11. Setup time
+12. Build Agent + ATF (concept: Test Agent generates ATF tests as you build)
+13. Build + test the maintenance app (exercise) → links to `exercises/02-build-maintenance-app.md`
+14. Q&A — **hidden**
+15. Lunch
+16. Re-anchor (Build and Test both shown as done at this point; no "this morning"/"this afternoon" framing)
+17. Q&A — **hidden**
+18. Off-instance development (exercise)
+19. Source control (concept: Git vs. update sets table)
+20. Source control exercise: ship it with Git → links to `exercises/03-source-control.md`
+21. Break — **hidden**
+22. ReleaseOps (concept: names Deployment Request vs. Release vs. Assessment as distinct objects; the two release paths — promote-Update-Set vs. Git-triggered CI/CD)
+23. ReleaseOps (exercise) → links to `exercises/04-releaseops.md`
+24. Q&A — **hidden**
+25. Push to production (demo)
+26. Choose your own adventure (menu: Fluent/Testing/CI-CD topic cards — still a TODO to finalize per audience)
+27. Choose your own adventure (exercise) → links to `exercises/05-choose-your-own-adventure.md`
+28. Wrap
 
-Automated testing is no longer its own exercise — its ATF steps were folded into `exercises/02-build-maintenance-app.md` (retitled "Build + test the maintenance app"), and slide 11 above is what's left of its old concept content, now framed as a lead-in to the build exercise rather than its own exercise card. Slide-label times (e.g. "9:20–9:55") were removed deck-wide in favor of no exact times.
+Automated testing is no longer its own exercise — its ATF steps were folded into `exercises/02-build-maintenance-app.md` (retitled "Build + test the maintenance app"), and slide 12 above is what's left of its old concept content, now framed as a lead-in to the build exercise rather than its own exercise card. Slide-label times (e.g. "9:20–9:55") were removed deck-wide in favor of no exact times. ReleaseOps previously had a "LAB" pointer with no backing exercise file — `exercises/04-releaseops.md` now fills that gap, which is also why exercise files are numbered 01–05 in day order (choose-your-own-adventure moved from 04 to 05 to make room).
 
 ## Exercises (`exercises/`)
 

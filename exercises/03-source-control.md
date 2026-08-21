@@ -1,11 +1,11 @@
 ---
 title: "Source control: ship it with Git"
-slide: "16 — Source control exercise"
+slide: "17 — Source control exercise"
 ---
 
 # Source control: ship it with Git
 
-[← Back to slide 16 in the deck](https://apatti-now.github.io/servicenowsdlc/#16)
+[← Back to slide 17 in the deck](https://apatti-now.github.io/servicenowsdlc/#17)
 
 ## Objective
 
@@ -17,7 +17,7 @@ Walk the full Git-based collaboration flow — push, PR, review, merge, publish,
 
 ## Prerequisites
 
-- Feature branch with committed work from Exercise 02/03
+- Feature branch with committed work from Exercise 02
 
 ## Exercise Steps
 
@@ -40,6 +40,7 @@ Walk the full Git-based collaboration flow — push, PR, review, merge, publish,
 
 - Review and conflict resolution are collaboration primitives Git provides natively — update sets have no equivalent, only last-write-wins.
 - The App Repo, not the update set, is what makes an install on a second instance reproducible and auditable.
+- The pre-release you just published is exactly what ReleaseOps picks up next — Exercise 04 starts by promoting an Update Set built from that same Application Repository artifact into a Deployment Request.
 
 ## Bonus Challenge
 

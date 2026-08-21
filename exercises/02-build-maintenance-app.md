@@ -1,11 +1,11 @@
 ---
 title: "Build + test the maintenance app"
-slide: "11 — Build"
+slide: "12 — Build"
 ---
 
 # Build + test the maintenance app
 
-[← Back to slide 11 in the deck](https://apatti-now.github.io/servicenowsdlc/#11)
+[← Back to slide 12 in the deck](https://apatti-now.github.io/servicenowsdlc/#12)
 
 ## Objective
 
@@ -47,6 +47,7 @@ Use Build Agent (and ATF) to go from a natural-language prompt to a working main
 
 - The SDK and Fluent turn a natural-language prompt into typed, diagnosable source — not a black box of clicks you can't inspect or diff.
 - Writing an ATF test in the same session you build the feature keeps tests in the dev loop instead of a follow-up task nobody gets back to.
+- Test Agent covers ~13 step types out of the box (form, server, REST, etc.). If an edge case needs a step type it doesn't support, author that step manually in the Standard UI test editor (All > Automated Testing Framework > Tests) instead.
 
 ## Bonus Challenge
 

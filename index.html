@@ -750,6 +750,23 @@
     <p style="margin-top:20px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint);">📄 <a href="https://github.com/apatti-now/servicenowsdlc/blob/main/exercises/01-build-ready-requirements.md" style="color:var(--c-blue);">Exercise steps →</a></p>
   </div>
 
+  <!-- WHY SANDBOXES -->
+  <div class="slide" data-index="8.5">
+    <div class="slide-label">Why sandboxes</div>
+    <h2>One instance, <span class="hl-green">many developers</span>, zero collisions</h2>
+    <div class="quote" style="margin-bottom:24px;">Agentic tools change a lot of metadata fast. On a shared instance, that's last-write-wins between developers — a sandbox contains the blast radius, and Git reconciles it.</div>
+    <div class="flow" style="margin-bottom:20px;">
+      <div class="flow-box"><span class="icon">🏢</span><h4>Dev instance</h4><p>Shared, non-prod</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">📦</span><h4>Your sandbox</h4><p>Feature branch lives here</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><span class="icon">🧪</span><h4>Test instance</h4><p>Separate from dev</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><span class="icon">🏭</span><h4>Production</h4><p>Separate from test</p></div>
+    </div>
+    <p class="lead">Allocate a sandbox before you start, create your feature branch inside it, decommission it when you're done.</p>
+  </div>
+
   <!-- SLIDE 10: SETUP TIME -->
   <div class="slide" data-index="9">
     <div class="slide-label">Setup</div>
@@ -885,25 +902,43 @@
     <p class="lead" style="margin-top:20px;">3:00 – 3:15 · Back for ReleaseOps</p>
   </div>
 
+  <!-- RELEASEOPS: THE PIPELINE -->
+  <div class="slide" data-index="19.5">
+    <div class="slide-label">ReleaseOps</div>
+    <h2>Two objects, <span class="hl-blue">one pipeline</span></h2>
+    <div class="cols cols-2" style="max-width:920px; align-items:start;">
+      <div class="card accent-blue">
+        <h3>Deployment Request</h3>
+        <p>The payload container. Promote an Update Set into one, then mark it "Ready to Assess" — the assessment playbook (Instance Scan → Move to Test → Run ATF) runs against it.</p>
+      </div>
+      <div class="card accent-green">
+        <h3>Release</h3>
+        <p>The record that moves a cleared Deployment Request to production — On Demand (immediately) or Scheduled (batched at a datetime). Lives on the ReleaseOps controller environment, typically production.</p>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:24px;">Two paths get you here: promote an Update Set into a Deployment Request (this lab), or trigger it from Git via the CI/CD REST APIs with an approval gate (see choose-your-own-adventure).</p>
+  </div>
+
   <!-- SLIDE 21: RELEASEOPS -->
   <div class="slide" data-index="20">
     <div class="slide-label">ReleaseOps (exercise)</div>
     <h2>The quality-control <span class="hl-blue">model</span></h2>
     <div class="flow" style="margin-bottom:24px;">
-      <div class="flow-box"><span class="icon">🔍</span><h4>Instance Scan</h4><p>Static policy check</p></div>
+      <div class="flow-box"><span class="icon">🔍</span><h4>Instance Scan</h4><p>Static policy check, on the dev instance</p></div>
       <div class="flow-arrow">→</div>
       <div class="flow-box"><span class="icon">📥</span><h4>Move to test</h4><p>Assessment begins</p></div>
       <div class="flow-arrow">→</div>
       <div class="flow-box"><span class="icon">✅</span><h4>Run ATF</h4><p>Functional coverage</p></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">🚀</span><h4>Ready to Deploy</h4><p>Cleared for release</p></div>
+      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">🚀</span><h4>Ready for Deploy</h4><p>Cleared for release</p></div>
     </div>
     <p class="step-label first">LAB: CREATE A DEPLOYMENT REQUEST, MARK "READY TO ASSESS," WATCH IT RUN</p>
-    <div class="pill-row">
-      <span class="pill">Retest</span>
-      <span class="pill">Need Code Change</span>
-      <span class="pill">Sign Off</span>
+    <div class="cols cols-3" style="max-width:920px; margin-top:14px;">
+      <div class="card"><h3>Retest</h3><p>Rerun the assessment as-is.</p></div>
+      <div class="card accent-red"><h3>Need Code Change</h3><p>Assessment is invalidated — the Deployment Request returns to Draft and needs a new payload.</p></div>
+      <div class="card accent-green"><h3>Sign Off</h3><p>Manual approval to proceed.</p></div>
     </div>
+    <p style="margin-top:20px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint);">📄 <a href="https://github.com/apatti-now/servicenowsdlc/blob/main/exercises/04-releaseops.md" style="color:var(--c-blue);">Exercise steps →</a></p>
   </div>
 
   <!-- SLIDE 22: Q&A -->
@@ -945,7 +980,7 @@
       <li><span class="icon">2️⃣</span><span>Go hands-on — try something beyond what the core exercises covered.</span></li>
       <li><span class="icon">3️⃣</span><span>Be ready to show the group what you found.</span></li>
     </ul>
-    <p style="margin-top:20px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint);">📄 <a href="https://github.com/apatti-now/servicenowsdlc/blob/main/exercises/04-choose-your-own-adventure.md" style="color:var(--c-blue);">Exercise steps →</a></p>
+    <p style="margin-top:20px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint);">📄 <a href="https://github.com/apatti-now/servicenowsdlc/blob/main/exercises/05-choose-your-own-adventure.md" style="color:var(--c-blue);">Exercise steps →</a></p>
   </div>
 
   <!-- SLIDE 25: WRAP -->
