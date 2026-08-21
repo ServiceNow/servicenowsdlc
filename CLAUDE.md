@@ -74,7 +74,7 @@ Title, Objective, Estimated Time, Prerequisites, Exercise Steps, Success Criteri
 Frontmatter (`title`, `slide`) is metadata only, kept as **plain text** — not a Markdown link. GitHub/Gitea render frontmatter as a raw key/value table and don't parse Markdown syntax inside a cell; a `[text](url)` value there shows literally with only the bare URL auto-linked, which looks broken. The actual clickable link to the deck lives in the body instead.
 
 Cross-linking convention:
-- **Slide → exercise:** a small `📄 Exercise steps →` line at the bottom of the relevant slide's content, pointing at that exercise file's blob view on this repo's own Git host.
+- **Slide → exercise:** a `.exercise-link` pill (see `index.html` CSS, `/* ─── Exercise link chip ─── */`) wrapped in an `.exercise-links` container at the bottom of the relevant slide's content, reading "Open the exercise →" (no emoji — deliberately dropped in favor of the pill's own background/border signaling it's clickable), pointing at that exercise file's blob view on this repo's own Git host.
 - **Exercise → slide:** a `← Back to slide N in the deck` line right under the exercise's `# Title`, pointing at this repo's own Pages URL with a `#N` deep link.
 
 To add a new exercise: copy `TEMPLATE.md`, number it next in sequence, fill in all eight sections, then add the two cross-links once you know which slide it belongs to — and repeat both the exercise file and the slide-side link in the primary repo.
