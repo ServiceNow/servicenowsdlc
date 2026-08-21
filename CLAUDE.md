@@ -24,7 +24,7 @@ Single self-contained HTML file — no build step, no dependencies beyond two Go
 - Deep-link any slide with `#N` (1-based) — the hash tracks the current slide as you navigate, so any slide has a shareable URL.
 - Theme is "midnight" (dark blue/green), defined in `assets/themes.mjs` inside the `brown-bag-setup` skill (`~/.claude/skills/brown-bag-setup`, on the machine that maintains the primary repo). Regenerate via `node $SKILL_DIR/scripts/generate.mjs --theme <name>` — **this overwrites all hand-edited slide content**, so only run it before customizing, or manually copy the new `:root` variable block afterward.
 
-### Current slide map (30 in the DOM; 26 navigable — 4 are hidden via `hidden-slide`, kept but skipped)
+### Current slide map (31 in the DOM; 27 navigable — 4 are hidden via `hidden-slide`, kept but skipped)
 
 1. Title
 2. Legal (safe harbor / forward-looking-statements notice)
@@ -54,6 +54,7 @@ Q&A — **hidden**
 24. Choose your own adventure (menu: Fluent/Testing/CI-CD topic cards — still a TODO to finalize per audience)
 25. Choose your own adventure (exercise) → links to `exercises/06-choose-your-own-adventure.md`
 26. Wrap
+27. Thank You (closing slide — links to the public SDLC guide, https://servicenow.github.io/sdk/guides/sdlc-guide)
 
 Global sizing pass: base typography (h1/h2/p/lead/quote/list items), card/flow-box padding, and every per-slide `max-width` inline value were bumped up deck-wide so slides use more of the screen — there was a lot of unused blank space at the previous sizes.
 
