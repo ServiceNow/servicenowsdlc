@@ -1,11 +1,11 @@
 ---
 title: "Choose your own adventure"
-slide: "25 — Choose your own adventure (exercise)"
+slide: "24 — Choose your own adventure (exercise)"
 ---
 
 # Choose your own adventure
 
-[← Back to slide 25 in the deck](https://apatti-now.github.io/servicenowsdlc/#25)
+[← Back to slide 24 in the deck](https://apatti-now.github.io/servicenowsdlc/#24)
 
 ## Objective
 
@@ -46,11 +46,18 @@ Here are a bunch of ideas to keep exploring — choose anything below, or come u
   Comment out the routing/assignment step in the Maintenance Request
   flow, then run the ATF test and triage the failure.
   ```
-- Explore running the same test browserless, outside Studio:
+- Make a UI-facing change and let Test Agent add coverage for it:
   ```
-  Show me how to run this app's ATF tests from Cloud Runner instead of
-  Studio, and what's different about the triage loop there.
+  Add a "Priority" choice field (Low/Medium/High) to the Maintenance
+  Request form, visible only to Technicians.
   ```
+  When asked if you want ATF tests written for this change, select "Yes, proceed." Then open the generated test and look at the UI step it added for the new field.
+- Remove a requirement and watch Test Agent clean up after itself:
+  ```
+  Remove the "Priority" field and its form logic from the Maintenance
+  Request app.
+  ```
+  Watch Test Agent recognize the ATF test covering that field is no longer relevant and remove it — coverage stays in sync with the app in both directions, not just when you add things.
 
 ### Track: CI/CD APIs
 
