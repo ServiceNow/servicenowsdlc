@@ -90,7 +90,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 56px 80px 84px;
+    padding: 48px 64px 76px;
     opacity: 0;
     transform: translateX(52px);
     transition: opacity 0.38s cubic-bezier(0.4,0,0.2,1),
@@ -197,7 +197,7 @@
   h1 {
     font-family: var(--sans);
     font-weight: 700;
-    font-size: clamp(36px, 5vw, 64px);
+    font-size: clamp(40px, 5.5vw, 72px);
     line-height: 1.05;
     letter-spacing: -0.02em;
     text-align: center;
@@ -207,17 +207,17 @@
   h2 {
     font-family: var(--sans);
     font-weight: 700;
-    font-size: clamp(26px, 3.4vw, 42px);
+    font-size: clamp(30px, 3.8vw, 48px);
     line-height: 1.15;
     letter-spacing: -0.02em;
-    margin-bottom: 28px;
+    margin-bottom: 30px;
     color: var(--ink);
   }
 
   h3 {
     font-family: var(--sans);
     font-weight: 600;
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.10em;
     margin-bottom: 6px;
     color: var(--c-blue);
@@ -227,18 +227,18 @@
   h4 {
     font-family: var(--sans);
     font-weight: 600;
-    font-size: 13px;
+    font-size: 14.5px;
     color: var(--ink);
     letter-spacing: 0.01em;
   }
 
-  p { font-size: 15px; line-height: 1.7; color: var(--ink-muted); font-weight: 300; }
+  p { font-size: 16.5px; line-height: 1.7; color: var(--ink-muted); font-weight: 300; }
 
   .lead {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.65;
     color: var(--ink-muted);
-    max-width: 660px;
+    max-width: 780px;
     text-align: center;
     font-weight: 300;
   }
@@ -266,7 +266,7 @@
 
   /* ─── Layout helpers ──────────────────────────────── */
 
-  .cols { display: grid; gap: 18px; width: 100%; max-width: 1000px; }
+  .cols { display: grid; gap: 22px; width: 100%; max-width: 1120px; }
   .cols-2 { grid-template-columns: 1fr 1fr; }
   .cols-3 { grid-template-columns: 1fr 1fr 1fr; }
   .cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
@@ -277,7 +277,7 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 20px 22px;
+    padding: 22px 26px;
     position: relative;
   }
 
@@ -299,7 +299,7 @@
     border-radius: 6px 0 0 6px;
   }
 
-  .card p { font-size: 13.5px; margin-top: 6px; line-height: 1.65; }
+  .card p { font-size: 14.5px; margin-top: 6px; line-height: 1.65; }
 
   /* ─── Stats ───────────────────────────────────────── */
 
@@ -314,7 +314,7 @@
   .stat-num {
     font-family: var(--sans);
     font-weight: 700;
-    font-size: 48px;
+    font-size: 54px;
     letter-spacing: -0.04em;
     line-height: 1;
     color: var(--c-blue);
@@ -417,15 +417,15 @@
 
   /* ─── Lists ───────────────────────────────────────── */
 
-  ul.clean { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  ul.clean { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 
   ul.clean li {
     display: flex; align-items: flex-start; gap: 11px;
-    font-size: 14.5px; line-height: 1.55; color: var(--ink);
+    font-size: 16px; line-height: 1.55; color: var(--ink);
     font-weight: 300;
   }
 
-  ul.clean li .icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+  ul.clean li .icon { font-size: 17px; flex-shrink: 0; margin-top: 1px; }
 
   /* ─── Tags ────────────────────────────────────────── */
 
@@ -450,35 +450,35 @@
 
   /* ─── Flow diagram ────────────────────────────────── */
 
-  .flow { display: flex; align-items: center; gap: 0; width: 100%; max-width: 960px; }
+  .flow { display: flex; align-items: center; gap: 0; width: 100%; max-width: 1080px; }
 
   .flow-box {
     flex: 1;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 16px 12px;
+    padding: 20px 14px;
     text-align: center;
   }
 
-  .flow-box .icon { font-size: 22px; margin-bottom: 7px; display: block; }
-  .flow-box h4  { font-size: 12px; font-family: var(--sans); font-weight: 600; color: var(--ink); }
-  .flow-box p   { font-size: 11px; color: var(--ink-muted); margin-top: 4px; line-height: 1.5; }
+  .flow-box .icon { font-size: 26px; margin-bottom: 8px; display: block; }
+  .flow-box h4  { font-size: 13px; font-family: var(--sans); font-weight: 600; color: var(--ink); }
+  .flow-box p   { font-size: 12px; color: var(--ink-muted); margin-top: 4px; line-height: 1.5; }
 
-  .flow-arrow { font-family: var(--mono); font-size: 13px; color: var(--ink-faint); padding: 0 5px; flex-shrink: 0; }
+  .flow-arrow { font-family: var(--mono); font-size: 14px; color: var(--ink-faint); padding: 0 5px; flex-shrink: 0; }
 
   /* ─── Quote ───────────────────────────────────────── */
 
   .quote {
     border-left: 2px solid var(--accent);
-    padding: 14px 20px;
+    padding: 16px 24px;
     background: var(--c-green-dim);
     border-radius: 0 6px 6px 0;
     font-style: italic;
-    font-size: 15px;
+    font-size: 16.5px;
     line-height: 1.7;
     color: var(--ink-muted);
-    max-width: 760px;
+    max-width: 880px;
     font-weight: 300;
   }
 
@@ -502,13 +502,13 @@
 
   /* ─── Tables ──────────────────────────────────────── */
 
-  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
 
   th {
     text-align: left;
-    padding: 9px 14px;
+    padding: 10px 16px;
     font-family: var(--sans);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
     color: var(--th-fg);
     letter-spacing: 0.08em;
@@ -518,11 +518,11 @@
   }
 
   td {
-    padding: 9px 14px;
+    padding: 10px 16px;
     border-bottom: 1px solid var(--border);
     color: var(--ink);
     vertical-align: top;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.5;
     font-weight: 300;
   }
@@ -536,7 +536,7 @@
     border-radius: 6px;
     overflow: hidden;
     width: 100%;
-    max-width: 960px;
+    max-width: 1080px;
   }
 
   /* ─── Keyboard pill ───────────────────────────────── */
@@ -610,12 +610,20 @@
     <p style="margin-top: 36px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.1em;">← → TO NAVIGATE &nbsp;·&nbsp; Ashwin Patti, Shelby Cohen</p>
   </div>
 
+  <!-- SAFE HARBOR -->
+  <div class="slide" data-index="0.5">
+    <div class="slide-label">Legal</div>
+    <h2>Safe harbor <span class="hl-blue">statement</span></h2>
+    <p style="max-width:900px; font-size:15.5px; line-height:1.8; color:var(--ink); text-align:left;">This presentation may contain "forward-looking" statements that are based on our beliefs and assumptions and on information currently available to us only as of the date of this presentation. Forward-looking statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially from those expected or implied by the forward-looking statements. Further information on these and other factors that could cause or contribute to such differences include, but are not limited to, those discussed in the section titled "Risk Factors," set forth in our most recent Annual Report on Form 10-K and Quarterly Report on Form 10-Q and in our other Securities and Exchange Commission filings. We cannot guarantee that we will achieve the plans, intentions, or expectations disclosed in our forward-looking statements, and you should not place undue reliance on our forward-looking statements.</p>
+    <p style="max-width:900px; font-size:15.5px; line-height:1.8; color:var(--ink); text-align:left; margin-top:16px;">The information on new products, features, or functionality is intended to outline our general product direction and should not be relied upon in making a purchasing decision, is for informational purposes only, and shall not be incorporated into any contract, and is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. The development, release, and timing of any features or functionality described for our products remains at our sole discretion. We undertake no obligation, and do not intend, to update the forward-looking statements.</p>
+  </div>
+
   <!-- SLIDE 2: AGENDA -->
   <div class="slide" data-index="1">
     <div class="slide-label">Agenda</div>
     <h2>Today, start to <span class="hl-green">finish</span></h2>
-    <p class="lead" style="margin-top:-8px; margin-bottom:24px;">10:00 AM – 5:00 PM</p>
-    <ul class="clean" style="max-width:620px;">
+    <p class="lead" style="margin-top:-8px; margin-bottom:24px;">👋 <strong>Welcome</strong> — 10:00 AM – 5:00 PM. By the end of today, you'll build, test, source-control, and release a real app end-to-end.</p>
+    <ul class="clean" style="max-width:740px;">
       <li><span class="icon">1️⃣</span><span>Foundations &amp; build-ready requirements</span></li>
       <li><span class="icon">2️⃣</span><span>Build &amp; Test with Build Agent &amp; ATF</span></li>
       <li><span class="icon">3️⃣</span><span>Lunch</span></li>
@@ -633,7 +641,7 @@
     <div class="quote" style="margin-bottom:28px;">
       "A persistent container, owned by you, for anything you build on the ServiceNow Platform. It has a name, a version, and a scope."
     </div>
-    <div class="cols cols-3" style="max-width:960px;">
+    <div class="cols cols-3" style="max-width:1080px;">
       <div class="card accent-green">
         <h3>In scope</h3>
         <p>Global apps, non-global apps, and ITSM implementations built via "move and edit" — all under one model.</p>
@@ -649,11 +657,27 @@
     </div>
   </div>
 
-  <!-- SLIDE 4: FOUNDATIONS — SDK + FLUENT -->
+  <!-- SLIDE 4: FOUNDATIONS — THE PRESCRIBED STACK -->
   <div class="slide" data-index="3">
     <div class="slide-label">Foundations</div>
+    <h2>The prescribed <span class="hl-purple">stack</span></h2>
+    <div class="cols cols-4" style="max-width:1120px;">
+      <div class="flow-box"><span class="icon">🛠️</span><h4>SDK</h4><p>Build engine, compiles to deployable artifacts</p></div>
+      <div class="flow-box"><span class="icon">💻</span><h4>Studio</h4><p>IDE / prod code mode</p></div>
+      <div class="flow-box"><span class="icon">🌿</span><h4>Git</h4><p>Branch, PR, merge</p></div>
+      <div class="flow-box"><span class="icon">📦</span><h4>Sandbox</h4><p>Isolated dev instance</p></div>
+      <div class="flow-box"><span class="icon">🤖</span><h4>Build Agent</h4><p>AI-assisted authoring</p></div>
+      <div class="flow-box"><span class="icon">✅</span><h4>ATF</h4><p>Automated test framework</p></div>
+      <div class="flow-box"><span class="icon">🗄️</span><h4>App Repo</h4><p>Immutable artifact store</p></div>
+      <div class="flow-box"><span class="icon">🚀</span><h4>ReleaseOps</h4><p>Assess, approve, release</p></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: FOUNDATIONS — SDK + FLUENT -->
+  <div class="slide" data-index="4">
+    <div class="slide-label">Foundations</div>
     <h2>SDK + Fluent = <span class="hl-blue">source-driven development</span></h2>
-    <div class="cols cols-2" style="max-width:980px; align-items:start;">
+    <div class="cols cols-2" style="max-width:1100px; align-items:start;">
       <div style="display:flex;flex-direction:column;gap:14px;">
         <div class="card accent-blue">
           <h3>Fluent</h3>
@@ -680,11 +704,11 @@
     </div>
   </div>
 
-  <!-- SLIDE 5: FOUNDATIONS — GIT AS SOURCE OF TRUTH -->
-  <div class="slide" data-index="4">
+  <!-- SLIDE 6: FOUNDATIONS — GIT AS SOURCE OF TRUTH -->
+  <div class="slide" data-index="5">
     <div class="slide-label">Foundations</div>
     <h2>Git is the <span class="hl-green">authoritative source of truth</span></h2>
-    <div class="cols cols-2" style="max-width:920px;">
+    <div class="cols cols-2" style="max-width:1040px;">
       <div class="card accent-green">
         <h3>Git</h3>
         <p>Branching, pull requests, line-by-line review, three-way conflict resolution, precise point-in-time rollback.</p>
@@ -694,23 +718,7 @@
         <p>XML transport artifact only — not built for collaboration, branching, or human-readable diffs.</p>
       </div>
     </div>
-    <p class="lead" style="margin-top:24px;">We'll go deeper on this contrast this afternoon in the Source Control module.</p>
-  </div>
-
-  <!-- SLIDE 6: FOUNDATIONS — THE PRESCRIBED STACK -->
-  <div class="slide" data-index="5">
-    <div class="slide-label">Foundations</div>
-    <h2>The prescribed <span class="hl-purple">stack</span></h2>
-    <div class="cols cols-4" style="max-width:1000px;">
-      <div class="flow-box"><span class="icon">🛠️</span><h4>SDK</h4><p>Build engine, compiles to deployable artifacts</p></div>
-      <div class="flow-box"><span class="icon">💻</span><h4>Studio</h4><p>IDE / prod code mode</p></div>
-      <div class="flow-box"><span class="icon">🌿</span><h4>Git</h4><p>Branch, PR, merge</p></div>
-      <div class="flow-box"><span class="icon">📦</span><h4>Sandbox</h4><p>Isolated dev instance</p></div>
-      <div class="flow-box"><span class="icon">🤖</span><h4>Build Agent</h4><p>AI-assisted authoring</p></div>
-      <div class="flow-box"><span class="icon">✅</span><h4>ATF</h4><p>Automated test framework</p></div>
-      <div class="flow-box"><span class="icon">🗄️</span><h4>App Repo</h4><p>Immutable artifact store</p></div>
-      <div class="flow-box"><span class="icon">🚀</span><h4>ReleaseOps</h4><p>Assess, approve, release</p></div>
-    </div>
+    <p class="lead" style="margin-top:24px;">We'll go deeper on this contrast later in the Source Control module.</p>
   </div>
 
   <!-- SLIDE 7: BREAK -->
@@ -724,7 +732,7 @@
   <div class="slide" data-index="7">
     <div class="slide-label">Build-ready requirements</div>
     <h2>Vague story vs. <span class="hl-green">build-ready</span> story</h2>
-    <div class="cols cols-2" style="max-width:980px; align-items:start;">
+    <div class="cols cols-2" style="max-width:1100px; align-items:start;">
       <div class="card accent-red">
         <h3>Vague</h3>
         <p>"As a facilities user, I want to request maintenance on equipment so it gets fixed."</p>
@@ -742,7 +750,7 @@
   <div class="slide" data-index="8">
     <div class="slide-label">Activity</div>
     <h2>Your turn: <span class="hl-blue">rewrite it</span></h2>
-    <ul class="clean" style="max-width:680px;">
+    <ul class="clean" style="max-width:800px;">
       <li><span class="icon">1️⃣</span><span>5 minutes — as a team, rewrite a vague story into one with entities, roles/access, and Given-When-Then.</span></li>
       <li><span class="icon">2️⃣</span><span>We present the requirements you'll actually build against this morning.</span></li>
       <li><span class="icon">3️⃣</span><span>Goal: finish the core requirements first — add extensions only if you finish early.</span></li>
@@ -771,7 +779,7 @@
   <div class="slide" data-index="9">
     <div class="slide-label">Setup</div>
     <h2>Get your <span class="hl-blue">sandbox</span> ready</h2>
-    <div class="cols cols-2" style="max-width:960px; align-items:start;">
+    <div class="cols cols-2" style="max-width:1080px; align-items:start;">
       <ul class="clean">
         <li><span class="icon">✅</span><span>Confirm you can log in to your assigned instance</span></li>
         <li><span class="icon">✅</span><span>Confirm your developer sandbox is allocated</span></li>
@@ -784,12 +792,41 @@
     </div>
   </div>
 
+  <!-- WELCOME TO BUILD AGENT -->
+  <div class="slide" data-index="9.2">
+    <div class="slide-label">Build Agent</div>
+    <h2>What is <span class="hl-green">Build Agent</span>?</h2>
+    <div class="quote" style="margin-bottom:24px;">Go from a plain-language prompt to a working app — in the same session, on the same instance you'll build in today.</div>
+    <div class="cols cols-3" style="max-width:1120px;">
+      <div class="card accent-blue">
+        <h3>Conversational</h3>
+        <p>Describe what you want in plain language; Build Agent proposes the entities, roles, and logic — no forms to click through.</p>
+      </div>
+      <div class="card accent-green">
+        <h3>Platform-native</h3>
+        <p>It builds real Fluent metadata objects in your app's scope — not a disposable prototype you throw away later.</p>
+      </div>
+      <div class="card accent-purple">
+        <h3>Full-loop</h3>
+        <p>It generates the app <strong>and</strong> its ATF tests in the same session — which is what we'll build on next.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUILD AGENT IN SERVICENOW STUDIO -->
+  <div class="slide" data-index="9.3">
+    <div class="slide-label">Build Agent</div>
+    <h2>Build Agent in <span class="hl-green">ServiceNow Studio</span></h2>
+    <img src="assets/images/build-agent-studio.png" alt="Build Agent chat panel inside ServiceNow Studio, showing it explain a flow's logic in plain language and suggest fixes for a bug and a scaling issue it found" style="width:100%; max-width:1120px; border-radius:8px; border:1px solid var(--border);">
+    <p class="lead" style="margin-top:20px;">It reads your app's existing metadata, explains what a flow actually does in plain language, and proposes concrete fixes — grounded in your instance, not a generic answer.</p>
+  </div>
+
   <!-- BUILD AGENT + ATF -->
   <div class="slide" data-index="9.5">
     <div class="slide-label">Build Agent + ATF</div>
     <h2>Tests live <span class="hl-green">in the dev loop</span>, not bolted on</h2>
     <div class="quote" style="margin-bottom:24px;">Tests live in app scope, authored while you build — not added after the fact.</div>
-    <ul class="clean" style="max-width:620px;">
+    <ul class="clean" style="max-width:740px;">
       <li><span class="icon">1️⃣</span><span>Use Test Agent (in Build Agent) to generate ATF tests from natural language.</span></li>
       <li><span class="icon">2️⃣</span><span>Run them, let Test Agent triage a failure, and fix it.</span></li>
     </ul>
@@ -799,7 +836,7 @@
   <div class="slide" data-index="10">
     <div class="slide-label">Build + test (exercise)</div>
     <h2>Build + test the <span class="hl-green">maintenance app</span></h2>
-    <div class="cols cols-2" style="max-width:980px; align-items:start;">
+    <div class="cols cols-2" style="max-width:1100px; align-items:start;">
       <ul class="clean">
         <li><span class="icon">👀</span><span>First, see the finished app — what you're building toward.</span></li>
         <li><span class="icon">💬</span><span>Prompt Build Agent with the natural-language description from the whitepaper.</span></li>
@@ -858,7 +895,7 @@
   <div class="slide" data-index="16">
     <div class="slide-label">Off-instance development (exercise)</div>
     <h2>The same app, <span class="hl-blue">off the platform</span></h2>
-    <ul class="clean" style="max-width:680px;">
+    <ul class="clean" style="max-width:800px;">
       <li><span class="icon">💻</span><span>Same Fluent project, opened in VS Code or your terminal instead of Studio.</span></li>
       <li><span class="icon">🤖</span><span>Claude Code (or Cursor/Codex) in place of Build Agent — same SDK underneath.</span></li>
       <li><span class="icon">🔁</span><span><code>now-sdk build</code> / <code>now-sdk install</code> work identically, on- or off-platform.</span></li>
@@ -884,11 +921,11 @@
   <div class="slide" data-index="18">
     <div class="slide-label">Source control (exercise)</div>
     <h2>Exercise: <span class="hl-green">ship it with Git</span></h2>
-    <ul class="clean" style="max-width:760px;">
+    <ul class="clean" style="max-width:880px;">
       <li><span class="icon">1️⃣</span><span><strong>Off instance (GitHub):</strong> push branch → open PR → review → merge → publish pre-release to the App Repo.</span></li>
       <li><span class="icon">2️⃣</span><span><strong>On instance:</strong> open the instance and pull the changes in SNS / the IDE using git.</span></li>
     </ul>
-    <div class="card accent-green" style="margin-top:24px; max-width:760px;">
+    <div class="card accent-green" style="margin-top:24px; max-width:880px;">
       <h3>📌 Prescriptive point</h3>
       <p>Git does branching, review, and line-by-line conflict resolution. Update sets cannot.</p>
     </div>
@@ -906,7 +943,7 @@
   <div class="slide" data-index="19.5">
     <div class="slide-label">ReleaseOps</div>
     <h2>Two objects, <span class="hl-blue">one pipeline</span></h2>
-    <div class="cols cols-2" style="max-width:920px; align-items:start;">
+    <div class="cols cols-2" style="max-width:1040px; align-items:start;">
       <div class="card accent-blue">
         <h3>Deployment Request</h3>
         <p>The payload container. Promote an Update Set into one, then mark it "Ready to Assess" — the assessment playbook (Instance Scan → Move to Test → Run ATF) runs against it.</p>
@@ -933,7 +970,7 @@
       <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">🚀</span><h4>Ready for Deploy</h4><p>Cleared for release</p></div>
     </div>
     <p class="step-label first">LAB: CREATE A DEPLOYMENT REQUEST, MARK "READY TO ASSESS," WATCH IT RUN</p>
-    <div class="cols cols-3" style="max-width:920px; margin-top:14px;">
+    <div class="cols cols-3" style="max-width:1040px; margin-top:14px;">
       <div class="card"><h3>Retest</h3><p>Rerun the assessment as-is.</p></div>
       <div class="card accent-red"><h3>Need Code Change</h3><p>Assessment is invalidated — the Deployment Request returns to Draft and needs a new payload.</p></div>
       <div class="card accent-green"><h3>Sign Off</h3><p>Manual approval to proceed.</p></div>
@@ -952,7 +989,7 @@
   <div class="slide" data-index="22">
     <div class="slide-label">Push to production (demo only)</div>
     <h2>Promote, deploy, and <span class="hl-orange">roll back</span> if needed</h2>
-    <ul class="clean" style="max-width:700px;">
+    <ul class="clean" style="max-width:820px;">
       <li><span class="icon">1️⃣</span><span>Promote the Deployment Request to a release.</span></li>
       <li><span class="icon">2️⃣</span><span>Push to "production."</span></li>
       <li><span class="icon">3️⃣</span><span>Roll back within the fixed window — only when installed from the Application Repository.</span></li>
@@ -963,7 +1000,7 @@
   <div class="slide" data-index="23">
     <div class="slide-label">Choose your own adventure</div>
     <h2>Where do <span class="hl-purple">you</span> want to go deeper?</h2>
-    <div class="cols cols-3" style="max-width:920px;">
+    <div class="cols cols-3" style="max-width:1040px;">
       <div class="card accent-blue"><h3>Fluent deep dive</h3><p>More metadata types, transform/sync from UI builders</p></div>
       <div class="card accent-green"><h3>Testing deep dive</h3><p>Test Agent triage, Cloud Runner, regression suites</p></div>
       <div class="card accent-purple"><h3>CI/CD APIs</h3><p><code>now-sdk cicd</code>, Git-triggered pipelines, approval gates</p></div>
@@ -975,7 +1012,7 @@
   <div class="slide" data-index="23.5">
     <div class="slide-label">Choose your own adventure (exercise)</div>
     <h2>Pick a track, go <span class="hl-green">deep</span></h2>
-    <ul class="clean" style="max-width:660px;">
+    <ul class="clean" style="max-width:780px;">
       <li><span class="icon">1️⃣</span><span>As a table, pick one track: Fluent deep dive, Testing deep dive, or CI/CD APIs.</span></li>
       <li><span class="icon">2️⃣</span><span>Go hands-on — try something beyond what the core exercises covered.</span></li>
       <li><span class="icon">3️⃣</span><span>Be ready to show the group what you found.</span></li>

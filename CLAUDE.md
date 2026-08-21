@@ -24,35 +24,42 @@ Single self-contained HTML file — no build step, no dependencies beyond two Go
 - Deep-link any slide with `#N` (1-based) — the hash tracks the current slide as you navigate, so any slide has a shareable URL.
 - Theme is "midnight" (dark blue/green), defined in `assets/themes.mjs` inside the `brown-bag-setup` skill (`~/.claude/skills/brown-bag-setup`, on the machine that maintains the primary repo). Regenerate via `node $SKILL_DIR/scripts/generate.mjs --theme <name>` — **this overwrites all hand-edited slide content**, so only run it before customizing, or manually copy the new `:root` variable block afterward.
 
-### Current slide map (28 in the DOM; 23 navigable — 5 are hidden via `hidden-slide`, kept but skipped)
+### Current slide map (31 in the DOM; 26 navigable — 5 are hidden via `hidden-slide`, kept but skipped)
 
 1. Title
-2. Agenda (single flat list, no AM/PM split, no clock times — just session order)
-3–6. Foundations — "app" definition, SDK + Fluent, Git as source of truth, prescribed stack
-7. Break — **hidden**
-8. Build-ready requirements (vague vs. build-ready example)
-9. Activity: rewrite the story → links to `exercises/01-build-ready-requirements.md`
-10. Why sandboxes (concept: shared instance + agentic-speed change = last-write-wins; sandbox contains the blast radius, Git reconciles it; feature branch lives inside the sandbox)
-11. Setup time
-12. Build Agent + ATF (concept: Test Agent generates ATF tests as you build)
-13. Build + test the maintenance app (exercise) → links to `exercises/02-build-maintenance-app.md`
-14. Q&A — **hidden**
-15. Lunch
-16. Re-anchor (Build and Test both shown as done at this point; no "this morning"/"this afternoon" framing)
+2. Legal (safe harbor / forward-looking-statements notice)
+3. Agenda (single flat list, no AM/PM split, no clock times, first item is a "Welcome" framing line — not a separate slide)
+4–7. Foundations — "app" definition, **prescribed stack**, SDK + Fluent, Git as source of truth (stack moved up to precede the SDK+Fluent/Git detail slides — overview before drill-down)
+8. Break — **hidden**
+9. Build-ready requirements (vague vs. build-ready example)
+10. Activity: rewrite the story → links to `exercises/01-build-ready-requirements.md`
+11. Why sandboxes (concept: shared instance + agentic-speed change = last-write-wins; sandbox contains the blast radius, Git reconciles it; feature branch lives inside the sandbox)
+12. Setup time
+13. Build Agent (concept: what it is — conversational, platform-native, full-loop build+test)
+14. Build Agent in ServiceNow Studio (screenshot cropped from `Build_agent_workshop.pdf` p.8 → `assets/images/build-agent-studio.png`)
+15. Build Agent + ATF (concept: Test Agent generates ATF tests as you build)
+16. Build + test the maintenance app (exercise) → links to `exercises/02-build-maintenance-app.md`
 17. Q&A — **hidden**
-18. Off-instance development (exercise)
-19. Source control (concept: Git vs. update sets table)
-20. Source control exercise: ship it with Git → links to `exercises/03-source-control.md`
-21. Break — **hidden**
-22. ReleaseOps (concept: names Deployment Request vs. Release vs. Assessment as distinct objects; the two release paths — promote-Update-Set vs. Git-triggered CI/CD)
-23. ReleaseOps (exercise) → links to `exercises/04-releaseops.md`
-24. Q&A — **hidden**
-25. Push to production (demo)
-26. Choose your own adventure (menu: Fluent/Testing/CI-CD topic cards — still a TODO to finalize per audience)
-27. Choose your own adventure (exercise) → links to `exercises/05-choose-your-own-adventure.md`
-28. Wrap
+18. Lunch
+19. Re-anchor (Build and Test both shown as done at this point; no "this morning"/"this afternoon" framing)
+20. Q&A — **hidden**
+21. Off-instance development (exercise)
+22. Source control (concept: Git vs. update sets table)
+23. Source control exercise: ship it with Git → links to `exercises/03-source-control.md`
+24. Break — **hidden**
+25. ReleaseOps (concept: names Deployment Request vs. Release vs. Assessment as distinct objects; the two release paths — promote-Update-Set vs. Git-triggered CI/CD)
+26. ReleaseOps (exercise) → links to `exercises/04-releaseops.md`
+27. Q&A — **hidden**
+28. Push to production (demo)
+29. Choose your own adventure (menu: Fluent/Testing/CI-CD topic cards — still a TODO to finalize per audience)
+30. Choose your own adventure (exercise) → links to `exercises/05-choose-your-own-adventure.md`
+31. Wrap
 
-Automated testing is no longer its own exercise — its ATF steps were folded into `exercises/02-build-maintenance-app.md` (retitled "Build + test the maintenance app"), and slide 12 above is what's left of its old concept content, now framed as a lead-in to the build exercise rather than its own exercise card. Slide-label times (e.g. "9:20–9:55") were removed deck-wide in favor of no exact times. ReleaseOps previously had a "LAB" pointer with no backing exercise file — `exercises/04-releaseops.md` now fills that gap, which is also why exercise files are numbered 01–05 in day order (choose-your-own-adventure moved from 04 to 05 to make room).
+Global sizing pass: base typography (h1/h2/p/lead/quote/list items), card/flow-box padding, and every per-slide `max-width` inline value were bumped up deck-wide so slides use more of the screen — there was a lot of unused blank space at the previous sizes.
+
+Automated testing is no longer its own exercise — its ATF steps were folded into `exercises/02-build-maintenance-app.md` (retitled "Build + test the maintenance app"), and slide 15 above is what's left of its old concept content, now framed as a lead-in to the build exercise rather than its own exercise card. Slide-label times (e.g. "9:20–9:55") were removed deck-wide in favor of no exact times. ReleaseOps previously had a "LAB" pointer with no backing exercise file — `exercises/04-releaseops.md` now fills that gap, which is also why exercise files are numbered 01–05 in day order (choose-your-own-adventure moved from 04 to 05 to make room).
+
+Slides 13–14 (Build Agent / Build Agent in Studio) were added because jumping straight from Setup into the ATF-focused "Build Agent + ATF" slide had no general context for what Build Agent even is — sourced from a second reference deck, `~/Downloads/Build_agent_workshop.pdf` (not part of this repo). That PDF's roadmap/availability/pricing content was deliberately left out as out of scope for this workshop.
 
 ## Exercises (`exercises/`)
 

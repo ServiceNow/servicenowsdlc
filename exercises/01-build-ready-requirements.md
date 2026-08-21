@@ -1,11 +1,11 @@
 ---
 title: "Build-ready requirements: rewrite the vague story"
-slide: "8 — Activity"
+slide: "9 — Activity"
 ---
 
 # Build-ready requirements: rewrite the vague story
 
-[← Back to slide 8 in the deck](https://apatti-now.github.io/servicenowsdlc/#8)
+[← Back to slide 9 in the deck](https://apatti-now.github.io/servicenowsdlc/#9)
 
 ## Objective
 
