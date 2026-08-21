@@ -9,7 +9,7 @@ slide: "22 — ReleaseOps"
 
 ## Objective
 
-Take the app you published in Exercise 03 through the ReleaseOps quality-control pipeline — create a Deployment Request, watch the assessment run, and get it to Ready for Deploy.
+Take the app you published in Exercise 04 through the ReleaseOps quality-control pipeline — create a Deployment Request, watch the assessment run, and get it to Ready for Deploy.
 
 ## Estimated Time
 
@@ -17,7 +17,7 @@ Take the app you published in Exercise 03 through the ReleaseOps quality-control
 
 ## Prerequisites
 
-- Pre-release published to the Application Repository (Exercise 03)
+- Pre-release published to the Application Repository (Exercise 04)
 - Access to a test instance separate from your dev instance
 
 ## Exercise Steps

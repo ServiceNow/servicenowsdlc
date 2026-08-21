@@ -40,11 +40,9 @@ Walk the full Git-based collaboration flow — push, PR, review, merge, publish,
 
 - Review and conflict resolution are collaboration primitives Git provides natively — update sets have no equivalent, only last-write-wins.
 - The App Repo, not the update set, is what makes an install on a second instance reproducible and auditable.
-- The pre-release you just published is exactly what ReleaseOps picks up next — Exercise 04 starts by promoting an Update Set built from that same Application Repository artifact into a Deployment Request.
+- The pre-release you just published is exactly what ReleaseOps picks up next — Exercise 05 starts by promoting an Update Set built from that same Application Repository artifact into a Deployment Request.
 
 ## Bonus Challenge
 
 - Intentionally create a merge conflict with your review partner (both edit the same field) and resolve it line-by-line
 - Discuss: how would that same conflict have played out with two update sets instead?
-
-Full walkthrough reference: [Exercise 04 — Bootcamp content](https://code.devsnc.com/pages/dev/bootcamp-content/modules/dev-environment/exercises/exercise-04.html)

@@ -17,7 +17,7 @@ Go one level deeper on whichever part of the stack is most relevant to your team
 
 ## Prerequisites
 
-- Maintenance app built, tested, source-controlled, and pushed through ReleaseOps (Exercises 01–04)
+- Maintenance app built, tested, source-controlled, and pushed through ReleaseOps (Exercises 01–05)
 
 ## Exercise Steps
 
