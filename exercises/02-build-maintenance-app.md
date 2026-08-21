@@ -26,15 +26,37 @@ Use Build Agent (and ATF) to go from a natural-language prompt to a working main
 ## Exercise Steps
 
 1. Open Build Agent in Studio, we are covering off-instance later.
-2. Prompt Build Agent with your build-ready requirements — name the entities, roles/access, and the Given-When-Then scenario directly in the prompt.
-3. Review what Build Agent creates. If you're curious what's happening under the hood, ask it to show you the Fluent (`.now.ts`) code it generated — this is optional and aimed at architects.
+2. Prompt Build Agent with your build-ready requirements — name the entities, roles/access, and the Given-When-Then scenario directly in the prompt. If your team used the reference scenario from the requirements activity, paste this as-is; otherwise swap in your own entities/roles/Given-When-Then:
+   ```
+   Build a Maintenance Request app with:
+
+   Entities: Maintenance Request, Equipment
+
+   Roles:
+   - Requester: create and view their own Maintenance Requests
+   - Technician: view assigned Maintenance Requests, update their status
+
+   Given a Requester submits a Maintenance Request for active Equipment,
+   when they submit it,
+   then a Maintenance Request record is created in "New" state and
+   assigned according to a routing rule.
+   ```
+3. Review what Build Agent creates. If you're curious what's happening under the hood, ask it to show you the Fluent (`.now.ts`) code — this is optional and aimed at architects:
+   ```
+   Show me the Fluent (.now.ts) code you just generated for this app.
+   ```
 4. When asked if you want ATF tests written for your change, select "Yes, proceed" — your changes will get test coverage added.
 5. Install the app to your sandbox:
    ```
    now-sdk install --sandbox
    ```
 6. Manually walk through the golden path in your sandbox and confirm it matches your Given-When-Then scenario.
-7. Ask Build Agent to generate an ATF test for an edge case, then run it.
+7. Ask Build Agent to generate an ATF test for an edge case, then run it:
+   ```
+   Generate an ATF test for the case where a Requester submits a
+   Maintenance Request for Equipment that is not active. Confirm the
+   request is rejected instead of created.
+   ```
 
 ## Success Criteria
 
@@ -51,6 +73,20 @@ Use Build Agent (and ATF) to go from a natural-language prompt to a working main
 
 ## Bonus Challenge
 
-- Add Technician assignment/routing logic
-- Add more ATF tests to cover edge cases or rejection paths
-- Add role-based access restrictions and verify them as a non-privileged user
+- Add Technician assignment/routing logic:
+  ```
+  Add routing logic so new Maintenance Requests are automatically
+  assigned to the Technician with the fewest open assignments.
+  ```
+- Add more ATF tests to cover edge cases or rejection paths:
+  ```
+  Generate an ATF test for the case where a Technician tries to update
+  a Maintenance Request that isn't assigned to them. Confirm the update
+  is rejected.
+  ```
+- Add role-based access restrictions and verify them as a non-privileged user:
+  ```
+  Add access control so only the assigned Technician (or an admin) can
+  update a Maintenance Request's status, and Requesters can only view
+  their own requests.
+  ```
