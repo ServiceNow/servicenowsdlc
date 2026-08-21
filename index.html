@@ -568,6 +568,24 @@
     letter-spacing: 0.02em;
   }
 
+  /* ─── Exercise link chip ──────────────────────────── */
+
+  .exercise-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
+
+  .exercise-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--c-blue);
+    background: var(--c-blue-dim);
+    border: 1px solid rgba(127,209,255,0.35);
+    border-radius: 20px;
+    padding: 9px 18px;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+
   /* ─── Agenda numbers ──────────────────────────────── */
 
   .agenda-num {
@@ -755,7 +773,9 @@
       <li><span class="icon">2️⃣</span><span>We present the requirements you'll actually build against this morning.</span></li>
       <li><span class="icon">3️⃣</span><span>Goal: finish the core requirements first — add extensions only if you finish early.</span></li>
     </ul>
-    <p style="margin-top:20px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint);">📄 <a href="https://github.com/apatti-now/servicenowsdlc/blob/main/exercises/01-build-ready-requirements.md" style="color:var(--c-blue);">Exercise steps →</a></p>
+    <div class="exercise-links">
+      <a class="exercise-link" href="https://github.com/apatti-now/servicenowsdlc/blob/main/exercises/01-build-ready-requirements.md">📄 Exercise steps →</a>
+    </div>
   </div>
 
   <!-- WHY SANDBOXES -->
@@ -851,7 +871,9 @@
 });</pre>
       </div>
     </div>
-    <p style="margin-top:20px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint);">📄 <a href="https://github.com/apatti-now/servicenowsdlc/blob/main/exercises/02-build-maintenance-app.md" style="color:var(--c-blue);">Exercise steps →</a></p>
+    <div class="exercise-links">
+      <a class="exercise-link" href="https://github.com/apatti-now/servicenowsdlc/blob/main/exercises/02-build-maintenance-app.md">📄 Exercise steps →</a>
+    </div>
   </div>
 
   <!-- SLIDE 12: Q&A -->
@@ -929,7 +951,10 @@
       <h3>📌 Prescriptive point</h3>
       <p>Git does branching, review, and line-by-line conflict resolution. Update sets cannot.</p>
     </div>
-    <p style="margin-top:20px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint);">📄 <a href="https://github.com/apatti-now/servicenowsdlc/blob/main/exercises/03-source-control.md" style="color:var(--c-blue);">Exercise steps →</a> &nbsp;·&nbsp; <a href="https://code.devsnc.com/pages/dev/bootcamp-content/modules/dev-environment/exercises/exercise-04.html" style="color:var(--c-blue);">Bootcamp Exercise 04 →</a></p>
+    <div class="exercise-links">
+      <a class="exercise-link" href="https://github.com/apatti-now/servicenowsdlc/blob/main/exercises/03-source-control.md">📄 Exercise steps →</a>
+      <a class="exercise-link" href="https://code.devsnc.com/pages/dev/bootcamp-content/modules/dev-environment/exercises/exercise-04.html">📘 Bootcamp Exercise 04 →</a>
+    </div>
   </div>
 
   <!-- SLIDE 20: BREAK -->
@@ -975,7 +1000,9 @@
       <div class="card accent-red"><h3>Need Code Change</h3><p>Assessment is invalidated — the Deployment Request returns to Draft and needs a new payload.</p></div>
       <div class="card accent-green"><h3>Sign Off</h3><p>Manual approval to proceed.</p></div>
     </div>
-    <p style="margin-top:20px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint);">📄 <a href="https://github.com/apatti-now/servicenowsdlc/blob/main/exercises/04-releaseops.md" style="color:var(--c-blue);">Exercise steps →</a></p>
+    <div class="exercise-links">
+      <a class="exercise-link" href="https://github.com/apatti-now/servicenowsdlc/blob/main/exercises/04-releaseops.md">📄 Exercise steps →</a>
+    </div>
   </div>
 
   <!-- SLIDE 22: Q&A -->
@@ -1017,7 +1044,9 @@
       <li><span class="icon">2️⃣</span><span>Go hands-on — try something beyond what the core exercises covered.</span></li>
       <li><span class="icon">3️⃣</span><span>Be ready to show the group what you found.</span></li>
     </ul>
-    <p style="margin-top:20px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint);">📄 <a href="https://github.com/apatti-now/servicenowsdlc/blob/main/exercises/05-choose-your-own-adventure.md" style="color:var(--c-blue);">Exercise steps →</a></p>
+    <div class="exercise-links">
+      <a class="exercise-link" href="https://github.com/apatti-now/servicenowsdlc/blob/main/exercises/05-choose-your-own-adventure.md">📄 Exercise steps →</a>
+    </div>
   </div>
 
   <!-- SLIDE 25: WRAP -->
