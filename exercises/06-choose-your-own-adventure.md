@@ -21,12 +21,9 @@ Go one level deeper on whichever part of the stack is most relevant to your team
 
 ## Exercise Steps
 
-1. As a table, pick one track below. Each has a couple of concrete things to try — you don't need to do all of them, just go deep on what's interesting to your team.
-2. Be ready to show the group what you found.
+Here are a bunch of ideas to keep exploring — choose anything below, or come up with your own adventure entirely. We're here to help with questions.
 
 ### Track: Fluent deep dive
-
-Try one or both:
 
 - Add a metadata type the maintenance app didn't use yet:
   ```
@@ -44,8 +41,6 @@ Try one or both:
 
 ### Track: Testing deep dive
 
-Try one or both:
-
 - Deliberately break a test and watch Test Agent triage it:
   ```
   Comment out the routing/assignment step in the Maintenance Request
@@ -58,8 +53,6 @@ Try one or both:
   ```
 
 ### Track: CI/CD APIs
-
-Try one or both:
 
 - Script a Git-triggered pipeline using the CI/CD REST APIs (`app_repo/publish`, `app_repo/install`, `testsuite/run`, `app_repo/rollback`) instead of the ReleaseOps UI flow from Exercise 05.
 - Add an approval gate so the pipeline pauses for manual sign-off before it calls `app_repo/install` against a production-bound target.
