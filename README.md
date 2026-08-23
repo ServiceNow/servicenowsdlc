@@ -2,4 +2,4 @@
 
 Brown bag presentation for Platform Engineering App Lifecycle.
 
-**[View the deck →](https://apatti-now.github.io/servicenowsdlc/)**
+**[View the deck →](https://servicenow.github.io/servicenowsdlc/)**
