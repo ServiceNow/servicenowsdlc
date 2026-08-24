@@ -9,7 +9,7 @@ slide: "22 — ReleaseOps"
 
 ## Objective
 
-Take the app you published in Exercise 04 through the ReleaseOps quality-control pipeline — create a Deployment Request, watch the assessment run, and get it to Ready for Deploy.
+Take the app you published in Exercise 04 through the ReleaseOps quality-control pipeline — create a Deployment Request, watch the assessment run, and get it to Ready for Deploy. **You will not push to production in this exercise** — that part is a live demo right after, not something you do yourselves.
 
 ## Estimated Time
 
@@ -29,15 +29,14 @@ Take the app you published in Exercise 04 through the ReleaseOps quality-control
    - **Retest** — rerun the assessment as-is.
    - **Need Code Change** — invalidates the assessment; the Deployment Request returns to Draft and needs a new payload before it can be re-assessed.
    - **Sign Off** — manual approval to proceed despite the failure.
-5. Once the Deployment Request reaches "Ready for Deploy," create a Release record against it.
-6. Choose On Demand (moves it to production immediately) or Scheduled (batched at a datetime) and release it.
+5. Once the Deployment Request reaches "Ready for Deploy," **stop there.** That's the finish line for this exercise — you do not need to create a Release record or push anything to production yourselves.
+6. Actually releasing to production (On Demand vs. Scheduled) is covered right after this as a live demo — see the next slide. Watch, don't replicate it on your own instance.
 
 ## Success Criteria
 
 - [ ] Deployment Request created and moved through Instance Scan, Move to Test, and Run ATF
 - [ ] You can explain the difference between Retest, Need Code Change, and Sign Off
-- [ ] Deployment Request reached "Ready for Deploy"
-- [ ] Release record created and released (On Demand or Scheduled)
+- [ ] Deployment Request reached "Ready for Deploy" — this is where the exercise ends, no release/push-to-prod required
 
 ## Learning Points
 

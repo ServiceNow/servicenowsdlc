@@ -22,6 +22,12 @@ Walk the full Git-based collaboration flow — push, PR, review, merge, publish,
 ## Exercise Steps
 
 1. **Off instance (GitHub):** commit and push your feature branch.
+   ```
+   git add .
+   git commit -m "Add maintenance request app"
+   git push -u origin feature/maintenance-app
+   ```
+   Don't want to type these yourself? Ask Claude Code (or your coding agent) to commit and push the branch for you.
 2. Open a pull request. Pair with another team and have them review it — leave at least one comment.
 3. Resolve the feedback and merge to `main`.
 4. From your base dev instance, publish a pre-release of your app to the Application Repository.

@@ -64,6 +64,27 @@ Here are a bunch of ideas to keep exploring — choose anything below, or come u
 - Script a Git-triggered pipeline using the CI/CD REST APIs (`app_repo/publish`, `app_repo/install`, `testsuite/run`, `app_repo/rollback`) instead of the ReleaseOps UI flow from Exercise 05.
 - Add an approval gate so the pipeline pauses for manual sign-off before it calls `app_repo/install` against a production-bound target.
 
+### Track: MCP integrations
+
+- Have an admin connect a Figma or Miro board via Connect Hub, get it approved in AI Control Tower, then enable it yourself in Build Agent Settings → MCP tab → "Enable MCP servers."
+- Prompt Build Agent to build directly from the connected spec instead of describing it manually:
+  ```
+  Look at the connected Figma file and build the UI page it shows for
+  the Maintenance Request list view.
+  ```
+
+### Track: Custom rules (placeholder — verify before presenting)
+
+- _This track covers custom rules that change language/terminology in Build Agent output. Confirm the exact mechanism, where it's configured, and a working example prompt before presenting this one live — not yet verified._
+
+### Track: Combine two tracks
+
+- Wire the CI/CD approval gate from the CI/CD track so it only calls `app_repo/install` if the ATF tests from the Testing track pass via `testsuite/run`.
+
+### Or: go back and do the bonus challenges you skipped
+
+Every earlier exercise (01–05) has its own Bonus Challenge section that most teams don't have time for in the moment. This is a good time to go back and pick one up — it counts just as much as any track above.
+
 ## Success Criteria
 
 - [ ] Your table went hands-on with at least one track beyond what the core exercises covered
@@ -73,6 +94,3 @@ Here are a bunch of ideas to keep exploring — choose anything below, or come u
 
 - The core exercises cover the golden path end-to-end; each track here is where that golden path gets deeper in practice.
 
-## Bonus Challenge
-
-- Combine two tracks — e.g., wire the CI/CD approval gate from the CI/CD track so it only calls `app_repo/install` if the ATF tests from the Testing track pass via `testsuite/run`

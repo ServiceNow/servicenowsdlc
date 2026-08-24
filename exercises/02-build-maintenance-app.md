@@ -45,18 +45,19 @@ Use Build Agent (and ATF) to go from a natural-language prompt to a working main
    ```
    Show me the Fluent (.now.ts) code you just generated for this app.
    ```
+   Look at the Fluent code for the Maintenance Request table — it should look something like this:
+   ```typescript
+   export const MaintenanceRequest = Table({
+     label: 'Maintenance Request',
+     fields: { equipment: Reference('equipment') }
+   });
+   ```
 4. When asked if you want ATF tests written for your change, select "Yes, proceed" — your changes will get test coverage added.
 5. Install the app to your sandbox:
    ```
    now-sdk install --sandbox
    ```
 6. Manually walk through the golden path in your sandbox and confirm it matches your Given-When-Then scenario.
-7. Ask Build Agent to generate an ATF test for an edge case, then run it:
-   ```
-   Generate an ATF test for the case where a Requester submits a
-   Maintenance Request for Equipment that is not active. Confirm the
-   request is rejected instead of created.
-   ```
 
 ## Success Criteria
 

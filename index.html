@@ -197,7 +197,7 @@
   h1 {
     font-family: var(--sans);
     font-weight: 700;
-    font-size: clamp(40px, 5.5vw, 72px);
+    font-size: clamp(44px, 6vw, 78px);
     line-height: 1.05;
     letter-spacing: -0.02em;
     text-align: center;
@@ -207,17 +207,17 @@
   h2 {
     font-family: var(--sans);
     font-weight: 700;
-    font-size: clamp(30px, 3.8vw, 48px);
+    font-size: clamp(33px, 4.2vw, 52px);
     line-height: 1.15;
     letter-spacing: -0.02em;
-    margin-bottom: 30px;
+    margin-bottom: 32px;
     color: var(--ink);
   }
 
   h3 {
     font-family: var(--sans);
     font-weight: 600;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 0.10em;
     margin-bottom: 6px;
     color: var(--c-blue);
@@ -227,15 +227,15 @@
   h4 {
     font-family: var(--sans);
     font-weight: 600;
-    font-size: 14.5px;
+    font-size: 15.5px;
     color: var(--ink);
     letter-spacing: 0.01em;
   }
 
-  p { font-size: 16.5px; line-height: 1.7; color: var(--ink-muted); font-weight: 300; }
+  p { font-size: 18px; line-height: 1.7; color: var(--ink-muted); font-weight: 300; }
 
   .lead {
-    font-size: 20px;
+    font-size: 22px;
     line-height: 1.65;
     color: var(--ink-muted);
     max-width: 780px;
@@ -299,7 +299,7 @@
     border-radius: 6px 0 0 6px;
   }
 
-  .card p { font-size: 14.5px; margin-top: 6px; line-height: 1.65; }
+  .card p { font-size: 15.5px; margin-top: 6px; line-height: 1.65; }
 
   /* ─── Stats ───────────────────────────────────────── */
 
@@ -314,7 +314,7 @@
   .stat-num {
     font-family: var(--sans);
     font-weight: 700;
-    font-size: 54px;
+    font-size: 58px;
     letter-spacing: -0.04em;
     line-height: 1;
     color: var(--c-blue);
@@ -421,11 +421,11 @@
 
   ul.clean li {
     display: flex; align-items: flex-start; gap: 11px;
-    font-size: 16px; line-height: 1.55; color: var(--ink);
+    font-size: 17.5px; line-height: 1.55; color: var(--ink);
     font-weight: 300;
   }
 
-  ul.clean li .icon { font-size: 17px; flex-shrink: 0; margin-top: 1px; }
+  ul.clean li .icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
 
   /* ─── Tags ────────────────────────────────────────── */
 
@@ -461,9 +461,9 @@
     text-align: center;
   }
 
-  .flow-box .icon { font-size: 26px; margin-bottom: 8px; display: block; }
-  .flow-box h4  { font-size: 13px; font-family: var(--sans); font-weight: 600; color: var(--ink); }
-  .flow-box p   { font-size: 12px; color: var(--ink-muted); margin-top: 4px; line-height: 1.5; }
+  .flow-box .icon { font-size: 28px; margin-bottom: 8px; display: block; }
+  .flow-box h4  { font-size: 14px; font-family: var(--sans); font-weight: 600; color: var(--ink); }
+  .flow-box p   { font-size: 13px; color: var(--ink-muted); margin-top: 4px; line-height: 1.5; }
 
   .flow-arrow { font-family: var(--mono); font-size: 14px; color: var(--ink-faint); padding: 0 5px; flex-shrink: 0; }
 
@@ -475,7 +475,7 @@
     background: var(--c-green-dim);
     border-radius: 0 6px 6px 0;
     font-style: italic;
-    font-size: 16.5px;
+    font-size: 18px;
     line-height: 1.7;
     color: var(--ink-muted);
     max-width: 880px;
@@ -502,13 +502,13 @@
 
   /* ─── Tables ──────────────────────────────────────── */
 
-  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
 
   th {
     text-align: left;
     padding: 10px 16px;
     font-family: var(--sans);
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--th-fg);
     letter-spacing: 0.08em;
@@ -522,7 +522,7 @@
     border-bottom: 1px solid var(--border);
     color: var(--ink);
     vertical-align: top;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.5;
     font-weight: 300;
   }
@@ -847,7 +847,7 @@
     <h2>Tests live <span class="hl-green">in the dev loop</span>, not bolted on</h2>
     <div class="quote" style="margin-bottom:24px;">Tests live in app scope, authored while you build — not added after the fact.</div>
     <ul class="clean" style="max-width:740px;">
-      <li><span class="icon">1️⃣</span><span>Use Test Agent (in Build Agent) to generate ATF tests from natural language.</span></li>
+      <li><span class="icon">1️⃣</span><span>Build Agent uses Test Agent to generate test cases from natural language.</span></li>
       <li><span class="icon">2️⃣</span><span>Run them, let Test Agent triage a failure, and fix it.</span></li>
     </ul>
   </div>
@@ -887,7 +887,7 @@
   <div class="slide" data-index="12">
     <div class="kicker">Lunch</div>
     <h1>🍽️</h1>
-    <p class="lead" style="margin-top:20px;">12:00 – 1:00 · Back at 1:00 to re-anchor</p>
+    <p class="lead" style="margin-top:20px;">Back soon to re-anchor</p>
   </div>
 
   <!-- SLIDE 14: RE-ANCHOR -->
@@ -1029,10 +1029,12 @@
   <div class="slide" data-index="23">
     <div class="slide-label">Choose your own adventure (exercise)</div>
     <h2>Pick a track, go <span class="hl-green">deep</span></h2>
-    <div class="cols cols-3" style="max-width:1040px;">
+    <div class="cols" style="max-width:1300px; grid-template-columns: repeat(5, 1fr);">
       <div class="card accent-blue"><h3>Fluent deep dive</h3><p>More metadata types, transform/sync from UI builders</p></div>
       <div class="card accent-green"><h3>Testing deep dive</h3><p>Test Agent triage, Cloud Runner, regression suites</p></div>
       <div class="card accent-purple"><h3>CI/CD APIs</h3><p><code>now-sdk cicd</code>, Git-triggered pipelines, approval gates</p></div>
+      <div class="card accent-orange"><h3>MCP integrations</h3><p>Connect Figma/Miro via Connect Hub, build straight from the spec</p></div>
+      <div class="card accent-red"><h3>Custom rules</h3><p>Rules that change language/terminology in Build Agent output</p></div>
     </div>
     <p class="lead" style="margin-top:24px;">Explore whichever track interests you most — we're here for questions. Head to the exercise for ideas to get started.</p>
     <div class="exercise-links">
@@ -1064,6 +1066,96 @@
     <div class="kicker">Thank You</div>
     <h1>🙏</h1>
     <p class="lead" style="margin-top:20px;">Full SDLC guide, reference, and troubleshooting:<br><a href="https://servicenow.github.io/sdk/guides/sdlc-guide" style="color:var(--c-blue);">servicenow.github.io/sdk/guides/sdlc-guide</a></p>
+  </div>
+
+  <!-- BONUS: BUILD AGENT — UNIFIED SNS + SPEC MODE -->
+  <div class="slide" data-index="26">
+    <div class="slide-label">Bonus</div>
+    <h2>Build Agent — unified <span class="hl-green">SNS &amp; Spec Mode</span></h2>
+    <ul class="clean" style="max-width:800px;">
+      <li><span class="icon">📝</span><span>TODO: what changes for users once SNS and Spec Mode are unified into one authoring surface.</span></li>
+      <li><span class="icon">📝</span><span>TODO: how this affects the workflow taught today (Build Agent + ATF, off-instance dev).</span></li>
+      <li><span class="icon">📝</span><span>TODO: demo or screenshot, if available.</span></li>
+    </ul>
+    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL (SLIDE 2). PRESENTER TO FILL IN BEFORE SESSION.</p>
+  </div>
+
+  <!-- BONUS: WHAT'S COMING IN THE SEPTEMBER RELEASE -->
+  <div class="slide" data-index="27">
+    <div class="slide-label">Bonus</div>
+    <h2>What's coming in the <span class="hl-blue">September release</span></h2>
+    <ul class="clean" style="max-width:800px;">
+      <li><span class="icon">📝</span><span>TODO: headline feature #1.</span></li>
+      <li><span class="icon">📝</span><span>TODO: headline feature #2.</span></li>
+      <li><span class="icon">📝</span><span>TODO: headline feature #3.</span></li>
+    </ul>
+    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL (SLIDE 2). PRESENTER TO FILL IN BEFORE SESSION.</p>
+  </div>
+
+  <!-- BONUS: ATF IN SPEC MODE -->
+  <div class="slide" data-index="28">
+    <div class="slide-label">Bonus</div>
+    <h2>ATF in <span class="hl-purple">Spec Mode</span></h2>
+    <ul class="clean" style="max-width:800px;">
+      <li><span class="icon">📝</span><span>TODO: how ATF authoring changes inside Spec Mode vs. today's Build Agent + Test Agent flow.</span></li>
+      <li><span class="icon">📝</span><span>TODO: what stays the same (e.g. the ~13 step types) vs. what's new.</span></li>
+      <li><span class="icon">📝</span><span>TODO: example prompt, if available.</span></li>
+    </ul>
+    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL (SLIDE 2). PRESENTER TO FILL IN BEFORE SESSION.</p>
+  </div>
+
+  <!-- BONUS: ATF ON EXISTING LEGACY APPS -->
+  <div class="slide" data-index="29">
+    <div class="slide-label">Bonus</div>
+    <h2>Generating ATF tests on <span class="hl-orange">existing legacy apps</span></h2>
+    <ul class="clean" style="max-width:800px;">
+      <li><span class="icon">📝</span><span>TODO: how this differs from today's workshop flow (built on a net-new app).</span></li>
+      <li><span class="icon">📝</span><span>TODO: any brownfield parallel worth drawing (e.g. <code>now-sdk init --from</code>).</span></li>
+      <li><span class="icon">📝</span><span>TODO: known limitations for legacy/complex apps.</span></li>
+    </ul>
+    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL (SLIDE 2). PRESENTER TO FILL IN BEFORE SESSION.</p>
+  </div>
+
+  <!-- BONUS: BUILD AGENT + MCP -->
+  <div class="slide" data-index="30">
+    <div class="slide-label">Bonus</div>
+    <h2>Build Agent + <span class="hl-blue">MCP</span></h2>
+    <div class="quote" style="margin-bottom:24px;">Pull specs directly from the tools you already use — Figma, Miro — instead of re-describing them by hand in a prompt.</div>
+    <div class="flow" style="margin-bottom:20px;">
+      <div class="flow-box"><span class="icon">🔌</span><h4>Connect Hub</h4><p>Admin configures the Figma/Miro app</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><span class="icon">🛡️</span><h4>AI Control Tower</h4><p>Admin approves it</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><span class="icon">⚙️</span><h4>Your settings</h4><p>Enable MCP servers (MCP tab)</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">🤖</span><h4>Build Agent</h4><p>Reads specs directly from the tool</p></div>
+    </div>
+    <p class="lead">One-time admin setup (Connect Hub + AI Control Tower approval), then any developer turns it on for themselves in their own Build Agent settings.</p>
+  </div>
+
+  <!-- BONUS: CUSTOM RULE TO CHANGE LANGUAGE -->
+  <div class="slide" data-index="31">
+    <div class="slide-label">Bonus</div>
+    <h2>Custom rules — changing <span class="hl-purple">language</span></h2>
+    <ul class="clean" style="max-width:800px;">
+      <li><span class="icon">📝</span><span>TODO: what a "custom rule" actually is in this context (terminology/localization? tone/style guidance for Build Agent output?) — confirm before presenting.</span></li>
+      <li><span class="icon">📝</span><span>TODO: where it's configured, and whether it's app-scoped or instance-wide.</span></li>
+      <li><span class="icon">📝</span><span>TODO: example prompt or before/after, if available.</span></li>
+    </ul>
+    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL (SLIDE 2). PRESENTER TO FILL IN BEFORE SESSION.</p>
+  </div>
+
+  <!-- BONUS: SNEAK PEEK OF NEXT RELEASE -->
+  <div class="slide" data-index="32">
+    <div class="slide-label">Bonus</div>
+    <h2>Sneak peek: <span class="hl-green">what's next</span></h2>
+    <ul class="clean" style="max-width:800px;">
+      <li><span class="icon">👀</span><span>TODO: headline item #1 — confirm with internal roadmap briefing before presenting.</span></li>
+      <li><span class="icon">👀</span><span>TODO: headline item #2.</span></li>
+      <li><span class="icon">👀</span><span>TODO: headline item #3.</span></li>
+    </ul>
+    <p class="lead" style="margin-top:24px;">Everything on this slide is directional, not a commitment — see the safe harbor statement on slide 2.</p>
+    <p style="margin-top:16px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL (SLIDE 2). PRESENTER TO FILL IN BEFORE SESSION.</p>
   </div>
 
 </div><!-- end deck -->
