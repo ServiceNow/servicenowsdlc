@@ -5,7 +5,7 @@ slide: "24 — Choose your own adventure (exercise)"
 
 # Choose your own adventure
 
-[← Back to slide 24 in the deck](https://servicenow.github.io/servicenowsdlc/#24)
+[← Back to slide 24 in the deck](https://servicenow.github.io/servicenowsdlc/#24) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-choose-your-own-adventure.ja.md)
 
 ## Objective
 

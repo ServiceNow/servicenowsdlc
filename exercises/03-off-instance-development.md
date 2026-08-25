@@ -5,7 +5,7 @@ slide: "18 — Off-instance development"
 
 # Off-instance development: AI Skills for Fluent
 
-[← Back to slide 18 in the deck](https://servicenow.github.io/servicenowsdlc/#18)
+[← Back to slide 18 in the deck](https://servicenow.github.io/servicenowsdlc/#18) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/03-off-instance-development.ja.md)
 
 ## Objective
 

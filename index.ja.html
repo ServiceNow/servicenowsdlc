@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI-Led SDLC Enablement</title>
+<title>AI-Led SDLC Enablement（日本語版）</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   /* Theme: midnight — palette injected below; see assets/themes.mjs */
   :root {
@@ -44,8 +44,8 @@
     --row-stripe: rgba(255,255,255,0.03);
     --sel-bg: #63DF4E;
     --sel-fg: #032D42;
-    --sans: "Plus Jakarta Sans", "ServiceNow Sans", system-ui, sans-serif;
-    --mono: "DM Mono", "Cascadia Code", monospace;
+    --sans: "Plus Jakarta Sans", "Noto Sans JP", "ServiceNow Sans", system-ui, sans-serif;
+    --mono: "DM Mono", "Noto Sans JP", "Cascadia Code", monospace;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -619,7 +619,7 @@
 </head>
 <body>
 
-<a class="lang-switch" href="index.ja.html">日本語</a>
+<a class="lang-switch" href="index.html">EN</a>
 <div id="parallax-bg"></div>
 
 <div class="deck" id="deck">
@@ -638,102 +638,113 @@
     <div class="kicker">AI-Led SDLC Enablement</div>
     <h1>SDLC on ServiceNow</h1>
     <p class="lead" style="margin-top:20px;">
-      End-to-end SDLC guide for building, testing, and releasing ServiceNow apps using the ServiceNow SDK, Git, ReleaseOps, and CI/CD pipelines.
+      ServiceNow SDK、Git、ReleaseOps、CI/CD パイプラインを使って ServiceNow アプリをビルド・テスト・リリースするための、エンドツーエンドの SDLC ガイドです。
     </p>
     <div class="agent-row" style="margin-top:40px;">
-      <div class="agent-chip"><span class="agent-dot" style="background:var(--accent)"></span> Build with Fluent + SDK</div>
-      <div class="agent-chip"><span class="agent-dot" style="background:var(--accent)"></span> Test with ATF + Test Agent</div>
-      <div class="agent-chip"><span class="agent-dot" style="background:var(--accent)"></span> Release with ReleaseOps</div>
+      <div class="agent-chip"><span class="agent-dot" style="background:var(--accent)"></span> Fluent + SDK でビルド</div>
+      <div class="agent-chip"><span class="agent-dot" style="background:var(--accent)"></span> ATF + Test Agent でテスト</div>
+      <div class="agent-chip"><span class="agent-dot" style="background:var(--accent)"></span> ReleaseOps でリリース</div>
     </div>
-    <p style="margin-top: 36px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.1em;">← → TO NAVIGATE &nbsp;·&nbsp; Ashwin Patti, Shelby Cohen</p>
+    <p style="margin-top: 36px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.1em;">← → で移動 &nbsp;·&nbsp; Ashwin Patti, Shelby Cohen</p>
   </div>
 
   <!-- SAFE HARBOR -->
+  <!--
+    TRANSLATOR NOTE: the paragraphs below are a PLACEHOLDER, not a translation.
+    This is SEC-boilerplate safe-harbor / forward-looking-statements language
+    (references Form 10-K / 10-Q). Replace with legal/IR-approved Japanese
+    text before this deck is used with customers. Original English source,
+    preserved here for whoever does that translation:
+
+    This presentation may contain "forward-looking" statements that are based on our beliefs and assumptions and on information currently available to us only as of the date of this presentation. Forward-looking statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially from those expected or implied by the forward-looking statements. Further information on these and other factors that could cause or contribute to such differences include, but are not limited to, those discussed in the section titled "Risk Factors," set forth in our most recent Annual Report on Form 10-K and Quarterly Report on Form 10-Q and in our other Securities and Exchange Commission filings. We cannot guarantee that we will achieve the plans, intentions, or expectations disclosed in our forward-looking statements, and you should not place undue reliance on our forward-looking statements.
+
+    The information on new products, features, or functionality is intended to outline our general product direction and should not be relied upon in making a purchasing decision, is for informational purposes only, and shall not be incorporated into any contract, and is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. The development, release, and timing of any features or functionality described for our products remains at our sole discretion. We undertake no obligation, and do not intend, to update the forward-looking statements.
+  -->
   <div class="slide" data-index="0.5">
     <div class="slide-label">Legal</div>
-    <h2>Safe harbor <span class="hl-blue">statement</span></h2>
-    <p style="max-width:900px; font-size:15.5px; line-height:1.8; color:var(--ink); text-align:left;">This presentation may contain "forward-looking" statements that are based on our beliefs and assumptions and on information currently available to us only as of the date of this presentation. Forward-looking statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially from those expected or implied by the forward-looking statements. Further information on these and other factors that could cause or contribute to such differences include, but are not limited to, those discussed in the section titled "Risk Factors," set forth in our most recent Annual Report on Form 10-K and Quarterly Report on Form 10-Q and in our other Securities and Exchange Commission filings. We cannot guarantee that we will achieve the plans, intentions, or expectations disclosed in our forward-looking statements, and you should not place undue reliance on our forward-looking statements.</p>
-    <p style="max-width:900px; font-size:15.5px; line-height:1.8; color:var(--ink); text-align:left; margin-top:16px;">The information on new products, features, or functionality is intended to outline our general product direction and should not be relied upon in making a purchasing decision, is for informational purposes only, and shall not be incorporated into any contract, and is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. The development, release, and timing of any features or functionality described for our products remains at our sole discretion. We undertake no obligation, and do not intend, to update the forward-looking statements.</p>
+    <h2>セーフハーバー<span class="hl-blue">条項</span></h2>
+    <p style="max-width:900px; font-size:15.5px; line-height:1.8; color:var(--ink); text-align:left;">［プレースホルダー：本スライドの日本語版セーフハーバー条項（将来の見通しに関する記述についての注意事項）は法務・IR承認前の暫定版です。発表前に、法務承認済みの正式な日本語文言に置き換えてください。］</p>
+    <p style="max-width:900px; font-size:15.5px; line-height:1.8; color:var(--ink); text-align:left; margin-top:16px; font-family: var(--mono); font-size: 12px; color: var(--ink-faint);">PLACEHOLDER — PENDING LEGAL/IR-APPROVED JAPANESE TRANSLATION. SEE COMMENT ABOVE FOR ENGLISH SOURCE TEXT.</p>
   </div>
 
   <!-- SLIDE 2: AGENDA -->
   <div class="slide" data-index="1">
-    <div class="slide-label">Agenda</div>
-    <h2>Today, start to <span class="hl-green">finish</span></h2>
-    <p class="lead" style="margin-top:-8px; margin-bottom:24px;">👋 <strong>Welcome</strong> — 10:00 AM – 5:00 PM. By the end of today, you'll build, test, source-control, and release a real app end-to-end.</p>
+    <div class="slide-label">アジェンダ</div>
+    <h2>今日を、<span class="hl-green">最初から最後まで</span></h2>
+    <p class="lead" style="margin-top:-8px; margin-bottom:24px;">👋 <strong>ようこそ</strong> — 10:00〜17:00。今日一日で、実際のアプリのビルド・テスト・ソース管理・リリースまでを一貫して体験します。</p>
     <ul class="clean" style="max-width:740px;">
-      <li><span class="icon">1️⃣</span><span>Foundations &amp; build-ready requirements</span></li>
-      <li><span class="icon">2️⃣</span><span>Build &amp; Test with Build Agent &amp; ATF</span></li>
-      <li><span class="icon">3️⃣</span><span>Lunch</span></li>
-      <li><span class="icon">4️⃣</span><span>Off-instance development</span></li>
-      <li><span class="icon">5️⃣</span><span>Source control</span></li>
+      <li><span class="icon">1️⃣</span><span>基礎知識と Build-ready な要件定義</span></li>
+      <li><span class="icon">2️⃣</span><span>Build Agent と ATF によるビルド＆テスト</span></li>
+      <li><span class="icon">3️⃣</span><span>ランチ</span></li>
+      <li><span class="icon">4️⃣</span><span>オフインスタンス開発</span></li>
+      <li><span class="icon">5️⃣</span><span>ソース管理</span></li>
       <li><span class="icon">6️⃣</span><span>ReleaseOps</span></li>
-      <li><span class="icon">7️⃣</span><span>Push to production &amp; choose-your-own adventure</span></li>
+      <li><span class="icon">7️⃣</span><span>本番環境へのプッシュ＆Choose-your-own adventure</span></li>
     </ul>
   </div>
 
   <!-- SLIDE 3: FOUNDATIONS — WHAT IS AN APP -->
   <div class="slide" data-index="2">
-    <div class="slide-label">Foundations</div>
-    <h2>What is an <span class="hl-green">"app"</span> in this model?</h2>
+    <div class="slide-label">基礎知識</div>
+    <h2>このモデルにおける<span class="hl-green">「アプリ」</span>とは？</h2>
     <div class="quote" style="margin-bottom:28px;">
-      "A persistent container, owned by you, for anything you build on the ServiceNow Platform. It has a name, a version, and a scope."
+      「あなたが所有し、ServiceNow プラットフォーム上で構築するすべてを収める永続的なコンテナ。名前、バージョン、スコープを持つ。」
     </div>
     <div class="cols cols-3" style="max-width:1080px;">
       <div class="card accent-green">
-        <h3>In scope</h3>
-        <p>Global apps, non-global apps, and ITSM implementations built via "move and edit" — all under one model.</p>
+        <h3>対象範囲</h3>
+        <p>グローバルアプリ、非グローバルアプリ、そして「move and edit」で構築された ITSM 実装 — すべてが同一モデルの下にある。</p>
       </div>
       <div class="card accent-red">
-        <h3>Out of scope</h3>
-        <p>Non-global customization without "move" ownership — that metadata has no persistent container; it stays under ServiceNow's ownership.</p>
+        <h3>対象外</h3>
+        <p>「move」による所有権を持たない非グローバルなカスタマイズ — そのメタデータには永続的なコンテナがなく、ServiceNow の所有権のままとなる。</p>
       </div>
       <div class="card accent-blue">
-        <h3>Why it matters</h3>
-        <p>One development model regardless of whether you're building net-new or customizing what's already there.</p>
+        <h3>重要な理由</h3>
+        <p>新規構築であっても既存のカスタマイズであっても、開発モデルは一つに統一される。</p>
       </div>
     </div>
   </div>
 
   <!-- SLIDE 4: FOUNDATIONS — THE PRESCRIBED STACK -->
   <div class="slide" data-index="3">
-    <div class="slide-label">Foundations</div>
-    <h2>The prescribed <span class="hl-purple">stack</span></h2>
+    <div class="slide-label">基礎知識</div>
+    <h2>推奨される<span class="hl-purple">スタック</span></h2>
     <div class="cols cols-4" style="max-width:1120px;">
-      <div class="flow-box"><span class="icon">🛠️</span><h4>SDK</h4><p>Build engine, compiles to deployable artifacts</p></div>
-      <div class="flow-box"><span class="icon">💻</span><h4>Studio</h4><p>IDE / prod code mode</p></div>
-      <div class="flow-box"><span class="icon">🌿</span><h4>Git</h4><p>Branch, PR, merge</p></div>
-      <div class="flow-box"><span class="icon">📦</span><h4>Sandbox</h4><p>Isolated dev instance</p></div>
-      <div class="flow-box"><span class="icon">🤖</span><h4>Build Agent</h4><p>AI-assisted authoring</p></div>
-      <div class="flow-box"><span class="icon">✅</span><h4>ATF</h4><p>Automated test framework</p></div>
-      <div class="flow-box"><span class="icon">🗄️</span><h4>App Repo</h4><p>Immutable artifact store</p></div>
-      <div class="flow-box"><span class="icon">🚀</span><h4>ReleaseOps</h4><p>Assess, approve, release</p></div>
+      <div class="flow-box"><span class="icon">🛠️</span><h4>SDK</h4><p>ビルドエンジン。デプロイ可能なアーティファクトへコンパイル</p></div>
+      <div class="flow-box"><span class="icon">💻</span><h4>Studio</h4><p>IDE / プロダクションコードモード</p></div>
+      <div class="flow-box"><span class="icon">🌿</span><h4>Git</h4><p>ブランチ、PR、マージ</p></div>
+      <div class="flow-box"><span class="icon">📦</span><h4>サンドボックス</h4><p>分離された開発用インスタンス</p></div>
+      <div class="flow-box"><span class="icon">🤖</span><h4>Build Agent</h4><p>AI 支援による実装</p></div>
+      <div class="flow-box"><span class="icon">✅</span><h4>ATF</h4><p>自動テストフレームワーク</p></div>
+      <div class="flow-box"><span class="icon">🗄️</span><h4>App Repo</h4><p>不変のアーティファクトストア</p></div>
+      <div class="flow-box"><span class="icon">🚀</span><h4>ReleaseOps</h4><p>アセス（評価）、承認、リリース</p></div>
     </div>
   </div>
 
   <!-- SLIDE 5: FOUNDATIONS — SDK + FLUENT -->
   <div class="slide" data-index="4">
-    <div class="slide-label">Foundations</div>
-    <h2>SDK + Fluent = <span class="hl-blue">source-driven development</span></h2>
+    <div class="slide-label">基礎知識</div>
+    <h2>SDK + Fluent = <span class="hl-blue">ソース駆動開発</span></h2>
     <div class="cols cols-2" style="max-width:1100px; align-items:start;">
       <div style="display:flex;flex-direction:column;gap:14px;">
         <div class="card accent-blue">
           <h3>Fluent</h3>
-          <p>A TypeScript DSL — <code>.now.ts</code> files define metadata with compile-time type checking and diagnostics, instead of clicking through forms.</p>
+          <p>TypeScript ベースの DSL — <code>.now.ts</code> ファイルでメタデータを定義し、フォームをクリックして回る代わりに、コンパイル時の型チェックと診断が得られる。</p>
         </div>
         <div class="card accent-green">
-          <h3>JS modules + React</h3>
-          <p>Business logic as typed <code>@servicenow/glide</code> imports; UI Pages built in React, Svelte, Vue, or Preact.</p>
+          <h3>JS モジュール + React</h3>
+          <p>ビジネスロジックは型付きの <code>@servicenow/glide</code> インポートとして記述。UI Page は React、Svelte、Vue、Preact で構築。</p>
         </div>
       </div>
       <div>
-        <p class="step-label first">THE INNER LOOP</p>
+        <p class="step-label first">インナーループ</p>
         <div class="terminal compact" style="margin-top:8px;">
           <div class="terminal-bar"><span class="terminal-dot r"></span><span class="terminal-dot y"></span><span class="terminal-dot g"></span></div>
           <div class="terminal-body"><span class="ln"><span class="prompt">$</span><span class="t">now-sdk</span> <span class="k">build</span></span>
-<span class="ln"><span class="c">  # instant diagnostics on your .now.ts files</span></span></div>
+<span class="ln"><span class="c">  # .now.ts ファイルの診断結果が即座に表示される</span></span></div>
         </div>
-        <p class="step-label tight">THEN INSTALL AND TEST</p>
+        <p class="step-label tight">続いてインストールとテスト</p>
         <div class="terminal compact" style="margin-top:8px;">
           <div class="terminal-bar"><span class="terminal-dot r"></span><span class="terminal-dot y"></span><span class="terminal-dot g"></span></div>
           <div class="terminal-body"><span class="ln"><span class="prompt">$</span><span class="t">now-sdk</span> <span class="k">install</span> <span class="v">--sandbox</span></span></div>
@@ -744,86 +755,86 @@
 
   <!-- SLIDE 6: FOUNDATIONS — GIT AS SOURCE OF TRUTH -->
   <div class="slide" data-index="5">
-    <div class="slide-label">Foundations</div>
-    <h2>Git is the <span class="hl-green">authoritative source of truth</span></h2>
+    <div class="slide-label">基礎知識</div>
+    <h2>Git は<span class="hl-green">正式なソース・オブ・トゥルース</span></h2>
     <div class="cols cols-2" style="max-width:1040px;">
       <div class="card accent-green">
         <h3>Git</h3>
-        <p>Branching, pull requests, line-by-line review, three-way conflict resolution, precise point-in-time rollback.</p>
+        <p>ブランチ分岐、プルリクエスト、行単位のレビュー、3-way コンフリクト解決、任意の時点への正確なロールバック。</p>
       </div>
       <div class="card accent-red">
-        <h3>Update sets</h3>
-        <p>XML transport artifact only — not built for collaboration, branching, or human-readable diffs.</p>
+        <h3>Update Set</h3>
+        <p>XML トランスポート用のアーティファクトに過ぎない — コラボレーション、ブランチ分岐、人間が読める diff のために作られたものではない。</p>
       </div>
     </div>
-    <p class="lead" style="margin-top:24px;">We'll go deeper on this contrast later in the Source Control module.</p>
+    <p class="lead" style="margin-top:24px;">この対比については、後ほどソース管理のモジュールで詳しく掘り下げます。</p>
   </div>
 
   <!-- SLIDE 7: BREAK -->
   <div class="slide hidden-slide" data-index="6">
-    <div class="kicker">Break</div>
+    <div class="kicker">休憩</div>
     <h1>☕</h1>
-    <p class="lead" style="margin-top:20px;">9:55 – 10:10 · Back for build-ready requirements</p>
+    <p class="lead" style="margin-top:20px;">9:55 – 10:10 · Build-ready な要件定義から再開します</p>
   </div>
 
   <!-- SLIDE 8: BUILD-READY REQUIREMENTS -->
   <div class="slide" data-index="7">
-    <div class="slide-label">Build-ready requirements</div>
-    <h2>Vague story vs. <span class="hl-green">build-ready</span> story</h2>
+    <div class="slide-label">Build-ready な要件定義</div>
+    <h2>曖昧なストーリー vs. <span class="hl-green">Build-ready</span> なストーリー</h2>
     <div class="cols cols-2" style="max-width:1100px; align-items:start;">
       <div class="card accent-red">
-        <h3>Vague</h3>
-        <p>"As a facilities user, I want to request maintenance on equipment so it gets fixed."</p>
+        <h3>曖昧</h3>
+        <p>「設備担当ユーザーとして、修理してもらうために設備のメンテナンスを依頼したい。」</p>
       </div>
       <div class="card accent-green">
         <h3>Build-ready</h3>
-        <p><strong>Entities:</strong> Maintenance Request, Equipment<br>
-        <strong>Roles:</strong> Requester (create/view own), Technician (view assigned, update status)<br>
-        <strong>Given–When–Then:</strong> Given a Requester submits a request for active Equipment, When they submit, Then a Maintenance Request is created in "New" state and assigned per routing rule.</p>
+        <p><strong>エンティティ：</strong> Maintenance Request、Equipment<br>
+        <strong>ロール：</strong> Requester（自分の依頼を作成・参照）、Technician（割り当てられた依頼を参照し、ステータスを更新）<br>
+        <strong>Given–When–Then：</strong> Requester が稼働中の Equipment に対して依頼を送信した場合（Given）、送信すると（When）、ルーティングルールに従って「New」状態の Maintenance Request が作成され割り当てられる（Then）。</p>
       </div>
     </div>
   </div>
 
   <!-- SLIDE 9: ACTIVITY — REWRITE THE STORY -->
   <div class="slide" data-index="8">
-    <div class="slide-label">Activity</div>
-    <h2>Your turn: <span class="hl-blue">rewrite it</span></h2>
+    <div class="slide-label">アクティビティ</div>
+    <h2>あなたの番です：<span class="hl-blue">書き直してみましょう</span></h2>
     <ul class="clean" style="max-width:800px;">
-      <li><span class="icon">1️⃣</span><span>5 minutes — as a team, rewrite a vague story into one with entities, roles/access, and Given-When-Then.</span></li>
-      <li><span class="icon">2️⃣</span><span>We present the requirements you'll actually build against this morning.</span></li>
-      <li><span class="icon">3️⃣</span><span>Goal: finish the core requirements first — add extensions only if you finish early.</span></li>
+      <li><span class="icon">1️⃣</span><span>5分間 — チームで、曖昧なストーリーをエンティティ・ロール/アクセス・Given-When-Then を備えたストーリーに書き直します。</span></li>
+      <li><span class="icon">2️⃣</span><span>今日の午前中に実際にビルドする要件を発表します。</span></li>
+      <li><span class="icon">3️⃣</span><span>目標：まずコアとなる要件を完成させること — 早く終わった場合のみ拡張を追加してください。</span></li>
     </ul>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/01-build-ready-requirements.md">Open the exercise →</a>
+      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/01-build-ready-requirements.ja.md">演習を開く →</a>
     </div>
   </div>
 
   <!-- WHY SANDBOXES -->
   <div class="slide" data-index="8.5">
-    <div class="slide-label">Why sandboxes</div>
-    <h2>One instance, <span class="hl-green">many developers</span>, zero collisions</h2>
-    <div class="quote" style="margin-bottom:24px;">Agentic tools change a lot of metadata fast. On a shared instance, that's last-write-wins between developers — a sandbox contains the blast radius, and Git reconciles it.</div>
+    <div class="slide-label">サンドボックスを使う理由</div>
+    <h2>1つのインスタンス、<span class="hl-green">複数の開発者</span>、衝突ゼロ</h2>
+    <div class="quote" style="margin-bottom:24px;">エージェント型ツールは、大量のメタデータを高速に変更します。共有インスタンス上では、開発者間で最後に書き込んだものが勝つ（last-write-wins）状態になりますが、サンドボックスが影響範囲を閉じ込め、Git がそれを統合します。</div>
     <div class="flow" style="margin-bottom:20px;">
-      <div class="flow-box"><span class="icon">🏢</span><h4>Dev instance</h4><p>Shared, non-prod</p></div>
+      <div class="flow-box"><span class="icon">🏢</span><h4>開発用インスタンス</h4><p>共有、非本番</p></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">📦</span><h4>Your sandbox</h4><p>Feature branch lives here</p></div>
+      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">📦</span><h4>あなたのサンドボックス</h4><p>フィーチャーブランチはここに存在</p></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-box"><span class="icon">🧪</span><h4>Test instance</h4><p>Separate from dev</p></div>
+      <div class="flow-box"><span class="icon">🧪</span><h4>テスト用インスタンス</h4><p>開発用とは別</p></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-box"><span class="icon">🏭</span><h4>Production</h4><p>Separate from test</p></div>
+      <div class="flow-box"><span class="icon">🏭</span><h4>本番環境</h4><p>テスト用とは別</p></div>
     </div>
-    <p class="lead">Allocate a sandbox before you start, create your feature branch inside it, decommission it when you're done.</p>
+    <p class="lead">開始前にサンドボックスを割り当て、その中でフィーチャーブランチを作成し、作業が終わったら廃棄しましょう。</p>
   </div>
 
   <!-- SLIDE 10: SETUP TIME -->
   <div class="slide" data-index="9">
-    <div class="slide-label">Setup</div>
-    <h2>Get your <span class="hl-blue">sandbox</span> ready</h2>
+    <div class="slide-label">セットアップ</div>
+    <h2><span class="hl-blue">サンドボックス</span>を準備しましょう</h2>
     <div class="cols cols-2" style="max-width:1080px; align-items:start;">
       <ul class="clean">
-        <li><span class="icon">✅</span><span>Confirm you can log in to your assigned instance</span></li>
-        <li><span class="icon">✅</span><span>Confirm your developer sandbox is allocated</span></li>
-        <li><span class="icon">✅</span><span>Create a feature branch off <code>main</code></span></li>
+        <li><span class="icon">✅</span><span>割り当てられたインスタンスにログインできることを確認</span></li>
+        <li><span class="icon">✅</span><span>開発用サンドボックスが割り当てられていることを確認</span></li>
+        <li><span class="icon">✅</span><span><code>main</code> からフィーチャーブランチを作成</span></li>
       </ul>
       <div class="terminal compact">
         <div class="terminal-bar"><span class="terminal-dot r"></span><span class="terminal-dot y"></span><span class="terminal-dot g"></span></div>
@@ -835,20 +846,20 @@
   <!-- WELCOME TO BUILD AGENT -->
   <div class="slide" data-index="9.2">
     <div class="slide-label">Build Agent</div>
-    <h2>What is <span class="hl-green">Build Agent</span>?</h2>
-    <div class="quote" style="margin-bottom:24px;">Go from a plain-language prompt to a working app — in the same session, on the same instance you'll build in today.</div>
+    <h2><span class="hl-green">Build Agent</span> とは？</h2>
+    <div class="quote" style="margin-bottom:24px;">平易な言葉によるプロンプトから、動作するアプリへ — 今日ビルドするのと同じセッション、同じインスタンス上で。</div>
     <div class="cols cols-3" style="max-width:1120px;">
       <div class="card accent-blue">
-        <h3>Conversational</h3>
-        <p>Describe what you want in plain language; Build Agent proposes the entities, roles, and logic — no forms to click through.</p>
+        <h3>対話的</h3>
+        <p>やりたいことを平易な言葉で説明すると、Build Agent がエンティティ・ロール・ロジックを提案します — フォームをクリックして回る必要はありません。</p>
       </div>
       <div class="card accent-green">
-        <h3>Platform-native</h3>
-        <p>It builds real Fluent metadata objects in your app's scope — not a disposable prototype you throw away later.</p>
+        <h3>プラットフォームネイティブ</h3>
+        <p>あなたのアプリのスコープ内に、実際の Fluent メタデータオブジェクトを構築します — 後で捨てる使い捨てのプロトタイプではありません。</p>
       </div>
       <div class="card accent-purple">
-        <h3>Full-loop</h3>
-        <p>It generates the app <strong>and</strong> its ATF tests in the same session — which is what we'll build on next.</p>
+        <h3>フルループ</h3>
+        <p>同じセッションでアプリ<strong>と</strong>その ATF テストの両方を生成します — これが次にビルドしていく内容です。</p>
       </div>
     </div>
   </div>
@@ -856,35 +867,35 @@
   <!-- BUILD AGENT IN SERVICENOW STUDIO -->
   <div class="slide" data-index="9.3">
     <div class="slide-label">Build Agent</div>
-    <h2>Build Agent in <span class="hl-green">ServiceNow Studio</span></h2>
-    <img src="assets/images/build-agent-studio.png" alt="Build Agent chat panel inside ServiceNow Studio, showing it explain a flow's logic in plain language and suggest fixes for a bug and a scaling issue it found" style="width:100%; max-width:1120px; border-radius:8px; border:1px solid var(--border);">
-    <p class="lead" style="margin-top:20px;">It reads your app's existing metadata, explains what a flow actually does in plain language, and proposes concrete fixes — grounded in your instance, not a generic answer.</p>
+    <h2><span class="hl-green">ServiceNow Studio</span> 内の Build Agent</h2>
+    <img src="assets/images/build-agent-studio.png" alt="ServiceNow Studio 内の Build Agent チャットパネル。フローのロジックを平易な言葉で説明し、見つかったバグとスケーリング問題の修正案を提示している画面（英語版 UI）" style="width:100%; max-width:1120px; border-radius:8px; border:1px solid var(--border);">
+    <p class="lead" style="margin-top:20px;">アプリの既存のメタデータを読み取り、フローが実際に何をしているかを平易な言葉で説明し、具体的な修正案を提示します — 汎用的な回答ではなく、あなたのインスタンスに基づいたものです。</p>
   </div>
 
   <!-- BUILD AGENT + ATF -->
   <div class="slide" data-index="9.5">
     <div class="slide-label">Build Agent + ATF</div>
-    <h2>Tests live <span class="hl-green">in the dev loop</span>, not bolted on</h2>
-    <div class="quote" style="margin-bottom:24px;">Tests live in app scope, authored while you build — not added after the fact.</div>
+    <h2>テストは後付けではなく<span class="hl-green">開発ループの中に</span>存在する</h2>
+    <div class="quote" style="margin-bottom:24px;">テストはアプリのスコープ内に存在し、ビルドしながら作成されます — 後から追加するものではありません。</div>
     <ul class="clean" style="max-width:740px;">
-      <li><span class="icon">1️⃣</span><span>Build Agent uses Test Agent to generate test cases from natural language.</span></li>
-      <li><span class="icon">2️⃣</span><span>Run them, let Test Agent triage a failure, and fix it.</span></li>
+      <li><span class="icon">1️⃣</span><span>Build Agent は Test Agent を使い、自然言語からテストケースを生成します。</span></li>
+      <li><span class="icon">2️⃣</span><span>実行し、失敗があれば Test Agent にトリアージさせ、修正します。</span></li>
     </ul>
   </div>
 
   <!-- SLIDE 11: CODE — BUILD WITH BUILD AGENT + ATF -->
   <div class="slide" data-index="10">
-    <div class="slide-label">Build + test (exercise)</div>
-    <h2>Build + test the <span class="hl-green">maintenance app</span></h2>
+    <div class="slide-label">ビルド＋テスト（演習）</div>
+    <h2><span class="hl-green">メンテナンスアプリ</span>のビルド＋テスト</h2>
     <div class="cols cols-2" style="max-width:1100px; align-items:start;">
       <ul class="clean">
-        <li><span class="icon">👀</span><span>First, see the finished app — what you're building toward.</span></li>
-        <li><span class="icon">💬</span><span>Prompt Build Agent with the natural-language description from the whitepaper.</span></li>
-        <li><span class="icon">🧑‍🏫</span><span>We'll float table-to-table throughout — flag us down anytime.</span></li>
+        <li><span class="icon">👀</span><span>まず、完成したアプリ — 目指すべきゴール — を見てみましょう。</span></li>
+        <li><span class="icon">💬</span><span>ホワイトペーパーの自然言語による説明を使って Build Agent にプロンプトを与えます。</span></li>
+        <li><span class="icon">🧑‍🏫</span><span>私たちは各テーブルを巡回します — いつでもお気軽にお呼びください。</span></li>
       </ul>
       <div>
-        <p class="step-label first">OPTIONAL · FOR ARCHITECTS</p>
-        <pre><span class="c">// the Fluent code Build Agent writes under the hood</span>
+        <p class="step-label first">任意・アーキテクト向け</p>
+        <pre><span class="c">// Build Agent が裏で生成する Fluent コード</span>
 <span class="k">export const</span> <span class="h">MaintenanceRequest</span> = <span class="k">Table</span>({
   <span class="v">label</span>: <span class="s">'Maintenance Request'</span>,
   <span class="v">fields</span>: { <span class="t">equipment</span>: <span class="k">Reference</span>(<span class="s">'equipment'</span>) }
@@ -892,290 +903,290 @@
       </div>
     </div>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/02-build-maintenance-app.md">Open the exercise →</a>
+      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/02-build-maintenance-app.ja.md">演習を開く →</a>
     </div>
   </div>
 
   <!-- SLIDE 12: Q&A -->
   <div class="slide hidden-slide" data-index="11">
     <div class="kicker">Q&amp;A</div>
-    <h1>Questions?</h1>
+    <h1>質問はありますか？</h1>
     <p class="lead" style="margin-top:20px;">11:30 – 12:00</p>
   </div>
 
   <!-- SLIDE 13: LUNCH -->
   <div class="slide" data-index="12">
-    <div class="kicker">Lunch</div>
+    <div class="kicker">ランチ</div>
     <h1>🍽️</h1>
-    <p class="lead" style="margin-top:20px;">Back soon to re-anchor</p>
+    <p class="lead" style="margin-top:20px;">再開まで少々お待ちください</p>
   </div>
 
   <!-- SLIDE 14: RE-ANCHOR -->
   <div class="slide" data-index="13">
-    <div class="slide-label">Re-anchor</div>
-    <h2>Where we <span class="hl-blue">left off</span></h2>
+    <div class="slide-label">振り返り</div>
+    <h2>ここまでの<span class="hl-blue">進捗</span></h2>
     <div class="flow" style="margin-bottom:20px;">
-      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">✅</span><h4>Build</h4><p>Done</p></div>
+      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">✅</span><h4>ビルド</h4><p>完了</p></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">✅</span><h4>Test</h4><p>Done</p></div>
+      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">✅</span><h4>テスト</h4><p>完了</p></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-box"><span class="icon">🗂️</span><h4>Manage</h4><p>PR, merge, publish</p></div>
+      <div class="flow-box"><span class="icon">🗂️</span><h4>管理</h4><p>PR、マージ、公開</p></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-box"><span class="icon">🚀</span><h4>Release</h4><p>ReleaseOps, deploy</p></div>
+      <div class="flow-box"><span class="icon">🚀</span><h4>リリース</h4><p>ReleaseOps、デプロイ</p></div>
     </div>
-    <p class="lead">Your app is built and tested. Next: source control and release.</p>
+    <p class="lead">アプリはビルドとテストが完了しました。次はソース管理とリリースです。</p>
   </div>
 
   <!-- SLIDE 16: Q&A -->
   <div class="slide hidden-slide" data-index="15">
     <div class="kicker">Q&amp;A</div>
-    <h1>Questions?</h1>
+    <h1>質問はありますか？</h1>
     <p class="lead" style="margin-top:20px;">1:45 – 2:00</p>
   </div>
 
   <!-- SLIDE 17: OFF-INSTANCE DEVELOPMENT -->
   <div class="slide" data-index="16">
-    <div class="slide-label">Off-instance development (exercise)</div>
-    <h2>The same app, <span class="hl-blue">off the platform</span></h2>
+    <div class="slide-label">オフインスタンス開発（演習）</div>
+    <h2>同じアプリを、<span class="hl-blue">プラットフォームの外で</span></h2>
     <ul class="clean" style="max-width:800px;">
-      <li><span class="icon">💻</span><span>Same Fluent project, opened in VS Code or your terminal instead of Studio.</span></li>
-      <li><span class="icon">🤖</span><span>Claude Code (or Cursor/Codex) in place of Build Agent — same SDK underneath.</span></li>
-      <li><span class="icon">🔁</span><span><code>now-sdk build</code> / <code>now-sdk install</code> work identically, on- or off-platform.</span></li>
+      <li><span class="icon">💻</span><span>同じ Fluent プロジェクトを、Studio の代わりに VS Code やターミナルで開きます。</span></li>
+      <li><span class="icon">🤖</span><span>Build Agent の代わりに Claude Code（または Cursor/Codex）を使用 — 裏側の SDK は同じです。</span></li>
+      <li><span class="icon">🔁</span><span><code>now-sdk build</code> / <code>now-sdk install</code> は、プラットフォーム上でもオフでも同一に動作します。</span></li>
     </ul>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/03-off-instance-development.md">Open the exercise →</a>
+      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/03-off-instance-development.ja.md">演習を開く →</a>
     </div>
   </div>
 
   <!-- SLIDE 18: SOURCE CONTROL -->
   <div class="slide" data-index="17">
-    <div class="slide-label">Source control</div>
-    <h2>Where Git <span class="hl-green">goes further</span></h2>
+    <div class="slide-label">ソース管理</div>
+    <h2>Git が<span class="hl-green">さらに一歩進んでいる点</span></h2>
     <div class="tbl-wrap" style="margin-bottom:22px;">
       <table>
-        <tr><th>Capability</th><th>Git</th><th>Update sets</th></tr>
-        <tr><td>Branching &amp; isolation</td><td>Yes — sandboxes + feature branches</td><td>No — shared, last-write-wins</td></tr>
-        <tr><td>Conflict resolution</td><td>Line-by-line, three-way merge</td><td>Manual, record-by-record</td></tr>
-        <tr><td>Review</td><td>Pull requests</td><td>None</td></tr>
-        <tr><td>Role</td><td>Source control</td><td>Transport artifact only</td></tr>
+        <tr><th>機能</th><th>Git</th><th>Update Set</th></tr>
+        <tr><td>ブランチ分岐と分離</td><td>可能 — サンドボックス＋フィーチャーブランチ</td><td>不可 — 共有・last-write-wins</td></tr>
+        <tr><td>コンフリクト解決</td><td>行単位、3-way マージ</td><td>手動、レコード単位</td></tr>
+        <tr><td>レビュー</td><td>プルリクエスト</td><td>なし</td></tr>
+        <tr><td>役割</td><td>ソース管理</td><td>トランスポート用アーティファクトのみ</td></tr>
       </table>
     </div>
   </div>
 
   <!-- SLIDE 19: SOURCE CONTROL EXERCISE -->
   <div class="slide" data-index="18">
-    <div class="slide-label">Source control (exercise)</div>
-    <h2>Exercise: <span class="hl-green">ship it with Git</span></h2>
+    <div class="slide-label">ソース管理（演習）</div>
+    <h2>演習：<span class="hl-green">Git でリリースする</span></h2>
     <ul class="clean" style="max-width:880px;">
-      <li><span class="icon">1️⃣</span><span><strong>Off instance (GitHub):</strong> push branch → open PR → review → merge → publish pre-release to the App Repo.</span></li>
-      <li><span class="icon">2️⃣</span><span><strong>On instance:</strong> open the instance and pull the changes in SNS / the IDE using git.</span></li>
+      <li><span class="icon">1️⃣</span><span><strong>オフインスタンス（GitHub）：</strong> ブランチを push → PR を作成 → レビュー → マージ → App Repo にプレリリースを公開。</span></li>
+      <li><span class="icon">2️⃣</span><span><strong>オンインスタンス：</strong> インスタンスを開き、SNS / IDE で git を使って変更を pull。</span></li>
     </ul>
     <div class="card accent-green" style="margin-top:24px; max-width:880px;">
-      <h3>📌 Prescriptive point</h3>
-      <p>Git does branching, review, and line-by-line conflict resolution. Update sets cannot.</p>
+      <h3>📌 押さえておきたい点</h3>
+      <p>Git はブランチ分岐・レビュー・行単位のコンフリクト解決ができます。Update Set にはできません。</p>
     </div>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/04-source-control.md">Open the exercise →</a>
+      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/04-source-control.ja.md">演習を開く →</a>
     </div>
   </div>
 
   <!-- SLIDE 20: BREAK -->
   <div class="slide hidden-slide" data-index="19">
-    <div class="kicker">Break</div>
+    <div class="kicker">休憩</div>
     <h1>☕</h1>
-    <p class="lead" style="margin-top:20px;">3:00 – 3:15 · Back for ReleaseOps</p>
+    <p class="lead" style="margin-top:20px;">3:00 – 3:15 · ReleaseOps から再開します</p>
   </div>
 
   <!-- RELEASEOPS: THE PIPELINE -->
   <div class="slide" data-index="19.5">
     <div class="slide-label">ReleaseOps</div>
-    <h2>Two objects, <span class="hl-blue">one pipeline</span></h2>
+    <h2>2つのオブジェクト、<span class="hl-blue">1つのパイプライン</span></h2>
     <div class="cols cols-2" style="max-width:1040px; align-items:start;">
       <div class="card accent-blue">
         <h3>Deployment Request</h3>
-        <p>The payload container. Promote an Update Set into one, then mark it "Ready to Assess" — the assessment playbook (Instance Scan → Move to Test → Run ATF) runs against it.</p>
+        <p>ペイロードを格納するコンテナ。Update Set を Deployment Request にプロモートし、「Ready to Assess」にマークすると — アセスメントの手順（Instance Scan → Move to Test → Run ATF）がそれに対して実行されます。</p>
       </div>
       <div class="card accent-green">
         <h3>Release</h3>
-        <p>The record that moves a cleared Deployment Request to production — On Demand (immediately) or Scheduled (batched at a datetime). Lives on the ReleaseOps controller environment, typically production.</p>
+        <p>クリアされた Deployment Request を本番環境へ移すレコード — On Demand（即時）または Scheduled（指定日時にまとめて実行）。ReleaseOps のコントローラー環境（通常は本番環境）上に存在します。</p>
       </div>
     </div>
-    <p class="lead" style="margin-top:24px;">Two paths get you here: promote an Update Set into a Deployment Request (this lab), or trigger it from Git via the CI/CD REST APIs with an approval gate (see choose-your-own-adventure).</p>
+    <p class="lead" style="margin-top:24px;">ここに到達する経路は2つあります：Update Set を Deployment Request にプロモートする方法（本ラボの方法）、または承認ゲート付きで Git から CI/CD REST API 経由でトリガーする方法（choose-your-own-adventure を参照）。</p>
   </div>
 
   <!-- SLIDE 21: RELEASEOPS -->
   <div class="slide" data-index="20">
-    <div class="slide-label">ReleaseOps (exercise)</div>
-    <h2>The quality-control <span class="hl-blue">model</span></h2>
+    <div class="slide-label">ReleaseOps（演習）</div>
+    <h2>品質管理の<span class="hl-blue">モデル</span></h2>
     <div class="flow" style="margin-bottom:24px;">
-      <div class="flow-box"><span class="icon">🔍</span><h4>Instance Scan</h4><p>Static policy check, on the dev instance</p></div>
+      <div class="flow-box"><span class="icon">🔍</span><h4>Instance Scan</h4><p>開発用インスタンス上での静的ポリシーチェック</p></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-box"><span class="icon">📥</span><h4>Move to test</h4><p>Assessment begins</p></div>
+      <div class="flow-box"><span class="icon">📥</span><h4>Move to Test</h4><p>アセスメント開始</p></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-box"><span class="icon">✅</span><h4>Run ATF</h4><p>Functional coverage</p></div>
+      <div class="flow-box"><span class="icon">✅</span><h4>Run ATF</h4><p>機能面のカバレッジ</p></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">🚀</span><h4>Ready for Deploy</h4><p>Cleared for release</p></div>
+      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">🚀</span><h4>Ready for Deploy</h4><p>リリースの準備完了</p></div>
     </div>
-    <p class="step-label first">LAB: CREATE A DEPLOYMENT REQUEST, MARK "READY TO ASSESS," WATCH IT RUN</p>
+    <p class="step-label first">ラボ：Deployment Request を作成し、「Ready to Assess」にマークして実行を確認しましょう</p>
     <div class="cols cols-3" style="max-width:1040px; margin-top:14px;">
-      <div class="card"><h3>Retest</h3><p>Rerun the assessment as-is.</p></div>
-      <div class="card accent-red"><h3>Need Code Change</h3><p>Assessment is invalidated — the Deployment Request returns to Draft and needs a new payload.</p></div>
-      <div class="card accent-green"><h3>Sign Off</h3><p>Manual approval to proceed.</p></div>
+      <div class="card"><h3>Retest</h3><p>そのままアセスメントを再実行。</p></div>
+      <div class="card accent-red"><h3>Need Code Change</h3><p>アセスメントは無効化されます — Deployment Request は Draft に戻り、新しいペイロードが必要になります。</p></div>
+      <div class="card accent-green"><h3>Sign Off</h3><p>手動承認で先に進めます。</p></div>
     </div>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-releaseops.md">Open the exercise →</a>
+      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-releaseops.ja.md">演習を開く →</a>
     </div>
   </div>
 
   <!-- SLIDE 22: Q&A -->
   <div class="slide hidden-slide" data-index="21">
     <div class="kicker">Q&amp;A</div>
-    <h1>Questions?</h1>
+    <h1>質問はありますか？</h1>
     <p class="lead" style="margin-top:20px;">3:45 – 4:00</p>
   </div>
 
   <!-- SLIDE 23: PUSH TO PRODUCTION -->
   <div class="slide" data-index="22">
-    <div class="slide-label">Push to production (demo only)</div>
-    <h2>Promote, deploy, and <span class="hl-orange">roll back</span> if needed</h2>
+    <div class="slide-label">本番環境へのプッシュ（デモのみ）</div>
+    <h2>プロモート、デプロイ、そして必要であれば<span class="hl-orange">ロールバック</span></h2>
     <ul class="clean" style="max-width:820px;">
-      <li><span class="icon">1️⃣</span><span>Promote the Deployment Request to a release.</span></li>
-      <li><span class="icon">2️⃣</span><span>Push to "production."</span></li>
-      <li><span class="icon">3️⃣</span><span>Roll back within the fixed window — only when installed from the Application Repository.</span></li>
+      <li><span class="icon">1️⃣</span><span>Deployment Request を Release にプロモートします。</span></li>
+      <li><span class="icon">2️⃣</span><span>「本番環境」へプッシュします。</span></li>
+      <li><span class="icon">3️⃣</span><span>Application Repository からインストールした場合のみ、決められた期間内でロールバックできます。</span></li>
     </ul>
   </div>
 
   <!-- SLIDE 24: CHOOSE YOUR OWN ADVENTURE -->
   <div class="slide" data-index="23">
-    <div class="slide-label">Choose your own adventure (exercise)</div>
-    <h2>Pick a track, go <span class="hl-green">deep</span></h2>
+    <div class="slide-label">Choose your own adventure（演習）</div>
+    <h2>トラックを選んで<span class="hl-green">深く掘る</span></h2>
     <div class="cols" style="max-width:1300px; grid-template-columns: repeat(5, 1fr);">
-      <div class="card accent-blue"><h3>Fluent deep dive</h3><p>More metadata types, transform/sync from UI builders</p></div>
-      <div class="card accent-green"><h3>Testing deep dive</h3><p>Test Agent triage, Cloud Runner, regression suites</p></div>
-      <div class="card accent-purple"><h3>CI/CD APIs</h3><p><code>now-sdk cicd</code>, Git-triggered pipelines, approval gates</p></div>
-      <div class="card accent-orange"><h3>MCP integrations</h3><p>Connect Figma/Miro via Connect Hub, build straight from the spec</p></div>
-      <div class="card accent-red"><h3>Custom rules</h3><p>Rules that change language/terminology in Build Agent output</p></div>
+      <div class="card accent-blue"><h3>Fluent 深掘り</h3><p>より多くのメタデータ型、UI ビルダーからの transform/sync</p></div>
+      <div class="card accent-green"><h3>テスト深掘り</h3><p>Test Agent によるトリアージ、Cloud Runner、回帰スイート</p></div>
+      <div class="card accent-purple"><h3>CI/CD API</h3><p><code>now-sdk cicd</code>、Git トリガーのパイプライン、承認ゲート</p></div>
+      <div class="card accent-orange"><h3>MCP 連携</h3><p>Connect Hub 経由で Figma/Miro を連携し、仕様から直接ビルド</p></div>
+      <div class="card accent-red"><h3>カスタムルール</h3><p>Build Agent の出力の言葉・用語を変更するルール</p></div>
     </div>
-    <p class="lead" style="margin-top:24px;">Explore whichever track interests you most — we're here for questions. Head to the exercise for ideas to get started.</p>
+    <p class="lead" style="margin-top:24px;">興味のあるトラックを自由に探索してください — ご質問はいつでもどうぞ。始め方のヒントは演習を参照してください。</p>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-choose-your-own-adventure.md">Open the exercise →</a>
+      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-choose-your-own-adventure.ja.md">演習を開く →</a>
     </div>
   </div>
 
   <!-- SLIDE 25: WRAP -->
   <div class="slide" data-index="24">
-    <div class="slide-label">Wrap</div>
-    <h2>One picture, <span class="hl-green">your app</span> traced across it</h2>
+    <div class="slide-label">まとめ</div>
+    <h2>1枚の絵にたどる、<span class="hl-green">あなたのアプリ</span></h2>
     <div class="flow" style="margin-bottom:24px;">
-      <div class="flow-box"><span class="icon">📝</span><h4>Plan</h4></div>
+      <div class="flow-box"><span class="icon">📝</span><h4>計画</h4></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-box"><span class="icon">🛠️</span><h4>Build</h4></div>
+      <div class="flow-box"><span class="icon">🛠️</span><h4>ビルド</h4></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-box"><span class="icon">🧪</span><h4>Test</h4></div>
+      <div class="flow-box"><span class="icon">🧪</span><h4>テスト</h4></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-box"><span class="icon">🗂️</span><h4>Manage</h4></div>
+      <div class="flow-box"><span class="icon">🗂️</span><h4>管理</h4></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">🚀</span><h4>Release</h4></div>
+      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">🚀</span><h4>リリース</h4></div>
     </div>
-    <div class="quote">Update sets group work and transport it — nothing more. They are not source control, and they don't merge.</div>
-    <p style="margin-top: 28px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.1em;">QUESTIONS? PING Ashwin Patti, Shelby Cohen.</p>
+    <div class="quote">Update Set は作業をまとめて運ぶだけのものです — それ以上ではありません。ソース管理ではなく、マージもできません。</div>
+    <p style="margin-top: 28px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.1em;">ご質問は Ashwin Patti、Shelby Cohen まで。</p>
   </div>
 
   <!-- SLIDE 26: THANK YOU -->
   <div class="slide" data-index="25">
-    <div class="kicker">Thank You</div>
+    <div class="kicker">ありがとうございました</div>
     <h1>🙏</h1>
-    <p class="lead" style="margin-top:20px;">Full SDLC guide, reference, and troubleshooting:<br><a href="https://servicenow.github.io/sdk/guides/sdlc-guide" style="color:var(--c-blue);">servicenow.github.io/sdk/guides/sdlc-guide</a></p>
+    <p class="lead" style="margin-top:20px;">SDLC ガイド全文、リファレンス、トラブルシューティング：<br><a href="https://servicenow.github.io/sdk/guides/sdlc-guide" style="color:var(--c-blue);">servicenow.github.io/sdk/guides/sdlc-guide</a></p>
   </div>
 
   <!-- BONUS: BUILD AGENT — UNIFIED SNS + SPEC MODE -->
   <div class="slide" data-index="26">
-    <div class="slide-label">Bonus</div>
-    <h2>Build Agent — unified <span class="hl-green">SNS &amp; Spec Mode</span></h2>
+    <div class="slide-label">ボーナス</div>
+    <h2>Build Agent — 統合された <span class="hl-green">SNS &amp; Spec Mode</span></h2>
     <ul class="clean" style="max-width:800px;">
-      <li><span class="icon">📝</span><span>TODO: what changes for users once SNS and Spec Mode are unified into one authoring surface.</span></li>
-      <li><span class="icon">📝</span><span>TODO: how this affects the workflow taught today (Build Agent + ATF, off-instance dev).</span></li>
-      <li><span class="icon">📝</span><span>TODO: demo or screenshot, if available.</span></li>
+      <li><span class="icon">📝</span><span>TODO：SNS と Spec Mode が1つの編集画面に統合されると、ユーザーにとって何が変わるか。</span></li>
+      <li><span class="icon">📝</span><span>TODO：今日教えたワークフロー（Build Agent + ATF、オフインスタンス開発）にどう影響するか。</span></li>
+      <li><span class="icon">📝</span><span>TODO：デモまたはスクリーンショット（可能であれば）。</span></li>
     </ul>
-    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL (SLIDE 2). PRESENTER TO FILL IN BEFORE SESSION.</p>
+    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL（SLIDE 2）. PRESENTER TO FILL IN BEFORE SESSION.</p>
   </div>
 
   <!-- BONUS: WHAT'S COMING IN THE SEPTEMBER RELEASE -->
   <div class="slide" data-index="27">
-    <div class="slide-label">Bonus</div>
-    <h2>What's coming in the <span class="hl-blue">September release</span></h2>
+    <div class="slide-label">ボーナス</div>
+    <h2><span class="hl-blue">9月リリース</span>で追加される内容</h2>
     <ul class="clean" style="max-width:800px;">
-      <li><span class="icon">📝</span><span>TODO: headline feature #1.</span></li>
-      <li><span class="icon">📝</span><span>TODO: headline feature #2.</span></li>
-      <li><span class="icon">📝</span><span>TODO: headline feature #3.</span></li>
+      <li><span class="icon">📝</span><span>TODO：主要機能 #1。</span></li>
+      <li><span class="icon">📝</span><span>TODO：主要機能 #2。</span></li>
+      <li><span class="icon">📝</span><span>TODO：主要機能 #3。</span></li>
     </ul>
-    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL (SLIDE 2). PRESENTER TO FILL IN BEFORE SESSION.</p>
+    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL（SLIDE 2）. PRESENTER TO FILL IN BEFORE SESSION.</p>
   </div>
 
   <!-- BONUS: ATF IN SPEC MODE -->
   <div class="slide" data-index="28">
-    <div class="slide-label">Bonus</div>
-    <h2>ATF in <span class="hl-purple">Spec Mode</span></h2>
+    <div class="slide-label">ボーナス</div>
+    <h2><span class="hl-purple">Spec Mode</span> における ATF</h2>
     <ul class="clean" style="max-width:800px;">
-      <li><span class="icon">📝</span><span>TODO: how ATF authoring changes inside Spec Mode vs. today's Build Agent + Test Agent flow.</span></li>
-      <li><span class="icon">📝</span><span>TODO: what stays the same (e.g. the ~13 step types) vs. what's new.</span></li>
-      <li><span class="icon">📝</span><span>TODO: example prompt, if available.</span></li>
+      <li><span class="icon">📝</span><span>TODO：今日の Build Agent + Test Agent のフローと比べて、Spec Mode 内での ATF 作成がどう変わるか。</span></li>
+      <li><span class="icon">📝</span><span>TODO：何が変わらないか（例：約13種類のステップタイプ）と、何が新しいか。</span></li>
+      <li><span class="icon">📝</span><span>TODO：サンプルプロンプト（可能であれば）。</span></li>
     </ul>
-    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL (SLIDE 2). PRESENTER TO FILL IN BEFORE SESSION.</p>
+    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL（SLIDE 2）. PRESENTER TO FILL IN BEFORE SESSION.</p>
   </div>
 
   <!-- BONUS: ATF ON EXISTING LEGACY APPS -->
   <div class="slide" data-index="29">
-    <div class="slide-label">Bonus</div>
-    <h2>Generating ATF tests on <span class="hl-orange">existing legacy apps</span></h2>
+    <div class="slide-label">ボーナス</div>
+    <h2><span class="hl-orange">既存のレガシーアプリ</span>への ATF テスト生成</h2>
     <ul class="clean" style="max-width:800px;">
-      <li><span class="icon">📝</span><span>TODO: how this differs from today's workshop flow (built on a net-new app).</span></li>
-      <li><span class="icon">📝</span><span>TODO: any brownfield parallel worth drawing (e.g. <code>now-sdk init --from</code>).</span></li>
-      <li><span class="icon">📝</span><span>TODO: known limitations for legacy/complex apps.</span></li>
+      <li><span class="icon">📝</span><span>TODO：今日のワークショップのフロー（新規アプリでの構築）とどう異なるか。</span></li>
+      <li><span class="icon">📝</span><span>TODO：ブラウンフィールドとの類似点（例：<code>now-sdk init --from</code>）。</span></li>
+      <li><span class="icon">📝</span><span>TODO：レガシー／複雑なアプリにおける既知の制約。</span></li>
     </ul>
-    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL (SLIDE 2). PRESENTER TO FILL IN BEFORE SESSION.</p>
+    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL（SLIDE 2）. PRESENTER TO FILL IN BEFORE SESSION.</p>
   </div>
 
   <!-- BONUS: BUILD AGENT + MCP -->
   <div class="slide" data-index="30">
-    <div class="slide-label">Bonus</div>
+    <div class="slide-label">ボーナス</div>
     <h2>Build Agent + <span class="hl-blue">MCP</span></h2>
-    <div class="quote" style="margin-bottom:24px;">Pull specs directly from the tools you already use — Figma, Miro — instead of re-describing them by hand in a prompt.</div>
+    <div class="quote" style="margin-bottom:24px;">プロンプトで手作業により再度説明する代わりに、すでに使っているツール（Figma、Miro）から直接仕様を取り込みます。</div>
     <div class="flow" style="margin-bottom:20px;">
-      <div class="flow-box"><span class="icon">🔌</span><h4>Connect Hub</h4><p>Admin configures the Figma/Miro app</p></div>
+      <div class="flow-box"><span class="icon">🔌</span><h4>Connect Hub</h4><p>管理者が Figma/Miro アプリを設定</p></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-box"><span class="icon">🛡️</span><h4>AI Control Tower</h4><p>Admin approves it</p></div>
+      <div class="flow-box"><span class="icon">🛡️</span><h4>AI Control Tower</h4><p>管理者が承認</p></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-box"><span class="icon">⚙️</span><h4>Your settings</h4><p>Enable MCP servers (MCP tab)</p></div>
+      <div class="flow-box"><span class="icon">⚙️</span><h4>あなたの設定</h4><p>MCP サーバーを有効化（MCP タブ）</p></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">🤖</span><h4>Build Agent</h4><p>Reads specs directly from the tool</p></div>
+      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">🤖</span><h4>Build Agent</h4><p>ツールから直接仕様を読み取る</p></div>
     </div>
-    <p class="lead">One-time admin setup (Connect Hub + AI Control Tower approval), then any developer turns it on for themselves in their own Build Agent settings.</p>
+    <p class="lead">一度だけの管理者設定（Connect Hub ＋ AI Control Tower の承認）を行えば、あとは各開発者が自分の Build Agent 設定で有効化できます。</p>
   </div>
 
   <!-- BONUS: CUSTOM RULE TO CHANGE LANGUAGE -->
   <div class="slide" data-index="31">
-    <div class="slide-label">Bonus</div>
-    <h2>Custom rules — changing <span class="hl-purple">language</span></h2>
+    <div class="slide-label">ボーナス</div>
+    <h2>カスタムルール — <span class="hl-purple">言葉づかい</span>を変える</h2>
     <ul class="clean" style="max-width:800px;">
-      <li><span class="icon">📝</span><span>TODO: what a "custom rule" actually is in this context (terminology/localization? tone/style guidance for Build Agent output?) — confirm before presenting.</span></li>
-      <li><span class="icon">📝</span><span>TODO: where it's configured, and whether it's app-scoped or instance-wide.</span></li>
-      <li><span class="icon">📝</span><span>TODO: example prompt or before/after, if available.</span></li>
+      <li><span class="icon">📝</span><span>TODO：この文脈における「カスタムルール」が具体的に何を指すか（用語・ローカライズ？Build Agent 出力のトーン・スタイル指示？）— 発表前に確認が必要。</span></li>
+      <li><span class="icon">📝</span><span>TODO：どこで設定されるか、アプリスコープかインスタンス全体かどうか。</span></li>
+      <li><span class="icon">📝</span><span>TODO：サンプルプロンプトまたは変更前後の例（可能であれば）。</span></li>
     </ul>
-    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL (SLIDE 2). PRESENTER TO FILL IN BEFORE SESSION.</p>
+    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL（SLIDE 2）. PRESENTER TO FILL IN BEFORE SESSION.</p>
   </div>
 
   <!-- BONUS: SNEAK PEEK OF NEXT RELEASE -->
   <div class="slide" data-index="32">
-    <div class="slide-label">Bonus</div>
-    <h2>Sneak peek: <span class="hl-green">what's next</span></h2>
+    <div class="slide-label">ボーナス</div>
+    <h2>先取り：<span class="hl-green">次に来るもの</span></h2>
     <ul class="clean" style="max-width:800px;">
-      <li><span class="icon">👀</span><span>TODO: headline item #1 — confirm with internal roadmap briefing before presenting.</span></li>
-      <li><span class="icon">👀</span><span>TODO: headline item #2.</span></li>
-      <li><span class="icon">👀</span><span>TODO: headline item #3.</span></li>
+      <li><span class="icon">👀</span><span>TODO：主要項目 #1 — 発表前に社内ロードマップブリーフィングで確認。</span></li>
+      <li><span class="icon">👀</span><span>TODO：主要項目 #2。</span></li>
+      <li><span class="icon">👀</span><span>TODO：主要項目 #3。</span></li>
     </ul>
-    <p class="lead" style="margin-top:24px;">Everything on this slide is directional, not a commitment — see the safe harbor statement on slide 2.</p>
-    <p style="margin-top:16px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL (SLIDE 2). PRESENTER TO FILL IN BEFORE SESSION.</p>
+    <p class="lead" style="margin-top:24px;">このスライドの内容はすべて方向性を示すものであり、確約ではありません — スライド2のセーフハーバー条項を参照してください。</p>
+    <p style="margin-top:16px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL（SLIDE 2）. PRESENTER TO FILL IN BEFORE SESSION.</p>
   </div>
 
 </div><!-- end deck -->

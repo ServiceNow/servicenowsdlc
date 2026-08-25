@@ -5,7 +5,7 @@ slide: "20 — Source control exercise"
 
 # Source control: ship it with Git
 
-[← Back to slide 20 in the deck](https://servicenow.github.io/servicenowsdlc/#20)
+[← Back to slide 20 in the deck](https://servicenow.github.io/servicenowsdlc/#20) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/04-source-control.ja.md)
 
 ## Objective
 

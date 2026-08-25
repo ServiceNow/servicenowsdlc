@@ -2,18 +2,18 @@
 
 This repo holds a single-page slide deck (`index.html`) plus companion exercise write-ups (`exercises/`) for a full-day customer workshop: **AI-Led SDLC Enablement for Customers**. Originally scaffolded via the `brown-bag-setup` Claude Code skill, then rewritten to match a live workshop agenda and grounded in the ServiceNow SDK SDLC guide (`servicenow.github.io/sdk/guides/sdlc-guide`).
 
-## Mirror repo
+## Mirror repo (retired as of 2026-08-24 — do not mirror going forward)
 
-This deck is mirrored from a primary internal repo so it's also reachable from a personal GitHub account:
+This deck used to be mirrored by hand from a primary internal repo so it was also reachable from a personal GitHub account:
 
 | Repo | Remote | Live deck |
 |---|---|---|
-| Primary (`sdlccontent`) | `code.devsnc.com/ashwin-patti/sdlccontent` (Gitea) | https://code.devsnc.com/pages/ashwin-patti/sdlccontent/ |
-| **This repo** (`servicenowsdlc`) | `github.com/ServiceNow/servicenowsdlc` | https://servicenow.github.io/servicenowsdlc/ |
+| Primary (`sdlccontent`) — **no longer updated** | `code.devsnc.com/ashwin-patti/sdlccontent` (Gitea) | https://code.devsnc.com/pages/ashwin-patti/sdlccontent/ |
+| **This repo** (`servicenowsdlc`) — **sole target going forward** | `github.com/ServiceNow/servicenowsdlc` | https://servicenow.github.io/servicenowsdlc/ |
 
-**These are two independent repos kept in sync by hand — not git remotes of each other.** Any change to `index.html`, `README.md`, or `exercises/` should be applied to both working trees and pushed to both remotes. The only intentional difference between the two copies is the deck/exercise link URLs — each points at its own Pages host.
+**Decision: stop mirroring.** `servicenowsdlc` is now the only repo that gets edited, committed, and pushed. `sdlccontent` is left as-is (stale) and should not be touched or kept in sync — do not apply changes there, and do not ask whether a change should be "repeated in the primary repo." Everything below that references keeping the two repos in sync (the old dual-push editing workflow, "repeat in the primary repo" instructions, etc.) is superseded by this decision.
 
-> Gotcha: in a single tool-call session, `cd` does not persist across separate shell invocations — always `cd /path && git ...` in one command per repo rather than relying on a prior `cd`. Pushes to this repo require the `apatti-now` GitHub account to be the active `gh auth` identity (not `apatti`), since `apatti` has no write access here.
+> Gotcha (historical, only relevant if `sdlccontent` is ever revisited): in a single tool-call session, `cd` does not persist across separate shell invocations — always `cd /path && git ...` in one command per repo rather than relying on a prior `cd`. Pushes to `servicenowsdlc` require the `apatti-now` GitHub account to be the active `gh auth` identity (not `apatti`), since `apatti` has no write access here.
 
 ## Slide deck (`index.html`)
 
@@ -77,10 +77,10 @@ Cross-linking convention:
 - **Slide → exercise:** a `.exercise-link` pill (see `index.html` CSS, `/* ─── Exercise link chip ─── */`) wrapped in an `.exercise-links` container at the bottom of the relevant slide's content, reading "Open the exercise →" (no emoji — deliberately dropped in favor of the pill's own background/border signaling it's clickable), pointing at that exercise file's blob view on this repo's own Git host.
 - **Exercise → slide:** a `← Back to slide N in the deck` line right under the exercise's `# Title`, pointing at this repo's own Pages URL with a `#N` deep link.
 
-To add a new exercise: copy `TEMPLATE.md`, number it next in sequence, fill in all eight sections, then add the two cross-links once you know which slide it belongs to — and repeat both the exercise file and the slide-side link in the primary repo.
+To add a new exercise: copy `TEMPLATE.md`, number it next in sequence, fill in all eight sections, then add the two cross-links once you know which slide it belongs to. (No more repeating this in a primary repo — see "Mirror repo" above.)
 
 ## Editing workflow
 
-1. Edit `index.html` / `exercises/*.md` in **both** `sdlccontent` and `servicenowsdlc` working trees — they're independent copies, not synced automatically.
-2. Commit and push each repo separately.
-3. Gitea Pages / GitHub Pages both serve straight from `main`, no CI, no build step — changes go live roughly 30–60 seconds after push.
+1. Edit `index.html` / `exercises/*.md` in this (`servicenowsdlc`) working tree only.
+2. Commit and push.
+3. GitHub Pages serves straight from `main`, no CI, no build step — changes go live roughly 30–60 seconds after push.
