@@ -79,8 +79,19 @@ Cross-linking convention:
 
 To add a new exercise: copy `TEMPLATE.md`, number it next in sequence, fill in all eight sections, then add the two cross-links once you know which slide it belongs to. (No more repeating this in a primary repo — see "Mirror repo" above.)
 
+## Japanese localization (`index.ja.html`, `exercises/*.ja.md`)
+
+Parallel Japanese files exist alongside every English file: `index.ja.html` mirrors `index.html`, and each `exercises/NN-*.ja.md` mirrors its English counterpart. This is for the Japan delivery of this workshop.
+
+- **Always keep them in sync.** Any content change to `index.html` or `exercises/*.md` (new/edited/removed slide, new/edited exercise, changed cross-link, changed image, etc.) must be applied to the matching `.ja.html` / `.ja.md` file in the same pass — don't leave the Japanese version stale. If a change is purely structural/internal (e.g. an HTML authoring comment, a CSS tweak with no visible text) and has no user-facing text to translate, still check whether it affects the JA file (e.g. a shared CSS rule) and apply it there too.
+- **Terminology convention** — ServiceNow-specific product/feature nouns stay in English inside otherwise-Japanese text: `Build Agent`, `Test Agent`, `ATF`, `Fluent`, `SDK`, `ReleaseOps`, `Deployment Request`, `Release`, `Update Set`, `App Repo`/`Application Repository`, `Instance Scan`/`Move to Test`/`Run ATF`/`Ready for Deploy`/`Retest`/`Need Code Change`/`Sign Off`/`Draft`/`Ready to Assess` (workflow/state labels), `Connect Hub`, `AI Control Tower`, `CI/CD`, `MCP`, and third-party proper nouns (`GitHub`, `VS Code`, `Claude Code`, `Cursor`, `Codex`, `Figma`, `Miro`, `React`/`Svelte`/`Vue`/`Preact`, `TypeScript`/`JavaScript`). Generic software-engineering vocabulary gets katakana-ized instead, since it's an already-lexicalized loanword in Japanese tech writing (`sandbox`→サンドボックス, `branch`→ブランチ, `merge`→マージ, `pull request`→プルリクエスト, `instance`→インスタンス, `repository`→リポジトリ). Coined pedagogical terms specific to this deck (e.g. "build-ready") stay in English with な/の attached, matching common JP engineering-blog style.
+- **Code/commands/example prompts** (terminal blocks, Fluent `.now.ts` snippets, literal Build Agent prompts in the exercises) stay in English — only the surrounding prose/instructions around them get translated. Table/field/role names used as example metadata (`Maintenance Request`, `Equipment`, `Requester`, `Technician`, `New`) also stay in English so they match what the app actually generates.
+- **Legal/safe-harbor slide is a special case.** Slide 2 in `index.ja.html` intentionally holds placeholder text, not a translation — it's SEC-boilerplate forward-looking-statements language (Form 10-K/10-Q references) and needs a legal/IR-approved Japanese version, not a freehand one. Leave the placeholder (and the HTML comment preserving the English source) in place until that approved text is provided; don't translate it yourself.
+- **Cross-links:** every deck (both languages) carries a small fixed `.lang-switch` pill (top-right) linking to the other language's `index.html`/`index.ja.html`. Every exercise file carries a `| [日本語版](...)` or `| [English version](...)` link next to its "back to slide" line, pointing at the other language's file via this repo's GitHub blob view (same convention as the `.exercise-link` chip, not the raw Pages path).
+- `sdlccontent` (see "Mirror repo" above) does **not** get a Japanese version — it's retired, so only `servicenowsdlc`'s JA files matter.
+
 ## Editing workflow
 
-1. Edit `index.html` / `exercises/*.md` in this (`servicenowsdlc`) working tree only.
+1. Edit `index.html` / `exercises/*.md` in this (`servicenowsdlc`) working tree only — and apply the same content change to `index.ja.html` / the matching `exercises/*.ja.md` (see "Japanese localization" above).
 2. Commit and push.
 3. GitHub Pages serves straight from `main`, no CI, no build step — changes go live roughly 30–60 seconds after push.
