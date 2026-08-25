@@ -5,7 +5,7 @@ slide: "9 — Activity"
 
 # Build-ready requirements: rewrite the vague story
 
-[← Back to slide 9 in the deck](https://apatti-now.github.io/servicenowsdlc/#9)
+[← Back to slide 9 in the deck](https://servicenow.github.io/servicenowsdlc/#9)
 
 ## Objective
 

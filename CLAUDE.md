@@ -9,7 +9,7 @@ This deck is mirrored from a primary internal repo so it's also reachable from a
 | Repo | Remote | Live deck |
 |---|---|---|
 | Primary (`sdlccontent`) | `code.devsnc.com/ashwin-patti/sdlccontent` (Gitea) | https://code.devsnc.com/pages/ashwin-patti/sdlccontent/ |
-| **This repo** (`servicenowsdlc`) | `github.com/apatti-now/servicenowsdlc` | https://apatti-now.github.io/servicenowsdlc/ |
+| **This repo** (`servicenowsdlc`) | `github.com/ServiceNow/servicenowsdlc` | https://servicenow.github.io/servicenowsdlc/ |
 
 **These are two independent repos kept in sync by hand — not git remotes of each other.** Any change to `index.html`, `README.md`, or `exercises/` should be applied to both working trees and pushed to both remotes. The only intentional difference between the two copies is the deck/exercise link URLs — each points at its own Pages host.
 

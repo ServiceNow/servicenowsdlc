@@ -5,7 +5,7 @@ slide: "22 — ReleaseOps"
 
 # ReleaseOps: assess and release
 
-[← Back to slide 22 in the deck](https://apatti-now.github.io/servicenowsdlc/#22)
+[← Back to slide 22 in the deck](https://servicenow.github.io/servicenowsdlc/#22)
 
 ## Objective
 

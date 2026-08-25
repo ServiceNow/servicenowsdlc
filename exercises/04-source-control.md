@@ -5,7 +5,7 @@ slide: "20 — Source control exercise"
 
 # Source control: ship it with Git
 
-[← Back to slide 20 in the deck](https://apatti-now.github.io/servicenowsdlc/#20)
+[← Back to slide 20 in the deck](https://servicenow.github.io/servicenowsdlc/#20)
 
 ## Objective
 

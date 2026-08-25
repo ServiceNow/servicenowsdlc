@@ -5,7 +5,7 @@ slide: "15 — Build"
 
 # Build + test the maintenance app
 
-[← Back to slide 15 in the deck](https://apatti-now.github.io/servicenowsdlc/#15)
+[← Back to slide 15 in the deck](https://servicenow.github.io/servicenowsdlc/#15)
 
 ## Objective
 
