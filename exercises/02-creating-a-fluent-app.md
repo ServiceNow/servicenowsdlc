@@ -99,61 +99,7 @@ Git — not the Update Set — is the authoritative source of truth for this app
    ```
 3. Connect your ServiceNow dev instance's source control setup to this same repo, using the personal access token you generated on the "Get your source control ready" slide. The exact click path is covered in depth in [Exercise 05 — Source control](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-source-control.md); for now, confirm the connection succeeds before moving on.
 
-### Step 3: Define a table
-
-1. Create a new fluent file named `demo-table.now.ts` (`*.now.ts` files are Fluent files) in the `fluent` directory.
-2. Add the following code inside the file:
-```typescript
-import { ChoiceColumn, StringColumn, Table } from '@servicenow/sdk/core'
-
-export const sn_my_first_fluent_your_name_demo_table = Table({
-    name: "sn_my_first_fluent_<your_name>_demo_table",
-    schema: {
-            title: StringColumn({}),
-            state: ChoiceColumn({
-                choices: {
-                    open: 'Open',
-                    in_progress: 'In Progress',
-                    closed: 'Closed',
-                },
-                default: 'open',
-            })
-        }
-})
-```
-   Replace `<your_name>` in both the exported variable name and the `name` field with your own name (variable names can't contain hyphens, so use an underscore there — e.g. `sn_my_first_fluent_shelby_demo_table`).
-
-### Step 4: Define a business rule
-
-1. Create a new fluent file inside src/fluent and name it `my-br.now.ts` (`*.now.ts` files are Fluent files).
-2. Add the following code inside the file:
-```typescript
-import { BusinessRule } from '@servicenow/sdk/core'
-import { showStateUpdate } from '../server/script'
-
-BusinessRule({
-    $id: Now.ID['my-br'],
-    table: 'sn_my_first_fluent_<your_name>_demo_table',
-    name: "My test BR",
-    active: true,
-    script: showStateUpdate, // notice that this comes from the imported module from line 2
-    action: ['insert', 'update']
-})
-```
-   Same substitution as Step 3 — `table` has to match the table name you actually created.
-3. You can see that the `script` for the `BusinessRule` actually comes from a different file. This file is a server module and the code is defined in `src/server/script.ts`:
-```ts
-import { gs, type GlideRecord } from '@servicenow/glide'
-
-export function showStateUpdate(current: GlideRecord, previous: GlideRecord) {
-    const currentState = current.getValue('state')
-    const previousState = previous.getValue('state')
-
-    gs.addInfoMessage(`state updated from "${previousState}" to "${currentState}"`)
-}
-```
-
-### Step 5: Build and Install the application
+### Step 3: Build and Install the application
 
 1. `now-sdk build` - Builds the application
 2. `now-sdk install` - Deploys the application to ServiceNow.
@@ -162,29 +108,27 @@ export function showStateUpdate(current: GlideRecord, previous: GlideRecord) {
 4. Commit and push what you just built:
    ```
    git add .
-   git commit -m "Add demo table and business rule"
+   git commit -m "Initial build"
    git push
    ```
 
-### Step 6: Verify in ServiceNow
+### Step 4: Verify in ServiceNow
 
-1. Navigate to the ServiceNow instance and verify that the table and business rule were created successfully.
-2. Add a new entry to the table you have created.
+1. Navigate to the ServiceNow instance and verify the app installed successfully (App Manager or Studio should show it, at your scope, with the version you built).
 
 ## Success Criteria
 
 - [ ] Fluent application initialized with a unique, name-appended app/scope (no collision with other attendees)
 - [ ] Local repo initialized, pushed to the workshop GitHub org, and connected to your dev instance's source control setup
-- [ ] Have a Fluent application with at least one table and one business rule
 - [ ] Have built and installed the application to ServiceNow
 
 ## Learning Points
 
-- The SDK and Fluent turn a natural-language prompt into typed, diagnosable source — not a black box of clicks you can't inspect or diff.
+- The SDK scaffolds a real Fluent project from a CLI wizard — typed, diagnosable source you build and install yourself, not a black box of clicks you can't inspect or diff.
 - Git, not the app itself, is what makes this reproducible past this one exercise — connecting it now means every later exercise (build, off-instance dev, source control, ReleaseOps) has something real to build on.
 - A unique app/scope name isn't cosmetic on a shared instance — it's the difference between "my app" and "whoever pushed last."
 
 ## Bonus Challenge
 
-- Add a second table and a reference field linking it back to the demo table
+- Add a table and a business rule of your own (a Fluent `Table()` and `BusinessRule()`, same patterns as today's build exercise), then build and install again
 - Open a pull request against your own repo with a small change, just to see the review flow before Exercise 05 does it for real
