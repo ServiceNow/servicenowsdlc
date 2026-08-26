@@ -740,6 +740,9 @@
         </div>
       </div>
     </div>
+    <div class="exercise-links">
+      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/02-creating-a-fluent-app.md">Open the exercise →</a>
+    </div>
   </div>
 
   <!-- SLIDE 6: FOUNDATIONS — GIT AS SOURCE OF TRUTH -->
@@ -815,6 +818,24 @@
     <p class="lead">Allocate a sandbox before you start, create your feature branch inside it, decommission it when you're done.</p>
   </div>
 
+  <!-- GET SOURCE CONTROL READY -->
+  <div class="slide" data-index="8.7">
+    <div class="slide-label">Setup</div>
+    <h2>Get your <span class="hl-green">source control</span> ready</h2>
+    <div class="cols cols-2" style="max-width:1080px; align-items:start;">
+      <ul class="clean">
+        <li><span class="icon">✅</span><span>Confirm you have a GitHub account with access to the workshop org/repo</span></li>
+        <li><span class="icon">✅</span><span>Generate a personal access token (or confirm SSH access) for git operations</span></li>
+        <li><span class="icon">✅</span><span>Confirm your local git identity is set</span></li>
+      </ul>
+      <div class="terminal compact">
+        <div class="terminal-bar"><span class="terminal-dot r"></span><span class="terminal-dot y"></span><span class="terminal-dot g"></span></div>
+        <div class="terminal-body"><span class="ln"><span class="prompt">$</span><span class="t">git config --global</span> <span class="k">user.name</span> <span class="v">"Your Name"</span></span>
+<span class="ln"><span class="prompt">$</span><span class="t">git config --global</span> <span class="k">user.email</span> <span class="v">"you@example.com"</span></span></div>
+      </div>
+    </div>
+  </div>
+
   <!-- SLIDE 10: SETUP TIME -->
   <div class="slide" data-index="9">
     <div class="slide-label">Setup</div>
@@ -872,7 +893,7 @@
     </ul>
   </div>
 
-  <!-- SLIDE 11: CODE — BUILD WITH BUILD AGENT + ATF -->
+  <!-- SLIDE 12: CODE — BUILD WITH BUILD AGENT + ATF -->
   <div class="slide" data-index="10">
     <div class="slide-label">Build + test (exercise)</div>
     <h2>Build + test the <span class="hl-green">maintenance app</span></h2>
@@ -892,25 +913,25 @@
       </div>
     </div>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/02-build-maintenance-app.md">Open the exercise →</a>
+      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/03-build-maintenance-app.md">Open the exercise →</a>
     </div>
   </div>
 
-  <!-- SLIDE 12: Q&A -->
+  <!-- SLIDE 13: Q&A -->
   <div class="slide hidden-slide" data-index="11">
     <div class="kicker">Q&amp;A</div>
     <h1>Questions?</h1>
     <p class="lead" style="margin-top:20px;">11:30 – 12:00</p>
   </div>
 
-  <!-- SLIDE 13: LUNCH -->
+  <!-- SLIDE 14: LUNCH -->
   <div class="slide" data-index="12">
     <div class="kicker">Lunch</div>
     <h1>🍽️</h1>
     <p class="lead" style="margin-top:20px;">Back soon to re-anchor</p>
   </div>
 
-  <!-- SLIDE 14: RE-ANCHOR -->
+  <!-- SLIDE 15: RE-ANCHOR -->
   <div class="slide" data-index="13">
     <div class="slide-label">Re-anchor</div>
     <h2>Where we <span class="hl-blue">left off</span></h2>
@@ -926,14 +947,14 @@
     <p class="lead">Your app is built and tested. Next: source control and release.</p>
   </div>
 
-  <!-- SLIDE 16: Q&A -->
+  <!-- SLIDE 17: Q&A -->
   <div class="slide hidden-slide" data-index="15">
     <div class="kicker">Q&amp;A</div>
     <h1>Questions?</h1>
     <p class="lead" style="margin-top:20px;">1:45 – 2:00</p>
   </div>
 
-  <!-- SLIDE 17: OFF-INSTANCE DEVELOPMENT -->
+  <!-- SLIDE 18: OFF-INSTANCE DEVELOPMENT -->
   <div class="slide" data-index="16">
     <div class="slide-label">Off-instance development (exercise)</div>
     <h2>The same app, <span class="hl-blue">off the platform</span></h2>
@@ -943,11 +964,11 @@
       <li><span class="icon">🔁</span><span><code>now-sdk build</code> / <code>now-sdk install</code> work identically, on- or off-platform.</span></li>
     </ul>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/03-off-instance-development.md">Open the exercise →</a>
+      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/04-off-instance-development.md">Open the exercise →</a>
     </div>
   </div>
 
-  <!-- SLIDE 18: SOURCE CONTROL -->
+  <!-- SLIDE 19: SOURCE CONTROL -->
   <div class="slide" data-index="17">
     <div class="slide-label">Source control</div>
     <h2>Where Git <span class="hl-green">goes further</span></h2>
@@ -962,7 +983,7 @@
     </div>
   </div>
 
-  <!-- SLIDE 19: SOURCE CONTROL EXERCISE -->
+  <!-- SLIDE 20: SOURCE CONTROL EXERCISE -->
   <div class="slide" data-index="18">
     <div class="slide-label">Source control (exercise)</div>
     <h2>Exercise: <span class="hl-green">ship it with Git</span></h2>
@@ -975,11 +996,11 @@
       <p>Git does branching, review, and line-by-line conflict resolution. Update sets cannot.</p>
     </div>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/04-source-control.md">Open the exercise →</a>
+      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-source-control.md">Open the exercise →</a>
     </div>
   </div>
 
-  <!-- SLIDE 20: BREAK -->
+  <!-- SLIDE 21: BREAK -->
   <div class="slide hidden-slide" data-index="19">
     <div class="kicker">Break</div>
     <h1>☕</h1>
@@ -1001,9 +1022,12 @@
       </div>
     </div>
     <p class="lead" style="margin-top:24px;">Two paths get you here: promote an Update Set into a Deployment Request (this lab), or trigger it from Git via the CI/CD REST APIs with an approval gate (see choose-your-own-adventure).</p>
+    <div class="exercise-links">
+      <a class="exercise-link" href="releaseops-deep-dive.html">Deep dive: full architecture + walkthrough →</a>
+    </div>
   </div>
 
-  <!-- SLIDE 21: RELEASEOPS -->
+  <!-- SLIDE 22: RELEASEOPS -->
   <div class="slide" data-index="20">
     <div class="slide-label">ReleaseOps (exercise)</div>
     <h2>The quality-control <span class="hl-blue">model</span></h2>
@@ -1022,19 +1046,16 @@
       <div class="card accent-red"><h3>Need Code Change</h3><p>Assessment is invalidated — the Deployment Request returns to Draft and needs a new payload.</p></div>
       <div class="card accent-green"><h3>Sign Off</h3><p>Manual approval to proceed.</p></div>
     </div>
-    <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-releaseops.md">Open the exercise →</a>
-    </div>
   </div>
 
-  <!-- SLIDE 22: Q&A -->
+  <!-- SLIDE 23: Q&A -->
   <div class="slide hidden-slide" data-index="21">
     <div class="kicker">Q&amp;A</div>
     <h1>Questions?</h1>
     <p class="lead" style="margin-top:20px;">3:45 – 4:00</p>
   </div>
 
-  <!-- SLIDE 23: PUSH TO PRODUCTION -->
+  <!-- SLIDE 24: PUSH TO PRODUCTION -->
   <div class="slide" data-index="22">
     <div class="slide-label">Push to production (demo only)</div>
     <h2>Promote, deploy, and <span class="hl-orange">roll back</span> if needed</h2>
@@ -1045,24 +1066,25 @@
     </ul>
   </div>
 
-  <!-- SLIDE 24: CHOOSE YOUR OWN ADVENTURE -->
+  <!-- SLIDE 25: CHOOSE YOUR OWN ADVENTURE -->
   <div class="slide" data-index="23">
     <div class="slide-label">Choose your own adventure (exercise)</div>
     <h2>Pick a track, go <span class="hl-green">deep</span></h2>
-    <div class="cols" style="max-width:1300px; grid-template-columns: repeat(5, 1fr);">
+    <div class="cols" style="max-width:1300px; grid-template-columns: repeat(6, 1fr);">
       <div class="card accent-blue"><h3>Fluent deep dive</h3><p>More metadata types, transform/sync from UI builders</p></div>
       <div class="card accent-green"><h3>Testing deep dive</h3><p>Test Agent triage, Cloud Runner, regression suites</p></div>
       <div class="card accent-purple"><h3>CI/CD APIs</h3><p><code>now-sdk cicd</code>, Git-triggered pipelines, approval gates</p></div>
       <div class="card accent-orange"><h3>MCP integrations</h3><p>Connect Figma/Miro via Connect Hub, build straight from the spec</p></div>
       <div class="card accent-red"><h3>Custom rules</h3><p>Rules that change language/terminology in Build Agent output</p></div>
+      <div class="card accent-blue"><h3>ReleaseOps</h3><p>Deployment Request, assessment playbook, Ready for Deploy</p></div>
     </div>
     <p class="lead" style="margin-top:24px;">Explore whichever track interests you most — we're here for questions. Head to the exercise for ideas to get started.</p>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-choose-your-own-adventure.md">Open the exercise →</a>
+      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/07-choose-your-own-adventure.md">Open the exercise →</a>
     </div>
   </div>
 
-  <!-- SLIDE 25: WRAP -->
+  <!-- SLIDE 26: WRAP -->
   <div class="slide" data-index="24">
     <div class="slide-label">Wrap</div>
     <h2>One picture, <span class="hl-green">your app</span> traced across it</h2>
@@ -1081,7 +1103,7 @@
     <p style="margin-top: 28px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.1em;">QUESTIONS? PING Ashwin Patti, Shelby Cohen.</p>
   </div>
 
-  <!-- SLIDE 26: THANK YOU -->
+  <!-- SLIDE 27: THANK YOU -->
   <div class="slide" data-index="25">
     <div class="kicker">Thank You</div>
     <h1>🙏</h1>
@@ -1178,13 +1200,27 @@
     <p style="margin-top:16px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL (SLIDE 2). PRESENTER TO FILL IN BEFORE SESSION.</p>
   </div>
 
+  <!-- BONUS: WARPSPEED DEMO -->
+  <div class="slide" data-index="33">
+    <div class="slide-label">Bonus (demo only)</div>
+    <h2>Warpspeed <span class="hl-blue">demo</span></h2>
+    <div class="quote" style="margin-bottom:24px;">A workflow automation platform for things like equipment requests, time-off approvals, invoice handling, and access permissions.</div>
+    <ul class="clean" style="max-width:800px;">
+      <li><span class="icon">👀</span><span>Live demo — presenter walks through the app directly.</span></li>
+      <li><span class="icon">📝</span><span>TODO: pick 1–2 concrete workflows to walk through live (e.g. an equipment request or a time-off approval).</span></li>
+    </ul>
+    <div class="exercise-links">
+      <a class="exercise-link" href="https://saplingapp.com/">saplingapp.com →</a>
+    </div>
+  </div>
+
 </div><!-- end deck -->
 
 <div class="nav">
   <button id="prev" title="Previous (←)">←</button>
   <div class="dots" id="dots"></div>
   <button id="next" title="Next (→)">→</button>
-  <span class="slide-num" id="slideNum">01 / 25</span>
+  <span class="slide-num" id="slideNum">01 / 35</span>
 </div>
 
 <script>

@@ -1,11 +1,11 @@
 ---
 title: "Build + test the maintenance app"
-slide: "15 — Build"
+slide: "16 — Build"
 ---
 
 # Build + test the maintenance app
 
-[← Back to slide 15 in the deck](https://servicenow.github.io/servicenowsdlc/#15) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/02-build-maintenance-app.ja.md)
+[← Back to slide 16 in the deck](https://servicenow.github.io/servicenowsdlc/#16) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/03-build-maintenance-app.ja.md)
 
 ## Objective
 
@@ -25,10 +25,10 @@ Use Build Agent (and ATF) to go from a natural-language prompt to a working main
 
 ## Exercise Steps
 
-1. Open Build Agent in Studio, we are covering off-instance later.
-2. Prompt Build Agent with your build-ready requirements — name the entities, roles/access, and the Given-When-Then scenario directly in the prompt. If your team used the reference scenario from the requirements activity, paste this as-is; otherwise swap in your own entities/roles/Given-When-Then:
+1. Open Build Agent in the IDE — we're covering off-instance later.
+2. Prompt Build Agent with your build-ready requirements — name the entities, roles/access, and the Given-When-Then scenario directly in the prompt. Name the app `Maintenance_<YourName>` (replace `<YourName>` with your own name — this is a shared instance, and a unique app name is what keeps yours from colliding with everyone else's). If your team used the reference scenario from the requirements activity, paste this as-is; otherwise swap in your own entities/roles/Given-When-Then:
    ```
-   Build a Maintenance Request app with:
+   Build a Maintenance Request app named "Maintenance_<YourName>" with:
 
    Entities: Maintenance Request, Equipment
 

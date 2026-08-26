@@ -1,15 +1,15 @@
 ---
 title: "ReleaseOps：アセスとリリース"
-slide: "22 — ReleaseOps"
+slide: "23 — ReleaseOps"
 ---
 
 # ReleaseOps：アセスとリリース
 
-[← デッキのスライド22に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#22) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-releaseops.md)
+[← デッキのスライド23に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#23) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-releaseops.md)
 
 ## Objective（目的）
 
-演習04で公開したアプリを、ReleaseOps の品質管理パイプラインに通します — Deployment Request を作成し、アセスメントの実行を確認し、Ready for Deploy まで到達させます。**この演習では本番環境へのプッシュは行いません** — その部分はこの後のライブデモで扱う内容であり、皆さん自身で行う作業ではありません。
+演習05で公開したアプリを、ReleaseOps の品質管理パイプラインに通します — Deployment Request を作成し、アセスメントの実行を確認し、Ready for Deploy まで到達させます。**この演習では本番環境へのプッシュは行いません** — その部分はこの後のライブデモで扱う内容であり、皆さん自身で行う作業ではありません。
 
 ## Estimated Time（想定時間）
 
@@ -17,7 +17,7 @@ slide: "22 — ReleaseOps"
 
 ## Prerequisites（前提条件）
 
-- Application Repository に公開されたプレリリース（演習04）
+- Application Repository に公開されたプレリリース（演習05）
 - 開発用インスタンスとは別のテスト用インスタンスへのアクセス
 
 ## Exercise Steps（演習の手順）

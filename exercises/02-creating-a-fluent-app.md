@@ -1,0 +1,190 @@
+---
+title: "Creating a Fluent application using nowSDK"
+slide: "6 — SDK + Fluent"
+---
+
+# Creating a Fluent application using nowSDK
+
+[← Back to slide 6 in the deck](https://servicenow.github.io/servicenowsdlc/#6)
+
+## Objective
+
+Create a new Fluent application using nowSDK, and connect it to source control — the two pieces of tooling everything else today builds on.
+
+## Estimated Time
+
+20-25 minutes
+
+## Prerequisites
+
+- [ ] ServiceNow instance accessible
+- [ ] Check that you have Node version 20.18.0 or newer (`node -v`)
+- [ ] If you don't have Node 20.18.0 or newer, run `nvm install 20.18.0`
+- [ ] A GitHub account with access to the workshop org/repo (see the "Get your source control ready" slide)
+
+## Setup Instructions
+
+1. Open a terminal window
+    - Either use the terminal that is already open in your WindSurf/IDE or open a new terminal window
+    - The exercise steps will be executed in the WindSurf terminal but can be adapted for any terminal.
+2. Install the ServiceNow SDK: `npm i -g @servicenow/sdk`
+3. Run `now-sdk --version` and verify the version installed is >= `4.6.0`
+4. If you will be using VSCode, install the Fluent Language extension from [here](https://marketplace.visualstudio.com/items?itemName=ServiceNow.fluent-language-extension).
+5. If you will be using Windsurf or another VSCode fork, install from [here](https://open-vsx.org/extension/ServiceNow/fluent-language-extension)
+6. Set up an authentication profile for your ServiceNow instance using `now auth --add <instance url> --type basic`
+
+> **Naming convention:** everywhere below you'll see `<your_name>` — replace it with your own first name, lowercase, no spaces (e.g. `shelby`). This is a shared instance; a unique app/scope name is what keeps your app from colliding with everyone else's.
+
+## Exercise Steps
+
+### Step 1: Initialize the Fluent Application
+
+1. Create a new empty directory and call it `bootcamp-demo-<your_name>`
+2. Move into the directory: `cd bootcamp-demo-<your_name>`
+3. Create a new Fluent (ServiceNow SDK) application by running `now-sdk init`
+4. Use your keyboard arrows to select `now-sdk + basic` under the `-- TypeScript --` section:
+   ```txt
+    ? Select a template:
+     -- Basic --
+      now-sdk boilerplate
+     -- JavaScript --
+      now-sdk + basic
+      now-sdk + fullstack React
+     -- TypeScript --
+    ❯ now-sdk + basic
+      now-sdk + fullstack React
+      now-sdk + fullstack Vue
+    A basic application using NowSDK and TypeScript
+    ```
+5. For `Name of ServiceNow Application:`, enter `My First Fluent App - <Your Name>` (e.g. `My First Fluent App - Shelby`)
+6. For `NPM package name:`, enter `my-first-fluent-app-<your_name>`
+7. For `Create a Global/Scoped App?`, select `Scoped`
+8. For `Scope name:`, enter `sn_my_first_fluent_<your_name>`
+9. Run `npm install` to install dependencies for the newly created Fluent app (Fluent apps are basically NPM packages, therefore tools around the Node/NPM ecosystem can be used)
+
+At this point, SDK has scaffolded out a sample Fluent project using TypeScript as the language for the project's [Javascript server-side modules](https://www.servicenow.com/docs/r/washingtondc/application-development/scripts/c_JS_modes.html). By default, Javascript server-side modules are defined inside `src/server`.
+
+Your project structure should look something like this:
+```txt
+├── now.config.json <-- this is where the scope name, scope ID, and scope's sys_id (GUID) is defined. This is the file that makes the NPM package a ServiceNow SDK (Fluent) project
+├── package-lock.json <-- this is a standard NPM package-lock.json file
+├── package.json <-- this is a standard NPM package.json where attributes about the package are defined and dependencies are listed
+└── src <---default source code directory
+    ├── fluent <-- sub-directory for Fluent files
+    │   └── example.now.ts <-- sample Fluent file, note the `.now.ts` extension
+    ├── server <-- Server-side modules directory
+    │   ├── script.ts <-- sample TS server module
+    │   └── tsconfig.json <-- tsconfig.json for the server modules
+    ├── tsconfig.client.json <-- tsconfig.json for client code. Your project does not have src/client at this point.
+    ├── tsconfig.json <-- base tsconfig.json
+    └── tsconfig.server.json <-- tsconfig.json for server-side code that is _not_ server modules (i.e.: Business Rule scripts, Script include scripts, etc...)
+```
+10. Delete the `example.now.ts` file from fluent directory.
+
+### Step 2: Set up git
+
+Git — not the Update Set — is the authoritative source of truth for this app going forward (see the "Git is the authoritative source of truth" slide). Connect this project to it now, before you write any metadata:
+
+1. Initialize a repo in your project root:
+   ```
+   git init
+   git add .
+   git commit -m "Initial commit: bootcamp-demo-<your_name> scaffold"
+   ```
+2. Create a new **empty** repo under the workshop's GitHub org (no README/license — you already have files locally), then point your local repo at it and push:
+   ```
+   git remote add origin <your new repo's URL>
+   git branch -M main
+   git push -u origin main
+   ```
+3. Connect your ServiceNow dev instance's source control setup to this same repo, using the personal access token you generated on the "Get your source control ready" slide. The exact click path is covered in depth in [Exercise 05 — Source control](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-source-control.md); for now, confirm the connection succeeds before moving on.
+
+### Step 3: Define a table
+
+1. Create a new fluent file named `demo-table.now.ts` (`*.now.ts` files are Fluent files) in the `fluent` directory.
+2. Add the following code inside the file:
+```typescript
+import { ChoiceColumn, StringColumn, Table } from '@servicenow/sdk/core'
+
+export const sn_my_first_fluent_your_name_demo_table = Table({
+    name: "sn_my_first_fluent_<your_name>_demo_table",
+    schema: {
+            title: StringColumn({}),
+            state: ChoiceColumn({
+                choices: {
+                    open: 'Open',
+                    in_progress: 'In Progress',
+                    closed: 'Closed',
+                },
+                default: 'open',
+            })
+        }
+})
+```
+   Replace `<your_name>` in both the exported variable name and the `name` field with your own name (variable names can't contain hyphens, so use an underscore there — e.g. `sn_my_first_fluent_shelby_demo_table`).
+
+### Step 4: Define a business rule
+
+1. Create a new fluent file inside src/fluent and name it `my-br.now.ts` (`*.now.ts` files are Fluent files).
+2. Add the following code inside the file:
+```typescript
+import { BusinessRule } from '@servicenow/sdk/core'
+import { showStateUpdate } from '../server/script'
+
+BusinessRule({
+    $id: Now.ID['my-br'],
+    table: 'sn_my_first_fluent_<your_name>_demo_table',
+    name: "My test BR",
+    active: true,
+    script: showStateUpdate, // notice that this comes from the imported module from line 2
+    action: ['insert', 'update']
+})
+```
+   Same substitution as Step 3 — `table` has to match the table name you actually created.
+3. You can see that the `script` for the `BusinessRule` actually comes from a different file. This file is a server module and the code is defined in `src/server/script.ts`:
+```ts
+import { gs, type GlideRecord } from '@servicenow/glide'
+
+export function showStateUpdate(current: GlideRecord, previous: GlideRecord) {
+    const currentState = current.getValue('state')
+    const previousState = previous.getValue('state')
+
+    gs.addInfoMessage(`state updated from "${previousState}" to "${currentState}"`)
+}
+```
+
+### Step 5: Build and Install the application
+
+1. `now-sdk build` - Builds the application
+2. `now-sdk install` - Deploys the application to ServiceNow.
+3. Hint: You can add a custom command to your `package.json` to make this easier.
+`"build-deploy": "now-sdk build && now-sdk install"` and then run `npm run build-deploy`.
+4. Commit and push what you just built:
+   ```
+   git add .
+   git commit -m "Add demo table and business rule"
+   git push
+   ```
+
+### Step 6: Verify in ServiceNow
+
+1. Navigate to the ServiceNow instance and verify that the table and business rule were created successfully.
+2. Add a new entry to the table you have created.
+
+## Success Criteria
+
+- [ ] Fluent application initialized with a unique, name-appended app/scope (no collision with other attendees)
+- [ ] Local repo initialized, pushed to the workshop GitHub org, and connected to your dev instance's source control setup
+- [ ] Have a Fluent application with at least one table and one business rule
+- [ ] Have built and installed the application to ServiceNow
+
+## Learning Points
+
+- The SDK and Fluent turn a natural-language prompt into typed, diagnosable source — not a black box of clicks you can't inspect or diff.
+- Git, not the app itself, is what makes this reproducible past this one exercise — connecting it now means every later exercise (build, off-instance dev, source control, ReleaseOps) has something real to build on.
+- A unique app/scope name isn't cosmetic on a shared instance — it's the difference between "my app" and "whoever pushed last."
+
+## Bonus Challenge
+
+- Add a second table and a reference field linking it back to the demo table
+- Open a pull request against your own repo with a small change, just to see the review flow before Exercise 05 does it for real

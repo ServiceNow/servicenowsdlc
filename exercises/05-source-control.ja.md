@@ -1,11 +1,11 @@
 ---
 title: "ソース管理：Git でリリースする"
-slide: "20 — ソース管理演習"
+slide: "21 — ソース管理演習"
 ---
 
 # ソース管理：Git でリリースする
 
-[← デッキのスライド20に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#20) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/04-source-control.md)
+[← デッキのスライド21に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#21) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-source-control.md)
 
 ## Objective（目的）
 
@@ -17,7 +17,7 @@ push、PR、レビュー、マージ、公開、pull という Git ベースの�
 
 ## Prerequisites（前提条件）
 
-- 演習02でコミットした作業が入ったフィーチャーブランチ
+- 演習03でコミットした作業が入ったフィーチャーブランチ
 
 ## Exercise Steps（演習の手順）
 
@@ -46,7 +46,7 @@ push、PR、レビュー、マージ、公開、pull という Git ベースの�
 
 - レビューとコンフリクト解決は、Git がネイティブに提供するコラボレーションの基本要素です — Update Set にはこれに相当するものがなく、last-write-wins しかありません。
 - 2つ目のインスタンスへのインストールを再現可能かつ追跡可能にしているのは、Update Set ではなく App Repo です。
-- 先ほど公開したプレリリースは、まさに次に ReleaseOps が受け取るものです — 演習05は、その同じ Application Repository のアーティファクトから作られた Update Set を Deployment Request にプロモートするところから始まります。
+- 先ほど公開したプレリリースは、まさに次に ReleaseOps が受け取るものです — 演習06は、その同じ Application Repository のアーティファクトから作られた Update Set を Deployment Request にプロモートするところから始まります。
 
 ## Bonus Challenge（ボーナス課題）
 

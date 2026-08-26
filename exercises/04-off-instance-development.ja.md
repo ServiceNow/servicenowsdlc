@@ -1,11 +1,11 @@
 ---
 title: "オフインスタンス開発：Fluent 向け AI Skills"
-slide: "18 — オフインスタンス開発"
+slide: "19 — オフインスタンス開発"
 ---
 
 # オフインスタンス開発：Fluent 向け AI Skills
 
-[← デッキのスライド18に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#18) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/03-off-instance-development.md)
+[← デッキのスライド19に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#19) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/04-off-instance-development.md)
 
 ## Objective（目的）
 

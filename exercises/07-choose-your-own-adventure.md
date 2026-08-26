@@ -1,11 +1,11 @@
 ---
 title: "Choose your own adventure"
-slide: "24 — Choose your own adventure (exercise)"
+slide: "25 — Choose your own adventure (exercise)"
 ---
 
 # Choose your own adventure
 
-[← Back to slide 24 in the deck](https://servicenow.github.io/servicenowsdlc/#24) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-choose-your-own-adventure.ja.md)
+[← Back to slide 25 in the deck](https://servicenow.github.io/servicenowsdlc/#25) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/07-choose-your-own-adventure.ja.md)
 
 ## Objective
 
@@ -17,7 +17,7 @@ Go one level deeper on whichever part of the stack is most relevant to your team
 
 ## Prerequisites
 
-- Maintenance app built, tested, source-controlled, and pushed through ReleaseOps (Exercises 01–05)
+- Maintenance app built, tested, and source-controlled (Exercises 01–05)
 
 ## Exercise Steps
 
@@ -61,8 +61,14 @@ Here are a bunch of ideas to keep exploring — choose anything below, or come u
 
 ### Track: CI/CD APIs
 
-- Script a Git-triggered pipeline using the CI/CD REST APIs (`app_repo/publish`, `app_repo/install`, `testsuite/run`, `app_repo/rollback`) instead of the ReleaseOps UI flow from Exercise 05.
+- Script a Git-triggered pipeline using the CI/CD REST APIs (`app_repo/publish`, `app_repo/install`, `testsuite/run`, `app_repo/rollback`) instead of the ReleaseOps UI flow from Exercise 06.
 - Add an approval gate so the pipeline pauses for manual sign-off before it calls `app_repo/install` against a production-bound target.
+
+### Track: ReleaseOps
+
+- Go through the full ReleaseOps lab from Exercise 06: promote your Update Set into a Deployment Request, mark it "Ready to Assess," and watch the assessment playbook (Instance Scan → Move to Test → Run ATF) run.
+- If ATF fails, walk the "Need Code Change" path deliberately — see the Deployment Request return to Draft, then attach a corrected payload and re-assess.
+- See [Exercise 06](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-releaseops.md) for the full step-by-step.
 
 ### Track: MCP integrations
 
@@ -83,7 +89,7 @@ Here are a bunch of ideas to keep exploring — choose anything below, or come u
 
 ### Or: go back and do the bonus challenges you skipped
 
-Every earlier exercise (01–05) has its own Bonus Challenge section that most teams don't have time for in the moment. This is a good time to go back and pick one up — it counts just as much as any track above.
+Every earlier exercise (01–06) has its own Bonus Challenge section that most teams don't have time for in the moment. This is a good time to go back and pick one up — it counts just as much as any track above.
 
 ## Success Criteria
 

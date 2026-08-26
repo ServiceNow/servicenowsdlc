@@ -1,11 +1,11 @@
 ---
 title: "Source control: ship it with Git"
-slide: "20 — Source control exercise"
+slide: "21 — Source control exercise"
 ---
 
 # Source control: ship it with Git
 
-[← Back to slide 20 in the deck](https://servicenow.github.io/servicenowsdlc/#20) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/04-source-control.ja.md)
+[← Back to slide 21 in the deck](https://servicenow.github.io/servicenowsdlc/#21) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-source-control.ja.md)
 
 ## Objective
 
@@ -17,7 +17,7 @@ Walk the full Git-based collaboration flow — push, PR, review, merge, publish,
 
 ## Prerequisites
 
-- Feature branch with committed work from Exercise 02
+- Feature branch with committed work from Exercise 03
 
 ## Exercise Steps
 
@@ -46,7 +46,7 @@ Walk the full Git-based collaboration flow — push, PR, review, merge, publish,
 
 - Review and conflict resolution are collaboration primitives Git provides natively — update sets have no equivalent, only last-write-wins.
 - The App Repo, not the update set, is what makes an install on a second instance reproducible and auditable.
-- The pre-release you just published is exactly what ReleaseOps picks up next — Exercise 05 starts by promoting an Update Set built from that same Application Repository artifact into a Deployment Request.
+- The pre-release you just published is exactly what ReleaseOps picks up next — Exercise 06 starts by promoting an Update Set built from that same Application Repository artifact into a Deployment Request.
 
 ## Bonus Challenge
 

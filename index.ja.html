@@ -751,6 +751,9 @@
         </div>
       </div>
     </div>
+    <div class="exercise-links">
+      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/02-creating-a-fluent-app.md">演習を開く →</a>
+    </div>
   </div>
 
   <!-- SLIDE 6: FOUNDATIONS — GIT AS SOURCE OF TRUTH -->
@@ -826,6 +829,24 @@
     <p class="lead">開始前にサンドボックスを割り当て、その中でフィーチャーブランチを作成し、作業が終わったら廃棄しましょう。</p>
   </div>
 
+  <!-- GET SOURCE CONTROL READY -->
+  <div class="slide" data-index="8.7">
+    <div class="slide-label">Setup</div>
+    <h2><span class="hl-green">ソース管理</span>を準備しましょう</h2>
+    <div class="cols cols-2" style="max-width:1080px; align-items:start;">
+      <ul class="clean">
+        <li><span class="icon">✅</span><span>ワークショップの org / リポジトリにアクセスできる GitHub アカウントを確認</span></li>
+        <li><span class="icon">✅</span><span>git 操作用の personal access token を発行（または SSH アクセスを確認）</span></li>
+        <li><span class="icon">✅</span><span>ローカルの git identity が設定されていることを確認</span></li>
+      </ul>
+      <div class="terminal compact">
+        <div class="terminal-bar"><span class="terminal-dot r"></span><span class="terminal-dot y"></span><span class="terminal-dot g"></span></div>
+        <div class="terminal-body"><span class="ln"><span class="prompt">$</span><span class="t">git config --global</span> <span class="k">user.name</span> <span class="v">"Your Name"</span></span>
+<span class="ln"><span class="prompt">$</span><span class="t">git config --global</span> <span class="k">user.email</span> <span class="v">"you@example.com"</span></span></div>
+      </div>
+    </div>
+  </div>
+
   <!-- SLIDE 10: SETUP TIME -->
   <div class="slide" data-index="9">
     <div class="slide-label">セットアップ</div>
@@ -883,7 +904,7 @@
     </ul>
   </div>
 
-  <!-- SLIDE 11: CODE — BUILD WITH BUILD AGENT + ATF -->
+  <!-- SLIDE 12: CODE — BUILD WITH BUILD AGENT + ATF -->
   <div class="slide" data-index="10">
     <div class="slide-label">ビルド＋テスト（演習）</div>
     <h2><span class="hl-green">メンテナンスアプリ</span>のビルド＋テスト</h2>
@@ -903,25 +924,25 @@
       </div>
     </div>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/02-build-maintenance-app.ja.md">演習を開く →</a>
+      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/03-build-maintenance-app.ja.md">演習を開く →</a>
     </div>
   </div>
 
-  <!-- SLIDE 12: Q&A -->
+  <!-- SLIDE 13: Q&A -->
   <div class="slide hidden-slide" data-index="11">
     <div class="kicker">Q&amp;A</div>
     <h1>質問はありますか？</h1>
     <p class="lead" style="margin-top:20px;">11:30 – 12:00</p>
   </div>
 
-  <!-- SLIDE 13: LUNCH -->
+  <!-- SLIDE 14: LUNCH -->
   <div class="slide" data-index="12">
     <div class="kicker">ランチ</div>
     <h1>🍽️</h1>
     <p class="lead" style="margin-top:20px;">再開まで少々お待ちください</p>
   </div>
 
-  <!-- SLIDE 14: RE-ANCHOR -->
+  <!-- SLIDE 15: RE-ANCHOR -->
   <div class="slide" data-index="13">
     <div class="slide-label">振り返り</div>
     <h2>ここまでの<span class="hl-blue">進捗</span></h2>
@@ -937,14 +958,14 @@
     <p class="lead">アプリはビルドとテストが完了しました。次はソース管理とリリースです。</p>
   </div>
 
-  <!-- SLIDE 16: Q&A -->
+  <!-- SLIDE 17: Q&A -->
   <div class="slide hidden-slide" data-index="15">
     <div class="kicker">Q&amp;A</div>
     <h1>質問はありますか？</h1>
     <p class="lead" style="margin-top:20px;">1:45 – 2:00</p>
   </div>
 
-  <!-- SLIDE 17: OFF-INSTANCE DEVELOPMENT -->
+  <!-- SLIDE 18: OFF-INSTANCE DEVELOPMENT -->
   <div class="slide" data-index="16">
     <div class="slide-label">オフインスタンス開発（演習）</div>
     <h2>同じアプリを、<span class="hl-blue">プラットフォームの外で</span></h2>
@@ -954,11 +975,11 @@
       <li><span class="icon">🔁</span><span><code>now-sdk build</code> / <code>now-sdk install</code> は、プラットフォーム上でもオフでも同一に動作します。</span></li>
     </ul>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/03-off-instance-development.ja.md">演習を開く →</a>
+      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/04-off-instance-development.ja.md">演習を開く →</a>
     </div>
   </div>
 
-  <!-- SLIDE 18: SOURCE CONTROL -->
+  <!-- SLIDE 19: SOURCE CONTROL -->
   <div class="slide" data-index="17">
     <div class="slide-label">ソース管理</div>
     <h2>Git が<span class="hl-green">さらに一歩進んでいる点</span></h2>
@@ -973,7 +994,7 @@
     </div>
   </div>
 
-  <!-- SLIDE 19: SOURCE CONTROL EXERCISE -->
+  <!-- SLIDE 20: SOURCE CONTROL EXERCISE -->
   <div class="slide" data-index="18">
     <div class="slide-label">ソース管理（演習）</div>
     <h2>演習：<span class="hl-green">Git でリリースする</span></h2>
@@ -986,11 +1007,11 @@
       <p>Git はブランチ分岐・レビュー・行単位のコンフリクト解決ができます。Update Set にはできません。</p>
     </div>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/04-source-control.ja.md">演習を開く →</a>
+      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-source-control.ja.md">演習を開く →</a>
     </div>
   </div>
 
-  <!-- SLIDE 20: BREAK -->
+  <!-- SLIDE 21: BREAK -->
   <div class="slide hidden-slide" data-index="19">
     <div class="kicker">休憩</div>
     <h1>☕</h1>
@@ -1014,7 +1035,7 @@
     <p class="lead" style="margin-top:24px;">ここに到達する経路は2つあります：Update Set を Deployment Request にプロモートする方法（本ラボの方法）、または承認ゲート付きで Git から CI/CD REST API 経由でトリガーする方法（choose-your-own-adventure を参照）。</p>
   </div>
 
-  <!-- SLIDE 21: RELEASEOPS -->
+  <!-- SLIDE 22: RELEASEOPS -->
   <div class="slide" data-index="20">
     <div class="slide-label">ReleaseOps（演習）</div>
     <h2>品質管理の<span class="hl-blue">モデル</span></h2>
@@ -1033,19 +1054,16 @@
       <div class="card accent-red"><h3>Need Code Change</h3><p>アセスメントは無効化されます — Deployment Request は Draft に戻り、新しいペイロードが必要になります。</p></div>
       <div class="card accent-green"><h3>Sign Off</h3><p>手動承認で先に進めます。</p></div>
     </div>
-    <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-releaseops.ja.md">演習を開く →</a>
-    </div>
   </div>
 
-  <!-- SLIDE 22: Q&A -->
+  <!-- SLIDE 23: Q&A -->
   <div class="slide hidden-slide" data-index="21">
     <div class="kicker">Q&amp;A</div>
     <h1>質問はありますか？</h1>
     <p class="lead" style="margin-top:20px;">3:45 – 4:00</p>
   </div>
 
-  <!-- SLIDE 23: PUSH TO PRODUCTION -->
+  <!-- SLIDE 24: PUSH TO PRODUCTION -->
   <div class="slide" data-index="22">
     <div class="slide-label">本番環境へのプッシュ（デモのみ）</div>
     <h2>プロモート、デプロイ、そして必要であれば<span class="hl-orange">ロールバック</span></h2>
@@ -1056,24 +1074,25 @@
     </ul>
   </div>
 
-  <!-- SLIDE 24: CHOOSE YOUR OWN ADVENTURE -->
+  <!-- SLIDE 25: CHOOSE YOUR OWN ADVENTURE -->
   <div class="slide" data-index="23">
     <div class="slide-label">Choose your own adventure（演習）</div>
     <h2>トラックを選んで<span class="hl-green">深く掘る</span></h2>
-    <div class="cols" style="max-width:1300px; grid-template-columns: repeat(5, 1fr);">
+    <div class="cols" style="max-width:1300px; grid-template-columns: repeat(6, 1fr);">
       <div class="card accent-blue"><h3>Fluent 深掘り</h3><p>より多くのメタデータ型、UI ビルダーからの transform/sync</p></div>
       <div class="card accent-green"><h3>テスト深掘り</h3><p>Test Agent によるトリアージ、Cloud Runner、回帰スイート</p></div>
       <div class="card accent-purple"><h3>CI/CD API</h3><p><code>now-sdk cicd</code>、Git トリガーのパイプライン、承認ゲート</p></div>
       <div class="card accent-orange"><h3>MCP 連携</h3><p>Connect Hub 経由で Figma/Miro を連携し、仕様から直接ビルド</p></div>
       <div class="card accent-red"><h3>カスタムルール</h3><p>Build Agent の出力の言葉・用語を変更するルール</p></div>
+      <div class="card accent-blue"><h3>ReleaseOps</h3><p>Deployment Request、アセスメントのプレイブック、Ready for Deploy</p></div>
     </div>
     <p class="lead" style="margin-top:24px;">興味のあるトラックを自由に探索してください — ご質問はいつでもどうぞ。始め方のヒントは演習を参照してください。</p>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-choose-your-own-adventure.ja.md">演習を開く →</a>
+      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/07-choose-your-own-adventure.ja.md">演習を開く →</a>
     </div>
   </div>
 
-  <!-- SLIDE 25: WRAP -->
+  <!-- SLIDE 26: WRAP -->
   <div class="slide" data-index="24">
     <div class="slide-label">まとめ</div>
     <h2>1枚の絵にたどる、<span class="hl-green">あなたのアプリ</span></h2>
@@ -1092,7 +1111,7 @@
     <p style="margin-top: 28px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.1em;">ご質問は Ashwin Patti、Shelby Cohen まで。</p>
   </div>
 
-  <!-- SLIDE 26: THANK YOU -->
+  <!-- SLIDE 27: THANK YOU -->
   <div class="slide" data-index="25">
     <div class="kicker">ありがとうございました</div>
     <h1>🙏</h1>
@@ -1189,13 +1208,27 @@
     <p style="margin-top:16px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL（SLIDE 2）. PRESENTER TO FILL IN BEFORE SESSION.</p>
   </div>
 
+  <!-- BONUS: WARPSPEED DEMO -->
+  <div class="slide" data-index="33">
+    <div class="slide-label">ボーナス（デモのみ）</div>
+    <h2>Warpspeed <span class="hl-blue">デモ</span></h2>
+    <div class="quote" style="margin-bottom:24px;">備品リクエスト、休暇申請、請求書処理、アクセス権限付与といった業務プロセスを効率化するワークフロー自動化プラットフォームです。</div>
+    <ul class="clean" style="max-width:800px;">
+      <li><span class="icon">👀</span><span>ライブデモ — 発表者がアプリを直接操作しながら説明します。</span></li>
+      <li><span class="icon">📝</span><span>TODO：ライブで見せる具体的なワークフローを1〜2つ選んでおく（例：備品リクエストや休暇申請など）。</span></li>
+    </ul>
+    <div class="exercise-links">
+      <a class="exercise-link" href="https://saplingapp.com/">saplingapp.com →</a>
+    </div>
+  </div>
+
 </div><!-- end deck -->
 
 <div class="nav">
   <button id="prev" title="Previous (←)">←</button>
   <div class="dots" id="dots"></div>
   <button id="next" title="Next (→)">→</button>
-  <span class="slide-num" id="slideNum">01 / 25</span>
+  <span class="slide-num" id="slideNum">01 / 35</span>
 </div>
 
 <script>

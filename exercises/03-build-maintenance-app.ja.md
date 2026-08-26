@@ -1,11 +1,11 @@
 ---
 title: "メンテナンスアプリのビルド＋テスト"
-slide: "15 — ビルド"
+slide: "16 — ビルド"
 ---
 
 # メンテナンスアプリのビルド＋テスト
 
-[← デッキのスライド15に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#15) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/02-build-maintenance-app.md)
+[← デッキのスライド16に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#16) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/03-build-maintenance-app.md)
 
 ## Objective（目的）
 
@@ -25,10 +25,10 @@ slide: "15 — ビルド"
 
 ## Exercise Steps（演習の手順）
 
-1. Studio 内で Build Agent を開きます。オフインスタンスでの利用は後ほど扱います。
-2. build-ready な要件を使って Build Agent にプロンプトを与えます — エンティティ、ロール／アクセス、Given-When-Then シナリオをプロンプトの中に直接名前で記述してください。要件定義のアクティビティで参考シナリオを使ったチームは、そのままこの内容を貼り付けてください。そうでない場合は、自分たちのエンティティ／ロール／Given-When-Then に置き換えてください：
+1. IDE 内で Build Agent を開きます。オフインスタンスでの利用は後ほど扱います。
+2. build-ready な要件を使って Build Agent にプロンプトを与えます — エンティティ、ロール／アクセス、Given-When-Then シナリオをプロンプトの中に直接名前で記述してください。アプリ名は `Maintenance_<YourName>` としてください（`<YourName>` は自分の名前に置き換えます — 共有インスタンスのため、一意なアプリ名にしないと他の参加者のアプリと衝突します）。要件定義のアクティビティで参考シナリオを使ったチームは、そのままこの内容を貼り付けてください。そうでない場合は、自分たちのエンティティ／ロール／Given-When-Then に置き換えてください：
    ```
-   Build a Maintenance Request app with:
+   Build a Maintenance Request app named "Maintenance_<YourName>" with:
 
    Entities: Maintenance Request, Equipment
 

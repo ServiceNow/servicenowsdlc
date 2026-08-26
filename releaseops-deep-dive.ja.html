@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReleaseOps ディープダイブ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  /* Theme: midnight — same palette as index.html; see assets/themes.mjs */
+  :root {
+    --bg: #032D42;
+    --surface: rgba(255,255,255,0.055);
+    --surface-2: rgba(0,0,0,0.30);
+    --ink: #FFFFFF;
+    --ink-muted: rgba(255,255,255,0.6);
+    --ink-faint: rgba(255,255,255,0.4);
+    --border: rgba(255,255,255,0.10);
+    --border2: rgba(255,255,255,0.16);
+    --c-blue: #7FD1FF;
+    --c-blue-dim: rgba(127,209,255,0.12);
+    --c-green: #63DF4E;
+    --c-green-dim: rgba(99,223,78,0.12);
+    --c-amber: #F0B97C;
+    --c-amber-dim: rgba(240,185,124,0.12);
+    --c-red: #ED6A5E;
+    --c-red-dim: rgba(237,106,94,0.12);
+    --accent: #63DF4E;
+    --nav-bg: rgba(3,30,44,0.85);
+    --nav-fg: rgba(255,255,255,0.55);
+    --nav-fg-hover: #63DF4E;
+    --nav-shadow: 0 2px 16px rgba(0,0,0,0.35);
+    --th-bg: #63DF4E;
+    --th-fg: #032D42;
+    --code-fg: #63DF4E;
+    --code-bg: rgba(0,0,0,0.25);
+    --code-border: rgba(255,255,255,0.12);
+    --pre-border-left: rgba(99,223,78,0.40);
+    --glow-1: rgba(99,223,78,0.07);
+    --glow-2: rgba(99,223,78,0.055);
+    --glow-3: rgba(99,223,78,0.04);
+    --watermark: rgba(255,255,255,0.025);
+    --row-stripe: rgba(255,255,255,0.03);
+    --sel-bg: #63DF4E;
+    --sel-fg: #032D42;
+    --sans: "Plus Jakarta Sans", "ServiceNow Sans", system-ui, sans-serif;
+    --mono: "DM Mono", "Cascadia Code", monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  ::selection { background: var(--sel-bg); color: var(--sel-fg); }
+
+  html, body { height: 100%; overflow: hidden; }
+
+  body {
+    font-family: var(--sans);
+    font-weight: 300;
+    background: var(--bg);
+    color: var(--ink);
+    height: 100vh;
+  }
+
+  /* ─── Parallax background ────────────────────────── */
+
+  #parallax-bg {
+    position: fixed;
+    inset: -25%;
+    width: 150%;
+    height: 150%;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse 55% 45% at 15% 20%, var(--glow-1) 0%, transparent 100%),
+      radial-gradient(ellipse 45% 35% at 82% 75%, var(--glow-2) 0%, transparent 100%),
+      radial-gradient(ellipse 40% 55% at 60% 10%, var(--glow-3) 0%, transparent 100%);
+    transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+
+  /* ─── Deck & Slides ─────────────────────────────── */
+
+  .deck { width: 100%; height: 100vh; position: relative; z-index: 1; }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 48px 64px 76px;
+    opacity: 0;
+    transform: translateX(52px);
+    transition: opacity 0.38s cubic-bezier(0.4,0,0.2,1),
+                transform 0.38s cubic-bezier(0.4,0,0.2,1);
+    pointer-events: none;
+    overflow: hidden;
+    will-change: opacity, transform;
+  }
+
+  .slide.active  { opacity: 1; transform: translateX(0); pointer-events: all; }
+  .slide.exit    { opacity: 0; transform: translateX(-52px); }
+  .slide.hidden-slide { display: none; }
+
+  .slide-wm {
+    position: absolute;
+    right: -0.05em;
+    bottom: -0.14em;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 34vw;
+    line-height: 0.82;
+    color: var(--watermark);
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.04em;
+    z-index: 0;
+  }
+
+  .slide > *:not(.slide-wm):not(.slide-label) { position: relative; z-index: 1; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .slide.active > *:not(.slide-wm)                 { animation: fadeUp 0.45s cubic-bezier(0.4,0,0.2,1) backwards; }
+  .slide.active > *:nth-child(2):not(.slide-wm)    { animation-delay: 0.06s; }
+  .slide.active > *:nth-child(3):not(.slide-wm)    { animation-delay: 0.12s; }
+  .slide.active > *:nth-child(4):not(.slide-wm)    { animation-delay: 0.18s; }
+  .slide.active > *:nth-child(5):not(.slide-wm)    { animation-delay: 0.24s; }
+
+  /* ─── Navigation ─────────────────────────────────── */
+
+  .nav {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    z-index: 100;
+    background: var(--nav-bg);
+    border: 1px solid var(--border2);
+    border-radius: 100px;
+    padding: 10px 22px;
+    box-shadow: var(--nav-shadow);
+    backdrop-filter: blur(16px);
+  }
+
+  .nav button {
+    background: none;
+    border: none;
+    color: var(--nav-fg);
+    cursor: pointer;
+    font-size: 15px;
+    font-family: var(--mono);
+    padding: 2px 5px;
+    transition: color 0.15s;
+    line-height: 1;
+  }
+  .nav button:hover { color: var(--nav-fg-hover); }
+
+  .dots { display: flex; gap: 5px; align-items: center; }
+  .dot {
+    width: 14px; height: 2px;
+    background: var(--nav-fg);
+    opacity: 0.5;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s, opacity 0.2s;
+  }
+  .dot.active { background: var(--nav-fg-hover); opacity: 1; transform: scaleX(1.5); }
+
+  .slide-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--nav-fg);
+    min-width: 44px;
+    text-align: center;
+    letter-spacing: 0.06em;
+  }
+
+  /* ─── Typography ─────────────────────────────────── */
+
+  .kicker {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(44px, 6vw, 78px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: var(--ink);
+  }
+
+  h2 {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(33px, 4.2vw, 52px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    color: var(--ink);
+  }
+
+  h3 {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.10em;
+    margin-bottom: 6px;
+    color: var(--c-blue);
+    text-transform: uppercase;
+  }
+
+  h4 {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 15.5px;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+
+  p { font-size: 18px; line-height: 1.7; color: var(--ink-muted); font-weight: 300; }
+
+  .lead {
+    font-size: 22px;
+    line-height: 1.65;
+    color: var(--ink-muted);
+    max-width: 780px;
+    text-align: center;
+    font-weight: 300;
+  }
+
+  strong { color: var(--ink); font-weight: 600; }
+
+  .hl-blue   { color: var(--c-blue); }
+  .hl-green  { color: var(--c-green); }
+  .hl-orange { color: var(--c-amber); }
+  .hl-red    { color: var(--c-red); }
+  .hl-purple { color: var(--c-blue); }
+
+  /* ─── Slide label ─────────────────────────────────── */
+
+  .slide-label {
+    position: absolute;
+    top: 24px; left: 40px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ─── Layout helpers ──────────────────────────────── */
+
+  .cols { display: grid; gap: 22px; width: 100%; max-width: 1120px; }
+  .cols-2 { grid-template-columns: 1fr 1fr; }
+  .cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+  /* ─── Cards ───────────────────────────────────────── */
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 22px 26px;
+    position: relative;
+  }
+
+  .card.accent-blue::before,
+  .card.accent-purple::before { background: var(--c-blue); }
+  .card.accent-green::before  { background: var(--c-green); }
+  .card.accent-orange::before { background: var(--c-amber); }
+  .card.accent-red::before    { background: var(--c-red); }
+
+  .card.accent-blue::before,
+  .card.accent-purple::before,
+  .card.accent-green::before,
+  .card.accent-orange::before,
+  .card.accent-red::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 6px 0 0 6px;
+  }
+
+  .card p { font-size: 15.5px; margin-top: 6px; line-height: 1.65; }
+
+  /* ─── Code ────────────────────────────────────────── */
+
+  code {
+    font-family: var(--mono);
+    font-size: 12px;
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 3px;
+    padding: 1px 6px;
+    color: var(--code-fg);
+  }
+
+  /* ─── Step label (precedes a terminal or pre block) ── */
+
+  .step-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+    margin-top: 22px;
+  }
+  .step-label.first { margin-top: 0; }
+  .step-label.tight { margin-top: 14px; }
+
+  /* ─── Lists ───────────────────────────────────────── */
+
+  ul.clean { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+  ul.clean li {
+    display: flex; align-items: flex-start; gap: 11px;
+    font-size: 17.5px; line-height: 1.55; color: var(--ink);
+    font-weight: 300;
+  }
+
+  ul.clean li .icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ─── Tags ────────────────────────────────────────── */
+
+  .tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid var(--border);
+    color: var(--ink-faint);
+    background: var(--surface);
+    border-radius: 2px;
+  }
+
+  .tag-blue, .tag-purple { color: var(--c-blue);  border-color: var(--c-blue-dim);  background: var(--c-blue-dim); }
+  .tag-green             { color: var(--c-green); border-color: var(--c-green-dim); background: var(--c-green-dim); }
+  .tag-orange            { color: var(--c-amber); border-color: var(--c-amber-dim); background: var(--c-amber-dim); }
+  .tag-red               { color: var(--c-red);   border-color: var(--c-red-dim);   background: var(--c-red-dim); }
+
+  /* ─── Flow diagram ────────────────────────────────── */
+
+  .flow { display: flex; align-items: center; gap: 0; width: 100%; max-width: 1080px; }
+
+  .flow-box {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 14px;
+    text-align: center;
+  }
+
+  .flow-box .icon { font-size: 28px; margin-bottom: 8px; display: block; }
+  .flow-box h4  { font-size: 14px; font-family: var(--sans); font-weight: 600; color: var(--ink); }
+  .flow-box p   { font-size: 13px; color: var(--ink-muted); margin-top: 4px; line-height: 1.5; }
+
+  .flow-arrow { font-family: var(--mono); font-size: 14px; color: var(--ink-faint); padding: 0 5px; flex-shrink: 0; }
+
+  /* ─── Quote ───────────────────────────────────────── */
+
+  .quote {
+    border-left: 2px solid var(--accent);
+    padding: 16px 24px;
+    background: var(--c-green-dim);
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--ink-muted);
+    max-width: 880px;
+    font-weight: 300;
+  }
+
+  .quote.tone-orange { border-left-color: var(--c-amber); background: var(--c-amber-dim); }
+
+  /* ─── Exercise / cross-deck link chip ────────────── */
+
+  .exercise-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; justify-content: center; }
+
+  .exercise-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--c-blue);
+    background: var(--c-blue-dim);
+    border: 1px solid rgba(127,209,255,0.35);
+    border-radius: 20px;
+    padding: 9px 18px;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+
+  /* ─── Screenshot grid (this deck only) ───────────────
+       Multi-shot slides: a row of cropped product screenshots
+       with a caption underneath each, same card language as
+       index.html's .card (border/surface/radius) so it reads
+       as one system even though index.html has no equivalent. */
+
+  .shots { display: grid; gap: 20px; width: 100%; max-width: 1180px; }
+
+  .shot { display: flex; flex-direction: column; gap: 10px; }
+
+  .shot img {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    display: block;
+  }
+
+  .shot figcaption {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--ink-muted);
+    font-weight: 300;
+  }
+
+  /* Single full-width screenshot (playbook diagrams) */
+  .shot-single img {
+    width: 100%;
+    max-width: 1120px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+  }
+
+  /* ─── Language switcher ───────────────────────────── */
+
+  .lang-switch {
+    position: fixed;
+    top: 24px; right: 40px;
+    z-index: 100;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--surface);
+  }
+  .lang-switch:hover { color: var(--nav-fg-hover); border-color: var(--border2); }
+</style>
+</head>
+<body>
+
+<a class="lang-switch" id="langSwitch" href="releaseops-deep-dive.html">English</a>
+<div id="parallax-bg"></div>
+
+<div class="deck" id="deck">
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       このデッキの編集方法
+       · index.html と同じエンジン — <div class="slide"> が1枚のスライド。
+       · class="hidden-slide" を付けると削除せずにスキップできる。
+       · URLディープリンク: …/#3 を開くとスライド3にジャンプする。
+       · 英語版 releaseops-deep-dive.html と対になっている — 両方を
+         同期させること（CLAUDE.md 参照）。
+       ══════════════════════════════════════════════════════════════════ -->
+
+  <!-- SLIDE 1: TITLE -->
+  <div class="slide active" data-index="0">
+    <div class="kicker">ReleaseOps</div>
+    <h1>Deployment Request <span class="hl-green">ディープダイブ</span></h1>
+    <p class="lead" style="margin-top:20px;">メインデッキの ReleaseOps スライドの背景にあるすべて — なぜ Update Set の上に構築されているのか、アセスメントのプレイブックをステージごとに、そして Studio から本番環境までの完全なステップバイステップのウォークスルー（クリックごとのスクリーンショットは ReleaseOps の演習にあります）。</p>
+    <p class="step-label" style="margin-top:28px; text-align:center;">参考デッキ — メインのワークショップからリンクされていますが、コアデイの内容には含まれません</p>
+    <div class="exercise-links">
+      <a class="exercise-link" href="https://servicenow.github.io/servicenowsdlc/index.ja.html#22">← メインデッキに戻る</a>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: WHY UPDATE SETS -->
+  <div class="slide" data-index="1">
+    <div class="slide-label">アーキテクチャ</div>
+    <h2>なぜ <span class="hl-blue">Update Set</span> なのか、ソースコントロールではなく</h2>
+    <div class="quote" style="margin-bottom:28px;">「ReleaseOps はソースコントロールに直接接続しません — アプリリポジトリの内容を Update Set に圧縮し、それをデプロイのペイロードとして使います。」</div>
+    <div class="flow">
+      <div class="flow-box"><span class="icon">🗂️</span><h4>ソースコントロール</h4><p>複数のサンドボックスで同時に複数バージョン</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><span class="icon">📦</span><h4>App Repo</h4><p>Studio での公開でどこにでもインストール可能に</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><span class="icon">📋</span><h4>Update Set</h4><p>公開が実際に生成するもの</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">🚚</span><h4>Deployment Request</h4><p>ReleaseOps が実際に移動させるもの</p></div>
+    </div>
+    <p class="lead" style="margin-top:24px;">およそ3年前に構築されたもので、当時は Update Set と Git のどちらを使うかがまだ広く議論されていませんでした — これは設計上の目標ではなく、既知のアーキテクチャ上の制約です。</p>
+  </div>
+
+  <!-- SLIDE 3: TWO CORE FLOWS -->
+  <div class="slide" data-index="2">
+    <div class="slide-label">アーキテクチャ</div>
+    <h2>2つのコアフロー、<span class="hl-green">1つのパイプライン</span></h2>
+    <div class="cols cols-2" style="max-width:1040px; align-items:start;">
+      <div class="card accent-blue">
+        <h3>Assessment flow</h3>
+        <p>単一の Deployment Request を検証します: Instance Scan → Move to Test → Run ATF → Ready for Deploy。DR ごとに、実行を指示したときに動きます。</p>
+      </div>
+      <div class="card accent-green">
+        <h3>Release flow</h3>
+        <p>リリース日になると、Ready for Deployment に到達したすべての Deployment Request が、まとめて最終的な宛先にプッシュされます。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: FREEZE DATE VS RELEASE DATE -->
+  <div class="slide" data-index="3">
+    <div class="slide-label">アーキテクチャ</div>
+    <h2>Freeze date と <span class="hl-orange">release date</span></h2>
+    <div class="cols cols-2" style="max-width:1040px; align-items:start;">
+      <div class="card accent-orange">
+        <h3>Freeze date</h3>
+        <p>Ready for Deployment に到達するための締切です。過ぎてしまうと、Deployment Request は<strong>deferred</strong>（保留）とマークされます — ブロックされるわけではありません。（Robert が本来使いたかった呼び方: cutoff date。）</p>
+      </div>
+      <div class="card accent-green">
+        <h3>Release date</h3>
+        <p>deferred でないすべての Deployment Request に対して、実際に本番へのバッチプッシュが発火するタイミングです。</p>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:24px;">Deferred は true/false のフラグであり、state（状態）ではありません — deferred になった DR も、後でアセスメントに合格すれば、同じパイプラインを通じて別のリリースに乗ることができます。</p>
+  </div>
+
+  <!-- SLIDE 5: WHY DEV-TO-TEST-ONLY DOESN'T WORK -->
+  <div class="slide" data-index="4">
+    <div class="slide-label">アーキテクチャ</div>
+    <h2>なぜ <span class="hl-red">dev → test だけ</span>ではうまくいかないのか</h2>
+    <p class="lead">アセスメントフローは、すでにアプリを dev から test に移動させます。test が「最終的な宛先」でもある場合、リリースフローにはペイロードを新たにプッシュする先がありません — すでにそこにあるので、リリースは失敗します。</p>
+    <div class="quote" style="margin-top:28px;">ReleaseOps には少なくとも3つのインスタンスが必要です: dev、アセスメント対象（test、staging、UAT のいずれか）、そして最終的な宛先（例: prod）。</div>
+  </div>
+
+  <!-- SLIDE 6: THE ASSESSMENT PLAYBOOK, STAGE BY STAGE -->
+  <div class="slide" data-index="5">
+    <div class="slide-label">アーキテクチャ</div>
+    <h2>アセスメントのプレイブックを<span class="hl-blue">ステージごとに</span></h2>
+    <div class="flow" style="margin-bottom:26px;">
+      <div class="flow-box"><span class="icon">🔍</span><h4>Instance Scan</h4><p>dev インスタンス上での静的ポリシーチェック</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><span class="icon">📥</span><h4>Move to test</h4><p>アセスメント開始</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><span class="icon">✅</span><h4>Run ATF</h4><p>機能カバレッジ</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">🚀</span><h4>Ready for Deploy</h4><p>リリース可能</p></div>
+    </div>
+    <ul class="clean" style="max-width:900px;">
+      <li><span class="icon">1️⃣</span><span>Instance Scan が失敗すると、タスクが作成され、DR は静かに停止するのではなく <strong>Reconciling</strong> に移動します。</span></li>
+      <li><span class="icon">2️⃣</span><span>Move to Test の宛先は<strong>設定可能</strong>です — staging、UAT、または任意の sub-prod インスタンスであり、文字通り「test」である必要はありません。</span></li>
+      <li><span class="icon">3️⃣</span><span>Run ATF はコードカバレッジとテスト失敗を、<strong>それぞれ別の</strong> sad-path 終了としてチェックします。</span></li>
+      <li><span class="icon">4️⃣</span><span>Ready for Deploy は<em>アセスメント</em>のゴールです — 本番への到達はリリースフローの仕事です。</span></li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 7: PAUSE POINTS -->
+  <div class="slide" data-index="6">
+    <div class="slide-label">アーキテクチャ</div>
+    <h2>Pause point — <span class="hl-red">導入の最大の障壁</span></h2>
+    <div class="quote" style="margin-bottom:26px;">どの顧客にも、change control の承認、担当者の承認、hypercare の準備など、自動化されたステージの間に発生する手作業のステップがあります。Pause point は、ReleaseOps がそれに対応する仕組みです。</div>
+    <ul class="clean" style="max-width:920px;">
+      <li><span class="icon">⏸️</span><span>Pause point は<strong>条件付きの待機</strong>です: そのステージで手動定義された Deployment Request Task を確認し、存在しなければ自動的に続行します。</span></li>
+      <li><span class="icon">📋</span><span>Deployment Request Task は追跡可能で割り当て可能なレコードです — 口頭の約束ではありません — これが監査可能性にとって重要です。</span></li>
+      <li><span class="icon">🔀</span><span>タスクの <strong>Pipeline</strong> フィールドは、アセスメントステージでの中断（「デプロイの準備はできているか？」）とリリースステージでの中断（デプロイ後のスモークテスト、サインオフ）を区別します。</span></li>
+      <li><span class="icon">🏷️</span><span>タスクの種類: <strong>Runbook</strong>、Test issue、Scan issue、Preview issue。</span></li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 8: WALKTHROUGH OVERVIEW -->
+  <div class="slide" data-index="7">
+    <div class="slide-label">ウォークスルー</div>
+    <h2>Studio から本番環境まで、<span class="hl-green">ステップバイステップ</span></h2>
+    <ul class="clean" style="max-width:780px;">
+      <li><span class="icon">1️⃣</span><span>IDE からアプリをビルドしてインストールする</span></li>
+      <li><span class="icon">2️⃣</span><span>アプリを App Repository に公開する</span></li>
+      <li><span class="icon">3️⃣</span><span>公開によって作成された Update Set を見つける</span></li>
+      <li><span class="icon">4️⃣</span><span>宛先インスタンスに Release レコードを作成する</span></li>
+      <li><span class="icon">5️⃣</span><span>Update Set をプロモートして Deployment Request を作成する</span></li>
+      <li><span class="icon">6️⃣</span><span>Release をアクティブ化する</span></li>
+      <li><span class="icon">7️⃣</span><span>Deployment Request を「Ready to Assess」にマークして、プレイブックの実行を見守る</span></li>
+      <li><span class="icon">8️⃣</span><span>Deployment Request Task で手動の pause point を設定する</span></li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 8.5: 1. BUILD AND INSTALL FROM THE IDE -->
+  <div class="slide" data-index="7.5">
+    <div class="slide-label">ウォークスルー — ステップ1</div>
+    <h2>IDE から<span class="hl-blue">アプリをビルド＆インストール</span></h2>
+    <div class="quote" style="margin-bottom:26px;">インスタンスにインストールされていないアプリは Studio から見えません — ビルドとインストールがまず IDE から行われ、Studio が登場するのはその後です。</div>
+    <ul class="clean" style="max-width:820px;">
+      <li><span class="icon">🛠️</span><span>IDE でアプリをビルドします — 今日のビルド演習と同じ Fluent SDK のワークフローです。</span></li>
+      <li><span class="icon">📥</span><span><code>now-sdk build</code>、続けて <code>now-sdk install</code> — dev インスタンスにインストールします。</span></li>
+      <li><span class="icon">🔎</span><span>インストール後にのみ、アプリが Studio の Explorer パネルに表示されます — このウォークスルーはそこから続きます。</span></li>
+    </ul>
+    <p class="step-label tight">このウォークスルーは STUDIO から公開します — IDE と STUDIO のどちらを使うかという未解決の問題は「RELEASEOPS にまだできないこと」を参照してください</p>
+  </div>
+
+  <!-- SLIDE 9: 2. PUBLISH THE APP -->
+  <div class="slide" data-index="8">
+    <div class="slide-label">ウォークスルー — ステップ2</div>
+    <h2>アプリを <span class="hl-blue">App Repository</span> に公開する</h2>
+    <ul class="clean" style="max-width:820px;">
+      <li><span class="icon">1️⃣</span><span>Explorer パネルから ServiceNow Studio でアプリを開きます。</span></li>
+      <li><span class="icon">2️⃣</span><span>App Details → Publish。バージョンを上げます — Studio が自動的にインクリメントしてくれます。</span></li>
+      <li><span class="icon">3️⃣</span><span>公開成功 — アプリは会社内の他のすべてのインスタンスから見えるようになります。</span></li>
+    </ul>
+    <p class="step-label tight">このステップのフルスクリーンショットは RELEASEOPS の演習にあります</p>
+  </div>
+
+  <!-- SLIDE 10: 3. FIND THE UPDATE SET -->
+  <div class="slide" data-index="9">
+    <div class="slide-label">ウォークスルー — ステップ3</div>
+    <h2>公開によって作成された <span class="hl-blue">Update Set</span> を見つける</h2>
+    <ul class="clean" style="max-width:820px;">
+      <li><span class="icon">1️⃣</span><span>dev インスタンスで Local Update Sets を検索します。</span></li>
+      <li><span class="icon">2️⃣</span><span>公開アクションによって自動的に作成されました — 「Maintenance install version 1.0.1…」。</span></li>
+      <li><span class="icon">3️⃣</span><span>それを開きます — これが Deployment Request が実際に移動させるペイロードです。</span></li>
+    </ul>
+    <div class="quote tone-orange" style="margin-top:24px;">落とし穴: スコープ付きアプリには、これとは別に「[app] in progress」というデフォルトの Update Set も常に開いた状態で存在します — これは標準の動作であり、エラーではありません。デフォルトのものではなく、この maintenance/install version のものを使ってください。</div>
+  </div>
+
+  <!-- SLIDE 11: 4. CREATE THE RELEASE — BASICS -->
+  <div class="slide" data-index="10">
+    <div class="slide-label">ウォークスルー — ステップ4</div>
+    <h2><span class="hl-green">Release</span> レコードを作成する — 基本編</h2>
+    <ul class="clean" style="max-width:820px;">
+      <li><span class="icon">1️⃣</span><span>宛先インスタンスで Releases（ReleaseOps アプリ）を検索します。</span></li>
+      <li><span class="icon">2️⃣</span><span>新しい Release レコード — 空の状態、state は Draft。</span></li>
+      <li><span class="icon">3️⃣</span><span>Destination environment: ReleaseOps が最終的にデプロイする先のインスタンス（ここでは prod）。</span></li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 12: 4. CREATE THE RELEASE — PIPELINE & TIMING -->
+  <div class="slide" data-index="11">
+    <div class="slide-label">ウォークスルー — ステップ4</div>
+    <h2><span class="hl-green">Release</span> レコードを作成する — パイプラインとタイミング編</h2>
+    <ul class="clean" style="max-width:860px;">
+      <li><span class="icon">1️⃣</span><span>Pipeline: Sample Release Pipeline（リリース日を待つ）か Sample On Demand Pipeline（DR の準備ができたらすぐにプッシュする）。</span></li>
+      <li><span class="icon">2️⃣</span><span>Freeze date と release date — ライブデモではここでは近接させていますが、通常は数日〜数週間の間隔を空けます。</span></li>
+      <li><span class="icon">3️⃣</span><span>保存します。Assignment group は App Engine Admins に設定。アクティブ化されるまで state は Draft のままです。</span></li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 13: 5. PROMOTE UPDATE SET -->
+  <div class="slide" data-index="12">
+    <div class="slide-label">ウォークスルー — ステップ5</div>
+    <h2>Update Set をプロモート → <span class="hl-blue">Deployment Request を作成</span></h2>
+    <ul class="clean" style="max-width:860px;">
+      <li><span class="icon">1️⃣</span><span>dev に戻り、update set を開いて Promote Update Set をクリックします。</span></li>
+      <li><span class="icon">2️⃣</span><span>宛先インスタンス上でレコードプロデューサーが開きます — 「Deploy an Update Set」。</span></li>
+      <li><span class="icon">3️⃣</span><span>「Create new deployment request」をチェックし、先ほど作成した Release を紐づけ、必要に応じて実行する ATF suite を絞り込みます。</span></li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 14: 6. ACTIVATE THE RELEASE -->
+  <div class="slide" data-index="13">
+    <div class="slide-label">ウォークスルー — ステップ6</div>
+    <h2><span class="hl-green">Release</span> をアクティブ化する</h2>
+    <ul class="clean" style="max-width:820px;">
+      <li><span class="icon">1️⃣</span><span>Release が Active にならない限り、Deployment Request は Ready to Assess に進めません。</span></li>
+      <li><span class="icon">2️⃣</span><span>Release レコードに戻り、Activate Release をクリックします。</span></li>
+      <li><span class="icon">3️⃣</span><span>State: Active。ReleaseOps が裏側で freeze-date のジョブをスケジュールしました。</span></li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 15: 7. READY TO ASSESS -->
+  <div class="slide" data-index="14">
+    <div class="slide-label">ウォークスルー — ステップ7</div>
+    <h2>Ready to Assess → <span class="hl-blue">動き出すのを見守る</span></h2>
+    <ul class="clean" style="max-width:860px;">
+      <li><span class="icon">1️⃣</span><span>Deployment Request で Ready to Assess をクリックします — これが実際にアセスメントのプレイブックを起動させるものです。</span></li>
+      <li><span class="icon">2️⃣</span><span>State が自動的に Assessing に切り替わります — 別途の承認ステップはありません。</span></li>
+      <li><span class="icon">3️⃣</span><span>アクティビティログがリアルタイムで様子を伝えます: instance scan が0件の findings で完了し、続いて「Started moving updates to…」。</span></li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 16: INSIDE WORKFLOW STUDIO — FIND THE PLAYBOOK -->
+  <div class="slide" data-index="15">
+    <div class="slide-label">ウォークスルー — ステップ7（続き）</div>
+    <h2>Workflow Studio の中へ: <span class="hl-blue">プレイブックを見つける</span></h2>
+    <ul class="clean" style="max-width:820px;">
+      <li><span class="icon">1️⃣</span><span>「Studio」を検索 → Workflow Studio。</span></li>
+      <li><span class="icon">2️⃣</span><span>Playbooks を ReleaseOps アプリケーションで絞り込みます — Deployment Request Assessment を含め、標準で4つ用意されています。</span></li>
+      <li><span class="icon">3️⃣</span><span>開きます。左から右に4つの番号付きステージ: Run Instance Scan → Move To Test → Run ATF Tests → Ready for Deploy — 次に見ていきます。</span></li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 17: STAGE 1 — INSTANCE SCAN -->
+  <div class="slide" data-index="16">
+    <div class="slide-label">Playbook — ステージ1</div>
+    <h2>Instance Scan</h2>
+    <figure class="shot shot-single">
+      <img src="assets/images/releaseops-deep-dive/25-stage1-instance-scan.png" alt="Run Instance Scan ステージの Workflow Studio 図。失敗時は Reconciling タスクに分岐する">
+    </figure>
+    <p class="lead" style="margin-top:20px;">dev インスタンス上での静的ポリシーチェックです。ハッピーパスは Move to Test に続き、Failures or Errors は代わりに Reconciling タスクに分岐します。</p>
+  </div>
+
+  <!-- SLIDE 18: STAGE 2 — MOVE TO TEST -->
+  <div class="slide" data-index="17">
+    <div class="slide-label">Playbook — ステージ2</div>
+    <h2>Move to Test</h2>
+    <div class="cols cols-2" style="max-width:1180px; align-items:center;">
+      <figure class="shot">
+        <img src="assets/images/releaseops-deep-dive/26-stage2-move-to-test.png" alt="Move To Test ステージの Workflow Studio 図">
+      </figure>
+      <figure class="shot">
+        <img src="assets/images/releaseops-deep-dive/27-stage2-config-panel.png" alt="Integrate Deployment Request アクティビティのプロパティ。Destination Instance Label が Test に設定されている">
+      </figure>
+    </div>
+    <p class="lead" style="margin-top:20px;">「Test」はラベルであり、ハードコードされたインスタンスではありません — Integrate Deployment Request アクティビティは、宛先を設定可能な入力として受け取ります。ここでは文字通り「Test」と名付けられていますが、同じように Staging や UAT にもできます。</p>
+  </div>
+
+  <!-- SLIDE 19: STAGE 3 — RUN ATF -->
+  <div class="slide" data-index="18">
+    <div class="slide-label">Playbook — ステージ3</div>
+    <h2>Run ATF Tests</h2>
+    <figure class="shot shot-single">
+      <img src="assets/images/releaseops-deep-dive/28-stage3-run-atf.png" alt="Run ATF Tests ステージの Workflow Studio 図。失敗と低カバレッジの2つの sad path がある">
+    </figure>
+    <p class="lead" style="margin-top:20px;">2つの独立した sad path があります: Failures or Errors と Low Code Coverage — どちらも、静かにブロックするのではなく Reconciling タスクにルーティングされます。</p>
+  </div>
+
+  <!-- SLIDE 20: STAGE 4 — READY FOR DEPLOY -->
+  <div class="slide" data-index="19">
+    <div class="slide-label">Playbook — ステージ4</div>
+    <h2>Ready for Deploy</h2>
+    <figure class="shot shot-single">
+      <img src="assets/images/releaseops-deep-dive/29-stage4-ready-for-deploy.png" alt="Ready for Deploy ステージから End に至る Workflow Studio 図">
+    </figure>
+    <p class="lead" style="margin-top:20px;"><em>アセスメント</em>フローのゴールです。ここから本番に Deployment Request を到達させるのは、リリースフローの仕事であり、それ自身のスケジュールで行われます。</p>
+  </div>
+
+  <!-- SLIDE 22: 8. SETTING UP A MANUAL PAUSE POINT -->
+  <div class="slide" data-index="20">
+    <div class="slide-label">ウォークスルー — ステップ8</div>
+    <h2><span class="hl-red">手動の pause point</span>を設定する</h2>
+    <ul class="clean" style="max-width:820px;">
+      <li><span class="icon">1️⃣</span><span>Deployment Request → Deployment Request Tasks。誰かが追加するまでは空です。</span></li>
+      <li><span class="icon">2️⃣</span><span>新しいタスク — Type は Runbook、Test issue、Scan issue、Preview issue のいずれかです。</span></li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 23: RESOLVING THE PAUSE -->
+  <div class="slide" data-index="21">
+    <div class="slide-label">ウォークスルー — ステップ8（続き）</div>
+    <h2>一時停止させ、<span class="hl-green">解決する</span></h2>
+    <ul class="clean" style="max-width:900px;">
+      <li><span class="icon">1️⃣</span><span>このタスクは Playbook stage「Ready for Deploy」に紐づけられ、activity「Before Ready for Deployment」を待っています — タスクが閉じるまで、プレイブックはその先に進みません。</span></li>
+      <li><span class="icon">2️⃣</span><span>Resolve でクリアすると、プレイブックは再開します — サインオフが「デプロイの準備はできているか？」であっても、デプロイ後のスモークテストであっても、仕組みは同じです。</span></li>
+    </ul>
+    <p class="step-label tight">ステップ2〜8のフルスクリーンショットは RELEASEOPS の演習にあります — クロージングスライドのリンクを参照してください</p>
+  </div>
+
+  <!-- SLIDE 24: WHAT RELEASEOPS CAN'T DO YET -->
+  <div class="slide" data-index="22">
+    <div class="slide-label">ロードマップ</div>
+    <h2>ReleaseOps に<span class="hl-orange">まだできないこと</span></h2>
+    <div class="cols cols-3" style="max-width:1180px; align-items:start;">
+      <div class="card accent-orange">
+        <h3>prod からの ATF suite 選択</h3>
+        <p>新規アプリの場合、その ATF suite はアプリの中にあり、prod にはまだ存在しません — そのため、そこにある Deployment Request フォームからは選択できません。優先度の高いロードマップ項目です。</p>
+      </div>
+      <div class="card accent-red">
+        <h3>Fixed script とデータロード</h3>
+        <p>顧客の約80%が、update set → fixed script → update set のインターリービングを求めます。Pause point は手作業のステップを追跡可能なタスクでラップできますが、ReleaseOps 自体はそのインターリービングを自動化しません。</p>
+      </div>
+      <div class="card accent-blue">
+        <h3>IDE 対 Studio での公開</h3>
+        <p>このウォークスルーは Studio から公開していますが、これまでのブートキャンプの資料は IDE のみを扱っていました。App Repo への公開が IDE から直接可能かどうかは、まだ未解決の質問です。</p>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:26px;">長期的な方向性: 顧客をソースコントロールを正式な起点とする方向へ導き、複数の interleaved な update set の代わりに、1つの統合されたパッケージが本番に届くようにします。</p>
+  </div>
+
+  <!-- SLIDE 25: WRAP-UP — DEPLOYED TO PROD -->
+  <div class="slide" data-index="22.5">
+    <div class="kicker">まとめ</div>
+    <h1><span class="hl-green">本番</span>にデプロイ完了</h1>
+    <p class="lead" style="margin-top:20px;">最初から最後まで: オフインスタンスでビルドされたアプリが App Repo に公開され、Deployment Request にプロモートされ、自動的にアセスメントされ、本番にリリースされました — チームが望んだ場所にだけ人によるサインオフがあり、あらゆる場所にあるわけではありません。</p>
+    <ul class="clean" style="max-width:780px; margin-top:8px;">
+      <li><span class="icon">🧱</span><span>プラットフォームが昔からずっと使ってきた同じ Update Set のペイロード — 今では runbook ではなく playbook が動かしています。</span></li>
+      <li><span class="icon">⏸️</span><span>Pause point があるということは、「自動」が「誰もサインオフしない」ことを意味するわけではありません — サインオフが Slack のスレッドではなく、追跡可能なタスクになるということです。</span></li>
+      <li><span class="icon">🚀</span><span>リリースフローは、準備が整ったすべての Deployment Request に対して、スケジュールどおり、無人で発火しました。</span></li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 26: CLOSING -->
+  <div class="slide" data-index="23">
+    <div class="kicker">ありがとうございました</div>
+    <h1><span class="hl-green">ワークショップ</span>に戻る</h1>
+    <p class="lead" style="margin-top:20px;">これでパイプライン全体です — アーキテクチャ、アセスメントのプレイブック、そして pause point の仕組み。メインデッキに戻るか、ハンズオンの演習に進んでください。</p>
+    <div class="exercise-links">
+      <a class="exercise-link" href="https://servicenow.github.io/servicenowsdlc/index.ja.html#22">← ReleaseOps のスライドに戻る</a>
+      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-releaseops.ja.md">ReleaseOps の演習を開く →</a>
+    </div>
+  </div>
+
+</div><!-- end deck -->
+
+<div class="nav">
+  <button id="prev" title="Previous (←)">←</button>
+  <div class="dots" id="dots"></div>
+  <button id="next" title="Next (→)">→</button>
+  <span class="slide-num" id="slideNum">01 / 26</span>
+</div>
+
+<script>
+  const slides     = document.querySelectorAll('.slide:not(.hidden-slide)');
+  const dotsEl     = document.getElementById('dots');
+  const slideNum   = document.getElementById('slideNum');
+  const parallaxBg = document.getElementById('parallax-bg');
+  const total      = slides.length;
+  let current = 0;
+
+  slides.forEach((slide, i) => {
+    const wm = document.createElement('span');
+    wm.className = 'slide-wm';
+    wm.textContent = String(i + 1).padStart(2, '0');
+    slide.appendChild(wm);
+
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(d);
+  });
+
+  slideNum.textContent = `01 / ${String(total).padStart(2, '0')}`;
+
+  function updateParallax(n) {
+    const x = n * -30;
+    const y = n * -18;
+    parallaxBg.style.transform = `translate(${x}px, ${y}px)`;
+  }
+
+  function goTo(n) {
+    if (n < 0 || n >= total) return;
+    slides[current].classList.remove('active');
+    slides[current].classList.add('exit');
+    setTimeout(() => slides[current].classList.remove('exit'), 380);
+    current = n;
+    slides[current].classList.add('active');
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    slideNum.textContent = String(current + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+    updateParallax(current);
+    history.replaceState(null, '', '#' + (current + 1));
+  }
+
+  document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
+
+  // Carry the current slide over when switching languages, instead of
+  // always landing back on slide 1.
+  document.getElementById('langSwitch').addEventListener('click', function (e) {
+    e.preventDefault();
+    window.location.href = this.getAttribute('href') + (location.hash || '#1');
+  });
+  document.getElementById('next').addEventListener('click', () => goTo(current + 1));
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); goTo(current + 1); }
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')                    { e.preventDefault(); goTo(current - 1); }
+    if (e.key === 'Home') goTo(0);
+    if (e.key === 'End')  goTo(total - 1);
+  });
+
+  let touchX = null;
+  document.addEventListener('touchstart', e => touchX = e.touches[0].clientX);
+  document.addEventListener('touchend', e => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) goTo(dx < 0 ? current + 1 : current - 1);
+    touchX = null;
+  });
+
+  // Deep-linking: /#3 opens slide 3; the hash tracks the current slide as you
+  // navigate, so any slide has a shareable URL.
+  function slideFromHash() {
+    const m = (location.hash || '').match(/\d+/);
+    if (!m) return null;
+    const n = parseInt(m[0], 10) - 1;   // slide numbers in the URL are 1-based
+    return (n >= 0 && n < total) ? n : null;
+  }
+
+  const startAt = slideFromHash();
+  if (startAt !== null) goTo(startAt);
+
+  window.addEventListener('hashchange', () => {
+    const n = slideFromHash();
+    if (n !== null && n !== current) goTo(n);
+  });
+</script>
+</body>
+</html>
