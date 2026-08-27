@@ -17,21 +17,31 @@ Create a new Fluent application using nowSDK, and connect it to source control �
 
 ## Prerequisites
 
-- [ ] ServiceNow instance accessible
+- [ ] Signed up for your instance credentials and have a sandbox allocated (Setup Instructions steps 1-3 below cover this if you haven't yet)
 - [ ] Check that you have Node version 20.18.0 or newer (`node -v`)
 - [ ] If you don't have Node 20.18.0 or newer, run `nvm install 20.18.0`
 - [ ] A GitHub account with access to the workshop org/repo (see the "Get your source control ready" slide)
 
 ## Setup Instructions
 
-1. Open a terminal window
+1. Sign up for your instance credentials on the [instance sign-up sheet](https://servicenow-my.sharepoint.com/:x:/p/shelby_cohen/IQDPcQEo1cNpT7XNsBeEi9J_AYPIviiz8XC2P7KjYkhbBhg).
+2. Log in to the base instance at [https://empsdlcdev.service-now.com/](https://empsdlcdev.service-now.com/) with those credentials.
+3. Allocate your own sandbox, named after you:
+    - Search `sandbox` in the top nav and open **Sandbox Management Home**.
+
+      ![Navigate to Sandbox Management Home](images/sandbox-setup/01-navigate-to-sandbox-management.png)
+    - Click **Allocate sandbox**, and name it using the same `<your_name>` convention as the rest of this exercise, so it doesn't collide with anyone else's.
+
+      ![Allocate a sandbox](images/sandbox-setup/02-allocate-sandbox.png)
+    - Wait for it to finish provisioning — that sandbox's URL is the `<instance url>` used for the rest of this exercise.
+4. Open a terminal window
     - Either use the terminal that is already open in your WindSurf/IDE or open a new terminal window
     - The exercise steps will be executed in the WindSurf terminal but can be adapted for any terminal.
-2. Install the ServiceNow SDK: `npm i -g @servicenow/sdk`
-3. Run `now-sdk --version` and verify the version installed is >= `4.6.0`
-4. If you will be using VSCode, install the Fluent Language extension from [here](https://marketplace.visualstudio.com/items?itemName=ServiceNow.fluent-language-extension).
-5. If you will be using Windsurf or another VSCode fork, install from [here](https://open-vsx.org/extension/ServiceNow/fluent-language-extension)
-6. Set up an authentication profile for your ServiceNow instance using `now auth --add <instance url> --type basic`
+5. Install the ServiceNow SDK: `npm i -g @servicenow/sdk`
+6. Run `now-sdk --version` and verify the version installed is >= `4.6.0`
+7. If you will be using VSCode, install the Fluent Language extension from [here](https://marketplace.visualstudio.com/items?itemName=ServiceNow.fluent-language-extension).
+8. If you will be using Windsurf or another VSCode fork, install from [here](https://open-vsx.org/extension/ServiceNow/fluent-language-extension)
+9. Set up an authentication profile for your sandbox using `now auth --add <instance url> --type basic`
 
 > **Naming convention:** everywhere below you'll see `<your_name>` — replace it with your own first name, lowercase, no spaces (e.g. `shelby`). This is a shared instance; a unique app/scope name is what keeps your app from colliding with everyone else's.
 
