@@ -5,7 +5,7 @@ slide: "8 — ソース管理の準備"
 
 # nowSDK を使った Fluent アプリケーションの作成
 
-[← デッキのスライド8に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#8) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/02-creating-a-fluent-app.md)
+[← デッキのスライド8に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#8) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/01-creating-a-fluent-app.md)
 
 ## Objective（目的）
 
@@ -30,9 +30,12 @@ nowSDK を使って新しい Fluent アプリケーションを作成し、ソ�
     - [Sandbox Management Home](https://empsdlcdev.service-now.com/now/developer-sandbox/home) に直接アクセスするか、トップナビゲーションで `sandbox` を検索して **Sandbox Management Home** を開きます。
 
       ![Sandbox Management Home への移動](images/sandbox-setup/01-navigate-to-sandbox-management.png)
-    - **Allocate sandbox** をクリックし、この演習の他の箇所と同じ `<your_name>` の命名規則で名前を付けます。これにより、他の参加者のものと衝突しなくなります。
+    - **Allocate sandbox** をクリックします。
 
       ![サンドボックスの割り当て](images/sandbox-setup/02-allocate-sandbox.png)
+    - **Allocate Sandbox** ダイアログでは、**Sandbox template** は空のままにしてください。**Sandbox alias** には、この演習の他の箇所と同じ `<your_name>` の命名規則で名前を付けます（最大8文字、一意である必要があります）。これにより、他の参加者のものと衝突しなくなります。入力したら **Allocate** をクリックします。
+
+      ![Sandbox template を空にした Allocate Sandbox ダイアログ](images/sandbox-setup/03-allocate-sandbox-details.png)
     - プロビジョニングが完了するまで待ちます — このサンドボックスの URL が、この演習の残りで使う `<instance url>` になります。
 4. ターミナルウィンドウを開きます
     - IDE（WindSurf など）で既に開いているターミナルを使うか、新しいターミナルウィンドウを開いてください

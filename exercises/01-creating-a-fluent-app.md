@@ -5,7 +5,7 @@ slide: "8 — Get source control ready"
 
 # Creating a Fluent application using nowSDK
 
-[← Back to slide 8 in the deck](https://servicenow.github.io/servicenowsdlc/#8) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/02-creating-a-fluent-app.ja.md)
+[← Back to slide 8 in the deck](https://servicenow.github.io/servicenowsdlc/#8) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/01-creating-a-fluent-app.ja.md)
 
 ## Objective
 
@@ -30,9 +30,12 @@ Create a new Fluent application using nowSDK, and connect it to source control �
     - Go to [Sandbox Management Home](https://empsdlcdev.service-now.com/now/developer-sandbox/home) directly, or search `sandbox` in the top nav and open **Sandbox Management Home**.
 
       ![Navigate to Sandbox Management Home](images/sandbox-setup/01-navigate-to-sandbox-management.png)
-    - Click **Allocate sandbox**, and name it using the same `<your_name>` convention as the rest of this exercise, so it doesn't collide with anyone else's.
+    - Click **Allocate sandbox**.
 
       ![Allocate a sandbox](images/sandbox-setup/02-allocate-sandbox.png)
+    - In the **Allocate Sandbox** dialog, leave **Sandbox template** empty. Set **Sandbox alias** to the same `<your_name>` convention as the rest of this exercise (max 8 characters, must be unique), so it doesn't collide with anyone else's, then click **Allocate**.
+
+      ![Allocate Sandbox dialog, with Sandbox template left empty](images/sandbox-setup/03-allocate-sandbox-details.png)
     - Wait for it to finish provisioning — that sandbox's URL is the `<instance url>` used for the rest of this exercise.
 4. Open a terminal window
     - Either use the terminal that is already open in your WindSurf/IDE or open a new terminal window
