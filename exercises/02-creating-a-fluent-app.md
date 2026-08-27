@@ -27,7 +27,7 @@ Create a new Fluent application using nowSDK, and connect it to source control â
 1. Sign up for your instance credentials on the [instance sign-up sheet](https://servicenow-my.sharepoint.com/:x:/p/shelby_cohen/IQDPcQEo1cNpT7XNsBeEi9J_AYPIviiz8XC2P7KjYkhbBhg).
 2. Log in to the base instance at [https://empsdlcdev.service-now.com/](https://empsdlcdev.service-now.com/) with those credentials.
 3. Allocate your own sandbox, named after you:
-    - Search `sandbox` in the top nav and open **Sandbox Management Home**.
+    - Go to [Sandbox Management Home](https://empsdlcdev.service-now.com/now/developer-sandbox/home) directly, or search `sandbox` in the top nav and open **Sandbox Management Home**.
 
       ![Navigate to Sandbox Management Home](images/sandbox-setup/01-navigate-to-sandbox-management.png)
     - Click **Allocate sandbox**, and name it using the same `<your_name>` convention as the rest of this exercise, so it doesn't collide with anyone else's.
