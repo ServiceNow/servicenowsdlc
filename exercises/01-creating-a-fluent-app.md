@@ -44,7 +44,7 @@ Create a new Fluent application using nowSDK, and connect it to source control â
 6. Run `now-sdk --version` and verify the version installed is >= `4.6.0`
 7. If you will be using VSCode, install the Fluent Language extension from [here](https://marketplace.visualstudio.com/items?itemName=ServiceNow.fluent-language-extension).
 8. If you will be using Windsurf or another VSCode fork, install from [here](https://open-vsx.org/extension/ServiceNow/fluent-language-extension)
-9. Set up an authentication profile for your sandbox using `now auth --add <instance url> --type basic`
+9. Set up an authentication profile for your sandbox using `now-sdk auth --add <instance url> --type basic`
 
 > **Naming convention:** everywhere below you'll see `<your_name>` â€” replace it with your own first name, lowercase, no spaces (e.g. `shelby`). This is a shared instance; a unique app/scope name is what keeps your app from colliding with everyone else's.
 
