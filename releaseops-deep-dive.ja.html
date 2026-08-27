@@ -486,17 +486,16 @@
   <div class="slide active" data-index="0">
     <div class="kicker">ReleaseOps</div>
     <h1>Deployment Request <span class="hl-green">ディープダイブ</span></h1>
-    <p class="lead" style="margin-top:20px;">メインデッキの ReleaseOps スライドの背景にあるすべて — なぜ Update Set の上に構築されているのか、アセスメントのプレイブックをステージごとに、そして Studio から本番環境までの完全なステップバイステップのウォークスルー（クリックごとのスクリーンショットは ReleaseOps の演習にあります）。</p>
     <p class="step-label" style="margin-top:28px; text-align:center;">参考デッキ — メインのワークショップからリンクされていますが、コアデイの内容には含まれません</p>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://servicenow.github.io/servicenowsdlc/index.ja.html#22">← メインデッキに戻る</a>
+      <a class="exercise-link" href="https://servicenow.github.io/servicenowsdlc/index.ja.html#21">← メインデッキに戻る</a>
     </div>
   </div>
 
   <!-- SLIDE 2: WHY UPDATE SETS -->
   <div class="slide" data-index="1">
     <div class="slide-label">アーキテクチャ</div>
-    <h2>なぜ <span class="hl-blue">Update Set</span> なのか、ソースコントロールではなく</h2>
+    <h2>ソースコントロールから <span class="hl-blue">Deployment Request</span> まで</h2>
     <div class="quote" style="margin-bottom:28px;">「ReleaseOps はソースコントロールに直接接続しません — アプリリポジトリの内容を Update Set に圧縮し、それをデプロイのペイロードとして使います。」</div>
     <div class="flow">
       <div class="flow-box"><span class="icon">🗂️</span><h4>ソースコントロール</h4><p>複数のサンドボックスで同時に複数バージョン</p></div>
@@ -507,7 +506,6 @@
       <div class="flow-arrow">→</div>
       <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">🚚</span><h4>Deployment Request</h4><p>ReleaseOps が実際に移動させるもの</p></div>
     </div>
-    <p class="lead" style="margin-top:24px;">およそ3年前に構築されたもので、当時は Update Set と Git のどちらを使うかがまだ広く議論されていませんでした — これは設計上の目標ではなく、既知のアーキテクチャ上の制約です。</p>
   </div>
 
   <!-- SLIDE 3: TWO CORE FLOWS -->
@@ -809,7 +807,7 @@
     <h1><span class="hl-green">ワークショップ</span>に戻る</h1>
     <p class="lead" style="margin-top:20px;">これでパイプライン全体です — アーキテクチャ、アセスメントのプレイブック、そして pause point の仕組み。メインデッキに戻るか、ハンズオンの演習に進んでください。</p>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://servicenow.github.io/servicenowsdlc/index.ja.html#22">← ReleaseOps のスライドに戻る</a>
+      <a class="exercise-link" href="https://servicenow.github.io/servicenowsdlc/index.ja.html#21">← ReleaseOps のスライドに戻る</a>
       <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-releaseops.ja.md">ReleaseOps の演習を開く →</a>
     </div>
   </div>

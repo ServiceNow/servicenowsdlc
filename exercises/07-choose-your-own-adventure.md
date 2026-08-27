@@ -1,11 +1,11 @@
 ---
 title: "Choose your own adventure"
-slide: "25 — Choose your own adventure (exercise)"
+slide: "24 — Choose your own adventure (exercise)"
 ---
 
 # Choose your own adventure
 
-[← Back to slide 25 in the deck](https://servicenow.github.io/servicenowsdlc/#25) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/07-choose-your-own-adventure.ja.md)
+[← Back to slide 24 in the deck](https://servicenow.github.io/servicenowsdlc/#24) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/07-choose-your-own-adventure.ja.md)
 
 ## Objective
 

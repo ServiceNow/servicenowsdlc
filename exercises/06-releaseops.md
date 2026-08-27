@@ -1,11 +1,11 @@
 ---
 title: "ReleaseOps: assess and release"
-slide: "23 — ReleaseOps"
+slide: "22 — ReleaseOps"
 ---
 
 # ReleaseOps: assess and release
 
-[← Back to slide 23 in the deck](https://servicenow.github.io/servicenowsdlc/#23) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-releaseops.ja.md)
+[← Back to slide 22 in the deck](https://servicenow.github.io/servicenowsdlc/#22) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-releaseops.ja.md)
 
 ## Objective
 

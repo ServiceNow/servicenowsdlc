@@ -1,11 +1,11 @@
 ---
 title: "ソース管理：Git でリリースする"
-slide: "21 — ソース管理演習"
+slide: "20 — ソース管理演習"
 ---
 
 # ソース管理：Git でリリースする
 
-[← デッキのスライド21に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#21) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-source-control.md)
+[← デッキのスライド20に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#20) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-source-control.md)
 
 ## Objective（目的）
 
@@ -34,11 +34,9 @@ push、PR、レビュー、マージ、公開、pull という Git ベースの�
 5. **オンインスタンス：** 2つ目のインスタンスで Studio/IDE（SNS）を開き、git を使ってマージ済みの変更を pull します。
 6. pull したアプリに、マージした変更が反映されていることを確認します。
 
-> **押さえておきたい点：** Git はブランチ分岐・レビュー・行単位のコンフリクト解決ができます。Update Set にはできません。
-
 ## Success Criteria（達成基準）
 
-- [ ] レビュー履歴が確認できる形でマージされた PR（少なくとも1つのコメントに対応済み）
+- [ ] レビュー履歴が確認できる形でマージされた PR
 - [ ] Application Repository に公開されたプレリリース
 - [ ] 2つ目のインスタンスで pull され、確認できる変更
 

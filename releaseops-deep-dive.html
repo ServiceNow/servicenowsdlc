@@ -486,17 +486,16 @@
   <div class="slide active" data-index="0">
     <div class="kicker">ReleaseOps</div>
     <h1>The Deployment Request <span class="hl-green">deep dive</span></h1>
-    <p class="lead" style="margin-top:20px;">Everything behind the ReleaseOps slide in the main deck — why it's built on Update Sets, the assessment playbook stage by stage, and the full step-by-step walkthrough from Studio to production (the click-by-click screenshots live in the ReleaseOps exercise).</p>
     <p class="step-label" style="margin-top:28px; text-align:center;">REFERENCE DECK — LINKED FROM THE MAIN WORKSHOP, NOT PART OF THE CORE DAY</p>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://servicenow.github.io/servicenowsdlc/#22">← Back to the main deck</a>
+      <a class="exercise-link" href="https://servicenow.github.io/servicenowsdlc/#21">← Back to the main deck</a>
     </div>
   </div>
 
   <!-- SLIDE 2: WHY UPDATE SETS -->
   <div class="slide" data-index="1">
     <div class="slide-label">Architecture</div>
-    <h2>Why <span class="hl-blue">Update Sets</span>, not source control</h2>
+    <h2>From source control to <span class="hl-blue">Deployment Request</span></h2>
     <div class="quote" style="margin-bottom:28px;">"ReleaseOps doesn't connect to source control directly — it compresses your app repo content down to an Update Set, and uses that as the deployment payload."</div>
     <div class="flow">
       <div class="flow-box"><span class="icon">🗂️</span><h4>Source control</h4><p>Many versions at once, across sandboxes</p></div>
@@ -507,7 +506,6 @@
       <div class="flow-arrow">→</div>
       <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">🚚</span><h4>Deployment Request</h4><p>What ReleaseOps actually moves</p></div>
     </div>
-    <p class="lead" style="margin-top:24px;">Built roughly three years ago, before Update Sets vs. Git was a widely-discussed tradeoff — this is a known architectural constraint, not a design goal.</p>
   </div>
 
   <!-- SLIDE 3: TWO CORE FLOWS -->
@@ -809,7 +807,7 @@
     <h1>Back to the <span class="hl-green">workshop</span></h1>
     <p class="lead" style="margin-top:20px;">That's the full pipeline — architecture, the assessment playbook, and the pause-point mechanics. Head back to the main deck, or into the hands-on exercise.</p>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://servicenow.github.io/servicenowsdlc/#22">← Back to the ReleaseOps slide</a>
+      <a class="exercise-link" href="https://servicenow.github.io/servicenowsdlc/#21">← Back to the ReleaseOps slide</a>
       <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-releaseops.md">Open the ReleaseOps exercise →</a>
     </div>
   </div>

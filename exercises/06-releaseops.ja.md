@@ -1,11 +1,11 @@
 ---
 title: "ReleaseOps：アセスとリリース"
-slide: "23 — ReleaseOps"
+slide: "22 — ReleaseOps"
 ---
 
 # ReleaseOps：アセスとリリース
 
-[← デッキのスライド23に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#23) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-releaseops.md)
+[← デッキのスライド22に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#22) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-releaseops.md)
 
 ## Objective（目的）
 

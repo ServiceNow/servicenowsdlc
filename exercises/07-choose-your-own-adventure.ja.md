@@ -1,11 +1,11 @@
 ---
 title: "Choose your own adventure"
-slide: "25 — Choose your own adventure（演習）"
+slide: "24 — Choose your own adventure（演習）"
 ---
 
 # Choose your own adventure
 
-[← デッキのスライド25に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#25) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/07-choose-your-own-adventure.md)
+[← デッキのスライド24に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#24) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/07-choose-your-own-adventure.md)
 
 ## Objective（目的）
 

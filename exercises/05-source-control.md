@@ -1,11 +1,11 @@
 ---
 title: "Source control: ship it with Git"
-slide: "21 — Source control exercise"
+slide: "20 — Source control exercise"
 ---
 
 # Source control: ship it with Git
 
-[← Back to slide 21 in the deck](https://servicenow.github.io/servicenowsdlc/#21) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-source-control.ja.md)
+[← Back to slide 20 in the deck](https://servicenow.github.io/servicenowsdlc/#20) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-source-control.ja.md)
 
 ## Objective
 
@@ -34,11 +34,9 @@ Walk the full Git-based collaboration flow — push, PR, review, merge, publish,
 5. **On instance:** open Studio/IDE (SNS) on a second instance and pull the merged changes using git.
 6. Confirm the pulled app reflects the merged change.
 
-> **Prescriptive point:** Git does branching, review, and line-by-line conflict resolution. Update sets cannot.
-
 ## Success Criteria
 
-- [ ] Merged PR with visible review history (at least one comment addressed)
+- [ ] Merged PR with visible review history
 - [ ] Pre-release published to the Application Repository
 - [ ] Changes pulled and visible on a second instance
 

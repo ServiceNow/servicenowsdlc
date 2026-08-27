@@ -751,9 +751,6 @@
         </div>
       </div>
     </div>
-    <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/02-creating-a-fluent-app.md">演習を開く →</a>
-    </div>
   </div>
 
   <!-- SLIDE 6: FOUNDATIONS — GIT AS SOURCE OF TRUTH -->
@@ -771,6 +768,20 @@
       </div>
     </div>
     <p class="lead" style="margin-top:24px;">この対比については、後ほどソース管理のモジュールで詳しく掘り下げます。</p>
+  </div>
+
+  <!-- GET SOURCE CONTROL READY -->
+  <div class="slide" data-index="5.5">
+    <div class="slide-label">Setup</div>
+    <h2><span class="hl-green">ソース管理</span>を準備しましょう</h2>
+    <ul class="clean" style="max-width:800px;">
+      <li><span class="icon">1️⃣</span><span>nowSDK で最初の Fluent アプリケーションを初期化します。</span></li>
+      <li><span class="icon">2️⃣</span><span>新しい git リポジトリを作成してプッシュし、personal access token でインスタンスと接続します。</span></li>
+      <li><span class="icon">3️⃣</span><span>ビルドしてインストールし、dev インスタンスに反映されることを確認します。</span></li>
+    </ul>
+    <div class="exercise-links">
+      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/02-creating-a-fluent-app.md">演習を開く →</a>
+    </div>
   </div>
 
   <!-- SLIDE 7: BREAK -->
@@ -827,24 +838,6 @@
       <div class="flow-box"><span class="icon">🏭</span><h4>本番環境</h4><p>テスト用とは別</p></div>
     </div>
     <p class="lead">開始前にサンドボックスを割り当て、その中でフィーチャーブランチを作成し、作業が終わったら廃棄しましょう。</p>
-  </div>
-
-  <!-- GET SOURCE CONTROL READY -->
-  <div class="slide" data-index="8.7">
-    <div class="slide-label">Setup</div>
-    <h2><span class="hl-green">ソース管理</span>を準備しましょう</h2>
-    <div class="cols cols-2" style="max-width:1080px; align-items:start;">
-      <ul class="clean">
-        <li><span class="icon">✅</span><span>ワークショップの org / リポジトリにアクセスできる GitHub アカウントを確認</span></li>
-        <li><span class="icon">✅</span><span>git 操作用の personal access token を発行（または SSH アクセスを確認）</span></li>
-        <li><span class="icon">✅</span><span>ローカルの git identity が設定されていることを確認</span></li>
-      </ul>
-      <div class="terminal compact">
-        <div class="terminal-bar"><span class="terminal-dot r"></span><span class="terminal-dot y"></span><span class="terminal-dot g"></span></div>
-        <div class="terminal-body"><span class="ln"><span class="prompt">$</span><span class="t">git config --global</span> <span class="k">user.name</span> <span class="v">"Your Name"</span></span>
-<span class="ln"><span class="prompt">$</span><span class="t">git config --global</span> <span class="k">user.email</span> <span class="v">"you@example.com"</span></span></div>
-      </div>
-    </div>
   </div>
 
   <!-- SLIDE 10: SETUP TIME -->
@@ -979,21 +972,6 @@
     </div>
   </div>
 
-  <!-- SLIDE 19: SOURCE CONTROL -->
-  <div class="slide" data-index="17">
-    <div class="slide-label">ソース管理</div>
-    <h2>Git が<span class="hl-green">さらに一歩進んでいる点</span></h2>
-    <div class="tbl-wrap" style="margin-bottom:22px;">
-      <table>
-        <tr><th>機能</th><th>Git</th><th>Update Set</th></tr>
-        <tr><td>ブランチ分岐と分離</td><td>可能 — サンドボックス＋フィーチャーブランチ</td><td>不可 — 共有・last-write-wins</td></tr>
-        <tr><td>コンフリクト解決</td><td>行単位、3-way マージ</td><td>手動、レコード単位</td></tr>
-        <tr><td>レビュー</td><td>プルリクエスト</td><td>なし</td></tr>
-        <tr><td>役割</td><td>ソース管理</td><td>トランスポート用アーティファクトのみ</td></tr>
-      </table>
-    </div>
-  </div>
-
   <!-- SLIDE 20: SOURCE CONTROL EXERCISE -->
   <div class="slide" data-index="18">
     <div class="slide-label">ソース管理（演習）</div>
@@ -1021,7 +999,7 @@
   <!-- RELEASEOPS: THE PIPELINE -->
   <div class="slide" data-index="19.5">
     <div class="slide-label">ReleaseOps</div>
-    <h2>2つのオブジェクト、<span class="hl-blue">1つのパイプライン</span></h2>
+    <h2>ReleaseOps：2つのオブジェクト、<span class="hl-blue">1つのパイプライン</span></h2>
     <div class="cols cols-2" style="max-width:1040px; align-items:start;">
       <div class="card accent-blue">
         <h3>Deployment Request</h3>

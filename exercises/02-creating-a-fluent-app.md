@@ -1,11 +1,11 @@
 ---
 title: "Creating a Fluent application using nowSDK"
-slide: "6 — SDK + Fluent"
+slide: "8 — Get source control ready"
 ---
 
 # Creating a Fluent application using nowSDK
 
-[← Back to slide 6 in the deck](https://servicenow.github.io/servicenowsdlc/#6)
+[← Back to slide 8 in the deck](https://servicenow.github.io/servicenowsdlc/#8)
 
 ## Objective
 
