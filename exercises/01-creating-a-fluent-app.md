@@ -126,7 +126,9 @@ Git — not the Update Set — is the authoritative source of truth for this app
     - Click **Generate new token** → **Generate new token (classic)**.
     - Give it a name, and under **Select scopes**, check the top-level **repo** box — that automatically checks every sub-scope underneath it.
 
-      ![Generate new token (classic) page, with the repo scope checkbox highlighted](images/github-setup/classic_token_scopes.png)
+      ![Generate new token (classic) page, with the Select scopes section and the repo checkbox](images/github-setup/classic_token_scopes.png)
+
+      ![repo checkbox checked, with every repo sub-scope automatically checked too](images/github-setup/repo_scopes_checked.png)
     - Scroll down and click **Generate token**.
 
       ![Generate token button](images/github-setup/generate_token.png)

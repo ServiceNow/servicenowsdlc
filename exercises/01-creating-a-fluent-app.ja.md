@@ -126,7 +126,9 @@ Update Set ではなく Git が、このアプリの今後にわたる信頼で�
     - **Generate new token** → **Generate new token (classic)** をクリックします。
     - 名前を付け、**Select scopes** で最上位の **repo** チェックボックスをオンにします — これで配下のすべてのサブスコープも自動的にオンになります。
 
-      ![Generate new token (classic) ページ。repo スコープのチェックボックスを強調表示](images/github-setup/classic_token_scopes.png)
+      ![Generate new token (classic) ページ。Select scopes セクションと repo チェックボックス](images/github-setup/classic_token_scopes.png)
+
+      ![repo チェックボックスがオンになり、配下のサブスコープもすべて自動的にオンになった状態](images/github-setup/repo_scopes_checked.png)
     - 下にスクロールして **Generate token** をクリックします。
 
       ![Generate token ボタン](images/github-setup/generate_token.png)
