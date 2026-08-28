@@ -51,7 +51,7 @@ nowSDK を使って新しい Fluent アプリケーションを作成し、ソ�
 3. `now-sdk --version` を実行し、インストールされたバージョンが `4.6.0` 以上であることを確認してください
 4. VSCode を使う場合は、[こちら](https://marketplace.visualstudio.com/items?itemName=ServiceNow.fluent-language-extension) から Fluent Language 拡張機能をインストールしてください。
 5. Windsurf など他の VSCode フォークを使う場合は、[こちら](https://open-vsx.org/extension/ServiceNow/fluent-language-extension) からインストールしてください
-6. サンドボックス用の認証プロファイルを設定します： `now auth --add <instance url> --type basic`
+6. サンドボックス用の認証プロファイルを設定します： `now-sdk auth --add <instance url> --type basic`
     - `<instance url>` は、上記手順3のサンドボックス URL です（例：`https://<sandboxalias>.empsdlcdev.service-now.com`）— ベースインスタンスの URL ではありません。
     - インスタンスへのログインに使ったのと同じユーザー名／パスワードを使用してください。
     - 続行する前に、認証が成功したことを示すメッセージを確認してください。失敗する場合は、ベースインスタンスではなくサンドボックスの URL を指定しているか再確認してください。

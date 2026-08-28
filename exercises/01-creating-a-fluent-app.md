@@ -51,7 +51,7 @@ Create a new Fluent application using nowSDK, and connect it to source control �
 3. Run `now-sdk --version` and verify the version installed is >= `4.6.0`
 4. If you will be using VSCode, install the Fluent Language extension from [here](https://marketplace.visualstudio.com/items?itemName=ServiceNow.fluent-language-extension).
 5. If you will be using Windsurf or another VSCode fork, install from [here](https://open-vsx.org/extension/ServiceNow/fluent-language-extension)
-6. Set up an authentication profile for your sandbox: `now auth --add <instance url> --type basic`
+6. Set up an authentication profile for your sandbox: `now-sdk auth --add <instance url> --type basic`
     - `<instance url>` is the sandbox URL from Step 3 above (e.g. `https://<sandboxalias>.empsdlcdev.service-now.com`) — not the base instance URL.
     - Use the same username/password you used to log in to the instance.
     - Confirm the command reports a successful authentication before moving on — if it fails, double-check you're pointing at the sandbox URL, not the base instance.
