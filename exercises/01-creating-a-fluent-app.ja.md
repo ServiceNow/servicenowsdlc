@@ -71,7 +71,7 @@ nowSDK を使って新しい Fluent アプリケーションを作成し、ソ�
       now-sdk + fullstack React
       now-sdk + fullstack Vue
     A basic application using NowSDK and TypeScript
-    ```
+   ```
 11. `Name of ServiceNow Application:` は自分で入力する必要があります — デフォルトはありません。`Maintenance_<YourName>`（例：`Maintenance_Shelby`）と入力してください。これは Exercise 03 で Build Agent が拡張する、同じアプリ名です。ここで入力した通りに、そのまま使ってください。
 12. `NPM package name:` は提案されたデフォルト（アプリ名から自動生成されたもの）をそのまま使用してください。
 13. `Create a Global/Scoped App?` では `Scoped` を選択します
