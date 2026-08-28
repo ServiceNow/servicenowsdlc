@@ -1,9 +1,9 @@
 ---
-title: "nowSDK を使った Fluent アプリケーションの作成"
+title: "Fluent アプリケーションの作成とソース管理の設定"
 slide: "10 — ソース管理の準備"
 ---
 
-# nowSDK を使った Fluent アプリケーションの作成
+# Fluent アプリケーションの作成とソース管理の設定
 
 [← デッキのスライド10に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#10) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/01-creating-a-fluent-app.md)
 
@@ -140,7 +140,7 @@ Update Set ではなく Git が、このアプリの今後にわたる信頼で�
     - 手順3で作成したリポジトリの URL を入力し、Enter を押します。
 
       ![クローンするリポジトリの URL を入力](images/github-setup/enter_url.png)
-    - 画面右下に、Git の認証情報を設定するよう求めるメッセージが表示されます。**Configure** をクリックし、GitHub のユーザー名と、パスワード欄には手順4のパーソナルアクセストークンを入力してください — GitHub はもはやここでアカウントパスワードを受け付けません。
+    - 画面右下に、Git の認証情報を設定するよう求めるメッセージが表示されます。**Configure** をクリックし、GitHub のユーザー名と、パスワード欄には手順4のパーソナルアクセストークンを入力してください。
     - クローンが正常に完了したことを確認してください。認証エラーで失敗する場合は、トークンを再生成し、`repo` スコープが付与されていることを確認してください。
 6. インスタンス側の接続を Sync します：Studio で **Sync** を実行してください（`now-sdk install` ではありません — Sync はインスタンスからローカルソースへ取り込む方向で、install とは逆方向です）。これは、IDE を使わずインスタンスの UI で直接変更を加えた場合にも使う操作です。
     - Sync は手順5で設定した認証情報に依存しています。フェッチ／ダウンロードエラーで失敗する場合、多くは Git の問題ではなくトークンやスコープの権限の問題です。

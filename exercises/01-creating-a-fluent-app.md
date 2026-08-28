@@ -1,9 +1,9 @@
 ---
-title: "Creating a Fluent application using nowSDK"
+title: "Creating a Fluent application and setting up source control"
 slide: "10 — Get source control ready"
 ---
 
-# Creating a Fluent application using nowSDK
+# Creating a Fluent application and setting up source control
 
 [← Back to slide 10 in the deck](https://servicenow.github.io/servicenowsdlc/#10) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/01-creating-a-fluent-app.ja.md)
 
@@ -140,7 +140,7 @@ Git — not the Update Set — is the authoritative source of truth for this app
     - Enter the URL of the repository you created in step 3, then press Enter.
 
       ![Enter the URL of the repository to clone](images/github-setup/enter_url.png)
-    - A message pops up in the bottom-right corner asking you to configure git credentials. Click **Configure**, then enter your GitHub username and paste the personal access token from step 4 as the password — GitHub no longer accepts your account password here.
+    - A message pops up in the bottom-right corner asking you to configure git credentials. Click **Configure**, then enter your GitHub username and paste the personal access token from step 4 as the password.
     - Confirm the clone completes successfully. If it fails with an authentication error, regenerate the token and make sure the `repo` scope is checked.
 6. Sync the instance-side connection: in Studio, run **Sync** (not `now-sdk install` — Sync pulls from the instance into your local source, the opposite direction). This is also what to use later if you ever make a change directly in the instance UI instead of through the IDE.
     - Sync depends on the same credentials you configured in step 5 — if it fails with a fetch/download error, that's usually the token or scope permissions, not a git problem.
