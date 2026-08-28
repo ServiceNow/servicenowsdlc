@@ -650,11 +650,9 @@
 
   <!-- SAFE HARBOR -->
   <!--
-    TRANSLATOR NOTE: the paragraphs below are a PLACEHOLDER, not a translation.
-    This is SEC-boilerplate safe-harbor / forward-looking-statements language
-    (references Form 10-K / 10-Q). Replace with legal/IR-approved Japanese
-    text before this deck is used with customers. Original English source,
-    preserved here for whoever does that translation:
+    Legal/IR-approved Japanese translation of the SEC-boilerplate safe-harbor /
+    forward-looking-statements language (references Form 10-K / 10-Q),
+    provided 2026-08-27. English source, for reference:
 
     This presentation may contain "forward-looking" statements that are based on our beliefs and assumptions and on information currently available to us only as of the date of this presentation. Forward-looking statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially from those expected or implied by the forward-looking statements. Further information on these and other factors that could cause or contribute to such differences include, but are not limited to, those discussed in the section titled "Risk Factors," set forth in our most recent Annual Report on Form 10-K and Quarterly Report on Form 10-Q and in our other Securities and Exchange Commission filings. We cannot guarantee that we will achieve the plans, intentions, or expectations disclosed in our forward-looking statements, and you should not place undue reliance on our forward-looking statements.
 
@@ -663,8 +661,7 @@
   <div class="slide" data-index="0.5">
     <div class="slide-label">Legal</div>
     <h2>セーフハーバー<span class="hl-blue">条項</span></h2>
-    <p style="max-width:900px; font-size:15.5px; line-height:1.8; color:var(--ink); text-align:left;">［プレースホルダー：本スライドの日本語版セーフハーバー条項（将来の見通しに関する記述についての注意事項）は法務・IR承認前の暫定版です。発表前に、法務承認済みの正式な日本語文言に置き換えてください。］</p>
-    <p style="max-width:900px; font-size:15.5px; line-height:1.8; color:var(--ink); text-align:left; margin-top:16px; font-family: var(--mono); font-size: 12px; color: var(--ink-faint);">PLACEHOLDER — PENDING LEGAL/IR-APPROVED JAPANESE TRANSLATION. SEE COMMENT ABOVE FOR ENGLISH SOURCE TEXT.</p>
+    <p style="max-width:900px; font-size:14px; line-height:1.8; color:var(--ink); text-align:left;">このプレゼンテーションには、当社の信念と仮定、およびこのプレゼンテーションの日付時点で入手可能な情報に基づく「将来の見通し」に関する記述が含まれている場合があります。将来の見通しに関する記述には、既知および未知のリスク、不確実性、および実際の結果が将来の見通しに関する記述によって予想または暗示されるものと大幅に異なる可能性があるその他の要因が含まれます。このような差異の原因または一因となりうる、これらまたはその他の要因の詳細情報には、フォーム 10-K の最新の年次報告書、フォーム 10-Q の四半期報告書、およびその他の証券取引委員会に対する提出書類の「Risk Factors」(リスク要因) セクションの記載内容などが含まれます。当社では、将来の見通しに関する記述において開示されている計画、目的や期待を達成することは保証できません。また、お客様は、当社による将来の見通しに関する記述に過度の信頼を置くべきではありません。新製品、特長、機能に関する情報は、製品の一般的な方向性を概説することを目的としており、購入の判断材料にすることはお勧めしません。また、情報提供のみを目的としており、いかなる契約にも組み込むことはできず、いかなる資料、コード、または機能の提供もコミットまたは確約するものではなく、法的義務もありません。当社の製品について記載されている特長や機能の開発、リリース、およびタイミングは、当社の独自の判断で決定されます。当社は、将来の見通しに関する記述を更新する義務を負わず、また更新する意図もありません。</p>
   </div>
 
   <!-- SLIDE 2: AGENDA -->
@@ -697,7 +694,7 @@
       </div>
       <div class="card accent-red">
         <h3>対象外</h3>
-        <p>「move」による所有権を持たない非グローバルなカスタマイズ — そのメタデータには永続的なコンテナがなく、ServiceNow の所有権のままとなる。</p>
+        <p>「move」による所有権を取得していない、既存の OOTB アプリへのカスタマイズ — そのメタデータには独自の永続的なコンテナがなく、あなたのものではなく ServiceNow の所有権のままとなる。</p>
       </div>
       <div class="card accent-blue">
         <h3>重要な理由</h3>
@@ -724,6 +721,35 @@
 
   <!-- SLIDE 5: FOUNDATIONS — SDK + FLUENT -->
   <div class="slide" data-index="4">
+    <div class="slide-label">基礎知識</div>
+    <h2>Fluent 以前：<span class="hl-red">1つの表現形式</span>を2度使う</h2>
+    <div class="quote" style="margin-bottom:24px;">これまでの ServiceNow では、ビルド時とランタイムは同じ表現形式でした — 人が読む場合もプラットフォームが実行する場合も、すべて XML だったのです。</div>
+    <div class="cols cols-2" style="max-width:900px;">
+      <div class="card accent-red">
+        <h3>編集していたもの</h3>
+        <p>フォームとクリックによる XML — 読みにくく、diff を取りにくく、レビューしにくい。</p>
+      </div>
+      <div class="card accent-red">
+        <h3>プラットフォームが実行するもの</h3>
+        <p>編集したのと同じ XML — コンパイルのステップも型チェックも、インストール前の診断もない。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6b: FOUNDATIONS — BUILD TIME VS RUNTIME -->
+  <div class="slide" data-index="4.3">
+    <div class="slide-label">基礎知識</div>
+    <h2>Fluent は<span class="hl-blue">ビルド時</span>と<span class="hl-green">ランタイム</span>を分離する</h2>
+    <div class="flow" style="margin-bottom:24px;">
+      <div class="flow-box"><span class="icon">📝</span><h4>ビルド時</h4><p>TypeScript — 人が読み・書き・理解するためのもので、コンパイル時の型チェックと診断がある</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">⚙️</span><h4>ランタイム</h4><p>プラットフォームが実際に実行するもの — その表現形式に直接触れることはない</p></div>
+    </div>
+    <p class="lead">これが実践における「シフトレフト」です：ミスはビルド時、エディタの中で、インストールの前に検出される — すでに何かが壊れたあとのランタイムではありません。</p>
+  </div>
+
+  <!-- SLIDE 6c: FOUNDATIONS — SDK + FLUENT -->
+  <div class="slide" data-index="4.6">
     <div class="slide-label">基礎知識</div>
     <h2>SDK + Fluent = <span class="hl-blue">ソース駆動開発</span></h2>
     <div class="cols cols-2" style="max-width:1100px; align-items:start;">
@@ -780,7 +806,7 @@
       <li><span class="icon">3️⃣</span><span>ビルドしてインストールし、dev インスタンスに反映されることを確認します。</span></li>
     </ul>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/01-creating-a-fluent-app.md">演習を開く →</a>
+      <a class="exercise-link" target="_blank" rel="noopener" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/01-creating-a-fluent-app.md">演習を開く →</a>
     </div>
   </div>
 
@@ -819,7 +845,7 @@
       <li><span class="icon">3️⃣</span><span>目標：まずコアとなる要件を完成させること — 早く終わった場合のみ拡張を追加してください。</span></li>
     </ul>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/02-build-ready-requirements.ja.md">演習を開く →</a>
+      <a class="exercise-link" target="_blank" rel="noopener" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/02-build-ready-requirements.ja.md">演習を開く →</a>
     </div>
   </div>
 
@@ -846,14 +872,17 @@
     <h2><span class="hl-blue">サンドボックス</span>を準備しましょう</h2>
     <div class="cols cols-2" style="max-width:1080px; align-items:start;">
       <ul class="clean">
-        <li><span class="icon">✅</span><span>割り当てられたインスタンスにログインできることを確認</span></li>
-        <li><span class="icon">✅</span><span>開発用サンドボックスが割り当てられていることを確認</span></li>
+        <li><span class="icon">✅</span><span>サンドボックスにログイン — Exercise 01 と同じ認証情報で、ベースインスタンスではなくサンドボックスの URL を指定</span></li>
+        <li><span class="icon">✅</span><span>開発用サンドボックスが割り当てられていることを確認（Exercise 01 で完了済み）</span></li>
         <li><span class="icon">✅</span><span><code>main</code> からフィーチャーブランチを作成</span></li>
       </ul>
       <div class="terminal compact">
         <div class="terminal-bar"><span class="terminal-dot r"></span><span class="terminal-dot y"></span><span class="terminal-dot g"></span></div>
         <div class="terminal-body"><span class="ln"><span class="prompt">$</span><span class="t">git</span> <span class="k">checkout</span> <span class="v">-b</span> <span class="t">feature/maintenance-app</span></span></div>
       </div>
+    </div>
+    <div class="exercise-links">
+      <a class="exercise-link" target="_blank" rel="noopener" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/03-build-maintenance-app.ja.md#prerequisites">フィーチャーブランチの作成手順 →</a>
     </div>
   </div>
 
@@ -917,7 +946,7 @@
       </div>
     </div>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/03-build-maintenance-app.ja.md">演習を開く →</a>
+      <a class="exercise-link" target="_blank" rel="noopener" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/03-build-maintenance-app.ja.md">演習を開く →</a>
     </div>
   </div>
 
@@ -968,7 +997,7 @@
       <li><span class="icon">🔁</span><span><code>now-sdk build</code> / <code>now-sdk install</code> は、プラットフォーム上でもオフでも同一に動作します。</span></li>
     </ul>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/04-off-instance-development.ja.md">演習を開く →</a>
+      <a class="exercise-link" target="_blank" rel="noopener" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/04-off-instance-development.ja.md">演習を開く →</a>
     </div>
   </div>
 
@@ -985,7 +1014,7 @@
       <p>Git はブランチ分岐・レビュー・行単位のコンフリクト解決ができます。Update Set にはできません。</p>
     </div>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-source-control.ja.md">演習を開く →</a>
+      <a class="exercise-link" target="_blank" rel="noopener" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-source-control.ja.md">演習を開く →</a>
     </div>
   </div>
 
@@ -994,6 +1023,20 @@
     <div class="kicker">休憩</div>
     <h1>☕</h1>
     <p class="lead" style="margin-top:20px;">3:00 – 3:15 · ReleaseOps から再開します</p>
+  </div>
+
+  <!-- SLIDE 19.4: RELEASEOPS — THE APP REPOSITORY -->
+  <div class="slide" data-index="19.4">
+    <div class="slide-label">ReleaseOps</div>
+    <h2>App Repository：ReleaseOps への<span class="hl-green">橋渡し</span></h2>
+    <div class="flow" style="margin-bottom:24px;">
+      <div class="flow-box"><span class="icon">🌿</span><h4>ソース管理</h4><p>main にマージ済み — サンドボックスをまたいで複数のバージョンが同時に存在</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><span class="icon">🗄️</span><h4>App Repository</h4><p>Studio での publish により、会社内のすべてのインスタンスでアプリがインストール可能になる</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">📦</span><h4>Update Set</h4><p>publish によって自動生成される — 実際のデプロイのペイロード</p></div>
+    </div>
+    <p class="lead">ReleaseOps はソース管理に直接接続しているわけではありません — この自動生成された Update Set こそが、次に Deployment Request にプロモートされるものです。</p>
   </div>
 
   <!-- RELEASEOPS: THE PIPELINE -->
@@ -1011,6 +1054,30 @@
       </div>
     </div>
     <p class="lead" style="margin-top:24px;">ここに到達する経路は2つあります：Update Set を Deployment Request にプロモートする方法（本ラボの方法）、または承認ゲート付きで Git から CI/CD REST API 経由でトリガーする方法（choose-your-own-adventure を参照）。</p>
+  </div>
+
+  <!-- SLIDE 19.6: RELEASEOPS — WHY THREE INSTANCES -->
+  <div class="slide" data-index="19.6">
+    <div class="slide-label">ReleaseOps</div>
+    <h2>なぜ<span class="hl-blue">3つのインスタンス</span>が必要なのか</h2>
+    <div class="flow" style="margin-bottom:24px;">
+      <div class="flow-box"><span class="icon">💻</span><h4>Dev</h4><p>ビルドする場所、Instance Scan が実行される場所</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><span class="icon">🧪</span><h4>Test / Staging</h4><p>アセスメントのターゲット — 設定可能なラベルであり、文字通り「test」という意味ではない</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">🚀</span><h4>本番環境</h4><p>別の、最終的な移行先</p></div>
+    </div>
+    <p class="lead">アセスメントは、ペイロードを dev からテスト／ステージングのターゲットへすでに移動させています。それが最終的な移行先でもある場合、リリースにはもう先がありません — 各ステージにそれぞれ別のインスタンスが必要です。</p>
+    <div class="cols cols-2" style="max-width:1040px; margin-top:20px;">
+      <div class="card accent-blue">
+        <h3>Freeze date</h3>
+        <p>Ready for Deployment に到達するための締め切り。過ぎてしまうと、Deployment Request は <em>deferred（延期）</em> とマークされます — ブロックされるわけではなく、後のリリースに乗ることもできます。</p>
+      </div>
+      <div class="card accent-orange">
+        <h3>Release date</h3>
+        <p>準備が整ったすべての非延期 Deployment Request に対して、本番環境への一括プッシュが実際に発生するタイミング。</p>
+      </div>
+    </div>
   </div>
 
   <!-- SLIDE 22: RELEASEOPS -->
@@ -1066,7 +1133,8 @@
     </div>
     <p class="lead" style="margin-top:24px;">興味のあるトラックを自由に探索してください — ご質問はいつでもどうぞ。始め方のヒントは演習を参照してください。</p>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/07-choose-your-own-adventure.ja.md">演習を開く →</a>
+      <a class="exercise-link" target="_blank" rel="noopener" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/07-choose-your-own-adventure.ja.md">演習を開く →</a>
+      <a class="exercise-link" target="_blank" rel="noopener" href="releaseops-deep-dive.ja.html">ReleaseOps deep dive：アーキテクチャと手順の全体像 →</a>
     </div>
   </div>
 
@@ -1089,6 +1157,23 @@
     <p style="margin-top: 28px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.1em;">ご質問は Ashwin Patti、Shelby Cohen まで。</p>
   </div>
 
+  <!-- SLIDE 26.5: WARP SPEED DEMO -->
+  <div class="slide" data-index="24.5">
+    <div class="slide-label">Warp Speed（デモのみ）</div>
+    <h2>Warp Speed — プラットフォーム上で<span class="hl-blue">vibe coding</span></h2>
+    <div class="quote" style="margin-bottom:24px;">今日、選択肢はフル admin か delegated dev のどちらかしかありません — delegated dev は意図的に機能を制限された、スコープに閉じ込められた体験です。Warp Speed はその中間にあるものです：分離されたランタイムなので、スコープに閉じ込められることもなく、逆に漏れることもありません。</div>
+    <div class="flow" style="margin-bottom:24px;">
+      <div class="flow-box"><span class="icon">🔑</span><h4>ログイン</h4><p>ホームベースに対して認証</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><span class="icon">💬</span><h4>Build Agent にプロンプト</h4><p>分離されたランタイムでビルド</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">🚀</span><h4>ライブ URL</h4><p>Dev と Prod が同時に</p></div>
+    </div>
+    <div class="exercise-links">
+      <a class="exercise-link" target="_blank" rel="noopener" href="https://saplingapp.com/">デモはこちら →</a>
+    </div>
+  </div>
+
   <!-- SLIDE 27: THANK YOU -->
   <div class="slide" data-index="25">
     <div class="kicker">ありがとうございました</div>
@@ -1099,50 +1184,28 @@
   <!-- BONUS: BUILD AGENT — UNIFIED SNS + AUTOENG MODE -->
   <div class="slide" data-index="26">
     <div class="slide-label">ボーナス</div>
-    <h2>Build Agent — 統合された <span class="hl-green">SNS &amp; AutoEng Mode</span></h2>
+    <h2>Build Agent — <span class="hl-green">Autonomous Engineering</span></h2>
     <ul class="clean" style="max-width:800px;">
-      <li><span class="icon">📝</span><span>TODO：SNS と AutoEng Mode が1つの編集画面に統合されると、ユーザーにとって何が変わるか。</span></li>
-      <li><span class="icon">📝</span><span>TODO：今日教えたワークフロー（Build Agent + ATF、オフインスタンス開発）にどう影響するか。</span></li>
-      <li><span class="icon">📝</span><span>TODO：デモまたはスクリーンショット（可能であれば）。</span></li>
+      <li><span class="icon">📋</span><span>要件を渡す — プロンプト、ファイルアップロード（例：ユーザーストーリーの CSV）、または Jira のような MCP 連携ツール — すると、Build Agent が曖昧な点をヒアリングで解消し、完全な実装計画を作成する：Agile ストーリー形式のワークアイテムを、依存関係グラフで順序付けしたもの。</span></li>
+      <li><span class="icon">✅</span><span>すべてのワークアイテムを事前に確認・承認する — 計画に承認するまで何もビルドされない。</span></li>
+      <li><span class="icon">⚡</span><span>承認後、Build Agent はワークアイテムごとにバックグラウンドエージェントを起動し、すべてを並行してビルドする — それぞれが自分の ATF テストを生成・実行し、失敗時は自動リトライと根本原因分析（RCA）を行う — 計画が完了すると、すべてを1つの Update Set にまとめる。</span></li>
+      <li><span class="icon">🔑</span><span>ServiceNow Store から「Autonomous Engineer」アプリのインストールが必要 — 顧客に約束する前にエンタイトルメントを確認すること。</span></li>
+      <li><span class="icon">🖥️</span><span>アクセス可能であれば、スクリーンショットの代わりにここで新しい Studio UI をライブで見せる — 権限次第なので、セッション前にアクセスできることを確認しておく。</span></li>
     </ul>
-    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL（SLIDE 2）. PRESENTER TO FILL IN BEFORE SESSION.</p>
-  </div>
-
-  <!-- BONUS: WHAT'S COMING IN THE SEPTEMBER RELEASE -->
-  <div class="slide" data-index="27">
-    <div class="slide-label">ボーナス</div>
-    <h2><span class="hl-blue">9月リリース</span>で追加される内容</h2>
-    <ul class="clean" style="max-width:800px;">
-      <li><span class="icon">📝</span><span>TODO：主要機能 #1。</span></li>
-      <li><span class="icon">📝</span><span>TODO：主要機能 #2。</span></li>
-      <li><span class="icon">📝</span><span>TODO：主要機能 #3。</span></li>
-    </ul>
-    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL（SLIDE 2）. PRESENTER TO FILL IN BEFORE SESSION.</p>
   </div>
 
   <!-- BONUS: ATF IN AUTOENG MODE -->
   <div class="slide" data-index="28">
     <div class="slide-label">ボーナス</div>
-    <h2><span class="hl-purple">AutoEng Mode</span> における ATF</h2>
+    <h2><span class="hl-purple">Autonomous Engineering</span> における Test Agent</h2>
     <ul class="clean" style="max-width:800px;">
-      <li><span class="icon">📝</span><span>TODO：今日の Build Agent + Test Agent のフローと比べて、AutoEng Mode 内での ATF 作成がどう変わるか。</span></li>
-      <li><span class="icon">📝</span><span>TODO：何が変わらないか（例：約13種類のステップタイプ）と、何が新しいか。</span></li>
-      <li><span class="icon">📝</span><span>TODO：サンプルプロンプト（可能であれば）。</span></li>
+      <li><span class="icon">🤖</span><span>別途プロンプトは不要：Test Agent は各ワークアイテムのストーリーと受け入れ条件を計画から直接読み取り、実行が始まると同時に自動で ATF テストを生成する。</span></li>
+      <li><span class="icon">🔁</span><span>今日のフローと同じ自動修復ループ — 失敗時は RCA、安全な修正は自動適用、それ以外はレビュー用に提示 — ただし、プロンプト1回ごとではなく、ワークアイテムごとに並行して実行される。</span></li>
+      <li><span class="icon">🆕</span><span>新しい点：機能テストだけでなく UI テストも生成されるようになった — 複数ステップのブラウザレベルのフロー — さらにリスト／関連リストのテストステップ（フィルタリング、関連リストの表示確認）も対応。</span></li>
+      <li><span class="icon">💬</span><span>サンプルプロンプト（AutoEng 以外でも使える）：<code>Generate ATF tests for all the feature permutations on the app we built.</code> その後：<code>Execute all ATF tests.</code></span></li>
     </ul>
-    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL（SLIDE 2）. PRESENTER TO FILL IN BEFORE SESSION.</p>
   </div>
 
-  <!-- BONUS: ATF ON EXISTING LEGACY APPS -->
-  <div class="slide" data-index="29">
-    <div class="slide-label">ボーナス</div>
-    <h2><span class="hl-orange">既存のレガシーアプリ</span>への ATF テスト生成</h2>
-    <ul class="clean" style="max-width:800px;">
-      <li><span class="icon">📝</span><span>TODO：今日のワークショップのフロー（新規アプリでの構築）とどう異なるか。</span></li>
-      <li><span class="icon">📝</span><span>TODO：ブラウンフィールドとの類似点（例：<code>now-sdk init --from</code>）。</span></li>
-      <li><span class="icon">📝</span><span>TODO：レガシー／複雑なアプリにおける既知の制約。</span></li>
-    </ul>
-    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL（SLIDE 2）. PRESENTER TO FILL IN BEFORE SESSION.</p>
-  </div>
 
   <!-- BONUS: BUILD AGENT + MCP -->
   <div class="slide" data-index="30">
@@ -1173,32 +1236,6 @@
     <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL（SLIDE 2）. PRESENTER TO FILL IN BEFORE SESSION.</p>
   </div>
 
-  <!-- BONUS: SNEAK PEEK OF NEXT RELEASE -->
-  <div class="slide" data-index="32">
-    <div class="slide-label">ボーナス</div>
-    <h2>先取り：<span class="hl-green">次に来るもの</span></h2>
-    <ul class="clean" style="max-width:800px;">
-      <li><span class="icon">👀</span><span>TODO：主要項目 #1 — 発表前に社内ロードマップブリーフィングで確認。</span></li>
-      <li><span class="icon">👀</span><span>TODO：主要項目 #2。</span></li>
-      <li><span class="icon">👀</span><span>TODO：主要項目 #3。</span></li>
-    </ul>
-    <p class="lead" style="margin-top:24px;">このスライドの内容はすべて方向性を示すものであり、確約ではありません — スライド2のセーフハーバー条項を参照してください。</p>
-    <p style="margin-top:16px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL（SLIDE 2）. PRESENTER TO FILL IN BEFORE SESSION.</p>
-  </div>
-
-  <!-- BONUS: WARPSPEED DEMO -->
-  <div class="slide" data-index="33">
-    <div class="slide-label">ボーナス（デモのみ）</div>
-    <h2>Warpspeed <span class="hl-blue">デモ</span></h2>
-    <div class="quote" style="margin-bottom:24px;">備品リクエスト、休暇申請、請求書処理、アクセス権限付与といった業務プロセスを効率化するワークフロー自動化プラットフォームです。</div>
-    <ul class="clean" style="max-width:800px;">
-      <li><span class="icon">👀</span><span>ライブデモ — 発表者がアプリを直接操作しながら説明します。</span></li>
-      <li><span class="icon">📝</span><span>TODO：ライブで見せる具体的なワークフローを1〜2つ選んでおく（例：備品リクエストや休暇申請など）。</span></li>
-    </ul>
-    <div class="exercise-links">
-      <a class="exercise-link" href="https://saplingapp.com/">saplingapp.com →</a>
-    </div>
-  </div>
 
 </div><!-- end deck -->
 

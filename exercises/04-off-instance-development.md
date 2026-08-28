@@ -1,11 +1,11 @@
 ---
 title: "Off-instance development: AI Skills for Fluent"
-slide: "19 — Off-instance development"
+slide: "21 — Off-instance development"
 ---
 
 # Off-instance development: AI Skills for Fluent
 
-[← Back to slide 19 in the deck](https://servicenow.github.io/servicenowsdlc/#19) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/04-off-instance-development.ja.md)
+[← Back to slide 21 in the deck](https://servicenow.github.io/servicenowsdlc/#21) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/04-off-instance-development.ja.md)
 
 ## Objective
 
@@ -19,7 +19,7 @@ Use the ServiceNow SDK's AI Skills plugin with a coding agent (Claude Code, Curs
 
 - Sandbox and Fluent project from the Build + test exercise
 - A coding agent installed locally (Claude Code, Cursor, Windsurf, etc.)
-- ServiceNow SDK AI Skills plugin installed for your coding agent — follow the setup instructions in the SDK README ([Claude Code instructions](https://github.com/ServiceNow/sdk#claude-code); the README also covers other agents)
+- ServiceNow SDK AI Skills plugin installed for your coding agent — follow the setup instructions in the SDK README (the [Claude Code section](https://github.com/ServiceNow/sdk#claude-code) covers the plugin install steps that apply to any coding agent, not just Claude Code; the README also has agent-specific sections if you're using Cursor, Windsurf, etc.)
 
 ## Exercise Steps
 
@@ -37,17 +37,22 @@ Use the ServiceNow SDK's AI Skills plugin with a coding agent (Claude Code, Curs
    Add some demo Todo Lists and Todo records for them so I can see them
    in action.
    ```
-5. Build and install:
+5. Prompt it to make a business-logic change too, not just a data-model one:
+   ```
+   Change default status to be draft on new maintenance request.
+   ```
+6. Build and install:
    ```
    now-sdk build && now-sdk install
    ```
-6. Open your sandbox and confirm the new table, column, and demo data are there.
+7. Open your sandbox and confirm the new table, column, demo data, and default-status change are there.
 
 ## Success Criteria
 
 - [ ] AI Skills plugin installed for your coding agent
 - [ ] New Todo List table and Due Date column exist as Fluent source
 - [ ] Demo data generated and visible in your sandbox
+- [ ] New Maintenance Requests default to "Draft" status
 - [ ] `now-sdk build && now-sdk install` completed without errors
 
 ## Learning Points

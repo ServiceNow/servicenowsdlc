@@ -686,7 +686,7 @@
       </div>
       <div class="card accent-red">
         <h3>Out of scope</h3>
-        <p>Non-global customization without "move" ownership — that metadata has no persistent container; it stays under ServiceNow's ownership.</p>
+        <p>Customizing an out-of-the-box app you haven't taken "move" ownership of — that metadata has no persistent container of its own; it stays under ServiceNow's ownership, not yours.</p>
       </div>
       <div class="card accent-blue">
         <h3>Why it matters</h3>
@@ -713,6 +713,35 @@
 
   <!-- SLIDE 5: FOUNDATIONS — SDK + FLUENT -->
   <div class="slide" data-index="4">
+    <div class="slide-label">Foundations</div>
+    <h2>Before Fluent: <span class="hl-red">one representation</span>, twice</h2>
+    <div class="quote" style="margin-bottom:24px;">Historically in ServiceNow, build time and runtime were the same representation — everything was XML, whether a human was reading it or the platform was executing it.</div>
+    <div class="cols cols-2" style="max-width:900px;">
+      <div class="card accent-red">
+        <h3>What you edited</h3>
+        <p>XML, via forms and clicks — hard to read, hard to diff, hard to review.</p>
+      </div>
+      <div class="card accent-red">
+        <h3>What the platform ran</h3>
+        <p>The exact same XML — no compile step, no type checking, no diagnostics before install.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6b: FOUNDATIONS — BUILD TIME VS RUNTIME -->
+  <div class="slide" data-index="4.3">
+    <div class="slide-label">Foundations</div>
+    <h2>Fluent separates <span class="hl-blue">build time</span> from <span class="hl-green">runtime</span></h2>
+    <div class="flow" style="margin-bottom:24px;">
+      <div class="flow-box"><span class="icon">📝</span><h4>Build time</h4><p>TypeScript — humans read, write, and reason about it, with compile-time type checking and diagnostics</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">⚙️</span><h4>Runtime</h4><p>Still what the platform executes underneath — you just don't touch that representation directly</p></div>
+    </div>
+    <p class="lead">That's shifting left in practice: mistakes get caught at build time, in your editor, before an install — not at runtime, after something's already broken.</p>
+  </div>
+
+  <!-- SLIDE 6c: FOUNDATIONS — SDK + FLUENT -->
+  <div class="slide" data-index="4.6">
     <div class="slide-label">Foundations</div>
     <h2>SDK + Fluent = <span class="hl-blue">source-driven development</span></h2>
     <div class="cols cols-2" style="max-width:1100px; align-items:start;">
@@ -769,7 +798,7 @@
       <li><span class="icon">3️⃣</span><span>Build and install it, and confirm it lands on your dev instance.</span></li>
     </ul>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/01-creating-a-fluent-app.md">Open the exercise →</a>
+      <a class="exercise-link" target="_blank" rel="noopener" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/01-creating-a-fluent-app.md">Open the exercise →</a>
     </div>
   </div>
 
@@ -808,7 +837,7 @@
       <li><span class="icon">3️⃣</span><span>Goal: finish the core requirements first — add extensions only if you finish early.</span></li>
     </ul>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/02-build-ready-requirements.md">Open the exercise →</a>
+      <a class="exercise-link" target="_blank" rel="noopener" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/02-build-ready-requirements.md">Open the exercise →</a>
     </div>
   </div>
 
@@ -835,8 +864,8 @@
     <h2>Get your <span class="hl-blue">sandbox</span> ready</h2>
     <div class="cols cols-2" style="max-width:1080px; align-items:start;">
       <ul class="clean">
-        <li><span class="icon">✅</span><span>Sign up for credentials to your assigned instance</span></li>
-        <li><span class="icon">✅</span><span>Confirm your developer sandbox is allocated</span></li>
+        <li><span class="icon">✅</span><span>Log in to your sandbox — same credentials from Exercise 01, just your sandbox URL instead of the base instance</span></li>
+        <li><span class="icon">✅</span><span>Confirm your developer sandbox is allocated (from Exercise 01)</span></li>
         <li><span class="icon">✅</span><span>Create a feature branch off <code>main</code></span></li>
       </ul>
       <div class="terminal compact">
@@ -845,7 +874,7 @@
       </div>
     </div>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://servicenow-my.sharepoint.com/:x:/p/shelby_cohen/IQDPcQEo1cNpT7XNsBeEi9J_AYPIviiz8XC2P7KjYkhbBhg">Get credentials for your instance →</a>
+      <a class="exercise-link" target="_blank" rel="noopener" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/03-build-maintenance-app.md#prerequisites">Checking out your feature branch →</a>
     </div>
   </div>
 
@@ -909,7 +938,7 @@
       </div>
     </div>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/03-build-maintenance-app.md">Open the exercise →</a>
+      <a class="exercise-link" target="_blank" rel="noopener" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/03-build-maintenance-app.md">Open the exercise →</a>
     </div>
   </div>
 
@@ -960,7 +989,7 @@
       <li><span class="icon">🔁</span><span><code>now-sdk build</code> / <code>now-sdk install</code> work identically, on- or off-platform.</span></li>
     </ul>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/04-off-instance-development.md">Open the exercise →</a>
+      <a class="exercise-link" target="_blank" rel="noopener" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/04-off-instance-development.md">Open the exercise →</a>
     </div>
   </div>
 
@@ -977,7 +1006,7 @@
       <p>Git does branching, review, and line-by-line conflict resolution. Update sets cannot.</p>
     </div>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-source-control.md">Open the exercise →</a>
+      <a class="exercise-link" target="_blank" rel="noopener" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-source-control.md">Open the exercise →</a>
     </div>
   </div>
 
@@ -986,6 +1015,20 @@
     <div class="kicker">Break</div>
     <h1>☕</h1>
     <p class="lead" style="margin-top:20px;">3:00 – 3:15 · Back for ReleaseOps</p>
+  </div>
+
+  <!-- SLIDE 19.4: RELEASEOPS — THE APP REPOSITORY -->
+  <div class="slide" data-index="19.4">
+    <div class="slide-label">ReleaseOps</div>
+    <h2>The App Repository: your <span class="hl-green">bridge</span> to ReleaseOps</h2>
+    <div class="flow" style="margin-bottom:24px;">
+      <div class="flow-box"><span class="icon">🌿</span><h4>Source control</h4><p>Merged to main — many versions at once, across sandboxes</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><span class="icon">🗄️</span><h4>App Repository</h4><p>A Studio publish makes the app installable on every instance in your company</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">📦</span><h4>Update Set</h4><p>Auto-generated by the publish — the actual deployment payload</p></div>
+    </div>
+    <p class="lead">ReleaseOps doesn't connect to source control directly — it's this auto-generated Update Set that gets promoted into a Deployment Request next.</p>
   </div>
 
   <!-- RELEASEOPS: THE PIPELINE -->
@@ -1003,8 +1046,29 @@
       </div>
     </div>
     <p class="lead" style="margin-top:24px;">Two paths get you here: promote an Update Set into a Deployment Request (this lab), or trigger it from Git via the CI/CD REST APIs with an approval gate (see choose-your-own-adventure).</p>
-    <div class="exercise-links">
-      <a class="exercise-link" href="releaseops-deep-dive.html">Deep dive: full architecture + walkthrough →</a>
+  </div>
+
+  <!-- SLIDE 19.6: RELEASEOPS — WHY THREE INSTANCES -->
+  <div class="slide" data-index="19.6">
+    <div class="slide-label">ReleaseOps</div>
+    <h2>Why you need <span class="hl-blue">three instances</span></h2>
+    <div class="flow" style="margin-bottom:24px;">
+      <div class="flow-box"><span class="icon">💻</span><h4>Dev</h4><p>Where you build, and where Instance Scan runs</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><span class="icon">🧪</span><h4>Test / Staging</h4><p>The assessment target — a configurable label, not literally "test"</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">🚀</span><h4>Production</h4><p>The separate, final destination</p></div>
+    </div>
+    <p class="lead">Assessment already moves the payload from dev to your test/staging target. If that's also your final destination, release has nowhere new to push — you need a separate instance for each stage.</p>
+    <div class="cols cols-2" style="max-width:1040px; margin-top:20px;">
+      <div class="card accent-blue">
+        <h3>Freeze date</h3>
+        <p>The cutoff for reaching Ready for Deployment. Miss it, and the Deployment Request is marked <em>deferred</em> — not blocked, and it can still ride a later release.</p>
+      </div>
+      <div class="card accent-orange">
+        <h3>Release date</h3>
+        <p>When the batch push to production actually fires, for every non-deferred Deployment Request that's ready.</p>
+      </div>
     </div>
   </div>
 
@@ -1061,7 +1125,8 @@
     </div>
     <p class="lead" style="margin-top:24px;">Explore whichever track interests you most — we're here for questions. Head to the exercise for ideas to get started.</p>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/07-choose-your-own-adventure.md">Open the exercise →</a>
+      <a class="exercise-link" target="_blank" rel="noopener" href="https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/07-choose-your-own-adventure.md">Open the exercise →</a>
+      <a class="exercise-link" target="_blank" rel="noopener" href="releaseops-deep-dive.html">ReleaseOps deep dive: full architecture + walkthrough →</a>
     </div>
   </div>
 
@@ -1088,6 +1153,7 @@
   <div class="slide" data-index="24.5">
     <div class="slide-label">Warp Speed (demo only)</div>
     <h2>Warp Speed — <span class="hl-blue">vibe coding</span>, on the platform</h2>
+    <div class="quote" style="margin-bottom:24px;">Today it's full admin or delegated dev — and delegated dev is a deliberately crippled, scope-locked experience. Warp Speed is the in-between: an isolated runtime, so nothing is scope-locked, but nothing leaks either.</div>
     <div class="flow" style="margin-bottom:24px;">
       <div class="flow-box"><span class="icon">🔑</span><h4>Log in</h4><p>Authenticates against home base</p></div>
       <div class="flow-arrow">→</div>
@@ -1095,9 +1161,8 @@
       <div class="flow-arrow">→</div>
       <div class="flow-box" style="border-color:var(--c-green-dim); background:var(--c-green-dim);"><span class="icon">🚀</span><h4>Live URL</h4><p>Dev and prod at once</p></div>
     </div>
-    <div class="quote">Solves delegated dev — no more choosing between full admin and a crippled, scope-locked dev experience.</div>
     <div class="exercise-links">
-      <a class="exercise-link" href="https://saplingapp.com/">Demo here →</a>
+      <a class="exercise-link" target="_blank" rel="noopener" href="https://saplingapp.com/">Demo here →</a>
     </div>
   </div>
 
@@ -1111,50 +1176,28 @@
   <!-- BONUS: BUILD AGENT — UNIFIED SNS + AUTOENG MODE -->
   <div class="slide" data-index="26">
     <div class="slide-label">Bonus</div>
-    <h2>Build Agent — unified <span class="hl-green">SNS &amp; AutoEng Mode</span></h2>
+    <h2>Build Agent — <span class="hl-green">Autonomous Engineering</span></h2>
     <ul class="clean" style="max-width:800px;">
-      <li><span class="icon">📝</span><span>TODO: what changes for users once SNS and AutoEng Mode are unified into one authoring surface.</span></li>
-      <li><span class="icon">📝</span><span>TODO: how this affects the workflow taught today (Build Agent + ATF, off-instance dev).</span></li>
-      <li><span class="icon">📝</span><span>TODO: demo or screenshot, if available.</span></li>
+      <li><span class="icon">📋</span><span>Give it requirements — a prompt, a file upload (e.g. a CSV of user stories), or an MCP-connected tool like Jira — and Build Agent interviews you to resolve anything ambiguous, then produces a full implementation plan: work items in Agile-story format, sequenced by a dependency graph.</span></li>
+      <li><span class="icon">✅</span><span>You review and approve every work item first — nothing builds until you sign off on the plan.</span></li>
+      <li><span class="icon">⚡</span><span>Once approved, Build Agent runs a background agent per work item, building all of them in parallel — each one generates and runs its own ATF tests, with automatic retries and root-cause analysis on failures — then bundles everything into one Update Set when the plan completes.</span></li>
+      <li><span class="icon">🔑</span><span>Requires the "Autonomous Engineer" app from the ServiceNow Store — check entitlements before promising this to a customer.</span></li>
+      <li><span class="icon">🖥️</span><span>If accessible, show the new Studio UI live here instead of a screenshot — permissions-dependent, confirm access before the session.</span></li>
     </ul>
-    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL (SLIDE 2). PRESENTER TO FILL IN BEFORE SESSION.</p>
-  </div>
-
-  <!-- BONUS: WHAT'S COMING IN THE SEPTEMBER RELEASE -->
-  <div class="slide" data-index="27">
-    <div class="slide-label">Bonus</div>
-    <h2>What's coming in the <span class="hl-blue">September release</span></h2>
-    <ul class="clean" style="max-width:800px;">
-      <li><span class="icon">📝</span><span>TODO: headline feature #1.</span></li>
-      <li><span class="icon">📝</span><span>TODO: headline feature #2.</span></li>
-      <li><span class="icon">📝</span><span>TODO: headline feature #3.</span></li>
-    </ul>
-    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL (SLIDE 2). PRESENTER TO FILL IN BEFORE SESSION.</p>
   </div>
 
   <!-- BONUS: ATF IN AUTOENG MODE -->
   <div class="slide" data-index="28">
     <div class="slide-label">Bonus</div>
-    <h2>ATF in <span class="hl-purple">AutoEng Mode</span></h2>
+    <h2>Test Agent in <span class="hl-purple">Autonomous Engineering</span></h2>
     <ul class="clean" style="max-width:800px;">
-      <li><span class="icon">📝</span><span>TODO: how ATF authoring changes inside AutoEng Mode vs. today's Build Agent + Test Agent flow.</span></li>
-      <li><span class="icon">📝</span><span>TODO: what stays the same (e.g. the ~13 step types) vs. what's new.</span></li>
-      <li><span class="icon">📝</span><span>TODO: example prompt, if available.</span></li>
+      <li><span class="icon">🤖</span><span>No separate prompt needed: Test Agent reads each work item's stories and acceptance criteria straight from the plan and generates ATF tests automatically as execution begins.</span></li>
+      <li><span class="icon">🔁</span><span>Same auto-heal loop as today's flow — RCA on failure, safe fixes auto-applied or surfaced for your review — just running per work item, in parallel, instead of one prompt at a time.</span></li>
+      <li><span class="icon">🆕</span><span>What's new here: UI tests are now generated too, not just functional ones — multi-step, browser-level flows — plus list and related-list test steps (filtering, related-list visibility).</span></li>
+      <li><span class="icon">💬</span><span>Example prompt (works outside AutoEng too): <code>Generate ATF tests for all the feature permutations on the app we built.</code> Then: <code>Execute all ATF tests.</code></span></li>
     </ul>
-    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL (SLIDE 2). PRESENTER TO FILL IN BEFORE SESSION.</p>
   </div>
 
-  <!-- BONUS: ATF ON EXISTING LEGACY APPS -->
-  <div class="slide" data-index="29">
-    <div class="slide-label">Bonus</div>
-    <h2>Generating ATF tests on <span class="hl-orange">existing legacy apps</span></h2>
-    <ul class="clean" style="max-width:800px;">
-      <li><span class="icon">📝</span><span>TODO: how this differs from today's workshop flow (built on a net-new app).</span></li>
-      <li><span class="icon">📝</span><span>TODO: any brownfield parallel worth drawing (e.g. <code>now-sdk init --from</code>).</span></li>
-      <li><span class="icon">📝</span><span>TODO: known limitations for legacy/complex apps.</span></li>
-    </ul>
-    <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL (SLIDE 2). PRESENTER TO FILL IN BEFORE SESSION.</p>
-  </div>
 
   <!-- BONUS: BUILD AGENT + MCP -->
   <div class="slide" data-index="30">
@@ -1183,19 +1226,6 @@
       <li><span class="icon">📝</span><span>TODO: example prompt or before/after, if available.</span></li>
     </ul>
     <p style="margin-top:24px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL (SLIDE 2). PRESENTER TO FILL IN BEFORE SESSION.</p>
-  </div>
-
-  <!-- BONUS: SNEAK PEEK OF NEXT RELEASE -->
-  <div class="slide" data-index="32">
-    <div class="slide-label">Bonus</div>
-    <h2>Sneak peek: <span class="hl-green">what's next</span></h2>
-    <ul class="clean" style="max-width:800px;">
-      <li><span class="icon">👀</span><span>TODO: headline item #1 — confirm with internal roadmap briefing before presenting.</span></li>
-      <li><span class="icon">👀</span><span>TODO: headline item #2.</span></li>
-      <li><span class="icon">👀</span><span>TODO: headline item #3.</span></li>
-    </ul>
-    <p class="lead" style="margin-top:24px;">Everything on this slide is directional, not a commitment — see the safe harbor statement on slide 2.</p>
-    <p style="margin-top:16px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em;">BONUS SLIDE — PENDING/ROADMAP CONTENT PER LEGAL (SLIDE 2). PRESENTER TO FILL IN BEFORE SESSION.</p>
   </div>
 
 

@@ -1,11 +1,11 @@
 ---
 title: "ReleaseOps: assess and release"
-slide: "22 — ReleaseOps"
+slide: "26 — ReleaseOps"
 ---
 
 # ReleaseOps: assess and release
 
-[← Back to slide 22 in the deck](https://servicenow.github.io/servicenowsdlc/#22) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-releaseops.ja.md)
+[← Back to slide 26 in the deck](https://servicenow.github.io/servicenowsdlc/#26) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-releaseops.ja.md)
 
 ## Objective
 
@@ -17,8 +17,14 @@ Take the app you published in Exercise 05 through the ReleaseOps quality-control
 
 ## Prerequisites
 
-- Pre-release published to the Application Repository (Exercise 05)
+- Merged PR from Exercise 05 (your app's latest code is on `main`)
 - Access to a test instance separate from your dev instance
+
+## Setup Instructions
+
+1. From your dev instance, publish a pre-release of your app to the Application Repository (Studio → App Details → Publish — the version increments automatically).
+2. **On instance:** open Studio/IDE (SNS) on a second instance and pull the merged changes using git. Confirm the pulled app reflects the merged change.
+3. If your App Repo is self-hosted (as this workshop's instances are) rather than the standard store App Repo, log in to [apprepo.servicenow.com](https://apprepo.servicenow.com) and entitle your test and prod instances so the newly published version is visible to them — otherwise the "Move to Test" stage below will fail to install. Skip this on a store App Repo, where publishing makes the app visible to every instance in your company automatically.
 
 ## Exercise Steps
 
@@ -48,10 +54,23 @@ Take the app you published in Exercise 05 through the ReleaseOps quality-control
 
 - Deliberately fail an ATF test before assessment and walk the "Need Code Change" path — rebuild the payload and re-assess
 - Compare On Demand vs. Scheduled release and discuss when each fits your team's cadence
+- Set up a manual pause point on the assessment playbook and practice resolving it:
+
+  ![Deployment Request Tasks related list, empty](images/releaseops/30-dr-tasks-tab-empty.png)
+  *Deployment Request → Deployment Request Tasks. Empty until someone adds one.*
+
+  ![New Deployment Request Task form with the Type dropdown open](images/releaseops/31-create-task-type-options.png)
+  *New task — Type can be Runbook, Test issue, Scan issue, or Preview issue.*
+
+  ![Deployment Request Task detail wired to a playbook stage and activity](images/releaseops/32-task-detail.png)
+  *This task is wired to Playbook stage "Ready for Deploy," waiting on activity "Before Ready for Deployment" — the playbook won't proceed past that point until the task closes.*
+
+  ![Deployment Request Task with the Resolve button](images/releaseops/33-resolve-task.png)
+  *Resolve clears it, and the playbook picks back up — same mechanism whether the sign-off is "ready to deploy?" or a post-deploy smoke test.*
 
 ## Appendix: Full Walkthrough (Screenshots)
 
-Reference material, not something every attendee needs to replicate step-by-step — this is the same walkthrough covered conceptually in the [ReleaseOps Deep Dive](https://servicenow.github.io/servicenowsdlc/releaseops-deep-dive.html), and it also covers what happens in the "Push to production" demo right after this exercise (creating and activating a Release, and watching the release flow fire). Useful if you're doing the CYOA ReleaseOps track, prepping to present this material yourself, or just want to see every click.
+Reference material, not something every attendee needs to replicate step-by-step — this is the same walkthrough covered conceptually in the [ReleaseOps Deep Dive](https://servicenow.github.io/servicenowsdlc/releaseops-deep-dive.html), and it also covers what happens in the "Push to production" demo right after this exercise (creating and activating a Release, and watching the release flow fire). Useful if you're doing the CYOA ReleaseOps track, prepping to present this material yourself, or just want to see every click. (Setting up a manual pause point — step 8 of the original walkthrough — moved to the Bonus Challenge above.)
 
 ### 1. Build and install the app from the IDE
 
@@ -159,17 +178,3 @@ Build the app in your IDE — same Fluent SDK workflow as the earlier build exer
 
 ![Workflow Studio diagram of the Ready for Deploy stage](images/releaseops/29-stage4-ready-for-deploy.png)
 *Stage 4 — Ready for Deploy: the finish line for the assessment flow. Getting to prod from here is the release flow's job, on its own schedule.*
-
-### 8. Setting up a manual pause point
-
-![Deployment Request Tasks related list, empty](images/releaseops/30-dr-tasks-tab-empty.png)
-*Deployment Request → Deployment Request Tasks. Empty until someone adds one.*
-
-![New Deployment Request Task form with the Type dropdown open](images/releaseops/31-create-task-type-options.png)
-*New task — Type can be Runbook, Test issue, Scan issue, or Preview issue.*
-
-![Deployment Request Task detail wired to a playbook stage and activity](images/releaseops/32-task-detail.png)
-*This task is wired to Playbook stage "Ready for Deploy," waiting on activity "Before Ready for Deployment" — the playbook won't proceed past that point until the task closes.*
-
-![Deployment Request Task with the Resolve button](images/releaseops/33-resolve-task.png)
-*Resolve clears it, and the playbook picks back up — same mechanism whether the sign-off is "ready to deploy?" or a post-deploy smoke test.*

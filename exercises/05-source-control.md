@@ -1,11 +1,11 @@
 ---
 title: "Source control: ship it with Git"
-slide: "20 — Source control exercise"
+slide: "22 — Source control exercise"
 ---
 
 # Source control: ship it with Git
 
-[← Back to slide 20 in the deck](https://servicenow.github.io/servicenowsdlc/#20) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-source-control.ja.md)
+[← Back to slide 22 in the deck](https://servicenow.github.io/servicenowsdlc/#22) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-source-control.ja.md)
 
 ## Objective
 
@@ -30,21 +30,15 @@ Walk the full Git-based collaboration flow — push, PR, review, merge, publish,
    Don't want to type these yourself? Ask Claude Code (or your coding agent) to commit and push the branch for you.
 2. Open a pull request. Pair with another team and have them review it — leave at least one comment.
 3. Resolve the feedback and merge to `main`.
-4. From your base dev instance, publish a pre-release of your app to the Application Repository.
-5. **On instance:** open Studio/IDE (SNS) on a second instance and pull the merged changes using git.
-6. Confirm the pulled app reflects the merged change.
 
 ## Success Criteria
 
 - [ ] Merged PR with visible review history
-- [ ] Pre-release published to the Application Repository
-- [ ] Changes pulled and visible on a second instance
 
 ## Learning Points
 
 - Review and conflict resolution are collaboration primitives Git provides natively — update sets have no equivalent, only last-write-wins.
-- The App Repo, not the update set, is what makes an install on a second instance reproducible and auditable.
-- The pre-release you just published is exactly what ReleaseOps picks up next — Exercise 06 starts by promoting an Update Set built from that same Application Repository artifact into a Deployment Request.
+- The App Repo, not the update set, is what makes an install on a second instance reproducible and auditable — publishing your merged app there is exactly what Exercise 06 starts with.
 
 ## Bonus Challenge
 

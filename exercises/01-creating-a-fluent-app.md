@@ -1,15 +1,15 @@
 ---
 title: "Creating a Fluent application using nowSDK"
-slide: "8 — Get source control ready"
+slide: "10 — Get source control ready"
 ---
 
 # Creating a Fluent application using nowSDK
 
-[← Back to slide 8 in the deck](https://servicenow.github.io/servicenowsdlc/#8) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/01-creating-a-fluent-app.ja.md)
+[← Back to slide 10 in the deck](https://servicenow.github.io/servicenowsdlc/#10) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/01-creating-a-fluent-app.ja.md)
 
 ## Objective
 
-Create a new Fluent application using nowSDK, and connect it to source control — the two pieces of tooling everything else today builds on.
+Create a new Fluent application using nowSDK, and connect it to source control — the two pieces of tooling everything else today builds on. This is the same app you'll keep building on all day — Build Agent extends it in Exercise 03, and it's what gets pushed, released, and deployed in the exercises after that.
 
 ## Estimated Time
 
@@ -37,25 +37,28 @@ Create a new Fluent application using nowSDK, and connect it to source control �
 
       ![Allocate Sandbox dialog, with Sandbox template left empty](images/sandbox-setup/03-allocate-sandbox-details.png)
     - Wait for it to finish provisioning — that sandbox's URL is the `<instance url>` used for the rest of this exercise.
-4. Open a terminal window
-    - Either use the terminal that is already open in your WindSurf/IDE or open a new terminal window
-    - The exercise steps will be executed in the WindSurf terminal but can be adapted for any terminal.
-5. Install the ServiceNow SDK: `npm i -g @servicenow/sdk`
-6. Run `now-sdk --version` and verify the version installed is >= `4.6.0`
-7. If you will be using VSCode, install the Fluent Language extension from [here](https://marketplace.visualstudio.com/items?itemName=ServiceNow.fluent-language-extension).
-8. If you will be using Windsurf or another VSCode fork, install from [here](https://open-vsx.org/extension/ServiceNow/fluent-language-extension)
-9. Set up an authentication profile for your sandbox using `now auth --add <instance url> --type basic`
 
-> **Naming convention:** everywhere below you'll see `<your_name>` — replace it with your own first name, lowercase, no spaces (e.g. `shelby`). This is a shared instance; a unique app/scope name is what keeps your app from colliding with everyone else's.
+> **Naming convention:** everywhere below you'll see `<your_name>`, replace it with your own first name, lowercase, no spaces (e.g. `shelby`). This is a shared instance; a unique app/scope name is what keeps your app from colliding with everyone else's. If your first name collides with another attendee's, or is long enough to push a scope name over the 18-character limit (see Step 1 below), use your ServiceNow userid instead.
 
 ## Exercise Steps
 
 ### Step 1: Initialize the Fluent Application
 
-1. Create a new empty directory and call it `bootcamp-demo-<your_name>`
-2. Move into the directory: `cd bootcamp-demo-<your_name>`
-3. Create a new Fluent (ServiceNow SDK) application by running `now-sdk init`
-4. Use your keyboard arrows to select `now-sdk + basic` under the `-- TypeScript --` section:
+1. Open a terminal window
+    - Either use the terminal that is already open in your WindSurf/IDE or open a new terminal window
+    - The exercise steps will be executed in the WindSurf terminal but can be adapted for any terminal.
+2. Install the ServiceNow SDK: `npm i -g @servicenow/sdk`
+3. Run `now-sdk --version` and verify the version installed is >= `4.6.0`
+4. If you will be using VSCode, install the Fluent Language extension from [here](https://marketplace.visualstudio.com/items?itemName=ServiceNow.fluent-language-extension).
+5. If you will be using Windsurf or another VSCode fork, install from [here](https://open-vsx.org/extension/ServiceNow/fluent-language-extension)
+6. Set up an authentication profile for your sandbox: `now auth --add <instance url> --type basic`
+    - `<instance url>` is the sandbox URL from Step 3 above (e.g. `https://<sandboxalias>.empsdlcdev.service-now.com`) — not the base instance URL.
+    - Use the same username/password you used to log in to the instance.
+    - Confirm the command reports a successful authentication before moving on — if it fails, double-check you're pointing at the sandbox URL, not the base instance.
+7. Create a new empty directory and call it `sdlc-workshop-<your_name>`
+8. Move into the directory: `cd sdlc-workshop-<your_name>`
+9. Create a new Fluent (ServiceNow SDK) application by running `now-sdk init`
+10. Use your keyboard arrows to select `now-sdk + basic` under the `-- TypeScript --` section:
    ```txt
     ? Select a template:
      -- Basic --
@@ -69,11 +72,11 @@ Create a new Fluent application using nowSDK, and connect it to source control �
       now-sdk + fullstack Vue
     A basic application using NowSDK and TypeScript
     ```
-5. For `Name of ServiceNow Application:`, enter `My First Fluent App - <Your Name>` (e.g. `My First Fluent App - Shelby`)
-6. For `NPM package name:`, enter `my-first-fluent-app-<your_name>`
-7. For `Create a Global/Scoped App?`, select `Scoped`
-8. For `Scope name:`, enter `sn_my_first_fluent_<your_name>`
-9. Run `npm install` to install dependencies for the newly created Fluent app (Fluent apps are basically NPM packages, therefore tools around the Node/NPM ecosystem can be used)
+11. For `Name of ServiceNow Application:`, you must type this yourself — there's no default. Enter `Maintenance_<YourName>` (e.g. `Maintenance_Shelby`). This is the same app name Build Agent will extend in Exercise 03, so keep it exactly as you type it here.
+12. For `NPM package name:`, accept the suggested default (derived from the app name).
+13. For `Create a Global/Scoped App?`, select `Scoped`
+14. For `Scope name:`, accept the suggested default. If you're prompted to type one yourself, use `x_snc_<your_name>` — ServiceNow scope names have an 18-character limit, so keep `<your_name>` short.
+15. Run `npm install` to install dependencies for the newly created Fluent app (Fluent apps are basically NPM packages, therefore tools around the Node/NPM ecosystem can be used)
 
 At this point, SDK has scaffolded out a sample Fluent project using TypeScript as the language for the project's [Javascript server-side modules](https://www.servicenow.com/docs/r/washingtondc/application-development/scripts/c_JS_modes.html). By default, Javascript server-side modules are defined inside `src/server`.
 
@@ -84,7 +87,6 @@ Your project structure should look something like this:
 ├── package.json <-- this is a standard NPM package.json where attributes about the package are defined and dependencies are listed
 └── src <---default source code directory
     ├── fluent <-- sub-directory for Fluent files
-    │   └── example.now.ts <-- sample Fluent file, note the `.now.ts` extension
     ├── server <-- Server-side modules directory
     │   ├── script.ts <-- sample TS server module
     │   └── tsconfig.json <-- tsconfig.json for the server modules
@@ -92,25 +94,34 @@ Your project structure should look something like this:
     ├── tsconfig.json <-- base tsconfig.json
     └── tsconfig.server.json <-- tsconfig.json for server-side code that is _not_ server modules (i.e.: Business Rule scripts, Script include scripts, etc...)
 ```
-10. Delete the `example.now.ts` file from fluent directory.
 
 ### Step 2: Set up git
 
 Git — not the Update Set — is the authoritative source of truth for this app going forward (see the "Git is the authoritative source of truth" slide). Connect this project to it now, before you write any metadata:
 
-1. Initialize a repo in your project root:
+1. Set your local git identity to your personal GitHub.com account (skip if it's already your machine's global default):
+   ```
+   git config user.name "<your GitHub username>"
+   git config user.email "<your GitHub-registered email>"
+   ```
+2. Initialize a repo in your project root:
    ```
    git init
    git add .
-   git commit -m "Initial commit: bootcamp-demo-<your_name> scaffold"
+   git commit -m "Initial commit: sdlc-workshop-<your_name> scaffold"
    ```
-2. Create a new **empty** repo under the workshop's GitHub org (no README/license — you already have files locally), then point your local repo at it and push:
+3. Create a new **empty** repo under the workshop's GitHub org (no README/license — you already have files locally), then point your local repo at it and push:
    ```
    git remote add origin <your new repo's URL>
    git branch -M main
    git push -u origin main
    ```
-3. Connect your ServiceNow dev instance's source control setup to this same repo, using the personal access token you generated on the "Get your source control ready" slide. The exact click path is covered in depth in [Exercise 05 — Source control](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-source-control.md); for now, confirm the connection succeeds before moving on.
+4. Connect your ServiceNow dev instance's source control setup to this same repo, using the personal access token you generated on the "Get your source control ready" slide:
+    - In Studio (or the IDE), open your app's source control settings and point it at the repo URL from step 3.
+    - When prompted for credentials, use your GitHub username and the personal access token as the password — GitHub no longer accepts your account password here.
+    - Confirm the connection reports success. If it fails with an authentication error, regenerate the token and make sure it has `repo` scope.
+5. Sync the instance-side connection: in Studio, run **Sync** (not `now-sdk install` — Sync pulls from the instance into your local source, the opposite direction). This is also what to use later if you ever make a change directly in the instance UI instead of through the IDE.
+    - Sync depends on the token connection from step 4 — if it fails with a fetch/download error, that's usually the token or scope permissions, not a git problem.
 
 ### Step 3: Build and Install the application
 

@@ -1,11 +1,11 @@
 ---
 title: "Build-ready requirements: rewrite the vague story"
-slide: "10 — Activity"
+slide: "12 — Activity"
 ---
 
 # Build-ready requirements: rewrite the vague story
 
-[← Back to slide 10 in the deck](https://servicenow.github.io/servicenowsdlc/#10) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/02-build-ready-requirements.ja.md)
+[← Back to slide 12 in the deck](https://servicenow.github.io/servicenowsdlc/#12) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/02-build-ready-requirements.ja.md)
 
 ## Objective
 

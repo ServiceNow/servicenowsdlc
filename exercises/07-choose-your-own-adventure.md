@@ -1,11 +1,11 @@
 ---
 title: "Choose your own adventure"
-slide: "24 — Choose your own adventure (exercise)"
+slide: "28 — Choose your own adventure (exercise)"
 ---
 
 # Choose your own adventure
 
-[← Back to slide 24 in the deck](https://servicenow.github.io/servicenowsdlc/#24) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/07-choose-your-own-adventure.ja.md)
+[← Back to slide 28 in the deck](https://servicenow.github.io/servicenowsdlc/#28) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/07-choose-your-own-adventure.ja.md)
 
 ## Objective
 
@@ -68,7 +68,7 @@ Here are a bunch of ideas to keep exploring — choose anything below, or come u
 
 - Go through the full ReleaseOps lab from Exercise 06: promote your Update Set into a Deployment Request, mark it "Ready to Assess," and watch the assessment playbook (Instance Scan → Move to Test → Run ATF) run.
 - If ATF fails, walk the "Need Code Change" path deliberately — see the Deployment Request return to Draft, then attach a corrected payload and re-assess.
-- See [Exercise 06](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-releaseops.md) for the full step-by-step.
+- See [Exercise 06](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-releaseops.md) for the full step-by-step, or the [ReleaseOps Deep Dive](https://servicenow.github.io/servicenowsdlc/releaseops-deep-dive.html) for the full architecture.
 
 ### Track: MCP integrations
 

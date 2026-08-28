@@ -1,11 +1,11 @@
 ---
 title: "Choose your own adventure"
-slide: "24 — Choose your own adventure（演習）"
+slide: "28 — Choose your own adventure（演習）"
 ---
 
 # Choose your own adventure
 
-[← デッキのスライド24に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#24) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/07-choose-your-own-adventure.md)
+[← デッキのスライド28に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#28) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/07-choose-your-own-adventure.md)
 
 ## Objective（目的）
 
@@ -68,7 +68,7 @@ slide: "24 — Choose your own adventure（演習）"
 
 - 演習06の ReleaseOps ラボを最後まで進めてみましょう：Update Set を Deployment Request にプロモートし、「Ready to Assess」にマークして、アセスメントのプレイブック（Instance Scan → Move to Test → Run ATF）が実行される様子を見届けます。
 - ATF が失敗した場合は、意図的に「Need Code Change」の経路をたどってみましょう — Deployment Request が Draft に戻る様子を確認し、修正したペイロードを添えて再度アセスメントします。
-- 詳しい手順は [演習06](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-releaseops.ja.md) を参照してください。
+- 詳しい手順は [演習06](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-releaseops.ja.md) を、アーキテクチャの詳細は [ReleaseOps Deep Dive](https://servicenow.github.io/servicenowsdlc/releaseops-deep-dive.html) を参照してください。
 
 ### トラック：MCP 連携
 

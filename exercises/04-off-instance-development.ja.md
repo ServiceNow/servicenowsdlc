@@ -1,11 +1,11 @@
 ---
 title: "オフインスタンス開発：Fluent 向け AI Skills"
-slide: "19 — オフインスタンス開発"
+slide: "21 — オフインスタンス開発"
 ---
 
 # オフインスタンス開発：Fluent 向け AI Skills
 
-[← デッキのスライド19に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#19) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/04-off-instance-development.md)
+[← デッキのスライド21に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#21) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/04-off-instance-development.md)
 
 ## Objective（目的）
 
@@ -19,7 +19,7 @@ ServiceNow SDK の AI Skills プラグインをコーディングエージェン
 
 - ビルド＋テスト演習で使用したサンドボックスと Fluent プロジェクト
 - ローカルにインストールされたコーディングエージェント（Claude Code、Cursor、Windsurf など）
-- 使用するコーディングエージェント向けに ServiceNow SDK の AI Skills プラグインがインストールされていること — SDK の README にあるセットアップ手順に従ってください（[Claude Code の手順](https://github.com/ServiceNow/sdk#claude-code)。README には他のエージェントについても記載があります）
+- 使用するコーディングエージェント向けに ServiceNow SDK の AI Skills プラグインがインストールされていること — SDK の README にあるセットアップ手順に従ってください（[Claude Code のセクション](https://github.com/ServiceNow/sdk#claude-code) に書かれているプラグインのインストール手順は、Claude Code 限定ではなく、どのコーディングエージェントにも当てはまります。Cursor や Windsurf などを使う場合は、README 内のそれぞれのエージェント向けセクションも参照してください）
 
 ## Exercise Steps（演習の手順）
 
@@ -37,17 +37,22 @@ ServiceNow SDK の AI Skills プラグインをコーディングエージェン
    Add some demo Todo Lists and Todo records for them so I can see them
    in action.
    ```
-5. ビルドしてインストールします：
+5. データモデルだけでなく、ビジネスロジックの変更もプロンプトしてみます：
+   ```
+   Change default status to be draft on new maintenance request.
+   ```
+6. ビルドしてインストールします：
    ```
    now-sdk build && now-sdk install
    ```
-6. サンドボックスを開き、新しいテーブル、カラム、デモデータが存在することを確認します。
+7. サンドボックスを開き、新しいテーブル、カラム、デモデータ、そしてデフォルトステータスの変更が反映されていることを確認します。
 
 ## Success Criteria（達成基準）
 
 - [ ] コーディングエージェント向けに AI Skills プラグインがインストールされている
 - [ ] 新しい Todo List テーブルと Due Date カラムが Fluent のソースとして存在する
 - [ ] デモデータが生成され、サンドボックス内で確認できる
+- [ ] 新しい Maintenance Request のデフォルトステータスが「Draft」になっている
 - [ ] `now-sdk build && now-sdk install` がエラーなく完了した
 
 ## Learning Points（学びのポイント）

@@ -1,11 +1,11 @@
 ---
 title: "ReleaseOps：アセスとリリース"
-slide: "22 — ReleaseOps"
+slide: "26 — ReleaseOps"
 ---
 
 # ReleaseOps：アセスとリリース
 
-[← デッキのスライド22に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#22) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-releaseops.md)
+[← デッキのスライド26に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#26) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/06-releaseops.md)
 
 ## Objective（目的）
 
@@ -17,8 +17,14 @@ slide: "22 — ReleaseOps"
 
 ## Prerequisites（前提条件）
 
-- Application Repository に公開されたプレリリース（演習05）
+- 演習05でマージされた PR（アプリの最新コードが `main` にあること）
 - 開発用インスタンスとは別のテスト用インスタンスへのアクセス
+
+## Setup Instructions（セットアップ手順）
+
+1. 開発用インスタンスから、アプリのプレリリースを Application Repository に公開します（Studio → App Details → Publish — バージョンは自動的にインクリメントされます）。
+2. **オンインスタンス：** 2つ目のインスタンスで Studio/IDE（SNS）を開き、git を使ってマージ済みの変更を pull します。pull したアプリに、マージした変更が反映されていることを確認します。
+3. App Repo がセルフホスト型の場合（このワークショップのインスタンスはそうです。ストア型の App Repo ではない場合）、[apprepo.servicenow.com](https://apprepo.servicenow.com) にログインし、テスト用インスタンスと本番用インスタンスに新しく公開したバージョンを entitle（利用可能にする設定）してください — これを行わないと、後述の「Move to Test」の段階でインストールが失敗します。ストア型の App Repo の場合は、公開すると自動的に会社内のすべてのインスタンスに表示されるため、この手順は不要です。
 
 ## Exercise Steps（演習の手順）
 
@@ -48,3 +54,4 @@ slide: "22 — ReleaseOps"
 
 - アセスメント前に意図的に ATF テストを失敗させ、「Need Code Change」の経路をたどってみましょう — ペイロードを再構築して再アセスメントします
 - On Demand と Scheduled のリリースを比較し、チームのペースにどちらが合うか議論してみましょう
+- アセスメントのプレイブックに手動のポーズポイントを設定し、それを解消してみましょう。Deployment Request の Deployment Request Tasks から新規タスクを作成します（Type は Runbook、Test issue、Scan issue、Preview issue のいずれか）。作成したタスクは特定のプレイブックのステージ／アクティビティに紐付けられ、それが解消（Resolve）されるまでプレイブックはその先に進みません。クリックごとのスクリーンショットは英語版を参照してください。

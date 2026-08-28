@@ -1,15 +1,15 @@
 ---
 title: "Build + test the maintenance app"
-slide: "16 — Build"
+slide: "18 — Build"
 ---
 
 # Build + test the maintenance app
 
-[← Back to slide 16 in the deck](https://servicenow.github.io/servicenowsdlc/#16) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/03-build-maintenance-app.ja.md)
+[← Back to slide 18 in the deck](https://servicenow.github.io/servicenowsdlc/#18) | [日本語版](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/03-build-maintenance-app.ja.md)
 
 ## Objective
 
-Use Build Agent (and ATF) to go from a natural-language prompt to a working maintenance-request app, using the build-ready requirements your team wrote earlier.
+Use Build Agent (and ATF) to go from a natural-language prompt to a working maintenance-request app, extending the `Maintenance_<YourName>` app you scaffolded in Exercise 01, using the build-ready requirements your team wrote earlier.
 
 ## Estimated Time
 
@@ -17,7 +17,10 @@ Use Build Agent (and ATF) to go from a natural-language prompt to a working main
 
 ## Prerequisites
 
-- Sandbox allocated and feature branch created
+- Sandbox allocated, with the `Maintenance_<YourName>` app from Exercise 01 built and installed
+- Feature branch created:
+  1. From your project root (the same one from Exercise 01, connected to your sandbox), make sure you're up to date: `git pull origin main`
+  2. Create and switch to a feature branch: `git checkout -b feature/maintenance-app`
 - Build-ready requirements from the previous activity (entities, roles/access, Given-When-Then)
 - "Sync ATF tests with app" turned on in Build Agent settings (General tab) — this is what generates ATF tests as you build and keeps them synced as the app changes
 
@@ -25,8 +28,8 @@ Use Build Agent (and ATF) to go from a natural-language prompt to a working main
 
 ## Exercise Steps
 
-1. Open Build Agent in the IDE — we're covering off-instance later.
-2. Prompt Build Agent with your build-ready requirements — name the entities, roles/access, and the Given-When-Then scenario directly in the prompt. Name the app `Maintenance_<YourName>` (replace `<YourName>` with your own name — this is a shared instance, and a unique app name is what keeps yours from colliding with everyone else's). If your team used the reference scenario from the requirements activity, paste this as-is; otherwise swap in your own entities/roles/Given-When-Then:
+1. Open Build Agent in the IDE, inside your `Maintenance_<YourName>` project from Exercise 01 — we're covering off-instance later.
+2. Prompt Build Agent with your build-ready requirements — name the entities, roles/access, and the Given-When-Then scenario directly in the prompt. You're extending the app you already created, not starting a new one, so the app name in the prompt should match `Maintenance_<YourName>` exactly as you named it in Exercise 01. If your team used the reference scenario from the requirements activity, paste this as-is; otherwise swap in your own entities/roles/Given-When-Then:
    ```
    Build a Maintenance Request app named "Maintenance_<YourName>" with:
 

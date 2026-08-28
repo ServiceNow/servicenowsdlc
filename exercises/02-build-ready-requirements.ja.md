@@ -1,11 +1,11 @@
 ---
 title: "Build-ready な要件定義：曖昧なストーリーを書き直す"
-slide: "10 — アクティビティ"
+slide: "12 — アクティビティ"
 ---
 
 # Build-ready な要件定義：曖昧なストーリーを書き直す
 
-[← デッキのスライド10に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#10) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/02-build-ready-requirements.md)
+[← デッキのスライド12に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#12) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/02-build-ready-requirements.md)
 
 ## Objective（目的）
 

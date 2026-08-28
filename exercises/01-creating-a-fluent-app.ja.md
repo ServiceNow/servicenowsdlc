@@ -1,15 +1,15 @@
 ---
 title: "nowSDK を使った Fluent アプリケーションの作成"
-slide: "8 — ソース管理の準備"
+slide: "10 — ソース管理の準備"
 ---
 
 # nowSDK を使った Fluent アプリケーションの作成
 
-[← デッキのスライド8に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#8) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/01-creating-a-fluent-app.md)
+[← デッキのスライド10に戻る](https://servicenow.github.io/servicenowsdlc/index.ja.html#10) ｜ [English version](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/01-creating-a-fluent-app.md)
 
 ## Objective（目的）
 
-nowSDK を使って新しい Fluent アプリケーションを作成し、ソース管理に接続します — これは、本日のこれ以降すべてが前提とする2つの基盤ツールです。
+nowSDK を使って新しい Fluent アプリケーションを作成し、ソース管理に接続します — これは、本日のこれ以降すべてが前提とする2つの基盤ツールです。これは今日一日をかけて作り込んでいく、まさにそのアプリです — Exercise 03 で Build Agent がこれを拡張し、以降の演習でプッシュ・リリース・デプロイされるのもこのアプリです。
 
 ## Estimated Time（想定時間）
 
@@ -37,25 +37,28 @@ nowSDK を使って新しい Fluent アプリケーションを作成し、ソ�
 
       ![Sandbox template を空にした Allocate Sandbox ダイアログ](images/sandbox-setup/03-allocate-sandbox-details.png)
     - プロビジョニングが完了するまで待ちます — このサンドボックスの URL が、この演習の残りで使う `<instance url>` になります。
-4. ターミナルウィンドウを開きます
-    - IDE（WindSurf など）で既に開いているターミナルを使うか、新しいターミナルウィンドウを開いてください
-    - 演習の手順は WindSurf のターミナルを想定していますが、他のターミナルでも同様に実行できます。
-5. ServiceNow SDK をインストールします： `npm i -g @servicenow/sdk`
-6. `now-sdk --version` を実行し、インストールされたバージョンが `4.6.0` 以上であることを確認してください
-7. VSCode を使う場合は、[こちら](https://marketplace.visualstudio.com/items?itemName=ServiceNow.fluent-language-extension) から Fluent Language 拡張機能をインストールしてください。
-8. Windsurf など他の VSCode フォークを使う場合は、[こちら](https://open-vsx.org/extension/ServiceNow/fluent-language-extension) からインストールしてください
-9. `now auth --add <instance url> --type basic` を使って、サンドボックス用の認証プロファイルを設定します
 
-> **命名規則：** 以降 `<your_name>` という表記が出てきますが、これは自分のファーストネーム（小文字、スペースなし）に置き換えてください（例：`shelby`）。これは共有インスタンスのため、一意な app/scope 名にすることが、他の参加者のアプリと衝突しないためのポイントです。
+> **命名規則：** 以降 `<your_name>` という表記が出てきますが、これは自分のファーストネーム（小文字、スペースなし）に置き換えてください（例：`shelby`）。これは共有インスタンスのため、一意な app/scope 名にすることが、他の参加者のアプリと衝突しないためのポイントです。ファーストネームが他の参加者と重複する場合や、長すぎて下記のスコープ名の18文字制限を超えてしまう場合は、代わりに ServiceNow の userid を使ってください。
 
 ## Exercise Steps（演習の手順）
 
 ### Step 1: Fluent アプリケーションの初期化
 
-1. 新しい空のディレクトリを作成し、`bootcamp-demo-<your_name>` という名前にします
-2. そのディレクトリに移動します： `cd bootcamp-demo-<your_name>`
-3. `now-sdk init` を実行して、新しい Fluent（ServiceNow SDK）アプリケーションを作成します
-4. キーボードの矢印キーを使って、`-- TypeScript --` セクションの `now-sdk + basic` を選択します：
+1. ターミナルウィンドウを開きます
+    - IDE（WindSurf など）で既に開いているターミナルを使うか、新しいターミナルウィンドウを開いてください
+    - 演習の手順は WindSurf のターミナルを想定していますが、他のターミナルでも同様に実行できます。
+2. ServiceNow SDK をインストールします： `npm i -g @servicenow/sdk`
+3. `now-sdk --version` を実行し、インストールされたバージョンが `4.6.0` 以上であることを確認してください
+4. VSCode を使う場合は、[こちら](https://marketplace.visualstudio.com/items?itemName=ServiceNow.fluent-language-extension) から Fluent Language 拡張機能をインストールしてください。
+5. Windsurf など他の VSCode フォークを使う場合は、[こちら](https://open-vsx.org/extension/ServiceNow/fluent-language-extension) からインストールしてください
+6. サンドボックス用の認証プロファイルを設定します： `now auth --add <instance url> --type basic`
+    - `<instance url>` は、上記手順3のサンドボックス URL です（例：`https://<sandboxalias>.empsdlcdev.service-now.com`）— ベースインスタンスの URL ではありません。
+    - インスタンスへのログインに使ったのと同じユーザー名／パスワードを使用してください。
+    - 続行する前に、認証が成功したことを示すメッセージを確認してください。失敗する場合は、ベースインスタンスではなくサンドボックスの URL を指定しているか再確認してください。
+7. 新しい空のディレクトリを作成し、`sdlc-workshop-<your_name>` という名前にします
+8. そのディレクトリに移動します： `cd sdlc-workshop-<your_name>`
+9. `now-sdk init` を実行して、新しい Fluent（ServiceNow SDK）アプリケーションを作成します
+10. キーボードの矢印キーを使って、`-- TypeScript --` セクションの `now-sdk + basic` を選択します：
    ```txt
     ? Select a template:
      -- Basic --
@@ -69,11 +72,11 @@ nowSDK を使って新しい Fluent アプリケーションを作成し、ソ�
       now-sdk + fullstack Vue
     A basic application using NowSDK and TypeScript
     ```
-5. `Name of ServiceNow Application:` には `My First Fluent App - <Your Name>` と入力します（例：`My First Fluent App - Shelby`）
-6. `NPM package name:` には `my-first-fluent-app-<your_name>` と入力します
-7. `Create a Global/Scoped App?` では `Scoped` を選択します
-8. `Scope name:` には `sn_my_first_fluent_<your_name>` と入力します
-9. `npm install` を実行して、新しく作成した Fluent アプリの依存関係をインストールします（Fluent アプリは基本的に NPM パッケージなので、Node/NPM エコシステムの周辺ツールを利用できます）
+11. `Name of ServiceNow Application:` は自分で入力する必要があります — デフォルトはありません。`Maintenance_<YourName>`（例：`Maintenance_Shelby`）と入力してください。これは Exercise 03 で Build Agent が拡張する、同じアプリ名です。ここで入力した通りに、そのまま使ってください。
+12. `NPM package name:` は提案されたデフォルト（アプリ名から自動生成されたもの）をそのまま使用してください。
+13. `Create a Global/Scoped App?` では `Scoped` を選択します
+14. `Scope name:` は提案されたデフォルトをそのまま使用してください。自分で入力するよう求められた場合は `x_snc_<your_name>` を使用してください — ServiceNow のスコープ名には18文字の制限があるため、`<your_name>` は短くしてください。
+15. `npm install` を実行して、新しく作成した Fluent アプリの依存関係をインストールします（Fluent アプリは基本的に NPM パッケージなので、Node/NPM エコシステムの周辺ツールを利用できます）
 
 この時点で、SDK は [JavaScript サーバーサイドモジュール](https://www.servicenow.com/docs/r/washingtondc/application-development/scripts/c_JS_modes.html) の言語として TypeScript を使ったサンプルの Fluent プロジェクトをスキャフォールドしています。デフォルトでは、JavaScript サーバーサイドモジュールは `src/server` 内に定義されます。
 
@@ -84,7 +87,6 @@ nowSDK を使って新しい Fluent アプリケーションを作成し、ソ�
 ├── package.json <-- パッケージに関する属性や依存関係の一覧が定義された、標準的な NPM の package.json
 └── src <---デフォルトのソースコードディレクトリ
     ├── fluent <-- Fluent ファイル用のサブディレクトリ
-    │   └── example.now.ts <-- サンプルの Fluent ファイル。`.now.ts` 拡張子に注目してください
     ├── server <-- サーバーサイドモジュール用ディレクトリ
     │   ├── script.ts <-- サンプルの TS サーバーモジュール
     │   └── tsconfig.json <-- サーバーモジュール用の tsconfig.json
@@ -92,25 +94,34 @@ nowSDK を使って新しい Fluent アプリケーションを作成し、ソ�
     ├── tsconfig.json <-- ベースの tsconfig.json
     └── tsconfig.server.json <-- サーバーモジュール以外のサーバーサイドコード（Business Rule のスクリプトや Script Include のスクリプトなど）用の tsconfig.json
 ```
-10. `fluent` ディレクトリから `example.now.ts` ファイルを削除します。
 
 ### Step 2: Git のセットアップ
 
 Update Set ではなく Git が、このアプリの今後にわたる信頼できる唯一の情報源（source of truth）になります（「Git is the authoritative source of truth」スライドを参照）。メタデータを書く前に、まずこのプロジェクトを Git に接続しましょう：
 
-1. プロジェクトのルートでリポジトリを初期化します：
+1. ローカルの Git ID を、自分の GitHub.com の個人アカウントに設定します（すでにマシンのグローバルデフォルトになっている場合はスキップしてください）：
+   ```
+   git config user.name "<your GitHub username>"
+   git config user.email "<your GitHub-registered email>"
+   ```
+2. プロジェクトのルートでリポジトリを初期化します：
    ```
    git init
    git add .
-   git commit -m "Initial commit: bootcamp-demo-<your_name> scaffold"
+   git commit -m "Initial commit: sdlc-workshop-<your_name> scaffold"
    ```
-2. ワークショップの GitHub org 配下に、**空の**リポジトリを新規作成し（README／license は不要です。すでにローカルにファイルがあるため）、ローカルリポジトリをそこに向けてプッシュします：
+3. ワークショップの GitHub org 配下に、**空の**リポジトリを新規作成し（README／license は不要です。すでにローカルにファイルがあるため）、ローカルリポジトリをそこに向けてプッシュします：
    ```
    git remote add origin <your new repo's URL>
    git branch -M main
    git push -u origin main
    ```
-3. 「Get your source control ready」スライドで生成したパーソナルアクセストークンを使って、ServiceNow の dev インスタンスのソース管理設定を、この同じリポジトリに接続します。具体的なクリック手順は [Exercise 05 — Source control](https://github.com/ServiceNow/servicenowsdlc/blob/main/exercises/05-source-control.md) で詳しく扱います。ここでは、接続が成功したことを確認したら次に進んでください。
+4. 「Get your source control ready」スライドで生成したパーソナルアクセストークンを使って、ServiceNow の dev インスタンスのソース管理設定を、この同じリポジトリに接続します：
+    - Studio（または IDE）でアプリのソース管理設定を開き、手順3のリポジトリ URL を指定します。
+    - 認証情報の入力を求められたら、GitHub のユーザー名と、パスワード欄にはパーソナルアクセストークンを使用してください — GitHub はもはやここでアカウントパスワードを受け付けません。
+    - 接続が成功したことを確認してください。認証エラーで失敗する場合は、トークンを再生成し、`repo` スコープが付与されていることを確認してください。
+5. インスタンス側の接続を Sync します：Studio で **Sync** を実行してください（`now-sdk install` ではありません — Sync はインスタンスからローカルソースへ取り込む方向で、install とは逆方向です）。これは、IDE を使わずインスタンスの UI で直接変更を加えた場合にも使う操作です。
+    - Sync は手順4のトークン接続に依存しています。フェッチ／ダウンロードエラーで失敗する場合、多くは Git の問題ではなくトークンやスコープの権限の問題です。
 
 ### Step 3: アプリケーションのビルドとインストール
 
