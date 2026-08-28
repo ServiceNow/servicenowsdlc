@@ -20,7 +20,7 @@ nowSDK を使って新しい Fluent アプリケーションを作成し、ソ�
 - [ ] インスタンスの認証情報に登録し、サンドボックスが割り当てられていること（未実施の場合は、以下の Setup Instructions の手順1〜3で対応します）
 - [ ] Node のバージョンが 20.18.0 以上であることを確認してください（`node -v`）
 - [ ] Node が 20.18.0 未満の場合は、`nvm install 20.18.0` を実行してください
-- [ ] ワークショップの org/repo にアクセスできる GitHub アカウント（「Get your source control ready」スライドを参照）
+- [ ] 個人の GitHub.com アカウント
 
 ## Setup Instructions（セットアップ手順）
 
@@ -110,18 +110,38 @@ Update Set ではなく Git が、このアプリの今後にわたる信頼で�
    git add .
    git commit -m "Initial commit: sdlc-workshop-<your_name> scaffold"
    ```
-3. ワークショップの GitHub org 配下に、**空の**リポジトリを新規作成し（README／license は不要です。すでにローカルにファイルがあるため）、ローカルリポジトリをそこに向けてプッシュします：
-   ```
-   git remote add origin <your new repo's URL>
-   git branch -M main
-   git push -u origin main
-   ```
-4. 「Get your source control ready」スライドで生成したパーソナルアクセストークンを使って、ServiceNow の dev インスタンスのソース管理設定を、この同じリポジトリに接続します：
-    - Studio（または IDE）でアプリのソース管理設定を開き、手順3のリポジトリ URL を指定します。
-    - 認証情報の入力を求められたら、GitHub のユーザー名と、パスワード欄にはパーソナルアクセストークンを使用してください — GitHub はもはやここでアカウントパスワードを受け付けません。
-    - 接続が成功したことを確認してください。認証エラーで失敗する場合は、トークンを再生成し、`repo` スコープが付与されていることを確認してください。
-5. インスタンス側の接続を Sync します：Studio で **Sync** を実行してください（`now-sdk install` ではありません — Sync はインスタンスからローカルソースへ取り込む方向で、install とは逆方向です）。これは、IDE を使わずインスタンスの UI で直接変更を加えた場合にも使う操作です。
-    - Sync は手順4のトークン接続に依存しています。フェッチ／ダウンロードエラーで失敗する場合、多くは Git の問題ではなくトークンやスコープの権限の問題です。
+3. **空の**リポジトリを新規作成します（README、`.gitignore`、license は不要です。すでにローカルにファイルがあるため）：
+    - [github.com/new](https://github.com/new) にアクセスします。
+    - Owner とリポジトリ名を設定し、visibility・README・`.gitignore`・license は下の画像の通りにしたまま、**Create repository** をクリックします。
+
+      ![github.com/new でリポジトリを作成。Add README はオフ、.gitignore もライセンスもなし](images/github-setup/create_new_repo.png)
+    - ローカルリポジトリを、作成した空のリポジトリに向けてプッシュします：
+      ```
+      git remote add origin <your new repo's URL>
+      git branch -M main
+      git push -u origin main
+      ```
+4. パーソナルアクセストークンを生成します — これが、ServiceNow がリポジトリに対して認証するために使うものです：
+    - [github.com/settings/tokens](https://github.com/settings/tokens)（Settings → Developer settings → Personal access tokens → Tokens (classic)）にアクセスします。
+    - **Generate new token** → **Generate new token (classic)** をクリックします。
+    - 名前を付け、**Select scopes** で最上位の **repo** チェックボックスをオンにします — これで配下のすべてのサブスコープも自動的にオンになります。
+
+      ![Generate new token (classic) ページ。repo スコープのチェックボックスを強調表示](images/github-setup/classic_token_scopes.png)
+    - 下にスクロールして **Generate token** をクリックします。
+
+      ![Generate token ボタン](images/github-setup/generate_token.png)
+    - **今すぐトークンをコピーしてください。** 次の手順で必要になりますが、このページを離れると GitHub は二度とトークンを表示してくれません — 失くした場合は新しく生成し直す必要があります。
+5. サンドボックスをこのリポジトリに接続します：
+    - サンドボックスインスタンス（Setup Instructions の手順3で取得した `<instance url>`）で ServiceNow IDE を開きます。まだ何も開いていない場合、Explorer パネルに **Create an app**・**Open Apps** と並んで **Clone Git repository** が表示されるので、それをクリックします。
+
+      ![ServiceNow IDE の Explorer パネル。Clone Git repository のオプションが表示されている](images/github-setup/clone_git_repo.png)
+    - 手順3で作成したリポジトリの URL を入力し、Enter を押します。
+
+      ![クローンするリポジトリの URL を入力](images/github-setup/enter_url.png)
+    - 画面右下に、Git の認証情報を設定するよう求めるメッセージが表示されます。**Configure** をクリックし、GitHub のユーザー名と、パスワード欄には手順4のパーソナルアクセストークンを入力してください — GitHub はもはやここでアカウントパスワードを受け付けません。
+    - クローンが正常に完了したことを確認してください。認証エラーで失敗する場合は、トークンを再生成し、`repo` スコープが付与されていることを確認してください。
+6. インスタンス側の接続を Sync します：Studio で **Sync** を実行してください（`now-sdk install` ではありません — Sync はインスタンスからローカルソースへ取り込む方向で、install とは逆方向です）。これは、IDE を使わずインスタンスの UI で直接変更を加えた場合にも使う操作です。
+    - Sync は手順5で設定した認証情報に依存しています。フェッチ／ダウンロードエラーで失敗する場合、多くは Git の問題ではなくトークンやスコープの権限の問題です。
 
 ### Step 3: アプリケーションのビルドとインストール
 
@@ -143,7 +163,7 @@ Update Set ではなく Git が、このアプリの今後にわたる信頼で�
 ## Success Criteria（達成基準）
 
 - [ ] 一意な名前付きの app/scope で Fluent アプリケーションが初期化されている（他の参加者と衝突していない）
-- [ ] ローカルリポジトリが初期化され、ワークショップの GitHub org にプッシュされ、dev インスタンスのソース管理設定に接続されている
+- [ ] ローカルリポジトリが初期化され、新しく作成した空の GitHub リポジトリにプッシュされ、dev インスタンスの IDE にクローンされている
 - [ ] アプリケーションを ServiceNow にビルド＆インストールできている
 
 ## Learning Points（学びのポイント）

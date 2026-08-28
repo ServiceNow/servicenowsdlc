@@ -20,7 +20,7 @@ Create a new Fluent application using nowSDK, and connect it to source control �
 - [ ] Signed up for your instance credentials and have a sandbox allocated (Setup Instructions steps 1-3 below cover this if you haven't yet)
 - [ ] Check that you have Node version 20.18.0 or newer (`node -v`)
 - [ ] If you don't have Node 20.18.0 or newer, run `nvm install 20.18.0`
-- [ ] A GitHub account with access to the workshop org/repo (see the "Get your source control ready" slide)
+- [ ] A personal GitHub.com account
 
 ## Setup Instructions
 
@@ -110,18 +110,38 @@ Git — not the Update Set — is the authoritative source of truth for this app
    git add .
    git commit -m "Initial commit: sdlc-workshop-<your_name> scaffold"
    ```
-3. Create a new **empty** repo under the workshop's GitHub org (no README/license — you already have files locally), then point your local repo at it and push:
-   ```
-   git remote add origin <your new repo's URL>
-   git branch -M main
-   git push -u origin main
-   ```
-4. Connect your ServiceNow dev instance's source control setup to this same repo, using the personal access token you generated on the "Get your source control ready" slide:
-    - In Studio (or the IDE), open your app's source control settings and point it at the repo URL from step 3.
-    - When prompted for credentials, use your GitHub username and the personal access token as the password — GitHub no longer accepts your account password here.
-    - Confirm the connection reports success. If it fails with an authentication error, regenerate the token and make sure it has `repo` scope.
-5. Sync the instance-side connection: in Studio, run **Sync** (not `now-sdk install` — Sync pulls from the instance into your local source, the opposite direction). This is also what to use later if you ever make a change directly in the instance UI instead of through the IDE.
-    - Sync depends on the token connection from step 4 — if it fails with a fetch/download error, that's usually the token or scope permissions, not a git problem.
+3. Create a new empty repository (no README, no `.gitignore`, no license — you already have files locally):
+    - Navigate to [github.com/new](https://github.com/new).
+    - Set an owner and repository name, leave visibility, README, `.gitignore`, and license as shown below, then click **Create repository**.
+
+      ![Create a new repository on github.com/new, with Add README off, no .gitignore, no license](images/github-setup/create_new_repo.png)
+    - Point your local repo at the new (empty) repo and push:
+      ```
+      git remote add origin <your new repo's URL>
+      git branch -M main
+      git push -u origin main
+      ```
+4. Generate a personal access token — this is what lets ServiceNow authenticate to your repo:
+    - Navigate to [github.com/settings/tokens](https://github.com/settings/tokens) (Settings → Developer settings → Personal access tokens → Tokens (classic)).
+    - Click **Generate new token** → **Generate new token (classic)**.
+    - Give it a name, and under **Select scopes**, check the top-level **repo** box — that automatically checks every sub-scope underneath it.
+
+      ![Generate new token (classic) page, with the repo scope checkbox highlighted](images/github-setup/classic_token_scopes.png)
+    - Scroll down and click **Generate token**.
+
+      ![Generate token button](images/github-setup/generate_token.png)
+    - **Copy the token now.** You'll need it in the next step, and GitHub will not show it to you again once you leave this page — if you lose it, you'll have to generate a new one.
+5. Connect your sandbox to this repo:
+    - Open the ServiceNow IDE on your sandbox instance (the `<instance url>` from Setup Instructions step 3). If nothing is open yet, the Explorer panel offers **Clone Git repository** alongside **Create an app** and **Open Apps** — click it.
+
+      ![ServiceNow IDE Explorer panel with the Clone Git repository option](images/github-setup/clone_git_repo.png)
+    - Enter the URL of the repository you created in step 3, then press Enter.
+
+      ![Enter the URL of the repository to clone](images/github-setup/enter_url.png)
+    - A message pops up in the bottom-right corner asking you to configure git credentials. Click **Configure**, then enter your GitHub username and paste the personal access token from step 4 as the password — GitHub no longer accepts your account password here.
+    - Confirm the clone completes successfully. If it fails with an authentication error, regenerate the token and make sure the `repo` scope is checked.
+6. Sync the instance-side connection: in Studio, run **Sync** (not `now-sdk install` — Sync pulls from the instance into your local source, the opposite direction). This is also what to use later if you ever make a change directly in the instance UI instead of through the IDE.
+    - Sync depends on the same credentials you configured in step 5 — if it fails with a fetch/download error, that's usually the token or scope permissions, not a git problem.
 
 ### Step 3: Build and Install the application
 
@@ -143,7 +163,7 @@ Git — not the Update Set — is the authoritative source of truth for this app
 ## Success Criteria
 
 - [ ] Fluent application initialized with a unique, name-appended app/scope (no collision with other attendees)
-- [ ] Local repo initialized, pushed to the workshop GitHub org, and connected to your dev instance's source control setup
+- [ ] Local repo initialized, pushed to a new empty GitHub repository, and cloned into your dev instance's IDE
 - [ ] Have built and installed the application to ServiceNow
 
 ## Learning Points
