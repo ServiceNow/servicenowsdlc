@@ -25,9 +25,9 @@ Create a new Fluent application using nowSDK, and connect it to source control �
 ## Setup Instructions
 
 1. Sign up for your instance credentials on the [instance sign-up sheet](https://servicenow-my.sharepoint.com/:x:/p/shelby_cohen/IQDPcQEo1cNpT7XNsBeEi9J_AYPIviiz8XC2P7KjYkhbBhg).
-2. Log in to the base instance with those credentials — use the URL listed in the **Instance Link** column for your row on the sign-up sheet, not a shared/default URL.
+2. Log in to the base instance with those credentials — use the URL listed in the **Instance Link** column for your row on the sign-up sheet (it'll be `empsdlcdev`, `empsdlcdev1`, or `empsdlcdev2`).
 3. Allocate your own sandbox, named after you:
-    - Go to [Sandbox Management Home](https://empsdlcdev.service-now.com/now/developer-sandbox/home) directly, or search `sandbox` in the top nav and open **Sandbox Management Home**.
+    - On your base instance, go to `<instance url>/now/developer-sandbox/home` directly, or search `sandbox` in the top nav and open **Sandbox Management Home**.
 
       ![Navigate to Sandbox Management Home](images/sandbox-setup/01-navigate-to-sandbox-management.png)
     - Click **Allocate sandbox**.
@@ -52,7 +52,7 @@ Create a new Fluent application using nowSDK, and connect it to source control �
 4. If you will be using VSCode, install the Fluent Language extension from [here](https://marketplace.visualstudio.com/items?itemName=ServiceNow.fluent-language-extension).
 5. If you will be using Windsurf or another VSCode fork, install from [here](https://open-vsx.org/extension/ServiceNow/fluent-language-extension)
 6. Set up an authentication profile for your sandbox: `now-sdk auth --add <instance url> --type basic`
-    - `<instance url>` is the sandbox URL from Step 3 above (e.g. `https://<sandboxalias>.empsdlcdev.service-now.com`) — not the base instance URL.
+    - `<instance url>` is the sandbox URL from Step 3 above (e.g. `https://<sandboxalias>.<base-instance>.service-now.com`) — not the base instance URL.
     - Use the same username/password you used to log in to the instance.
     - Confirm the command reports a successful authentication before moving on — if it fails, double-check you're pointing at the sandbox URL, not the base instance.
 7. Create a new empty directory and call it `sdlc-workshop-<your_name>`

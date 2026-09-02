@@ -25,9 +25,9 @@ nowSDK を使って新しい Fluent アプリケーションを作成し、ソ�
 ## Setup Instructions（セットアップ手順）
 
 1. [インスタンス登録シート](https://servicenow-my.sharepoint.com/:x:/p/shelby_cohen/IQDPcQEo1cNpT7XNsBeEi9J_AYPIviiz8XC2P7KjYkhbBhg) でインスタンスの認証情報に登録してください。
-2. その認証情報で、ベースインスタンスにログインします — 登録シートの自分の行にある **Instance Link** 列に記載された URL を使用してください。共通／デフォルトの URL ではありません。
+2. その認証情報で、ベースインスタンスにログインします — 登録シートの自分の行にある **Instance Link** 列に記載された URL を使用してください（`empsdlcdev`、`empsdlcdev1`、`empsdlcdev2` のいずれかになります）。
 3. 自分の名前を付けたサンドボックスを割り当てます：
-    - [Sandbox Management Home](https://empsdlcdev.service-now.com/now/developer-sandbox/home) に直接アクセスするか、トップナビゲーションで `sandbox` を検索して **Sandbox Management Home** を開きます。
+    - 自分のベースインスタンス上で `<instance url>/now/developer-sandbox/home` に直接アクセスするか、トップナビゲーションで `sandbox` を検索して **Sandbox Management Home** を開きます。
 
       ![Sandbox Management Home への移動](images/sandbox-setup/01-navigate-to-sandbox-management.png)
     - **Allocate sandbox** をクリックします。
@@ -52,7 +52,7 @@ nowSDK を使って新しい Fluent アプリケーションを作成し、ソ�
 4. VSCode を使う場合は、[こちら](https://marketplace.visualstudio.com/items?itemName=ServiceNow.fluent-language-extension) から Fluent Language 拡張機能をインストールしてください。
 5. Windsurf など他の VSCode フォークを使う場合は、[こちら](https://open-vsx.org/extension/ServiceNow/fluent-language-extension) からインストールしてください
 6. サンドボックス用の認証プロファイルを設定します： `now-sdk auth --add <instance url> --type basic`
-    - `<instance url>` は、上記手順3のサンドボックス URL です（例：`https://<sandboxalias>.empsdlcdev.service-now.com`）— ベースインスタンスの URL ではありません。
+    - `<instance url>` は、上記手順3のサンドボックス URL です（例：`https://<sandboxalias>.<base-instance>.service-now.com`）— ベースインスタンスの URL ではありません。
     - インスタンスへのログインに使ったのと同じユーザー名／パスワードを使用してください。
     - 続行する前に、認証が成功したことを示すメッセージを確認してください。失敗する場合は、ベースインスタンスではなくサンドボックスの URL を指定しているか再確認してください。
 7. 新しい空のディレクトリを作成し、`sdlc-workshop-<your_name>` という名前にします
