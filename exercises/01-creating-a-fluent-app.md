@@ -9,7 +9,7 @@ slide: "10 — Get source control ready"
 
 ## Objective
 
-Create a new Fluent application using nowSDK, and connect it to source control — the two pieces of tooling everything else today builds on. This is the same app you'll keep building on all day — Build Agent extends it in Exercise 03, and it's what gets pushed, released, and deployed in the exercises after that.
+Create a new Fluent application using nowSDK, and connect it to source control — the two pieces of tooling everything else today builds on. This is the same app you'll keep building on all day — Build Agent extends it in Exercise 03, and it's what gets pushed, released, and deployed in the exercises after that. By the end of this exercise, everyone should have their own sandbox created and be logged in to their instance — that's the baseline the rest of the day assumes.
 
 ## Estimated Time
 
@@ -25,7 +25,7 @@ Create a new Fluent application using nowSDK, and connect it to source control �
 ## Setup Instructions
 
 1. Sign up for your instance credentials on the [instance sign-up sheet](https://servicenow-my.sharepoint.com/:x:/p/shelby_cohen/IQDPcQEo1cNpT7XNsBeEi9J_AYPIviiz8XC2P7KjYkhbBhg).
-2. Log in to the base instance at [https://empsdlcdev.service-now.com/](https://empsdlcdev.service-now.com/) with those credentials.
+2. Log in to the base instance with those credentials — use the URL listed in the **Instance Link** column for your row on the sign-up sheet, not a shared/default URL.
 3. Allocate your own sandbox, named after you:
     - Go to [Sandbox Management Home](https://empsdlcdev.service-now.com/now/developer-sandbox/home) directly, or search `sandbox` in the top nav and open **Sandbox Management Home**.
 

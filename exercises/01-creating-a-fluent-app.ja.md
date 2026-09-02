@@ -9,7 +9,7 @@ slide: "10 — ソース管理の準備"
 
 ## Objective（目的）
 
-nowSDK を使って新しい Fluent アプリケーションを作成し、ソース管理に接続します — これは、本日のこれ以降すべてが前提とする2つの基盤ツールです。これは今日一日をかけて作り込んでいく、まさにそのアプリです — Exercise 03 で Build Agent がこれを拡張し、以降の演習でプッシュ・リリース・デプロイされるのもこのアプリです。
+nowSDK を使って新しい Fluent アプリケーションを作成し、ソース管理に接続します — これは、本日のこれ以降すべてが前提とする2つの基盤ツールです。これは今日一日をかけて作り込んでいく、まさにそのアプリです — Exercise 03 で Build Agent がこれを拡張し、以降の演習でプッシュ・リリース・デプロイされるのもこのアプリです。この演習が終わるまでに、全員が自分のサンドボックスを作成し、自分のインスタンスにログインできている状態になっていることが、この後一日を通しての前提になります。
 
 ## Estimated Time（想定時間）
 
@@ -25,7 +25,7 @@ nowSDK を使って新しい Fluent アプリケーションを作成し、ソ�
 ## Setup Instructions（セットアップ手順）
 
 1. [インスタンス登録シート](https://servicenow-my.sharepoint.com/:x:/p/shelby_cohen/IQDPcQEo1cNpT7XNsBeEi9J_AYPIviiz8XC2P7KjYkhbBhg) でインスタンスの認証情報に登録してください。
-2. その認証情報で、ベースインスタンス [https://empsdlcdev.service-now.com/](https://empsdlcdev.service-now.com/) にログインします。
+2. その認証情報で、ベースインスタンスにログインします — 登録シートの自分の行にある **Instance Link** 列に記載された URL を使用してください。共通／デフォルトの URL ではありません。
 3. 自分の名前を付けたサンドボックスを割り当てます：
     - [Sandbox Management Home](https://empsdlcdev.service-now.com/now/developer-sandbox/home) に直接アクセスするか、トップナビゲーションで `sandbox` を検索して **Sandbox Management Home** を開きます。
 
