@@ -757,6 +757,10 @@
         <div class="card accent-blue">
           <h3>Fluent</h3>
           <p>TypeScript ベースの DSL — <code>.now.ts</code> ファイルでメタデータを定義し、フォームをクリックして回る代わりに、コンパイル時の型チェックと診断が得られる。</p>
+          <pre style="margin-top:12px;"><span class="k">export const</span> <span class="h">MaintenanceRequest</span> = <span class="k">Table</span>({
+  <span class="v">label</span>: <span class="s">'Maintenance Request'</span>,
+  <span class="v">fields</span>: { <span class="t">equipment</span>: <span class="k">Reference</span>(<span class="s">'equipment'</span>) }
+});</pre>
         </div>
         <div class="card accent-green">
           <h3>JS モジュール + React</h3>
