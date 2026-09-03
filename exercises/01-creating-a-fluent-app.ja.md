@@ -9,7 +9,7 @@ slide: "10 — ソース管理の準備"
 
 ## Objective（目的）
 
-nowSDK を使って新しい Fluent アプリケーションを作成し、ソース管理に接続します — これは、本日のこれ以降すべてが前提とする2つの基盤ツールです。これは今日一日をかけて作り込んでいく、まさにそのアプリです — Exercise 03 で Build Agent がこれを拡張し、以降の演習でプッシュ・リリース・デプロイされるのもこのアプリです。この演習が終わるまでに、全員が自分のサンドボックスを作成し、自分のインスタンスにログインできている状態になっていることが、この後一日を通しての前提になります。
+nowSDK を使って新しい Fluent アプリケーションを作成し、ソース管理に接続します — これは、本日のこれ以降すべてが前提とする2つの基盤ツールです。これは今日一日をかけて作り込んでいく、まさにそのアプリです — Exercise 03 で Build Agent がこれを拡張し、以降の演習でプッシュ・リリース・デプロイされるのもこのアプリです。この演習が終わるまでに、全員が割り当てられたサンドボックスにログインできている状態になっていることが、この後一日を通しての前提になります。
 
 ## Estimated Time（想定時間）
 
@@ -17,26 +17,19 @@ nowSDK を使って新しい Fluent アプリケーションを作成し、ソ�
 
 ## Prerequisites（前提条件）
 
-- [ ] インスタンスの認証情報に登録し、サンドボックスが割り当てられていること（未実施の場合は、以下の Setup Instructions の手順1〜3で対応します）
+- [ ] [インスタンス登録シート](https://servicenow-my.sharepoint.com/:x:/p/shelby_cohen/IQDPcQEo1cNpT7XNsBeEi9J_AYPIviiz8XC2P7KjYkhbBhg) で自分の名前を確認してください — サンドボックスは事前に割り当て済みで、自分の行に URL と認証情報が記載されています（未実施の場合は、以下の Setup Instructions の手順1〜2で対応します）
 - [ ] Node のバージョンが 20.18.0 以上であることを確認してください（`node -v`）
 - [ ] Node が 20.18.0 未満の場合は、`nvm install 20.18.0` を実行してください
 - [ ] 個人の GitHub.com アカウント
 
 ## Setup Instructions（セットアップ手順）
 
-1. [インスタンス登録シート](https://servicenow-my.sharepoint.com/:x:/p/shelby_cohen/IQDPcQEo1cNpT7XNsBeEi9J_AYPIviiz8XC2P7KjYkhbBhg) でインスタンスの認証情報に登録してください。
-2. その認証情報で、ベースインスタンスにログインします — 登録シートの自分の行にある **Instance Link** 列に記載された URL を使用してください（`empsdlcdev`、`empsdlcdev1`、`empsdlcdev2` のいずれかになります）。
-3. 自分の名前を付けたサンドボックスを割り当てます：
-    - 自分のベースインスタンス上で `<instance url>/now/developer-sandbox/home` に直接アクセスするか、トップナビゲーションで `sandbox` を検索して **Sandbox Management Home** を開きます。
+サンドボックスは全員分、事前に割り当て済みです。自分でサンドボックスを割り当てる手順はありません — 自分のものを見つけてログインするだけです。
 
-      ![Sandbox Management Home への移動](images/sandbox-setup/01-navigate-to-sandbox-management.png)
-    - **Allocate sandbox** をクリックします。
+1. [インスタンス登録シート](https://servicenow-my.sharepoint.com/:x:/p/shelby_cohen/IQDPcQEo1cNpT7XNsBeEi9J_AYPIviiz8XC2P7KjYkhbBhg) で自分の名前を確認してください — 割り当てられたサンドボックスと認証情報が記載されています。
+2. その認証情報で、割り当てられたサンドボックスにログインします — 登録シートの自分の行にある **Instance Link** 列に記載された URL を使用してください（`empsdlcdev` または `empsdlcdev2` のいずれかになります）。このサンドボックスの URL が、この演習の残りで使う `<instance url>` になります。
 
-      ![サンドボックスの割り当て](images/sandbox-setup/02-allocate-sandbox.png)
-    - **Allocate Sandbox** ダイアログでは、**Sandbox template** は空のままにしてください。**Sandbox alias** には、この演習の他の箇所と同じ `<your_name>` の命名規則で名前を付けます（最大8文字、一意である必要があります）。これにより、他の参加者のものと衝突しなくなります。入力したら **Allocate** をクリックします。
-
-      ![Sandbox template を空にした Allocate Sandbox ダイアログ](images/sandbox-setup/03-allocate-sandbox-details.png)
-    - プロビジョニングが完了するまで待ちます — このサンドボックスの URL が、この演習の残りで使う `<instance url>` になります。
+> サンドボックスの割り当てが実際どう行われるか見たい、または後で自分で割り当てる必要がある場合は、この演習末尾の[Appendix（付録）](#appendix-サンドボックスを自分で割り当てる)を参照してください。
 
 > **命名規則：** 以降 `<your_name>` という表記が出てきますが、これは自分のファーストネーム（小文字、スペースなし）に置き換えてください（例：`shelby`）。これは共有インスタンスのため、一意な app/scope 名にすることが、他の参加者のアプリと衝突しないためのポイントです。ファーストネームが他の参加者と重複する場合や、長すぎて下記のスコープ名の18文字制限を超えてしまう場合は、代わりに ServiceNow の userid を使ってください。
 
@@ -52,7 +45,7 @@ nowSDK を使って新しい Fluent アプリケーションを作成し、ソ�
 4. VSCode を使う場合は、[こちら](https://marketplace.visualstudio.com/items?itemName=ServiceNow.fluent-language-extension) から Fluent Language 拡張機能をインストールしてください。
 5. Windsurf など他の VSCode フォークを使う場合は、[こちら](https://open-vsx.org/extension/ServiceNow/fluent-language-extension) からインストールしてください
 6. サンドボックス用の認証プロファイルを設定します： `now-sdk auth --add <instance url> --type basic`
-    - `<instance url>` は、上記手順3のサンドボックス URL です（例：`https://<sandboxalias>.<base-instance>.service-now.com`）— ベースインスタンスの URL ではありません。
+    - `<instance url>` は、上記 Setup Instructions の手順2のサンドボックス URL です（例：`https://<sandboxalias>.<base-instance>.service-now.com`）— ベースインスタンスの URL ではありません。
     - インスタンスへのログインに使ったのと同じユーザー名／パスワードを使用してください。
     - 続行する前に、認証が成功したことを示すメッセージを確認してください。失敗する場合は、ベースインスタンスではなくサンドボックスの URL を指定しているか再確認してください。
 7. 新しい空のディレクトリを作成し、`sdlc-workshop-<your_name>` という名前にします
@@ -134,7 +127,7 @@ Update Set ではなく Git が、このアプリの今後にわたる信頼で�
       ![Generate token ボタン](images/github-setup/generate_token.png)
     - **今すぐトークンをコピーしてください。** 次の手順で必要になりますが、このページを離れると GitHub は二度とトークンを表示してくれません — 失くした場合は新しく生成し直す必要があります。
 5. サンドボックスをこのリポジトリに接続します：
-    - サンドボックスインスタンス（Setup Instructions の手順3で取得した `<instance url>`）で ServiceNow IDE を開きます。まだ何も開いていない場合、Explorer パネルに **Create an app**・**Open Apps** と並んで **Clone Git repository** が表示されるので、それをクリックします。
+    - サンドボックスインスタンス（Setup Instructions の手順2で取得した `<instance url>`）で ServiceNow IDE を開きます。まだ何も開いていない場合、Explorer パネルに **Create an app**・**Open Apps** と並んで **Clone Git repository** が表示されるので、それをクリックします。
 
       ![ServiceNow IDE の Explorer パネル。Clone Git repository のオプションが表示されている](images/github-setup/clone_git_repo.png)
     - 手順3で作成したリポジトリの URL を入力し、Enter を押します。
@@ -142,8 +135,6 @@ Update Set ではなく Git が、このアプリの今後にわたる信頼で�
       ![クローンするリポジトリの URL を入力](images/github-setup/enter_url.png)
     - 画面右下に、Git の認証情報を設定するよう求めるメッセージが表示されます。**Configure** をクリックし、GitHub のユーザー名と、パスワード欄には手順4のパーソナルアクセストークンを入力してください。
     - クローンが正常に完了したことを確認してください。認証エラーで失敗する場合は、トークンを再生成し、`repo` スコープが付与されていることを確認してください。
-6. インスタンス側の接続を Sync します：Studio で **Sync** を実行してください（`now-sdk install` ではありません — Sync はインスタンスからローカルソースへ取り込む方向で、install とは逆方向です）。これは、IDE を使わずインスタンスの UI で直接変更を加えた場合にも使う操作です。
-    - Sync は手順5で設定した認証情報に依存しています。フェッチ／ダウンロードエラーで失敗する場合、多くは Git の問題ではなくトークンやスコープの権限の問題です。
 
 ### Step 3: アプリケーションのビルドとインストール
 
@@ -157,10 +148,6 @@ Update Set ではなく Git が、このアプリの今後にわたる信頼で�
    git commit -m "Initial build"
    git push
    ```
-
-### Step 4: ServiceNow での確認
-
-1. ServiceNow インスタンスに移動し、アプリが正しくインストールされたことを確認します（App Manager または Studio で、自分のスコープに、ビルドしたバージョンが表示されているはずです）。
 
 ## Success Criteria（達成基準）
 
@@ -178,3 +165,19 @@ Update Set ではなく Git が、このアプリの今後にわたる信頼で�
 
 - 自分自身のテーブルとビジネスルールを追加してみましょう（本日のビルド演習と同じパターンの Fluent `Table()` と `BusinessRule()`）。追加したら再度ビルド＆インストールしてください
 - 自分のリポジトリに対して、小さな変更を加えたプルリクエストを開いてみましょう。Exercise 05 で本番の流れを体験する前に、レビューの流れを一度見ておくためです
+
+## Appendix: サンドボックスを自分で割り当てる
+
+サンドボックスは全員分、本日のセッションに向けて事前に割り当て済みです。そのため通常はこの手順は不要です — 参考として、または後で自分でサンドボックスを割り当てる際のために掲載しています。
+
+1. ベースインスタンス（登録シートの自分の行にある **Instance Link** 列の URL — `empsdlcdev` または `empsdlcdev2`）にログインします。
+2. 自分のベースインスタンス上で `<instance url>/now/developer-sandbox/home` に直接アクセスするか、トップナビゲーションで `sandbox` を検索して **Sandbox Management Home** を開きます。
+
+    ![Sandbox Management Home への移動](images/sandbox-setup/01-navigate-to-sandbox-management.png)
+3. **Allocate sandbox** をクリックします。
+
+    ![サンドボックスの割り当て](images/sandbox-setup/02-allocate-sandbox.png)
+4. **Allocate Sandbox** ダイアログでは、**Sandbox template** は空のままにしてください。**Sandbox alias** には、この演習の他の箇所と同じ `<your_name>` の命名規則で名前を付けます（最大8文字、一意である必要があります）。これにより、他の参加者のものと衝突しなくなります。入力したら **Allocate** をクリックします。
+
+    ![Sandbox template を空にした Allocate Sandbox ダイアログ](images/sandbox-setup/03-allocate-sandbox-details.png)
+5. プロビジョニングが完了するまで待ちます — このサンドボックスの URL が、この演習で使う `<instance url>` になります。
