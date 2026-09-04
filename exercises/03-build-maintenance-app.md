@@ -56,11 +56,7 @@ Use Build Agent (and ATF) to go from a natural-language prompt to a working main
    });
    ```
 4. When asked if you want ATF tests written for your change, select "Yes, proceed" — your changes will get test coverage added.
-5. Install the app to your sandbox:
-   ```
-   now-sdk install --sandbox
-   ```
-6. Manually walk through the golden path in your sandbox and confirm it matches your Given-When-Then scenario.
+5. Manually walk through the golden path in your sandbox and confirm it matches your Given-When-Then scenario.
 
 ## Success Criteria
 
